@@ -1,0 +1,56 @@
+ 	<div>
+	<h4>Default Calendar</h4>
+  <div class="indent_setting">
+		<%= collection_select("settings", "default_calendar_id", @calendars, "id", "name") %>
+	</div>
+ </div>
+
+	<div>
+		<h4> All Day Time Settings </h4>
+		<div class="indent_setting">
+			begining of the day:
+			<%= f.text_field(:formatted_day_start, {:size => 6, :class => "timepicker"}) %>
+
+			end of the day:<%= f.text_field(:formatted_day_end, {:size => 6, :class => "timepicker"}) %>
+		</div>
+	</div>
+	
+	
+	<div>
+		<h4> Group Calendar </h4>
+		<div class="indent_setting">
+			Disable attendant removal 
+			<%= f.text_field :group_calendar_disable_attendant_removal_window, {:size => 2, :maxlength => 2} %> 
+			hours before class start time
+		</div>
+	</div>
+	
+	<div>
+		<h4> Personal Training Calendar </h4>
+ 		<div class="indent_setting">
+			Disable attendant removal 
+			<%= f.text_field :personal_training_calendar_disable_attendant_removal_window, {:size => 2, :maxlength => 2} %>
+			hours before class start time
+		</div>
+	</div>
+	
+	<div>
+		<h4>Package Expiration Date</h4>
+		<div class="indent_setting">
+			<%= f.text_field :default_package_expiration_date, {:size => 2, :maxlength => 2} %> Months
+		</div>
+	</div>
+	
+	<div>
+		<h4>Global Records Per Page</h4>
+		<div class="indent_setting">
+			Show <%= f.text_field :per_page, {:size => 3, :maxlength => 3} %> records per page
+		</div>
+	</div>
+	
+	<div>
+		<h4> Store Pages </h4>
+		<div class="indent_setting">
+			Show <%= f.text_field :products_pages, {:size => 3, :maxlength => 3} %> Products Per Page
+		</div>
+	</div>

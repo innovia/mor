@@ -1,0 +1,9 @@
+<%= javascript_tag "style_buttons();" %>
+<h3 class="warning" style="text-align: center;">You are about to Reinstate this class.</h3>
+<div id='unlock_form' class="notification"> Are you sure you want to Reinstate this class?
+<% form_tag(:action => "reinstate", :id => @event.id) do %>
+<p>
+  <%= submit_tag "Reinstate this class" %>
+</p>
+<% end -%>
+</div>

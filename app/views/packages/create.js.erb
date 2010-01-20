@@ -1,0 +1,4 @@
+$('#modal').dialog("destroy");
+$('#msg').html("<div class='notification'><h3><%= escape_javascript(flash.delete(:notice)) %></h3></div>");
+$('#msg').toggle();
+

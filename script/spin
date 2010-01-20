@@ -1,0 +1,1 @@
+/usr/local/bin/mongrel_rails start -C /var/www/apps/mor/current/config/mongrel_cluster.yml

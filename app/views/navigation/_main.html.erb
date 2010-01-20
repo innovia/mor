@@ -1,0 +1,38 @@
+<ul id="nav_bar">
+	<% if staff? %>	
+		<div id="manage_people">
+			<li class="li_first"><%= link_to "People", people_path %></li>
+			<li><%= link_to "Admin", role_people_path(1) %></li> 
+			<li><%= link_to "Managers", role_people_path(2) %></li> 
+			<li><%= link_to "Staff", role_people_path(3) %></li> 
+			<li><%= link_to "Instructors", role_people_path(4) %></li> 
+			<li><%= link_to "Members", role_people_path(5) %></li>	
+		</div>
+	<% end -%>
+<p>
+	<div id="navigation">
+		<li class="li_first"><%= link_to "Home", home_path %></li> 
+		<li><%= link_to "Classes", monqi_classes_path %></li> 
+		<% if manager? %>
+			<li><%= link_to "Package Maker", package_templates_path %></li> 
+			<li><%= link_to "Package Types", manage_calendars_path %></li> 
+			<li><%= link_to "Class Scheduler", event_templates_path %></li> 
+		<% end %>
+		<li><%= link_to "Recurring Classes", events_path %></li>
+
+		<%if member? %>
+			<li><%= link_to "Get Packages", person_packages_path(current_user.person) %></li>
+			<%- end -%>
+	
+		<% if staff? %>
+			<li><%= link_to "Products", products_path %></li>
+		<% end %>
+	
+		<% if admin? %>
+			<li><%= link_to "Stats", stats_path %></li>
+		<%- end -%>
+		
+		<li><%= link_to "Store", store_path %></li> 
+	</div>
+</p>
+</ul>

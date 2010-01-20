@@ -1,0 +1,9 @@
+# Calendars Fixtures
+
+  1:
+    name: Group
+    color: 333333
+   
+  2:
+    name: Personal_training
+    color: eeaacc

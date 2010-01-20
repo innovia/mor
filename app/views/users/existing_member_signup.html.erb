@@ -1,0 +1,16 @@
+<h2> Already a MonQi Member, but you don't have an online account ? </h2>
+Give us the email address you've registered with, at the MonQi Front Desk
+
+<div id="email_finder">
+	<label class="desc" for="email">email
+		<span class="req">*</span>
+	</label>
+	<%= text_field_tag :email %>
+	<label class="note">We will never sell or disclose your email address to third parties.</label>
+
+	
+	<%= button_to_remote "Continue", :condition => "$('email').value != ''", :url => {:action => "find_existing_member"}, :with => "'email=' + $(\"email\").value" %>
+</div>
+
+<div id="existing_member_form"></div>
+

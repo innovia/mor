@@ -1,0 +1,28 @@
+<div class="body">
+<h2>Phone Numbers</h2>
+<%- unless @phone_numbers.empty? -%>
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Phone Number</th>
+	<th></th>
+	<th></th>
+	<th></th>
+  </tr>
+  <%- @phone_numbers.each do |phone_number|%>
+  <tr class=<%= cycle('odd', 'even')%> >
+      <td><%=h phone_number.location %></td>
+      <td><%=h number_to_phone(phone_number.phone_number) %></td>
+    
+      <td><%=link_to 'Show', object_url(phone_number) %></td>
+      <td><%=link_to 'Edit', edit_object_url(phone_number) %></td>
+      <td><%=link_to 'Destroy', object_url(phone_number), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%- else -%>
+ <div class="warning"><h3>No phone numbers on file</h3></div>
+<%- end -%>
+<br/>
+<%= link_to 'New Phone Number', new_object_url %>
+</div>

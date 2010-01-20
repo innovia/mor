@@ -1,0 +1,46 @@
+<%= javascript_include_tag "jquery.captcha" %>
+<script type="text/javascript">
+	var captchaDir = "/captcha";
+	var url = "/captcha";
+	var borderColor = "orange";
+	var formId = "new_user" ;
+	var items = Array("pencil", "scissors", "clock", "heart", "note");
+	$(".ajax-fc-container").captcha();
+</script>
+
+<h2>Create a Free MonQi Fitness Account</h2>
+<%= link_to "Are you a MonQi member? Click here to signup", monqi_member_signup_path %> 
+<div class="ajax-fc-container"></div>			
+
+	<% form_for @user, :url => account_path do |f| %>
+		<%= f.error_messages %>
+
+			<% fields_for :person do |p| %>	
+				<%= error_messages_for :person %>
+				
+				<label class="desc" for="person_first_name">First Name<span class="req">*</span></label>
+				<%= p.text_field :first_name %>
+
+				<label class="desc" for="person_middle_name">Middle Name</label>
+				<%= p.text_field :middle_name %>		
+
+				<label class="desc" for="person_last_name">Last Name<span class="req">*</span></label>
+				<%= p.text_field :last_name %>
+				
+				<label class="desc" for="person_dob">Date of Birth</label>
+		    <br/>
+				<%= p.text_field :dob %>		
+			<% end %>
+			
+			<label class="desc" for="email">e-mail<span class="req">*</span></label>
+			<%= f.text_field :email %>
+				<label class="note">We will never sell or disclose your email address to third parties.</label>
+				<label class="desc" for="login">Login<span class="req">*</span></label>
+					<%= f.text_field :login %>
+					<label class="note">Must be at least 3 characters long.</label>
+	<br/>
+		<button id="signupButton" class="positive button" type="submit">
+				<img alt="" src="/images/icons/tick.png"/>Create Account</button>		
+		<a class="negative button" href="/"><img alt="" src="/images/icons/cross.png"/>Cancel</a>
+	<br/>
+<%- end -%>

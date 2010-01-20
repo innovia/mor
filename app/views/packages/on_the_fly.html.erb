@@ -1,0 +1,22 @@
+<script type="text/javascript">
+style_buttons(); populate_packages(); show_default_package_and_override(); 
+jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
+ajax_form_submission();
+</script>
+
+<div class="workspace">
+
+<h2>New Package</h2>
+
+<%= error_messages_for :package %>
+
+<% form_for :package, :url => collection_url do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+	<%= hidden_field_tag :person_id, @person_id %>
+	<p>
+    <%= submit_tag "Purchase Package", :id => "submit", :name => "submit", :class => "form_submit" %>
+  </p>
+
+<% end %>
+
+</div>

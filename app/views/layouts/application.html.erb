@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>MonQi on Rails</title>
+<%= stylesheet_link_tag 'application',"themes/redmond/jquery-ui-1.7.1.custom", "jquery.timepickr", 'jquery.flexbox', "jquery.alerts", 'pagination', 'jquery.wysiwyg' %>
+
+<%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min", "ui.timepickr.min", "daterangepicker", "jquery.watermarkinput", "jquery.flexbox.min","jquery.alerts", "jquery.wysiwyg", "jquery.tools.min", "application" %>
+												
+<link rel="icon" href="http://monqifitness.com/images/logo_footer.gif"/> 
+</head>
+<body>	
+<div class="workspace">
+	<div id="monqi_title"> 
+		<h2>MonQi Fitness 2.0</h2>
+	</div>
+	<div id="msg" style="display: none;"></div>
+		<%- unless flash[:notice].blank? -%>
+		<div class="notification">
+			<h3><%= flash[:notice] -%></h3>
+		</div>
+		<%- end -%>
+
+		<%- unless flash[:error].blank? -%>
+		<div class="flash_error">
+			<h3><%= flash[:error] -%></h3>
+		</div>
+		<%- end -%>
+
+		<% unless current_user.nil? %>
+			<div id="login_logout">
+				Logged in as: <%= link_to h(current_user.login.capitalize), user_path(current_user) -%> 
+									::: <%= link_to 'Log Out', logout_url -%>
+				<ul>
+					<li><%= link_to 'My Profile', account_path -%></li>
+			  	<% if admin? %>
+					<li><%= link_to 'Administer Users', users_path -%></li>
+					<li><%= link_to "Application Settings", settings_path -%></li>
+					<% end -%>
+					
+					<% if current_user.person.roles.find_by_title("developer")%>
+					<li>Dev - <%= link_to "Exceptions Logger" , exceptions_path %></li>
+					<%- end -%>
+					<li id="date"><%= today.strftime("%A, %B %d, %Y") %> <span id="clock">&nbsp;</span></li>			
+				</ul>
+				
+				<% if member? %>
+				<div id="my_cart">
+				<%= render(:partial => "store/cart" , :object => @cart) %>
+				</div>
+				<% end %>
+			</div>	
+	
+			<div id="nav_bar"><%= render :partial => "/navigation/main" -%></div>
+			<% end -%>
+			<div id="content"><%= @content_for_layout -%></div>
+</div>
+</body>
+</html>

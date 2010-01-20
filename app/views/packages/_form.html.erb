@@ -1,0 +1,27 @@
+<fieldset id="package_template_field_set">
+  <legend>Package for use with:</legend>
+<div id="package">	
+ <%= f.collection_select(:calendar_id, @calendars, "id", "name", :prompt => "select a package type") %> calendar events
+</div>
+</fieldset>
+
+<div id="package_template_form">
+	
+<%# Package Template dropdown %>
+<%= f.label :package_template_id %>
+<%= f.select(:package_template_id, ["Please select a package type first"]) %>
+
+<div id="auto_complete_package" class="warning">
+	<u>Override Package:</u>
+</div>
+
+<div id="payment_method">
+	<% @options = ["MasterCard", "Visa", "AmericanExpress", "Check", "Cash" ,"Other"] %>
+	Paid by <%= f.select(:paid_by, @options) %>
+	
+	Last 4 Digits <%= f.text_field :last_4_digits, {:size => "4", :maxlength => "4"} %>
+</div>
+
+<%= f.hidden_field :created_by, {:value =>  @created_by} %>
+</div>
+

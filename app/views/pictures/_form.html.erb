@@ -1,0 +1,11 @@
+		<%= f.error_messages %>
+    <% 
+		unless @page.nil?
+    	@page_value = @page.id
+		else
+			@page_value = params[:page_id]
+    end %>
+		<%= f.hidden_field :page_id, :value =>  @page_value %>
+  <p>
+  	Picture: <%= f.file_field :photo %>
+  </p>

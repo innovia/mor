@@ -1,0 +1,36 @@
+<%= collection_select(:calendar, :id, @calendars, :id, :name, {:value => @package.package_template.calendar.id}) %>
+
+<%= observe_field "calendar_id", :url => by_calendar_package_templates_path, 
+																 :with => "calendar_id",
+	 								 							 :update  => :package_package_template_id %>
+	
+<%# Package Template dropdown %>
+	<%= f.label :package_template_id %>
+	<%= f.select(:package_template_id, @package.package_template.description => @package.package_template_id) %>
+
+	<%= observe_field "package_package_template_id",
+	:url => {:action=> 'pkg' },
+	:with => "package_template_id" %>		
+
+<div id="auto_complete_package" class="warning">
+	<u>Override Package:</u>
+	<p>
+		<p align="center">
+			<p align ="center"><u>Override Package:</u> </p>
+			Sessions: <%= f.text_field(:sessions,  {:size => 2})  %>
+	 		Expires: <%= f.date_select(:expiration_date, {:use_short_month => true, :order => [:month, :day, :year] }, {}) %>
+			<p></p>
+			<p align="center">Cost: <%= f.text_field(:cost, {:size => "4", :maxlength => "4"}) %></p>
+		</p>
+	</p>
+	
+</div>
+
+<div id="payment_method">
+	<% @options = ["MasterCard", "Visa", "AmericanExpress", "Check", "Cash" ,"Other"] %>
+	Paid by <%= f.select(:paid_by, @options)%>
+	
+	Last 4 Digits <%= f.text_field :last_4_digits, {:size => "4", :maxlength => "4"} %>
+</div>
+
+<%= f.hidden_field :created_by, {:value =>  @created_by} %>

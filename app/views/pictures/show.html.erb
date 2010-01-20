@@ -1,0 +1,27 @@
+
+<p>
+  <strong>Page:</strong>
+  <%=h @picture.page_id %>
+</p>
+<p>
+  <strong>Photo File Name:</strong>
+  <%=h @picture.photo_file_name %>
+</p>
+<p>
+  <strong>Photo Content Type:</strong>
+  <%=h @picture.photo_content_type %>
+</p>
+<p>
+  <strong>Photo File Size:</strong>
+  <%=h @picture.photo_file_size %>
+</p>
+<p>
+  <strong>Photo Updated At:</strong>
+  <%=h @picture.photo_updated_at %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_picture_path(@picture) %> |
+  <%= link_to "Destroy", @picture, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", pictures_path %>
+</p>

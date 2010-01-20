@@ -1,0 +1,13 @@
+<% if @cart.state == 'open' %>
+<div class="cart-title"><h2>Your Cart:</h2>
+<% if @cart.cart_items.empty? %>
+		<h2 align="center"> is empty </h2>
+<%- end -%>
+</div>
+	
+	<div id="cart"> 
+			My Cart
+			<%= render(:partial => "store/cart_items") unless @cart.cart_items.empty? %>
+	</div>
+	
+<%- end -%>

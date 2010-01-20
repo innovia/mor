@@ -1,0 +1,10 @@
+<div id="calendar_collection">	
+		<%- if @calendar.nil? or @calendar.empty? -%>
+		 <div class="warning"><h3>Showing no classes for today</h3></div>
+		<%- else -%>
+		<!-- Display Template only -->
+			<% @calendar.each do |event| %>
+		 		<%= render :partial => "event_details", :locals => {:event => event} %>
+			<%- end -%>
+		<%- end -%>
+</div>	

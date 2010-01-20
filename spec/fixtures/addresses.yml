@@ -1,0 +1,13 @@
+# Addresses Fixtures
+
+  one:
+    street: 74th Street
+    apt: C7
+    zip_code_id: 11209
+    person: ami
+  
+  two:
+    street: Hills Valley
+    apt: D2
+    zip_code_id: 90210
+    person: lyn

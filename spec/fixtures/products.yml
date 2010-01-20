@@ -1,0 +1,17 @@
+# Products Fixtures
+
+yoga_mat:
+    title: Yoga Mat
+    description: Fun
+    price: 4.99
+    photo_file_name: yoga_mat.jpg
+    photo_content_type: image/jpeg
+    photo_file_size: 1000000
+    
+package:
+    title: Group
+    description: Fun Classes
+    price: 100
+    photo_file_name: package.jpg
+    photo_content_type: image/jpeg
+    photo_file_size: 1000000

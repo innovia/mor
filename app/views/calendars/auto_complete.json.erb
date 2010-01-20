@@ -1,0 +1,29 @@
+{"results":[
+		<%- @with_pkgs.each do |p| -%>
+		 							{ "id": <%= p.id -%>,
+							 	    "name": "<%= p.full_name -%>",
+										"pic": "<%= p.photo.url %>",
+										"pkg": ""
+									  }
+		<%= @with_pkgs.last == p ? "" : ","  %>
+ 		<%- end -%>
+
+<%- if @with_pkgs.empty? and ! @without_pkgs.empty? or @without_pkgs.empty? -%>
+<%= "" %>
+<% else %>
+<%= "," -%>
+<% end %>
+
+
+		<%- @without_pkgs.each do |p| -%>
+			{ "id": <%= p.id -%>,
+	 	    "name": "<%= p.full_name -%>",
+				"pic": "<%= p.photo.url %>",
+				"pkg": "<%= escape_javascript(link_to image_tag("no_package.png", :size => ("32x32")) + "get a package", "#", {:onclick => "$('#modal').load(\"#{packages_path}/on_the_fly/#{p.id}\"); show_dialog('get a package');" }) %>"
+					
+			}
+		<%= @without_pkgs.last == p ? "" : ","  -%>
+		<%- end -%>
+]
+,"total": "<%= @with_pkgs.count + @without_pkgs.count %>"
+}

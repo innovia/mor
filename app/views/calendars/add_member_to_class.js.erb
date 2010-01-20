@@ -1,0 +1,9 @@
+<% if @person_without_packages %>
+jAlert('<%= "<h3>#{@person_without_packages.full_name} does not have any packages</h3>" %>' +
+			 '<%= escape_javascript(link_to "Get a package", "#", {:onclick => "$('#modal').load(\"#{packages_path}/on_the_fly/#{@person_without_packages.id}\");show_dialog('get a package');$('#popup_ok').trigger('click');"})%>','Please Note'); 
+<%-else-%>
+$('#attendees_box_<%= @event.id %>').html("<%= escape_javascript(render :partial => "/shared_partials/attendees", :collection => @event.people, :locals => {:event => @event}) %>");
+$('#attendee_id_<%= @member.id %>_for_event_<%= @event.id %>').effect("highlight", "slow");
+<%- end -%>
+
+ 

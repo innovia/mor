@@ -1,0 +1,6 @@
+<h2>New Package Template</h2>
+<%= error_messages_for :package_template %>
+<% form_for(:package_template, :url => collection_url) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <%= submit_tag "Create", :class => "mq-button ui-state-default ui-corner-all left" %>
+<% end %>

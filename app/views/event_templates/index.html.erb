@@ -1,0 +1,39 @@
+<div class="body">
+<h2> Class Schedule Templates</h2>
+
+<%- @event_templates.each do |et|%>
+	<% div_for(et, :class => cycle('odd', 'even')) do %>
+		<div class="id"># <%=h et.id.to_s %></div>
+		<div style="display: inline;" <%= 'class="today"' if et.start_date.strftime("%a, %b %d") == Date.today.strftime("%a, %b %d") %>>
+			<%=h et.start_date.strftime("%a, %b %d %I:%M%p") + " - " + et.end_date.strftime("%I:%M%p") %>
+		</div>
+		<div style="color: #<%=h et.calendar.color %>; display: inline;"><%=h et.calendar.name %></div>
+		<div id="level"><%=h et.level %> - </div>
+		<div class="indent"><%=h et.monqi_class.title %> With <%=h et.instructor.full_name %> </div>
+		
+		<!-- Action Set Icons-->
+		<div class="action_icon"> 
+			<%= image_tag('icons/page_edit.png')%> 
+			<%=link_to 'edit', edit_object_url(et) %>
+			<%= link_to_function  image_tag('icons/delete_icon.png', :size => "24x24"), 
+														"Modalbox.show(\"#{event_templates_path}/delete_form/#{et.id}\", {title: 'Deleting a Class Template'});" %> delete
+					
+			<%- unless et.repeat == "none" -%>
+				<%= image_tag('icons/information.png') %>
+				<%= link_to_function "repeat details" do |page| 
+						 																		page.visual_effect :toggle_blind, 'details_for_' + et.id.to_s  
+					   																end  %>
+				<%= image_tag('refresh.gif', :size => "24x24") %>
+				<%= link_to "recurring_classes", event_template_events_path(et) %>
+			<%- end -%>
+		</div>
+					
+		<div class="clear"></div>
+		<div id="details_for_<%= et.id %>" style="display: none;">
+			<%= render :partial => 'repeat_details' ,:locals => {:et => et}  %>
+		</div>
+	<%- end -%>
+<%- end -%>
+	<p><%= will_paginate @event_templates %></p><br/>
+	<%= button_to 'New Class Template', new_object_url %>
+</div>

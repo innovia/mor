@@ -1,0 +1,15 @@
+log/*.log
+tmp/**/*
+system/*
+photos/*
+public/system/photos/*
+public/photos/*
+
+deploy.rb
+.DS_Store
+db/schema.rb
+db/schema.sql
+database.yml
+mail.rb
+paperclip.rb
+webrat-*.html

@@ -1,0 +1,14 @@
+<h3>Please Note, <br/><%= @cal.name %> Classes Cancellation Policy</h3>
+<div class="warning" style="width: 90%;">
+<h5>There is a <%= @cancellation_window %> hour cancellation policy. 
+	<p> I understand that if I fail to cancel with at least <%= @cancellation_window %> hours notice,</p>
+	<p class="mandatory"><u> One class will still be deducted from my package. (not refundable)</u> </p>
+</h5>
+</div>
+<%= button_to_remote ("I Agree", :url => {:action => 'add_member_to_class', :id => @event.id},
+ 						  :with => "'member_id=' + #{current_user.person_id}",  :complete => "Modalbox.hide()")%>
+
+<%= button_to_function "Disagree", "Modalbox.hide();" %>
+
+
+

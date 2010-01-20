@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="EditLive! 6.5.2.30" name="generator" />
+<meta content="PersonalBrain 5.0.2.3" name="generator" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<link rel="stylesheet" href="file:///Applications/PersonalBrain.app/Contents/Resources/app/res/notesMac.css" type="text/css" />
+</head>
+<body>
+<p>OrderTransaction<br />
+order_id:integer&#160;</p>
+<p>action:string</p>
+<p>amount:integer&#160;</p>
+<p>success:boolean<br />
+authorization:string&#160;</p>
+<p>message:string&#160;</p>
+<p>params:text</p>
+</body>
+</html>

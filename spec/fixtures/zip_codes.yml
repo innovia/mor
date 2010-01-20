@@ -1,0 +1,11 @@
+# Zip Codes Fixtures
+
+  one:
+    id: 11209
+    city: Brooklyn
+    state: NY
+
+  two:
+    id: 90210
+    city: BEVERLY HILLS
+    state: CA

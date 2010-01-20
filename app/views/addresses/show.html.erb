@@ -1,0 +1,19 @@
+<div class="body">
+<h2> <%= @person.full_name %> Address</h2>
+<% unless @address.nil? %>
+<p><strong>Street: </strong> <%= @address.street %> </p>
+<p><strong>apt: </strong> <%= @address.apt %> </p>
+<p><strong>City: </strong><%= @address.zip_code.city %></p> 
+<p><strong>State: </strong><%= @address.zip_code.state %></p>
+<p><strong>zipcode: </strong> <%= @address.zip_code_id %> </p>
+<p>
+<%#= link_to 'Edit',  people_address_path(:controller => controller_name.underscore.pluralize, :id => @person.id, :action => "edit") %>
+|
+<%- else -%>
+  <div class="warning"><h3> No address on file </h3></div>
+ <p>
+	<%#= link_to "New", people_address_path(:controller => @person.type.underscore.pluralize, :id => @person.id, :action => "new") %> |
+<%- end -%>
+<%= link_to 'Back', :back %>
+</p>
+</div>

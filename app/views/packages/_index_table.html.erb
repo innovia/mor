@@ -1,0 +1,59 @@
+<%- unless @packages.empty? -%>
+<table>
+  <tr>
+    <th>Package</th>
+		<th>For</th>
+		<th>Sessions</th>
+		<th>Sessions left</th>
+		<th>Purchasehd date</th>
+		<th>Expiration date</th>
+		<th class="show"></th>
+		<%- if admin? -%>
+			<th class="edit"></th>
+			<th class="delete"></th>
+		<%- end -%>
+  </tr>
+
+  <%- @packages.each do |package| -%>
+  <tr class=<%= cycle('odd', 'even') %>>
+  	<td align="left">  <%=h package.package_template.description	 %></td>
+		<td align="center"><%=h package.package_template.calendar.name + " / " + package.package_type.name.capitalize %></td>
+		<td align="center"><%=h package.package_template.sessions %></td>
+		<td align="center"><%=h package.sessions %></td>
+		<td align="center"><%=h package.created_at.strftime("%b %m %Y") %></td>
+		<td align="center" <%= "class=\"warning\"" if package.expiration_date < Time.now  %>> <%=h package.expiration_date.strftime("%b %m %Y") %></td>
+		<td align="center">	
+			<a href="#" id="pkg_info_<%= package.id %>">Info</a>
+				<script type="text/javascript">
+			   			$("#pkg_info_<%= package.id %>").bind('click', function() { 
+							$('#package_details').dialog({ 
+							title: '<%= package.package_template.description.capitalize + " " + package.package_type.name.capitalize %>',
+							modal: true
+							});
+					});
+				</script>
+		</td>
+		
+		<div id="package_details" style="display: none;">
+			<%= render :partial => "/packages/package_details" ,:locals => {:package => package}  %>
+		<div>
+		
+		<%- if admin? -%>
+		<td><%#= link_to 'Edit', edit_object_url(package) %></td>
+    <td><%#= link_to 'Destroy', object_url(package), :confirm => 'Are you sure?', :method => :delete %></td>
+		<%- end -%>
+   </tr>
+	  <%- end -%>
+</table>
+<%- else -%>
+	<div class="warning"><h3><%= @person.first_name.capitalize %> Has No Packages</h3></div>
+<%- end -%>
+
+
+
+
+
+		<%#= link_to_function "Reinstate", 
+			"Modalbox.show(\"#{packages_path}/extend_package_exp_date/#{package.id}\", {title: 'Reinstate Expired Package'});" %>
+		
+		

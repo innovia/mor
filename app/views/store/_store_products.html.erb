@@ -1,0 +1,29 @@
+	<% @products.each do |product| %>
+	<% content_tag_for(:div, product,  :class => "product_cell")  do %>
+		<dl>	
+			<dd class="product_header">
+				<dl>
+					<dd class="product_image"><%= image_tag(product.photo.url, {:size => '32x32'}) %></dd>
+				</dl>
+			</dd>
+	
+		
+			<dd class="product_body">
+				<dl>
+					<dd class="title"><h3><%=h product.title %></h3></dd>
+					<dd class="description">	<%= product.description  %></dd>
+				</dl>
+			</dd>
+		
+			<dd class="product_footer">
+				<dl>
+					<dd class="price"><%= number_to_currency(product.price) %></dd>
+					<dd class="add2cart"><button id="add2cart" data-product="<%= product.id %>">Add to cart</button></dd>
+				</dl>
+		  </dd>
+		
+		</dl>
+		<%- end -%>
+	<%- end -%>
+		<p class="clear"><%= will_paginate @products %></p>
+	

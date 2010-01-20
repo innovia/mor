@@ -1,0 +1,10 @@
+1:
+  name: admin
+2: 
+  name: manager
+3: 
+  name: staff_member
+4: 
+  name: instructor
+5: 
+  name: member

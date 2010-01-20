@@ -1,0 +1,26 @@
+<div id="date_display">
+	<%= render :partial => 'date_nav' %>
+</div>
+
+<div id="calendar_select">
+	<%# display links to see the events for the selected calendar %>
+	<%= render :partial => "cal_view" %>
+</div>
+
+<div id="calendar_name">
+	<br/>
+	<h2 style="color: <%= @current_calendar.color %>;"><%= @current_calendar.name %> Calendar</h2>
+		<%= hidden_field_tag("calendar_id", @current_calendar.id) %>
+</div>
+
+<div id="calendar_collection">
+		<%- if @calendar.nil? or @calendar.empty?-%>
+		 <div class="warning"><h3>Showing no classes for today</h3></div>
+		<%- else -%>
+					<% @calendar.each do |event| %>
+						<%= render :partial => "event_details", :locals => {:event => event} %>
+					<% end -%>
+		<%- end -%>
+</div>
+
+<div id="modal"></div>

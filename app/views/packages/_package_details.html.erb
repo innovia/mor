@@ -1,0 +1,51 @@
+<p>
+  <h4> <%=h package.person.full_name %>  Package Receipt: </h4>
+</p>
+
+<p>
+  <strong>Package:</strong> <%=h package.package_template.description %> 
+</p>
+<p>
+	<strong>For use with: </strong> <%=h package.package_template.calendar.name %> Classes
+</p>
+<p><strong>Expires on:</strong> <%=h package.expiration_date.strftime("%a, %b %d, %Y")  %></p>
+
+
+<p>
+	<p><strong>Sessions in Package: </strong> <%=h package.package_template.sessions  %></p>
+  <strong>Remaining Sessions:</strong> <%=h package.sessions %>
+</p>
+
+<p>
+	<strong>Date of Purchase:</strong>
+	<%=h package.created_at.strftime("%b %d, %Y") %>
+</p>
+
+<p>
+	<strong>Assisted by:</strong>
+</p>
+
+<br/>
+Package Usage Information:<br/>
+
+<%- if package.expiration_date < Time.now -%>
+			<%- if current_user.has_role?('member') -%>
+				<div class="flash_error">
+				Package Expired - 
+				Please contact the Front Desk to extend the expiration date of this package with a penalty of 1 session. 
+				</div>
+			<%- else -%>
+				fill in reinstate
+			<%- end -%>
+ <%- end -%>
+
+
+<div id="reciept">Paid by (credit card /cash) <%= number_to_currency(package.package_template.product.price) %></div>
+	<% package.events.each do |use|  %>
+		<div style="font-size: 90%; margin-left: 15px;" class=<%= cycle('odd', 'even')%>>
+			<%= use.start_date.strftime("%D")%> 
+			<%= use.event_template.monqi_class.title %>
+			with <%= use.instructor.full_name %>
+	  </div>
+		<%- end -%>
+</div>

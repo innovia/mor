@@ -1,0 +1,33 @@
+<fieldset id="package_template_field_set">
+  <legend>Package for use with:</legend>
+		<%= f.collection_select( :calendar_id, @calendars, "id", "name", :prompt => 'select a package type') %> calendar events
+
+<div id="package_type">
+	<br/>
+	Package Type: 
+	<%= f.radio_button :package_type_id, "1", {:checked => "checked"} %> Classes
+	<%= f.radio_button :package_type_id, "2" %> Unlimited
+	<%= f.radio_button :package_type_id, "3" %> Gym use
+</div>
+</fieldset>
+
+<div id="package_template_form">
+<br/>
+	<p>
+	 	Description:
+	  <%= f.text_field :description %>
+		</p>
+	<p>
+	  Cost:<br/>
+	  $ <%= f.text_field(:cost, :size => 4) %>
+	</p>
+	<p>
+	  Number of sessions:
+	  <%= f.text_field(:sessions, :size => 2) %>
+	</p>
+	<br/>
+	<p>
+	  Expires in: 
+	  <%= f.text_field(:expires_in, :size => 2, :maxlength => 2, :value => @settings.default_package_expiration_date) %> Months
+	</p>
+	</div>

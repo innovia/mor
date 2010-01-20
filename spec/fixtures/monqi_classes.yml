@@ -1,0 +1,11 @@
+# Monqi Classes
+
+workout:
+  title: Total Body Makeover
+  description: Transform yourself with this full body workout using unique exercises and movements. Burn, sculpt and chisel a new you!
+  web_category: Flexibility & Strength
+    
+yoga:
+  title: Gentle Yoga
+  description: A slower paced, less rigorous, softer class for all ages.
+  web_category: yoga

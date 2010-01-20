@@ -1,0 +1,17 @@
+  <div id='custom_weekly' style="display: none;">
+ 	Mon<%= check_box_tag('event_template[byday][]','MO') -%>
+ 	Tue<%= check_box_tag('event_template[byday][]','TU') -%>
+ 	Wed<%= check_box_tag('event_template[byday][]','WE') -%>
+ 	Thu<%= check_box_tag('event_template[byday][]','TH') -%>
+ 	Fri<%= check_box_tag('event_template[byday][]','FR') -%>
+ 	Sat<%= check_box_tag('event_template[byday][]','SA') -%>
+ 	Sun<%= check_box_tag('event_template[byday][]','SU') -%>
+	
+	<label class="note req">
+	if you choose end after, the events will repeat the number of times you have specified 
+	<br/> i.e repeat on "Mon, Wed, ,Fri" with an end after of 2 will only create an event for Mon and Wed
+	<br/> it does not mean repeat "Mon, Wed, Fri" twice.
+	<br/> if you need the repeat to span over a week, please select end on date rather then end after
+	</label>
+
+  </div>

@@ -1,0 +1,6 @@
+<p><strong>Title:</strong><%=h @product.title %></p>
+<p><strong>Description:</strong><%=h @product.description %></p>
+<p><%= image_tag @product.photo.url %></p>
+<p><strong>Price:</strong>  <%=h @product.price %></p>
+
+<%= link_to 'Edit', edit_object_url %> | <%= link_to 'Back', collection_url %>

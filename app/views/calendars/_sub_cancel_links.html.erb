@@ -1,0 +1,12 @@
+<div id="cancel_sub_links">
+	<%= hidden_field_tag("event_id", event.id) %>
+	<% unless event.cancelled? %>
+		<%= link_to "Cancel class", "#", :onclick => "$('#modal').load(\"#{events_path}/cancel_class/#{event.id}\");", :id => "cancel_link" %> |
+		<%= link_to "Sub", "#", :onclick => "$('#original_instructor_for_class_#{event.id}').toggle(); $('#sub_select_for_class_#{event.id}').toggle();" %> |
+		<%= link_to "Edit", edit_event_path(event)%>
+
+	<% if event.event_template.calendar.name  == "Personal training" %>
+	<%= link_to_function image_tag("trash.png" ,{:title => "Delete this class" }), "$('#modal_content').load(\"#{events_path}/delete_personal_training_session/#{event.id}\");"-%>
+	<%- end -%>
+</div>
+<%- end -%>

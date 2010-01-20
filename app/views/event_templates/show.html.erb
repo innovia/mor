@@ -1,0 +1,19 @@
+<h2>
+	<%=h @event_template.calendar.name %> Classes Template Information:
+</h2>
+
+<div>
+  <h4>Class:</h4><%= @event_template.monqi_class.title %>
+	<h4>Description:</h4><%= @event_template.monqi_class.description %>
+	<h4>Level: </h4><%= @event_template.level %>
+	<h4>From: <%= @event_template.start_date.strftime("%b %d %Y %H:%M") %> - To: <%=h 	@event_template.end_date.strftime("%b %d %Y %H:%M") %></h4>
+	<h4>Instructor: </h4><%=h @event_template.instructor.full_name %>
+</div>
+
+<%= render :partial => "repeat_details", :locals => {:et => @event_template} %>
+<%= link_to "classes for this template" , event_template_events_path(@event_template) %>
+<p>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>
+</p>

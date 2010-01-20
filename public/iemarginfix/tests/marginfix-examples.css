@@ -1,0 +1,62 @@
+/* styles for the examples */
+
+#ex11, #ex12, #ex13 /* divs */
+{
+	width : 80%;
+	margin-left : auto;
+	margin-right : auto;
+	padding : .3em;
+	background : gray;
+}
+
+#ex12 { background : silver; }
+#ex13 { background : white; }
+
+#ex21 /* paragraph */
+{
+	width : 150px;
+	margin : 1em auto 2em;
+	padding : 1em;
+	border : 1px solid;
+}
+
+#ex3 /* table */
+{
+	margin : 0 auto 0 auto;
+}
+
+#ex4 /* image */
+{
+	margin : auto;
+}
+
+#ex5 /* image */
+{
+	display : block;
+	margin : auto;
+}
+
+#ex61
+{
+	width : 15%;
+	margin-left : auto;
+	margin-right : 0;
+	padding : 1em;
+	background : gray;
+}
+
+#ex62
+{
+	width : 200px;
+	margin-left : auto;
+	margin-right : 10px;
+	background : #fff;
+}
+
+#ex63
+{
+	width : 300px;
+	margin-left : auto;
+	margin-right : 15%;
+	background : #fff;
+}

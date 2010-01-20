@@ -1,0 +1,17 @@
+<div class="body">
+<h2> MonQi Catalog </h2>
+<div id="shop_by_pkg_type">
+	<h4>Shop By Package</h4>
+	<ul>
+		<%- for cal in @calendars do  -%>
+		<li><%= link_to "#{cal.name}", :action => "packages", :id => cal.name  %></li>
+		<%- end -%>
+	</ul>
+</div>
+
+<div id="product_bay">
+	<%= render :partial => 'store_products' %>
+</div>
+<div class="clear"></div>
+</div>
+

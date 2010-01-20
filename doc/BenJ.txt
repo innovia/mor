@@ -1,0 +1,18 @@
+<%= link_to "Whatever", admin_path, "data-remote" => true, "data-method" => "get" %>
+<a href="/admin" data-remote="true" data-method="get">Whatever</a>
+
+<form data-remote="true">
+
+$('a[data-remote=true]').live('click', function() {
+	$.get{url: $(this).attr('href')}
+})
+
+
+
+
+
+    
+      		
+      		devbot.com textbox list
+      		yield autocomplete using content_for :javascript
+      		samsong nc10

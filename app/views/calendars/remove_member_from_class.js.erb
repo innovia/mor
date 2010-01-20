@@ -1,0 +1,17 @@
+<% if @ok_to_remove %>
+$('#attendee_id_<%= @member.id %>_for_event_<%= @event.id %>').effect("drop", "slow");
+$('#self_signup').toggle();
+<% else %>
+	<% if @event.start_date < Time.now %>
+     <% @class_time_msg = "This class has already started" %>
+     <% if Time.now > @event.end_date %>
+     <% @class_time_msg = "This class has ended" %>
+		 <% end -%>
+  <% else %>
+		 <% @class_time_msg = "This class is starting in #{time_ago_in_words(@event.start_date)}" %>
+	<% end -%>
+
+	jAlert("<%= escape_javascript("<h4>The time is #{Time.now.strftime("%I:%M:%p")} </br>
+                    You can cancel attendeance with a minimum of #{@cancellation_window} hours before the class starts <br/>
+                    #{@class_time_msg}</h4>") %>", "Too late to remove <%= @member.full_name %> from class");
+<% end -%>

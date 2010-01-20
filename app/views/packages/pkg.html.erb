@@ -1,0 +1,12 @@
+<p>
+	<p align="center">
+		<p align ="center"><u>Override Package:</u> </p>
+		Sessions: <%= text_field :package, :sessions,  :value => @selected_package_template.sessions , :size => 2  %>
+ 		Expires: <%= date_select(:package, :expiration_date, 
+															{:use_short_month => true, :order => [:month, :day, :year], :default  => @exp_date }, {}) %>
+		<p align="center">(default expiration date is: <%= @package_template_exp_date %> months from now)</p>
+		
+		<p align="center">Cost: $ <%= text_field(:package, :cost, {:value => @cost, :size => "4", :maxlength => "4"}) %></p>
+		<%= hidden_field_tag(:package_type_id, @selected_package_template.package_type_id)
+ %>	</p>
+</p>

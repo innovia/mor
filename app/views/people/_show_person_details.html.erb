@@ -1,0 +1,37 @@
+<div class="body">
+<h3>#<%=h  @person.id.to_s + " " + @person.full_name.capitalize %></h3>
+<div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
+
+<div id="personal_info">
+<p><strong>Birthday: </strong><%=h @person.dob.strftime("%B %d, %Y") unless @person.dob.nil? %></p>
+		
+<div id="address_info">
+<p><strong>Address: </strong> 
+			<%- if @person.address -%>
+						<p><%= @person.address.street %>, Apt <%= @person.address.apt %>
+						<%= link_to "Update", edit_person_address_path(@person) if @person.address %></p>
+			<%- else -%>
+				<p><%= link_to "Add an Address", new_person_address_path(@person) %></p>
+			<%- end -%>
+</p>
+</div>
+	
+<div id="phone_numbers">
+<p><strong>Phone Numbers:</strong>
+	<%- if !@person.phone_numbers.empty? -%>
+				<% @person.phone_numbers.each do |record| %>
+							<p><strong><%=h record.location + ": "%></strong> <%= number_to_phone(record.phone_number, :area_code => true) %>
+						 	<%= link_to "Update", edit_phone_number_path(record) if @person.phone_numbers %>
+							</p>
+						<%- end -%>
+	<%- end -%>
+		<br/><%= link_to "add a number", new_person_phone_number_path(@person) %>
+		</p>
+</div>
+	
+<div id="personal_info_part2">
+<p><strong>Email:</strong><%=h @person.email %></p>
+<p><strong>Notes:</strong><%=h @person.notes %></p>
+</div>
+
+</div>

@@ -1,0 +1,15 @@
+<tr class=<%= cycle('odd', 'even')%> >
+    <td><%=h person.first_name %></td>
+    <td><%=h person.middle_name %></td>
+    <td><%=h person.last_name %></td>
+    <td><%=h person.dob.strftime("%b %d %Y") %></td>
+    <td><%=h person.email %></td>
+    <td><%=h person.notes %></td>
+   
+		<td align="center"><%= link_to "Packages", people_packages_path(:controller => person.type.underscore.pluralize, :id => person.id)  %></td>
+	  <td align="center"><%= link_to "Address", people_address_path(:controller => person.type.underscore.pluralize, :id => person.id) %></td>
+	  <td align="center"><%= link_to "Phone Numbers", people_phone_numbers_path(:controller => person.type.underscore.pluralize, :id => person.id) %></td>
+	  <td align="center"><%=link_to 'Show', object_url(person) %></td>
+	  <td align="center"><%=link_to 'Edit', edit_object_url(person) %></td>
+	  <td align="center"><%=link_to 'Destroy', object_url(person), :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>

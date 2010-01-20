@@ -1,0 +1,19 @@
+<p>
+  <strong>Cart:</strong><%=h @order.cart_id %>
+</p>
+<p>
+  <strong>Ip address:</strong><%=h @order.ip_address %>
+</p>
+<p>
+  <strong>Person:</strong><%=h @order.person_id %>
+</p>
+<p>
+  <strong>Payment type:</strong><%=h @order.payment_type %>
+</p>
+<p>
+  <strong>Card expires on:</strong><%=h @order.card_expires_on %>
+</p>
+
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

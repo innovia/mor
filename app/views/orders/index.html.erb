@@ -1,0 +1,27 @@
+<h2> Orders</h2>
+
+<table>
+  <tr>
+    <th>Cart</th>
+    <th>Ip address</th>
+    <th>Person</th>
+    <th>Payment type</th>
+    <th>Card expires on</th>
+  </tr>
+  <%- @orders.each do |order|%>
+    <tr>
+      <td><%=h order.cart_id %></td>
+      <td><%=h order.ip_address %></td>
+      <td><%=h order.person_id %></td>
+      <td><%=h order.payment_type %></td>
+      <td><%=h order.card_expires_on %></td>
+    
+      <td><%=link_to 'Show', object_url(order) %></td>
+      <td><%=link_to 'Edit', edit_object_url(order) %></td>
+      <td><%=link_to 'Destroy', object_url(order), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Order', new_object_url %>

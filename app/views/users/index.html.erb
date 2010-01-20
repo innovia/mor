@@ -1,0 +1,30 @@
+<h2>
+<% if @role %>
+<%=h  @role.title.capitalize.pluralize %> 
+<%- else -%>
+All Users / People
+<%- end -%>
+</h2>
+<%- unless @users.empty? -%>
+<div class="tooltip"> 
+    <h3>The Tooltip</h3>
+</div>
+
+<table id="users_table">
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Login</th>
+<th>Email</th>
+<th>Roles</th>
+</tr>
+<%= render :partial => 'user', :collection => @users %>
+</table>
+<%- else -%>
+ 	No Users Were Found
+<%- end -%>
+
+
+
+
+<%= link_to image_tag("icons/group_add.png", :size => "24x24") + "add a new person" , new_person_path %> 

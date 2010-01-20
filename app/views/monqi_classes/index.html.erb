@@ -1,0 +1,37 @@
+<div class="body">
+<h2>MonQi Classes</h2>
+<% unless @monqi_classes.empty? %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Web category</th>
+		<th class="show"></th>
+		<% if admin? %>
+		<th class="edit"></th>
+		<th class="delete"></th>
+		<% end %>
+  </tr>
+  <%- @monqi_classes.each do |monqi_class|%>
+  <tr class=<%= cycle('odd', 'even')%> >
+      <td class="col1"><%=h monqi_class.title %></td>
+      <td class="col2"><%= monqi_class.description %></td>
+      <td class="col3"><%=h monqi_class.web_category %></td>
+     	<td><%=link_to 'Show', object_url(monqi_class) %></td>
+	<% if admin? %>    	
+      	<td><%=link_to 'Edit', edit_object_url(monqi_class) %></td>
+      	<td><%=link_to 'Destroy', object_url(monqi_class), :confirm => 'Are you sure?', :method => :delete %></td>
+ 	<% end %>	
+  <% end %>
+	</tr>
+</table>
+<p>
+<%= will_paginate @monqi_classes %>
+</p>
+<%- else -%>
+	<p> No classes have been entered yet</p>
+<%- end -%>
+<% if admin? %>
+		<p><%= button_to 'New Monqi Class', new_object_url %></p>
+<% end %>
+</div>

@@ -1,0 +1,15 @@
+<tr class="<%= cycle('odd', 'even') %>">
+<td align="center"> <%=h user.id %></td>
+<td>
+	 <%=link_to user.person.full_name.capitalize, edit_person_path(user.person), :id => "tooltip", :class => "normal_link"%></td>
+<td align="center">
+	<%= link_to user.login, edit_user_path(user), :class => "normal_link" %>
+</td>
+<td><%=h user.email %></td>
+<td><% user.person.roles.each	do |role| %>
+			<%= link_to "#{role.title.capitalize}", person_roles_path(user.person), :class => "normal_link"%>
+			<% unless role == user.person.roles.last %>,<%- end -%>   
+			<%- end -%> 
+</td>
+
+</tr>

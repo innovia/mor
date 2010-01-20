@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>MonQi on Rails</title>
+<%= stylesheet_link_tag 'themes/redmond/jquery-ui-1.7.1.custom', 
+												'jquery.alerts', 
+												'pagination',
+												'pages'
+												%>
+												
+<%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
+<%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
+<%= stylesheet_link_tag "blueprint/print", :media => "print" %>
+
+<!--[if IE]>
+	<link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/>
+	<link href="/iemarginfix/marginfix-styles.css" rel="stylesheet" type="text/css">
+	<script src="/iemarginfix/src/IEmarginFix.js" type="text/javascript"></script>
+<![endif]-->
+
+<%= javascript_include_tag "jquery", "jquery-ui-1.7.1.custom.min", 
+													 "daterangepicker", "jquery.alerts", "jquery.tools.min", 
+													 "jquery.innerfade", "pages" %>
+
+<%#= render :partial => "shared/init_yui_editor" %>										
+<link rel="icon" href="http://monqifitness.com/images/logo_footer.gif"/> 
+</head>
+<body>
+	<div class="container">		
+			<ul id="menu" class="<%= @page.title %> span-24 last">
+				<li id="home"><%= link_to "Home", pages_path %></li>			
+				<li id="about_us"><%= link_to "About us", about_us_path %></li>
+				<li id="classes"><%= link_to "Classes", classes_path %></li>
+				<li id="personal_training"><%= link_to "Personal training", personal_training_path %></li>
+				<li id="schedule"><%= link_to "Schedule", schedule_path %></li>
+				<li	id="rates"><%= link_to "Rates",  rates_path %></li>
+				<li id="specials"><%= link_to "Specials", specials_path %></li>
+				<li id="staff"><%= link_to "Staff", staff_path %></li>
+				<li id="news"><%= link_to "News", news_path %></li>
+				<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
+			</ul>
+
+			<ul id="admin_nav">
+				<li> <%= link_to "Edit Page", "#", :id => "edit_page"  %>	</li>
+			</ul>
+	
+		<div id="top_content_page">
+			<h2> <%= @page.title %>
+			<span class="h2bkg"><%= @page.title %></span>
+			</h2>
+	
+			<div class="text_block">
+				<%= @page.body %>
+			</div>
+			<div id="address_bar"> 201 East 67th Street, New York, NY - (212) 327-2170</div>
+		</div>
+		
+		<div id="lower_corner_box">
+			<div id="gallery">
+				<% @page.pictures.each_with_index do |pic, index| %>
+						<%= image_tag(pic.photo.url(:box)) %>
+				<% end -%>
+			</div>
+			
+		</div>
+		
+		<div id="edit_page_box" style="display: none;">
+			<div id="page_editor_box"><h2>
+				Edit <%= @page.title %> page
+			<span class="h2bkg"> Edit <%= @page.title %> page</span> </h2>
+			<%= render :partial => "shared/update_page" %></div>
+			
+			<div id="upload_box">
+				<h2>
+					Upload Pictures
+					<span class="h2bkg"><%= @page.title %>'s Pictures</span>
+				</h2>
+					<a href="#" class="prev">Prev</a>
+					<div id="thumbs_scrollable" class="scrollable">
+						<div class="items">
+							<% @page.pictures.each do |pic| %>
+							<div class="page_pic_thumb item">						
+							<%= image_tag(pic.photo.url(:thumb)) %>
+							<%= image_tag( "icons/large_error.png",  :size => "24x24", 
+							 																				"data-pic"  => pic.id,
+																											:title => "delete picutre",
+																											:class => "delete_icon" ) %>
+							</div>
+						<% end -%>
+						</div>
+					</div>
+					<a href="#" class="next">Next</a>
+					
+			<%= link_to "pictures in table mode", page_pictures_path(@page) %>
+				<div id="upload_pic_form">
+				<h2 class="on_white"> 
+					Upload new pictures:
+					<span class="h2bkg">Upload new pictures</span>
+				</h2>
+				<% form_for(@picture, :html => {:multipart => true}) do |f| %>
+						<%= render :partial => "pictures/form", :locals => {:f => f}  %>
+				  <p><%= f.submit "add_picture" %></p>
+				<%- end -%>	
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<%#= render :partial => "shared/call_yui_editor" %>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<div class="body">
+<h2><%= @person.full_name.capitalize %>'s Packages</h2>
+<%= render :partial => 'index_table' %>
+
+<br/>
+<%= link_to 'New Package', new_object_url %>
+</div>

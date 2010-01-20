@@ -1,0 +1,6 @@
+<% unless @package_templates.empty? %>
+<option value="">Choose a package</option>
+<%= options_from_collection_for_select(@package_templates, :id, :description, :selected => "first")  %>
+<%- else -%>
+<option value="">there are no packages for this calendar</option>
+<%- end -%>

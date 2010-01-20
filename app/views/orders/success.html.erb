@@ -1,0 +1,13 @@
+<h2>Thank you for your purchase</h2>
+<p>
+	Your confirmation number is: <%=  @order.transactions.last.authorization %>
+	<br/>
+	Order id: <%= @order.id %>
+	
+	<%= debug (@order.transactions.last.params) %>
+	<p>
+		Package id: <%= @pkg.id %> <br/>
+		Expires in: <%= @pkg.expiration_date %>
+	</p>
+	<%= render(:partial => "store/cart_items") %>
+</p>

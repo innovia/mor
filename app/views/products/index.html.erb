@@ -1,0 +1,36 @@
+<div class="body">
+<h2>Products </h2>
+<% unless @products.empty? %>
+<table>
+  <tr>
+    <th align="center">Title</th>
+    <th align="center">Description</th>
+    <th align="center">Image</th>
+		<th align="center">Price</th>
+		<th></th>
+		<% if admin? %>
+			<th></th>
+			<th></th>
+		<%- end -%>
+  </tr>
+  <%- @products.each do |product|%>
+    <tr>
+      <td class="col1"><%=h product.title %></td>
+      <td align="center" class="col2"><%=h product.description %></td>
+      <td align="center"><%= image_tag(product.photo.url, {:size => '32x32'})%></td>
+      <td align="center"><%=h number_to_currency(product.price) %></td>
+
+      <td align="center"><%=link_to 'Show', object_url(product) %></td>
+     <%-  if admin? -%>
+			<td align="center"><%=link_to 'Edit', edit_object_url(product) %></td>
+      <td align="center"><%=link_to 'Destroy', object_url(product), :confirm => 'Are you sure?', :method => :delete if admin? %></td>
+			<%- end -%>
+    </tr>
+  <% end %>
+</table>
+	<p><%= will_paginate @products %></p><br/>
+	<%- else -%>
+	<h4> There are no products available</h4>
+<%- end -%>
+	<%= button_to 'New Product', new_object_url  if admin? %>
+</div>

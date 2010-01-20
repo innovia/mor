@@ -1,0 +1,26 @@
+<h2><%= @package_template.calendar.name + " "  + @package_template.package_type.name.capitalize + " Package" %> </h2>
+<p>
+  <% if @package_template.inactive %>
+		<div class="error">
+			<h3> Package Template is Inactive </h3>
+		</div>
+	<%- end -%>
+</p>
+
+<p>
+  <strong>Description:</strong><%=h @package_template.description %>
+</p>
+<p>
+  <strong>Cost:</strong> $<%=h @package_template.cost %>
+</p>
+<p>
+  <strong>Sessions:</strong><%=h @package_template.sessions %>
+</p>
+<p>
+  <strong>Expires in:</strong><%=h @package_template.expires_in %>
+</p>
+
+<p><%= link_to "Product page" , @package_template.product %></p>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

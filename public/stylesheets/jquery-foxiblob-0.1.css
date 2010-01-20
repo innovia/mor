@@ -1,0 +1,17 @@
+/**
+ * name:      jquery-foxiblob-0.1.css
+ * author:    Stefan Benicke - www.opusonline.at
+ * version:   0.1
+ * date:      19.08.2009
+ * category:  stylesheet for jquery-foxiblob-0.1.js
+ * copyright: (c) 2009 Stefan Benicke (www.opusonline.at)
+ * license:   GNU GPLv3 <http://www.gnu.org/licenses>
+ * example:   http://www.opusonline.at/foxitools/foxiblob/
+ * 
+  <div id="foxiblobID" class="foxiblob"></div>
+ */
+.foxiblob {
+  position: absolute;
+  z-index: 100;
+  background: #000;
+}

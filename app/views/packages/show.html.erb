@@ -1,0 +1,35 @@
+</div>
+<p>
+  <h4> <%=h @package.person.full_name %>  Package Receipt: </h4>
+</p>
+
+<p>
+  <strong>Package:</strong> <%=h @package.package_template.description %> 
+</p>
+<p>
+	<strong>For use with: </strong> <%=h @package.package_template.calendar.name %> Classes
+</p>
+<p><strong>Expires on:</strong> <%=h @package.expiration_date.strftime("%a, %b %d, %Y")  %></p>
+
+
+<p>
+	<p><strong>Sessions in Package: </strong> <%=h @package.package_template.sessions  %></p>
+  <strong>Remaining Sessions:</strong> <%=h @package.sessions %>
+</p>
+
+<p>
+	<strong>Date of Purchase:</strong>
+	<%=h @package.created_at.strftime("%b %d, %Y") %>
+</p>
+
+<p>
+	<strong>Assisted by:</strong>
+	<%=h @sold_by.full_name %>
+</p>
+<p>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'List member\'s packages',collection_url  %>
+|
+<%= link_to 'Home', home_path %>
+</p>

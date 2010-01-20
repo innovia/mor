@@ -1,0 +1,9 @@
+<div id="edit_content" class="yui-skin-sam">
+		<% form_for @page, :html => { :multipart => true, :method => :put } do |f| -%>
+	  	<%= hidden_field(:page, :title) %>
+			<%= f.text_area :body, :id => "page_editor" %>
+		<br/>
+			<%= f.submit "Save Changes" %>
+		<button class="toggle_edit">Cancel</button>
+		<% end -%>
+</div> <!-- / edit content div -->	

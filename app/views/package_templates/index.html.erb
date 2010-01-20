@@ -1,0 +1,45 @@
+<div class="body">
+	<h2>Package Templates</h2>
+<%- unless @package_templates.empty? -%>
+<table>
+  <tr>
+    <th>Calendar</th>
+		<th>Package Type</th>
+    <th>Description</th>
+    <th>Cost</th>
+		<th>Sessions</th>
+    <th>Expires in</th>
+		<th class="show"></th>
+		<th class="edit"></th>
+		<th class="delete"></th>
+  </tr>
+  <%- @package_templates.each do |package_template|%>
+  <tr class=<%= cycle('odd', 'even')%> >
+
+      <td style="color:<%= package_template.calendar.color %>"><%=h package_template.calendar.name %></td>
+      <td align="center"><%=h package_template.package_type.name.capitalize %></td>			
+      <td><%=h package_template.description %></td>
+      <td align="center"><%=h number_to_currency(package_template.product.price) %></td>
+	    <td align="center" <%=h @css %>><%=h package_template.sessions %></td>
+      <td align="center"><%=h pluralize package_template.expires_in, 'month'   %> </td>
+    
+      <td align="center"><%=link_to 'Show', object_url(package_template) %></td>
+      <td align="center"><%=link_to 'Edit', edit_object_url(package_template) %></td>
+      <td align="center">
+				<% if admin? %>
+					<%=link_to 'Destroy', object_url(package_template), :confirm => 'Are you sure?', :method => :delete  %></td>
+				<% end %>
+    </tr>
+  <% end %>
+</table>
+<%- else -%>
+	No Packages Templates Yet.
+<%- end -%>
+
+<p>
+	<%= will_paginate %>
+</p>
+<br/>
+
+<%= button_to 'New Package Template', new_object_url %>
+</div>

@@ -1,0 +1,16 @@
+<p>
+  <strong>Title:</strong><%=h @monqi_class.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+	<div id="class_description">
+		<%= @monqi_class.description %>
+	</div>
+</p>
+<p>
+  <strong>Web category:</strong><%=h @monqi_class.web_category %>
+</p>
+<br/>
+<%= link_to 'Edit', edit_object_url if admin? %>
+
+<%= link_to "Back", collection_url %>

@@ -1,0 +1,38 @@
+	<% if admin? %>
+		<%= render :partial => "sub_cancel_links", :locals => {:event => event} %>
+	<% end -%>
+
+<!-- Class details-->
+<div id="class_details" <% if event.cancelled? %> "class='cancelled'" <%- end -%>>
+	<% @cal_color =  event.event_template.calendar.color %>
+	<div id="calendar_color" style="background-color: <%= @cal_color %>;"></div>
+	<div id="cal_name" style="color: <%= @cal_color %>;"><%= event.event_template.calendar.name %></div>	
+	<div id="class_time"><%= event.start_date.strftime("%I:%M%p") %> - <%= event.end_date.strftime("%I:%M%p") %> 
+											 <%= event.event_template.monqi_class.title %> 
+	</div>	
+	
+	<div id="instructor_sub_cancel"><%= render :partial => 'instructor_sub_cancel', :locals => {:event => event} %></div>
+	<br/>
+		<%- if event.cancelled? -%>
+	<div id="cancelled" class="flash_error">--- CANCELLED ---</div>
+	<%= link_to "Reinstate", "#", 
+			:onclick => "$('#modal').load(\"#{events_path}/reinstate_class/#{event.id}\");", 
+			:id => "reinstate_link" if admin? %>		
+	<%- end -%>
+	
+	
+	<!-- Div member_auto_complete_field-->
+	<div id="member_auto_complete_field">
+			<%= render :partial => 'member_auto_complete', :locals => {:event => event} if admin? and ! event.cancelled?  %>
+	</div>
+	
+	<div id="self_signup">
+	 <%= render :partial => 'member_self_sign_up_for_class', :locals => { :event => event} if ! admin? and ! event.cancelled? %>
+	</div>
+	<!-- Div Attendees -->
+	<% unless event.cancelled? %>
+		<div id="attendees_box_<%=@current_event = event.id -%>" class="attendees_box">
+			<%= render :partial => "attendees", :locals => {:event => event}, :collection => event.attendees %>	
+		</div>
+	<%- end -%>
+</div>

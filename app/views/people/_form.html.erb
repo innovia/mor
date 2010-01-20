@@ -1,0 +1,42 @@
+<script type="text/javascript">
+$('.date_picker').datepicker();
+</script>
+
+<p><label class="desc"> Roles
+	<span class="req">*</span>
+	<span class="note">select all roles that apply</span>
+</label>	
+	<%= check_box_tag('roles[]','5', {:selected => true} )-%> Member
+	<%= check_box_tag('roles[]','4') -%> Instructor
+	<%= check_box_tag('roles[]','3') -%> Staff Member (Front Desk)
+	<%= check_box_tag('roles[]','2') -%> Manager
+	<%= check_box_tag('roles[]','1') -%> Admin
+</p>
+<p>
+  <label class="desc" for="first_name"> First name
+  	<span class="req">*</span>
+  </label>
+  <%= f.text_field :first_name %>
+</p>
+<p>
+  <label class="desc" for="middle_name"> Middle name
+  </label>
+  <%= f.text_field :middle_name %>
+</p>
+<p>
+  <label class="desc" for="last_name"> Last name
+  	<span class="req">*</span>
+  </label>
+  <%= f.text_field :last_name %>
+</p>
+<p>
+<label class="desc" for="dob"> Birthday:</label>
+<br/> <%= f.text_field :dob, :class => "date_picker" %>
+</p>
+
+<p><label class="desc" for="email"> email</label>
+  <%= f.text_field :email %>
+</p>
+<p><label class="desc" for="photo"> Photo:
+</label></p>
+<p><%= f.file_field :photo %></p>

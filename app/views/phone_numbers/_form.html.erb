@@ -1,0 +1,9 @@
+<p>
+  <label for="phone_number_location">Location:</label>
+  <% @options = ["Mobile", "Home", "Work", "Other"] %>
+	<%= select :phone_number, :location, @options %>
+</p>
+<p>
+  <label for="phone_number_phone_number">Phone Number:</label>
+  <%= f.text_field :phone_number %>
+</p>

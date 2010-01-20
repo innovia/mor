@@ -1,0 +1,14 @@
+WorkFlow:
+
+type min 2 charcter , trigger ajax request to working_calendar controller / auto_complete action
+
+autocomplete action:
+
+store the requested charcters in "q"
+
+instantiate 2 arrays:
+members_without_packages => member.package.templates is empty or member.package_templates does not have any package template for the passed calendar id
+
+members_with_packages
+
+

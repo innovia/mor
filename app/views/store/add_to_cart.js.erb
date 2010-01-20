@@ -1,0 +1,3 @@
+$('#cart').html("<%= escape_javascript(render(:partial => "cart_items" , :object => @cart)) %>") ;
+$('#cart').slideDown("slow");
+$('#current_item').effect("highlight", "slow");

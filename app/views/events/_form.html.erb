@@ -1,0 +1,12 @@
+<p>
+  <label for="event_startDate">From:</label>
+  <%= f.datetime_select :start_date %>
+</p>
+
+<p>
+  <label for="event_endDate">To:</label>
+  <%= f.datetime_select :end_date %>
+</p>
+<p>
+ With:	<%= collection_select("event", "instructor_id", @instructors, "id", "full_name") %>
+</p>

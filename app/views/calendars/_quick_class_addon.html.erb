@@ -1,0 +1,23 @@
+<script	type="text/javascript"> style_buttons(); </script>
+
+<div>
+	<h4>Add A Personal Training Session</h4>
+		<%#= form_tag(:url => quick_add_event_templates_path) do  %>
+		form is disabled<br/>
+		<%= hidden_field :event_template, :calendar_id, :value => @cal.id %>
+		<%= hidden_field :event_template, :monqi_class_id, :value => "2" %>
+		<%= hidden_field :event_template, :repeat, :value => "none" %>
+		<%= hidden_field :event_template, :allday, :value => "0" %>
+		<%= hidden_field :event_template, :interval, :value => "1" %>
+
+		Instructor:	<%= collection_select(:event_template, :instructor_id, @instructors, "id", "full_name") %>
+		<p>
+	
+		Start Time: <%= text_field_tag ("start_date", {}, {:size => 6}) %>
+																																																																						
+		Duration:
+		<%= select_minute(Date.today,{:minute_step => 15 }) %>																																																																								
+		</p>
+			<%= submit_tag "Add Class" %>
+		<%#- end -%>
+</div>

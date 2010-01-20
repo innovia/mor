@@ -1,0 +1,9 @@
+<div class="mq-buttonset">
+	<%= link_to "all", calendars_path, :method => "get", :class => "mq-button ui-state-default ui-corner-all" %>
+	<%- for cal in @calendars do  -%>
+		<%= link_to "#{cal.name}", calendar_path(cal), 
+															 :method => "get", 
+															 :style => "color: #{cal.color};",
+															 :class => "mq-button ui-state-default ui-corner-all" %>
+	<%- end -%>	
+</div>

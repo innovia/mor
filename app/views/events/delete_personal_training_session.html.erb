@@ -1,0 +1,22 @@
+<h5>You are about to delete a Personal Training Session.</h5>
+
+<div id='unlock_form' style="display: none" class="notification">
+	Are you sure want to delete this Personal Training Session?
+	this operation is not reversable, use cancel class if you are unsure
+	
+		<p>
+			<%= button_to_remote ("delete", :url => {:controller => :event_templates, :action => "delete_personal_training_session", :id => @event.event_template.id}, :complete => "Modalbox.hide()")  %>
+		  <%= button_to_function "Cancel", "Modalbox.hide()" %>
+		</p>
+</div>
+
+<div id="recaptcha_block">
+	<% form_remote_tag :url => {:action => "enable_features"} do %>
+	<p id="action_propmt">Please type the code in the image  (not case sensitive)<br/>to unlock the delete feature</p>
+	<%= show_simple_captcha %>
+	<p style="display: block">
+  	<%= submit_tag "Enable delete" -%>
+  </p>
+	<% end -%>
+</div>
+<div id="captcha_error" class='flash_error' style="display: none;"> invalid code, Please try again </div>  

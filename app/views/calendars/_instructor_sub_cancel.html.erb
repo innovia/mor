@@ -1,0 +1,25 @@
+<%# if the instructor for the current event is !== original instructor show sub with original striked through  %>
+		<% if  event.instructor ==  event.event_template.instructor %>	
+			<div id="original_instructor_for_class_<%= event.id %>" class="original_instructor">
+				 	with <%= event.event_template.instructor.full_name  %>
+			</div>
+		<% else %>
+			<div id="original_instructor_for_class_<%= event.id %>" class="original_instructor_subbed">
+				 with <%= event.event_template.instructor.full_name  %>
+			</div>
+			<div id="sub_instructor_for_class_<%= event.id %>"  class="sub_instructor">
+				 sub <%= event.instructor.full_name %>
+			</div>
+		<% end %>
+
+		
+	<div id="sub_select_for_class_<%= event.id %>" style="display: none;" class="cancel_sub">
+	
+	
+	<form action="working_calendar/sub_instructor/<%= event.id %>" method="POST" id="sub_instructor_form" accept-charset="utf-8">
+		Sub: <%= collection_select("event", "instructor_id", @instructors, "id", "full_name") %>
+		<p><input type="submit" value="Save Changes &rarr;"></p>
+	</form>
+	
+
+	</div>

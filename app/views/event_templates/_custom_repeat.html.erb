@@ -1,0 +1,12 @@
+<div id="custom_repeat" style="display: none;">
+	Frequency: 
+  	<%= select(:event_template, :freq, 
+		[ ['Daily', "daily"], ['Weekly', "weekly"], ['Monthly', "monthly"] ], 
+		:prompt => 'select a frequency') %>
+	<p>
+		Every <%= f.text_field :interval, :size => 2, :value => "1" %> (days, weeks, months)
+	</p>
+
+<%= render :partial => 'custom_weekly', :locals => { :f => f }  %>
+		
+</div>

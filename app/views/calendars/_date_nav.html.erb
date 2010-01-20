@@ -1,0 +1,12 @@
+<div id="date_nav">
+	<h3 align="center">
+		<!--previous day icon -->
+		<%= link_to image_tag("resultset_previous.png"), "#", :id => "prev_day" %>
+	
+		<div id="selected_date" style="display: inline;"><%= @nav_date.strftime("%A %b %d %Y") %></div>
+		
+		<!--next day icon -->
+		<%= link_to image_tag("resultset_next.png"), "#", :id => "next_day" %>
+		<%= hidden_field_tag 'nav_date_field',  @nav_date %>
+	</h3>	
+</div>

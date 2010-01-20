@@ -1,0 +1,21 @@
+<h2>Editing Events</h2>
+
+<%= error_messages_for :event %>
+
+<% form_for :event, :url => object_url, :html => { :method => :put } do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>   
+
+<p>
+	<h4>Changing a recurring class</h4>
+	<h5>You're changing a recurring class. Do you want to change only this occurrence of the class, or this and all future occurrences? </h5>
+    <%= submit_tag "Only This Class"%>                                    
+	<%= submit_tag "All Future Classes" , :name  => 'change_all_future' %> 
+	                                                       
+  </p>                                                                                                                     
+<% end %>
+
+<br/>
+
+<%= link_to 'Show', object_url %>
+|
+<%= link_to 'Back', collection_url %>

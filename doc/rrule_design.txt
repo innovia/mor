@@ -1,0 +1,39 @@
+Event Template:
+Ex:
+	title: MonQi Summer Series
+	monqi_classes_id: 1 # yoga
+	all-day: 0
+	from: 2008-1-1 14:00:00
+	to: 2008-1-1 15:00:00
+	freq: 
+	
+	
+	
+	repeat: 
+	
+	will compose the rule here from a few fields:
+	repeat: (daily, weekly, etc...) CUSTOM
+	
+	if CUSTOM selected CSS will show additional ctrls :
+	
+	
+	FREQEUNCY Drop Down:
+		every day
+		every week
+		every 2 weeks
+		every month
+		every year
+		
+		=> custom (selected)
+				
+				CSS will reveal:
+				freq: same options from the drop down
+				by: day (su, mo , tu, we, th, fr, sa)
+			
+				end drop down:
+				never
+				after => #
+				on date => date
+				
+				
+				

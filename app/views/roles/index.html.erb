@@ -1,0 +1,14 @@
+<h2>Roles for <%=h @name = @person.full_name.capitalize %></h2>
+	
+	<% unless @person.roles.empty? %>
+	<h3>Assigned Roles:</h3>
+	<ul><%= render :partial => 'role', :collection => @person.roles %></ul>
+	<%- else -%>
+		<div class="warning">
+			<%= @name %> does not have any roles, and will not appear in any list, please assign a role
+		</div>
+		<%- end -%>
+	<h3>Available Roles:</h3>
+	<ul><%= render :partial => 'role', :collection => (@all_roles - @person.roles) %></ul>
+	
+<%= link_to "<< back to people list", people_path %>

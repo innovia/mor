@@ -1,0 +1,8 @@
+<% if @show_unlock_form == true %>
+ $('#unlock_form').show();
+ $('#recaptcha_block').hide();
+ $('#action_propmt').hide();
+<% else %>
+  $('#captcha_error').slideDown('fast');
+  $('#captcha_error').fadeOut(5000);
+<% end %>

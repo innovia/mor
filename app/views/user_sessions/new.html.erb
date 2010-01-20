@@ -1,0 +1,31 @@
+<div id="login_window">
+	<div id="login_box">
+		<% form_for @user_session, :url => user_session_path do |f| %>
+	 		<div id="login_error">
+	 			<%= f.error_messages %>
+	 		</div>
+					<%= f.label :login, "Username" %>
+					<span class="formw"><%= f.text_field :login, :autocomplete => "off" ,:id => "Username"%></span>
+					<%= f.label :password, "Password:" %>
+					<span class="formw"><%= f.password_field :password, :id => "Password" %></span>
+
+				<div id="lower_login_box">
+				<span class="left"> Remember me: <%= f.check_box :remember_me %></span>	
+				<span>
+					<button id="login" class="button" type="submit"> <img alt="" src="/images/icons/door_in.png"/>Login</button>	
+				</span>	
+					<div id="login_accessories">
+					<% unless current_user %>
+					  <%= link_to "Register for an account", new_account_path %> |
+						<%= link_to "Forgot Password?", forgot_password_path %>
+					<%- else -%>
+					  <%= link_to "My Account", account_path %> |
+					  <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+				  <%- end -%>	
+				</div>
+				
+			</div>
+		<% end %>
+	</div> <!-- end of login box -->
+	
+</div> <!-- end of login window -->

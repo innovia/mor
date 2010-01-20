@@ -1,0 +1,20 @@
+<% @current_event ? event_attendees = @current_event : event_attendees = @event.id %>
+
+<% attendees = current_user.attendee  if ! admin? %>
+<div class="attendees_vertical_title">attendees</div>
+
+<div id="attendee_id_<%=attendees.id-%>_for_event_<%=event_attendees%>" class="left attendee" > 
+		
+		<%= link_to "#{attendees.full_name}", "#", 
+				:onclick => "$('#modal').load(\"people/vcard/#{attendees.id}\").dialog('open'); show_dialog(\"#{attendees.full_name}'s Info\");", 
+				:id => "vcard"  %>
+		
+	<%- if admin? -%>
+ 		<%- confirm_msg = "<h3>are your sure you want to remove #{attendees.full_name} from this class?</h3>" -%>
+	<%-else-%>
+		<%- confirm_msg = "<h3>Are your sure you want to remove yourself from this class?</h3>" -%>
+	<%-end-%>
+	
+	<!-- link to remove -->	
+	<a href="#" onclick="confirm_removal_of_member_from_class('<%= confirm_msg %>', <%= attendees.id %>, <%= event.id%>);"><%= image_tag("cross.png") %> </a>
+</div>

@@ -1,0 +1,17 @@
+if @member_exists
+  page.replace_html "existing_member_form", :partial => "new_user"
+  page.replace_html "email_finder", ""
+else
+  page.replace_html "existing_member_form" , "<div class=\"flash_error\" align=\"center\"><h5>
+  Sorry we could not find a record with that email address, please check for typo's and try again.
+   <p> If you are having troubles please contact our Front Desk @ 212-327-2170 </p></h5>
+   </div>
+   "
+end
+
+unless @valid_email
+  page.replace_html "existing_member_form" , "<div class=\"warning\" align=\"center\"><h5>
+  The format of this email address is not valid<br/> please check for errors and try again.
+  </h5></div>
+  "
+end

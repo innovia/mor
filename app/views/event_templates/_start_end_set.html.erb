@@ -1,0 +1,12 @@
+<div id="start_end_set">
+	<br/>
+	First class occurs on:
+	<br/>
+	<%= text_field_tag("start_at", Date.today.strftime("%m/%d/%Y"), {:size => 8, :id => "start_date", :class => "left" }) %>
+	<div id="time_pickers">
+	Start Time<%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
+	End Time<%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
+	</div>
+	<%= hidden_field_tag("end_at",  Date.today.strftime("%m/%d/%Y"), {:id => "end_date"})  %>
+</div>
+<br/>

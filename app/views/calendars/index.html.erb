@@ -1,0 +1,10 @@
+<div id="date_display"><%= render :partial => 'date_nav' %></div>
+
+<div id="calendar_select"> <%= render :partial => "cal_view" %></div>
+	<div id="calendar_name"><br/>
+		<h2> Showing All Calendars Classes</h2>
+		<%= hidden_field_tag("calendar_id", "") %>
+	</div>
+	<%= render :partial => "calendar_collection" %>
+	
+<div id="modal"></div>

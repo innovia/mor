@@ -1,0 +1,9 @@
+<h1>Edit My Account</h1>
+
+<% form_for @user, :url => account_path, :html => { :method => :put } do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "user_signup_fields", :locals => {:f => f} %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<br /><%= link_to "My Profile", account_path %>

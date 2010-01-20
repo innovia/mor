@@ -1,0 +1,7 @@
+<% form_for :user, :url => {:action => "update"} do |f| -%>
+
+<%= f.select(:user_type, @roles, {:selected => @user.user_type }) %>
+
+<%= f.submit "Save Changes" %>
+<% end -%>
+

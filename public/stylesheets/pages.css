@@ -1,0 +1,226 @@
+.show-e{
+	border: 1px solid red;
+}
+
+/* ie png fix */
+ img, div { behavior: url(/iepngfix/iepngfix.htc) }
+
+* html
+    {
+    overflow-y: hidden;
+    }
+  * html body
+    {
+    height: 100%;
+    overflow: auto;
+    }
+
+body { 
+	background: #FFFFFF url('/images/Backgrounds/sun_zen.jpg') no-repeat scroll center top !important; 
+	color:#353535 !important;
+	font-family:Arial,Helvetica,sans-serif !important;
+	font-size:12px !important;
+	height:100% !important;
+	line-height:18px !important;
+	margin:0 !important;
+	padding:0 !important;
+}
+
+ #menu { height: 1px; margin-top: 55px; width: 941px }
+ #menu li { display: inline; text-indent: -9999px;}
+ #menu li a { float: left; width: 95px; height: 40px; padding-right: 17px !important; overflow: hidden; }
+ #menu li a { background-image: url(/images/Backgrounds/menu.png); *background-image: url(/images/Backgrounds/menu_ie.gif); }
+ 
+ #menu li#home a { width: 116px; height: 121px; margin-right: 27px;background: transparent url(/images/Backgrounds/Qi_aura.png) no-repeat 0 160px;}
+	/* BUTTONS */
+ #menu li#about_us a { background-position: 0 0; width: 77px;}
+ #menu li#classes a { background-position: -90px 0; width: 55px; }
+ #menu li#personal_training a { background-position: -162px 0; width: 132px; padding-left: 4px; }
+ #menu li#schedule a { background-position: -315px 0; width: 80px; }
+ #menu li#rates a { background-position: -415px 0; width: 41px; padding-left: 6px;}
+ #menu li#specials a { background-position: -482px 0; width: 59px;}
+ #menu li#staff a { background-position: -557px 0; width: 46px; padding-left: 5px; }
+ #menu li#news a { background-position: -623px 0;  width: 40px;}
+ #menu li#contact_us a { background-position: -686px 0; width: 77px; }
+
+	/* HOVER */
+ #menu li#home a:hover { background-position: -7px -6px;}
+ #menu li#about_us a:hover { background-position: 0 -40px; width: 77px; }
+ #menu li#classes a:hover { background-position: -90px -40px; width: 55px; }
+ #menu li#personal_training a:hover { background-position: -162px -40px; width: 132px; padding-left: 4px; }
+ #menu li#schedule a:hover { background-position: -315px -40px; width: 80px; }
+ #menu li#rates a:hover { background-position: -415px -40px; width: 41px; padding-left: 6px;}
+ #menu li#specials a:hover { background-position: -482px -40px; width: 59px;}
+ #menu li#staff a:hover { background-position: -557px -40px; width: 46px; padding-left: 5px; }
+ #menu li#news a:hover { background-position: -623px -40px;  width: 40px;}
+ #menu li#contact_us a:hover { background-position: -686px -40px; width: 77px; }
+
+ 	/* Pressed */
+ #menu li#about_us a:active { background-position: 0 -120px; width: 77px; }
+ #menu li#classes a:active { background-position: -90px -120px; width: 55px; }
+ #menu li#personal_training a:active { background-position: -162px -120px; width: 132px; padding-left: 4px; }
+ #menu li#schedule a:active { background-position: -315px -120px; width: 80px; }
+ #menu li#rates a:active { background-position: -415px -120px; width: 41px; padding-left: 6px;}
+ #menu li#specials a:active { background-position: -482px -120px; width: 59px;}
+ #menu li#staff a:active { background-position: -557px -120px; width: 46px; padding-left: 5px; }
+ #menu li#news a:active { background-position: -623px -120px;  width: 40px;}
+ #menu li#contact_us a:active { background-position: -686px -120px; width: 77px; }
+
+ 	/* current page */
+ #menu.about_us li#about_us a { background-position: 0 -80px; width: 77px; }
+ #menu.classes li#classes a { background-position: -90px -80px; width: 55px; }
+ #menu.personal_training li#personal_training a { background-position: -162px -80px; width: 132px; padding-left: 4px; }
+ #menu.schedule li#schedule a { background-position: -315px -80px; width: 80px; }
+ #menu.rates li#rates a { background-position: -415px -80px; width: 41px; padding-left: 6px;}
+ #menu.specials li#specials a { background-position: -482px -80px; width: 59px;}
+ #menu.staff li#staff a { background-position: -557px -80px; width: 46px; padding-left: 5px; }
+ #menu.news li#news a { background-position: -623px -80px;  width: 40px;}
+ #menu.contact_us li#contact_us a { background-position: -686px -80px; width: 77px; }
+
+
+
+#top_content_page {
+ 	border: 1px solid #353535;
+ 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height:335px;
+	margin-left:308px;
+	_margin-top: -20px;
+	_padding-top: 0px;
+	_margin-left: 350px;
+	margin-top: 64px;
+	padding:20px;
+	width:616px;
+	position: absolute;
+	_position: relative;
+	zoom: 1;
+	z-index: 999;
+}
+
+h2 {
+	color:#FFFFFF !important;
+	font-size:18px !important;
+	font-weight:normal !important;
+	line-height:22px !important;
+	margin:0 !important;
+	padding:0 0 5px !important;
+	position:relative !important;
+	z-index:4 !important;
+}
+
+.h2bkg {
+	color:#F66818;
+	font-family:Georgia,"Nimbus Roman No9 L",serif;
+	font-size:18px;
+	font-weight:normal;
+	left:-1px;
+	line-height:22px;
+	margin:0;
+	padding:0 0 5px;
+	position:absolute;
+	top:-1px;
+	z-index:2;
+}
+
+#lower_corner_box {
+ 	border: 1px solid #353535;
+ 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height: 168px;
+	width:308px;
+	margin-top: 362px;
+	margin-left: 44px;
+}
+
+#address_bar {
+  position: absolute;
+	left: 99px;
+	top: 375px;
+	
+  text-indent: -9999px;
+	width:535px;
+	height:99px;
+ 	background-image:url(/images/Backgrounds/address_bar.png);
+}
+
+#edit_page_box {
+	border: 1px solid #353535;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height: 400px;
+	width:950px;
+	padding: 20px;
+	margin-top:85px;
+}
+
+#page_editor_box {
+ width: 624px;
+ border-right: 1px solid orange;
+ float: left;
+}
+
+#upload_box {
+	width: 303px;
+	float:left;
+	margin-left:20px;
+}
+.left {float: left;}
+.right {float: right;}
+
+#gallery img {
+  display: block;
+	width: 250px; 
+	height: 168px; 
+	margin-left: 30px;
+}
+
+
+.page_pic_thumb {
+	float:left;
+	padding:5px;
+	position: relative;
+	margin-right: 17px;
+}
+
+.delete_icon {
+ position: absolute;
+ right: -6px;
+ top: -8px;
+}
+
+#upload_pic_form {
+	clear: both;
+	margin-top:15px;
+}
+
+#thumbs_scrollable {
+	float:left;
+	height:140px;
+	width:275px;
+}
+
+/* root element for horizontal scrollables */
+.scrollable {
+	position: relative;
+	overflow:hidden;
+	height: 300px;
+	width: 400px;
+	float: left;
+}
+
+/* root element for horizontal scrollable items */
+.scrollable .items {
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+
+/* single horizontal slide  */
+.item {
+	float:left;
+	width: 100px;
+	margin: 15px 15px 0 15px;
+}

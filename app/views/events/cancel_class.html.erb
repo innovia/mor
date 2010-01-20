@@ -1,0 +1,24 @@
+<%= javascript_tag "style_buttons(); enable_features('Cancel a class'); cancel_or_reinstate_class();" %>
+
+
+<h3 style="color: red; text-align: center;">You are about to CANCEL this class.</h3>
+<div id='unlock_form' style="display: none" class="warning"> Are you sure you want to cancel this class?<p> All class attendees will be informed on the cancelation by email</p>
+
+<% form_tag(:action => "cancel", :id => @event.id) do %>
+<p>
+  <%= submit_tag "Cancel this class" %>	
+</p>
+
+<% end -%>
+</div>
+<div id="recaptcha_block">
+
+	<form id="enable_features" action="events/enable_features" method="POST">
+		<p id="action_propmt">Please type the code in the image <br/> to unlock the Class Cancellation Feature</p>
+
+		<p style="display: block;"><input type="submit" value="Enable Cancelation" id="enable_button"></p>
+	</form>
+
+</div>
+<div id="captcha_error" class='flash_error' style="display: none"> Invalid code, Please try again </div>  
+

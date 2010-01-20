@@ -1,0 +1,14 @@
+<p>
+  <strong>From:</strong><%=h @event.start_date %>
+</p>
+<p>
+  <strong>To:</strong><%=h @event.end_date %>
+</p>
+<p>
+  <strong>With:</strong><%=h @event.instructor.full_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

@@ -1,0 +1,30 @@
+<p>
+ Calendar: <%= f.collection_select(:calendar_id, @calendars, "id", "name", :prompt => 'Select a calendar') %>
+ 
+ Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title", :prompt => 'Select a class') %>
+
+ Level: <%= f.select(:level, { "basic" => "basics", "open" => "open"}, :prompt => 'select a level') %>
+
+ Instructor:	
+		<%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'select a instructor') %>
+</p>
+
+<%= render :partial => 'start_end_set', :locals => { :f => f }%>
+
+
+<p>
+  <label for="event_template_allday">All day:</label>
+  <%= f.check_box :allday, :id => "allday" %>
+</p>
+
+<%= render :partial => 'repeat' %>
+<br/>
+<%= render :partial => 'custom_repeat', :locals => { :f => f }  %>
+
+<%= render :partial => 'end_repeat', :locals => { :f => f } %>
+<br/>
+
+<p>
+  <label for="event_template_notes">Notes:</label><br/>
+  <%= f.text_area :notes %>
+</p>

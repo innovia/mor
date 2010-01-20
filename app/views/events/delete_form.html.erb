@@ -1,0 +1,23 @@
+<h5>You are about to delete a recurring class.</h5>
+
+<div id='unlock_form' style="display: none" class="notification">
+	Do you want to delete only this occurrence of the class, or delete this and all future occurrences?
+	<% form_tag(:action => "delete", :id => @event_template.id) do %>
+		<p>
+  		<%= submit_tag "Delete only this class",:id => "delete_only_this",  :name => "delete_only_this" -%>
+		  <%= submit_tag "Delete all future classes",:id => "delete_all_future",  :name => "delete_all_future" -%> 
+		  <%= button_to_function "Cancel", "Modalbox.hide()" %>
+		</p>
+	<%- end -%>
+</div>
+
+<div id="recaptcha_block">
+	<% form_remote_tag :url => {:action => "enable_features"} do %>
+	<p id="action_propmt">please type the code in the image to unlock the delete buttons</p>
+	<%= show_simple_captcha %>
+	<p style="display: block">
+  	<%= submit_tag "Enable delete" -%>
+  </p>
+	<% end -%>
+</div>
+<div id="captcha_error" class='flash_error' style="display: none;"> invalid code, Please try again </div>  

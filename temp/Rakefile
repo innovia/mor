@@ -1,0 +1,10 @@
+desc "happyhour" 
+task :default do
+    puts "drink beer"
+end
+
+desc "weekdays specials"
+task  :martini_night do
+   puts "pour beer"
+end
+

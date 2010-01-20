@@ -1,0 +1,30 @@
+#Create the chart - Column 3D Chart with data from Data/Data.xml
+#-render_chart_html '/FusionCharts/FCF_Column3D.swf', 'stats/show', '', 'myFirstHTML', 600, 300, '' do
+#end
+%h1 MonQi Stats
+
+Packages By Expiration Date
+- form_for @search do |f|
+  = label_tag :start
+  = text_field_tag :start_date, '', :class => "date_picker"
+  = label_tag :end
+  = text_field_tag :end_date, '', :class => "date_picker"
+  = f.submit
+
+%h2 Results
+
+%table
+  %tr
+    %th id
+    %th Name
+    %th Package
+    %th Expiration Date
+    %th Purchased Date
+  -@data.each do |rec|
+    %tr
+    .= cycle('odd', 'even')
+      %td(align="center")=  rec.person_id
+      %td= rec.person.full_name
+      %td= rec.package_template.description
+      %td(align="center")= rec.expiration_date
+      %td(align="center")= rec.created_at

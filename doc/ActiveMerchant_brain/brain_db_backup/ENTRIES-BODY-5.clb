@@ -1,0 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="EditLive! 6.5.2.30" name="generator" />
+<meta content="PersonalBrain 5.0.2.3" name="generator" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<link rel="stylesheet" href="file:///Applications/PersonalBrain.app/Contents/Resources/app/res/notesMac.css" type="text/css" />
+</head>
+<body>
+<p><span style=" font-size: medium;">t.references :cart<br />
+t.string :ip_address<br />
+t.string :first_name<br />
+t.string :last_name<br />
+t.string&#160; :card_type<br />
+t.date :card_expires_on</span></p>
+</body>
+</html>

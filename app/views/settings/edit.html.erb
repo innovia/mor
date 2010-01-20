@@ -1,0 +1,13 @@
+<h2>System configuration</h2>
+<h2> Default Settings</h2>
+<%= error_messages_for "settings" %>
+<% form_for(:settings, :url => {:action => "update"} ) do |f| %>
+	<%= render :partial => 'form' , :locals => {:f => f} %>	
+	<p>
+	<%= f.submit "Save Settings" %>
+	</p>
+
+<%- end -%>
+
+
+

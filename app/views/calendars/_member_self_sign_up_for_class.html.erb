@@ -1,0 +1,10 @@
+<%- if  current_user.person.packages.empty? -%>
+	<div align="center" class="flash_error" style="width: 400px;" >
+		to sign-up for a class, <%= link_to "please purchase a package", new_person_package_path(current_user.person) %>
+	</div>
+<%-elsif ! current_user.person.events.include?(event)  # if user does not attend the event %>	
+		<p id="sign_up_for_class">	
+		
+		<%= link_to "Sign-up for class", "#", :onclick => "$('#modal').load(\"calendars/self_sign_up/#{event.id}\");", :id => "self_signup_link" if @allow_signup %>	
+		</p>
+<%-end-%>

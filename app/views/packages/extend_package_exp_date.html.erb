@@ -1,0 +1,15 @@
+Extend Package Expiration Date:
+<p>
+<%= @pkg.person.full_name %>
+</p>
+<p>
+	Package Details:<br/>
+Sessions: <%= @pkg.package_template.sessions %>
+Purchased at: <%= @pkg.created_at %>
+
+<% form_for(:package, :url => {:action => 'extend_with_penalty', :id => @pkg.id}) do |f| %>
+	<%= f.datetime_select(:expiration_date,  :default  => @default_extension) %>
+	<%= submit_tag "Reinstate this package" %>
+<% end -%>
+
+</p>

@@ -1,0 +1,21 @@
+<ul>
+	<%- if @members.empty? -%>
+		<li class="auto_complete_not_found">member not found</li>
+	<%-end-%>
+	
+	<%- if ! @without_pkgs.empty? -%>
+	<li class="auto_complete_heading"> Members without a package</li>
+	<% @without_pkgs.each do |member| %>
+	  <li id="search-results">
+			<div class="auto_complete_not_found"><span class="informal"><%= image_tag("no_package.png",:size => "32x32", :style => "padding-right: 5px;", :align => "absmiddle") %><%=h member.full_name-%><%= link_to_function "			get pkg",  "Modalbox.show(\"#{packages_path}/package_on_the_fly/#{member.id}\",  {title: 'Purchase Package for #{member.full_name}'});" , :id  => "purchase_package"%></span></div></li>
+	<%- end -%>
+<%- end -%>
+	
+	<% if ! @with_pkgs.empty? %>
+		<li class="auto_complete_heading"> Members with a package</li>
+
+	<%- @with_pkgs.each do |member| -%>
+	<li><div class="auto_complete_member_card"><%= image_tag(member.photo.url(:thumb)) %>#<%=h member.id %> <%=h member.full_name-%></div></li>
+	<%- end -%>
+	<%- end -%>
+</ul>
