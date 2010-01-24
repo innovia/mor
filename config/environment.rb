@@ -27,11 +27,11 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
     config.gem "activemerchant", :lib => "active_merchant" , :version => "1.4.2"
     config.gem "authlogic"
-    config.gem 'searchlogic',:version => '>= 2.1.5'
-    config.gem 'mislav-will_paginate', :version => '>= 2.3.8', :lib => 'will_paginate', :source => 'http://gems.github.com'
+    config.gem 'searchlogic'
+    config.gem 'mislav-will_paginate'
     config.gem "vpim"
     config.gem "giraffesoft-resource_controller", :lib => "resource_controller", :version => '>= 0.6.5', :source => 'http://gems.github.com'
-    config.gem "thoughtbot-paperclip", :version => '>= 2.3.0', :lib => 'paperclip', :source =>  'http://gems.github.com'
+    config.gem "paperclip"
     config.gem 'haml'
         
   # Only load the plugins named here, in the order given. By default, all plugins 
