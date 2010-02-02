@@ -75,7 +75,11 @@ Rails::Initializer.run do |config|
   #config.active_record.observers = :user_observer
 
   #ExceptionNotifier.exception_recipients = %w(ami.mahloof@gmail.com)
-
- 
- 
 end
+
+ LegacyCourses.establish_connection "legacy"
+ LegacyInstructors.establish_connection "legacy"
+ LegacyLevels.establish_connection "legacy"
+ LegacyLocations.establish_connection "legacy"
+ LegacyOfferings.establish_connection "legacy"
+ LegacyPersons.establish_connection "legacy"
