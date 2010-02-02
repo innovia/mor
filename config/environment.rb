@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
     config.gem "activemerchant", :lib => "active_merchant" , :version => "1.4.2"
     config.gem "authlogic"
     config.gem 'searchlogic'
-    config.gem 'mislav-will_paginate'
+    config.gem 'will_paginate'
     config.gem "vpim"
     config.gem "giraffesoft-resource_controller", :lib => "resource_controller", :version => '>= 0.6.5', :source => 'http://gems.github.com'
     config.gem "paperclip"

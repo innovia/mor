@@ -23,7 +23,7 @@
 													 "daterangepicker", "jquery.alerts", "jquery.tools.min", 
 													 "jquery.innerfade", "pages" %>
 
-<%#= render :partial => "shared/init_yui_editor" %>										
+<%= render :partial => "shared/init_yui_editor" %>										
 <link rel="icon" href="http://monqifitness.com/images/logo_footer.gif"/> 
 </head>
 <body>
@@ -46,9 +46,12 @@
 			</ul>
 	
 		<div id="top_content_page">
-			<h2> <%= @page.title %>
-			<span class="h2bkg"><%= @page.title %></span>
+			<% unless @page.title == 'index' %>
+			<h2> 
+				<%= @page.title.humanize %>
+			<span class="h2bkg"><%= @page.title.humanize %></span>
 			</h2>
+			<% end -%>
 	
 			<div class="text_block">
 				<%= @page.body %>
@@ -108,6 +111,6 @@
 		</div>
 	</div>
 
-	<%#= render :partial => "shared/call_yui_editor" %>
+	<%= render :partial => "shared/call_yui_editor" %>
 </body>
 </html>
