@@ -1,0 +1,57 @@
+<!-- main navigator --> 
+<ul id="main_navi"> 
+    <li>Cardio & Dance</li> 
+    <li>Flexibility & Strength</li> 
+    <li>Yoga</li> 
+</ul>
+
+<div id="main_categories"> 
+	 <div id="categories_pages">
+	 		<!-- Cardio & Dance page  --> 
+	 		<div class="page show-e">
+				<!-- sub navigator #1 --> 
+				<div class="navi"></div>
+				<div class="category_scrollable">
+					<div class="items">
+						<% @yoga.each do |cls| %>
+							<div>
+								<h3><%= cls.title %></h3>
+								<p><%= cls.description %></p>
+							</div>
+						<% end -%>
+					</div>
+				</div>
+			</div>
+			<!-- Flexibility & Strength page  --> 
+	 		<div class="page show-e">
+				<!-- sub navigator #2 --> 
+				<div class="navi"></div>
+				<div class="category_scrollable">
+						<div class="items">
+							<% @cardio.each do |cls| %>
+							<div>	
+								<h3><%= cls.title %></h3>
+								<p><%= cls.description %></p>
+							</div>
+							<% end -%>
+						</div>
+				</div>
+			</div>
+			<!-- Yoga page  --> 
+	 		<div class="page">
+				<!-- sub navigator #3 --> 
+				<div class="navi"></div>
+				<div class="category_scrollable">
+						<div class="items">
+						<% @flex.each do |cls| %>
+							<div>
+								<h3><%= cls.title %></h3>
+								<p><%= cls.description %></p>
+							</div>
+						<% end -%>
+						</div>
+				</div>
+			</div>
+			
+	 </div>
+</div>		

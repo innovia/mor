@@ -78,6 +78,7 @@ Rails::Initializer.run do |config|
 end
 
  LegacyCourses.establish_connection "legacy"
+ LegacyClasses.establish_connection "legacy"
  LegacyInstructors.establish_connection "legacy"
  LegacyLevels.establish_connection "legacy"
  LegacyLocations.establish_connection "legacy"

@@ -224,3 +224,37 @@ h2 {
 	width: 100px;
 	margin: 15px 15px 0 15px;
 }
+
+
+
+/* Scrollable categories */
+
+#main_categories { 
+    position:relative; 
+    overflow:hidden; 
+    height: 450px; 
+} 
+ 
+/* root element for pages */ 
+#categories_pages { 
+    position:absolute; 
+    height:20000em; 
+} 
+/* root element for horizontal scrollables */ 
+.category_scrollable { 
+    position:relative; 
+    overflow:hidden; 
+    width: 510px; 
+    height: 450px; 
+} 
+ 
+/* root element for scrollable items */ 
+.category_scrollable .items { 
+    width:20000em; 
+    position:absolute; 
+    clear:both; 
+}
+
+.category_scrollable div.items div { 
+    float:left; 
+}

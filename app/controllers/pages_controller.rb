@@ -6,11 +6,17 @@ class PagesController < ApplicationController
     @picture = Picture.new 
   end
   
+  def classes
+    @yoga = MonqiClass.category('Yoga')
+    @cardio = MonqiClass.category('Cardio & Dance')
+    @flex = MonqiClass.category('Flexibility & Strength')
+  end
+  
   def preload_page
     @page = Page.find_or_create_by_title(action_name)
     @picture = Picture.new 
   end
-  
+    
   def show
     @page = Page.find(params[:id])
   end

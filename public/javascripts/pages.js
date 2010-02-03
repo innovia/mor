@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 	
  $('#gallery').innerfade({ animationtype: 'fade', speed: 2000, timeout: 4000, type: 'random' }); 
-
+	
  $('#thumbs_scrollable').scrollable({size: 1});
 
 $('.delete_icon').bind('click', function(event) {
@@ -18,5 +18,21 @@ $('.delete_icon').bind('click', function(event) {
     });
 
 });
+
+
+
+// main vertical scroll 
+$("#main_categories").scrollable({ 
+    vertical: true, 
+    size: 1, 
+    clickable: false
+});//.navigator("#main_navi"); 
+ 
+// horizontal scrollables. each one is circular and has its own navigator instance 
+//var horizontal = $(".category_scrollable").scrollable({size: 1});//.circular().navigator(".navi"); 
+ 
+ 
+// when page loads setup keyboard focus on the first horzontal scrollable 
+//horizontal.eq(0).scrollable().focus();
 });
 
