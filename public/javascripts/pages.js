@@ -26,13 +26,13 @@ $("#main_categories").scrollable({
     vertical: true, 
     size: 1, 
     clickable: false
-});//.navigator("#main_navi"); 
+}).navigator("#main_navi"); 
  
 // horizontal scrollables. each one is circular and has its own navigator instance 
-//var horizontal = $(".category_scrollable").scrollable({size: 1});//.circular().navigator(".navi"); 
+var horizontal = $(".category_scrollable").scrollable({size: 1}).circular().navigator(".navi"); 
  
  
 // when page loads setup keyboard focus on the first horzontal scrollable 
-//horizontal.eq(0).scrollable().focus();
+horizontal.eq(0).scrollable().focus();
 });
 

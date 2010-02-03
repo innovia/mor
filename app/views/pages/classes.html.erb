@@ -1,17 +1,19 @@
 <!-- main navigator --> 
 <ul id="main_navi"> 
-    <li>Cardio & Dance</li> 
-    <li>Flexibility & Strength</li> 
     <li>Yoga</li> 
+ 	<li>Cardio & Dance</li> 
+    <li>Flexibility & Strength</li> 
 </ul>
 
 <div id="main_categories"> 
 	 <div id="categories_pages">
 	 		<!-- Cardio & Dance page  --> 
-	 		<div class="page show-e">
+	 		<div class="page">
+				Page 1
 				<!-- sub navigator #1 --> 
 				<div class="navi"></div>
 				<div class="category_scrollable">
+					<a class="prevPage browse left">Previous <<</a> 				
 					<div class="items">
 						<% @yoga.each do |cls| %>
 							<div>
@@ -20,10 +22,12 @@
 							</div>
 						<% end -%>
 					</div>
+					<a class="nextPage browse right">Next >></a>
 				</div>
 			</div>
 			<!-- Flexibility & Strength page  --> 
-	 		<div class="page show-e">
+	 		<div class="page">
+			Page 2
 				<!-- sub navigator #2 --> 
 				<div class="navi"></div>
 				<div class="category_scrollable">
@@ -39,6 +43,7 @@
 			</div>
 			<!-- Yoga page  --> 
 	 		<div class="page">
+			Page 3
 				<!-- sub navigator #3 --> 
 				<div class="navi"></div>
 				<div class="category_scrollable">

@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
 
-  map.root :controller => "user_sessions", :action => "new" 
+  map.root :controller => "pages", :action => "index" 
   map.resource :user_session
   
   map.resources :stats
