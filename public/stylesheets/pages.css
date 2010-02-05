@@ -230,14 +230,37 @@ h2 {
 /* Scrollable categories */
 #main_navi {
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-#main_navi li {display: inline;}
+#main_navi li { float: left; display: inline;}
+
+#main_navi li a {background: url(/images/classes_icons.png) no-repeat; 
+									height: 87px;
+									width:178px;
+									cursor:pointer;
+									overflow: hidden;
+									display: block;
+									text-indent: -9999px;}
+
+#main_navi li a#yoga {background-position: 0px 0px;}
+#main_navi li a#cardio {background-position:-172px 0px;}
+#main_navi li a#flex {background-position:-353px 0px; width: 230px;}
+
+#main_navi li a#yoga:hover {background-position: 0px -127px;}
+#main_navi li a#cardio:hover {background-position: -172px -127px;}
+#main_navi li a#flex:hover {background-position: -353px -127px; width: 230px;}
+
+#main_navi li.active  a#yoga {background-position: 0px -248px; height: 106px;}
+#main_navi li.active  a#cardio {background-position:-184px -248px; height: 106px;}
+#main_navi li.active  a#flex {background-position:-353px -244px; width: 230px; height: 106px;}
 
 #main_categories { 
     position:relative; 
     overflow:hidden; 
     height: 285px; 
+		clear: both;
 } 
  
 /* root element for pages */ 
@@ -253,7 +276,8 @@ h2 {
 }
 
 /* root element for horizontal scrollables this element stay still while scrolling*/ 
-.category_scrollable {     
+.category_scrollable {
+	padding-top:30px;     
 	float: left;
 	height: 267px; 
 	width: 510px;
@@ -285,7 +309,7 @@ a.browse {
 	height:32px;
 	cursor:pointer;
 	text-indent: -9999px;
-	margin-top: 107px;
+	margin-top: 95px;
 }
 
 /* right */
