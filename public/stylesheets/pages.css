@@ -245,16 +245,16 @@ h2 {
 									text-indent: -9999px;}
 
 #main_navi li a#yoga {background-position: 0px 0px;}
-#main_navi li a#cardio {background-position:-172px 0px;}
+#main_navi li a#cardio {background-position:-184px 0px;}
 #main_navi li a#flex {background-position:-353px 0px; width: 230px;}
 
 #main_navi li a#yoga:hover {background-position: 0px -127px;}
-#main_navi li a#cardio:hover {background-position: -172px -127px;}
+#main_navi li a#cardio:hover {background-position: -184px -127px;}
 #main_navi li a#flex:hover {background-position: -353px -127px; width: 230px;}
 
-#main_navi li.active  a#yoga {background-position: 0px -248px; height: 106px;}
-#main_navi li.active  a#cardio {background-position:-184px -248px; height: 106px;}
-#main_navi li.active  a#flex {background-position:-353px -244px; width: 230px; height: 106px;}
+#main_navi li.active  a#yoga {background-position: 0px -246px; height: 106px;}
+#main_navi li.active  a#cardio {background-position:-184px -247px; height: 106px;}
+#main_navi li.active  a#flex {background-position:-353px -246px; width: 230px; height: 106px;}
 
 #main_categories { 
     position:relative; 
