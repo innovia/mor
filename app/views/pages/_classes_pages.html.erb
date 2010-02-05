@@ -1,0 +1,15 @@
+<div class="page">
+	<div class="navi"></div>
+	<a class="prev_horizontal browse left">Previous <<</a> 				
+	<div class="category_scrollable">
+		<div class="items">
+			<% classes.each do |cls| %>
+				<div>
+					<h3><%= cls.title %></h3>
+					<p><%= cls.description %></p>
+				</div>
+			<% end -%>
+		</div>
+	</div>
+	<a class="next_horizontal browse right">Next >></a>
+</div>

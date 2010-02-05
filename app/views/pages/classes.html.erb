@@ -7,56 +7,9 @@
 
 <div id="main_categories"> 
 	 <div id="categories_pages">
-	 		<!-- Cardio & Dance page  --> 
-	 		<div class="page">
-				Page 1
-				<!-- sub navigator #1 --> 
-				<div class="navi"></div>
-				<div class="category_scrollable">
-					<a class="prevPage browse left">Previous <<</a> 				
-					<div class="items">
-						<% @yoga.each do |cls| %>
-							<div>
-								<h3><%= cls.title %></h3>
-								<p><%= cls.description %></p>
-							</div>
-						<% end -%>
-					</div>
-					<a class="nextPage browse right">Next >></a>
-				</div>
-			</div>
-			<!-- Flexibility & Strength page  --> 
-	 		<div class="page">
-			Page 2
-				<!-- sub navigator #2 --> 
-				<div class="navi"></div>
-				<div class="category_scrollable">
-						<div class="items">
-							<% @cardio.each do |cls| %>
-							<div>	
-								<h3><%= cls.title %></h3>
-								<p><%= cls.description %></p>
-							</div>
-							<% end -%>
-						</div>
-				</div>
-			</div>
-			<!-- Yoga page  --> 
-	 		<div class="page">
-			Page 3
-				<!-- sub navigator #3 --> 
-				<div class="navi"></div>
-				<div class="category_scrollable">
-						<div class="items">
-						<% @flex.each do |cls| %>
-							<div>
-								<h3><%= cls.title %></h3>
-								<p><%= cls.description %></p>
-							</div>
-						<% end -%>
-						</div>
-				</div>
-			</div>
-			
+	 	<%= render :partial => "classes_pages", :locals => {:classes => @yoga} %>
+	 	<%= render :partial => "classes_pages", :locals => {:classes => @cardio} %>
+	 	<%= render :partial => "classes_pages", :locals => {:classes => @flex} %>		
 	 </div>
 </div>		
+

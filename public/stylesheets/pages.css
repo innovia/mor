@@ -232,7 +232,7 @@ h2 {
 	list-style: none;
 }
 
-#main_navi li {display: inline; border: 1px solid red;}
+#main_navi li {display: inline;}
 
 #main_categories { 
     position:relative; 
@@ -247,18 +247,19 @@ h2 {
 } 
 
 .page {
-	border: 1px solid blue;
 	width:610px;
 	height:272px;
 	margin-bottom:40px;
 }
 
 /* root element for horizontal scrollables this element stay still while scrolling*/ 
-.category_scrollable { 
-    position:relative; 
-    overflow:hidden; 
-    width: 560px; 
-    height: 248px; 
+.category_scrollable {     
+	float: left;
+	height: 267px; 
+	width: 510px;
+	position:relative; 
+ 	overflow: hidden; 
+	margin-left:20px;   
 } 
  
 /* root element for scrollable items */ 
@@ -270,7 +271,46 @@ h2 {
 
 .category_scrollable div.items div { 
     float:left; 
-	margin-left:25px;
-	margin-right:25px;
-	width:500px;
+	width: 500px;
+	padding:10px;
 }
+
+
+
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+	background:url(/images/scrollable/arrow/circle_arrows.png) no-repeat;
+	display:block;
+	width:31px;
+	height:32px;
+	cursor:pointer;
+	text-indent: -9999px;
+	margin-top: 107px;
+}
+
+/* right */
+a.right 				{ background-position: 100% -32px;; clear:right; margin-left: 0px; }
+
+/* left */
+a.left					{ background-position: 0 -32px; margin-left: 0px; } 
+
+
+/* up and down */
+a.up, a.down		{ 
+	background:url(/images/scrollable/vert_large.png) no-repeat; 
+	float: none;
+	margin: 10px 50px;
+}
+
+	/* up */
+	a.up:hover  		{ background-position:-30px 0; }
+	a.up:active  		{ background-position:-60px 0; }
+
+	/* down */
+	a.down 					{ background-position: 0 -30px; }
+	a.down:hover  	{ background-position:-30px -30px; }
+	a.down:active  	{ background-position:-60px -30px; } 
+
+
+	/* disabled navigational button */
+	a.disabled { visibility:hidden !important;	}
