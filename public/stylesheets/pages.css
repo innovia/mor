@@ -256,26 +256,27 @@ h2 {
 #main_navi li.active  a#cardio {background-position:-184px -247px; height: 106px;}
 #main_navi li.active  a#flex {background-position:-353px -246px; width: 230px; height: 106px;}
 
+#main_navi li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px;}
 #main_navi li a#personal {background-position: 0px 0px;}
-#main_navi li a#group 	 {background-position: -102px 0px;}
-#main_navi li a#gym			 {background-position: -204px 0px;}
-#main_navi li a#unlimited{background-position: -306px 0px;}
-#main_navi li a#chiro		 {background-position: -408px 0px;}
-#main_navi li a#nutrit	 {background-position: -510px 0px;}
+#main_navi li a#group 	 {background-position: -94px 0px;}
+#main_navi li a#gym			 {background-position: -188px 0px;}
+#main_navi li a#unlimited{background-position: -277px 0px;}
+#main_navi li a#chiro		 {background-position: -364px 0px;}
+#main_navi li a#nutrit	 {background-position: -452px 0px;}
 
 #main_navi li a#personal:hover  {background-position: 0px -80px;}
-#main_navi li a#group:hover  	 {background-position: -102px -80px;}
-#main_navi li a#gym:hover 			 {background-position: -204px -80px;}
-#main_navi li a#unlimited:hover {background-position: -306px -80px;}
-#main_navi li a#chiro:hover 	 {background-position: -408px -80px;}
-#main_navi li a#nutrit:hover 	 {background-position: -510px -80px;}
+#main_navi li a#group:hover  	 {background-position: -94px -80px;}
+#main_navi li a#gym:hover 			 {background-position: -188px -80px;}
+#main_navi li a#unlimited:hover {background-position: -277px -80px;}
+#main_navi li a#chiro:hover 	 {background-position: -364px -80px;}
+#main_navi li a#nutrit:hover 	 {background-position: -452px -80px;}
 
 #main_navi li.active a#personal {background-position: 0px -164px;}
-#main_navi li.active a#group 	 {background-position: -102px -164px;}
-#main_navi li.active a#gym			 {background-position: -204px -164px;}
-#main_navi li.active a#unlimited{background-position: -306px -164px;}
-#main_navi li.active a#chiro		 {background-position: -408px -164px;}
-#main_navi li.active a#nutrit	 {background-position: -510px -164px;}
+#main_navi li.active a#group 	 {background-position: -94px -164px;}
+#main_navi li.active a#gym			 {background-position: -188px -164px;}
+#main_navi li.active a#unlimited{background-position: -277px -164px;}
+#main_navi li.active a#chiro		 {background-position: -364px -164px;}
+#main_navi li.active a#nutrit	 {background-position: -452px -164px;}
 
 
 #main_categories { 

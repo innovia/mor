@@ -54,7 +54,9 @@
 			<% end -%>
 	
 			<div class="text_block">
+				<% unless @page.title == 'rates' %>
 				<%= @page.body %>
+				<% end -%>
 				<%= yield %>
 			</div>
 			<div id="address_bar"> 201 East 67th Street, New York, NY - (212) 327-2170</div>

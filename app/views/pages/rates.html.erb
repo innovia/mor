@@ -2,15 +2,17 @@
 	#main_navi li a {
 	background:transparent url(/images/rates_icons.png) no-repeat scroll 0 0;
 	height:82px;
-	width: 102px;
+	width: 92px;
 	}
+	
 	
 	.category_scrollable {
 		padding-top: 0px;
 	}
 </style>
 <!-- main navigator --> 
-<ul id="main_navi"> 
+<ul id="main_navi">
+	<li><a id="home_rates">home</a></li>
   <li><a id="personal"><%= @personal.first.calendar.name %></a></li> 
   <li><a id="group"><%= @group.first.calendar.name %></a></li> 
   <li><a id="gym"><%= @gym.first.package_type.name %></a></li> 
@@ -21,6 +23,9 @@
 
 <div id="main_categories"> 
 	 <div id="categories_pages">
+		<div class="page">
+			<%= @page.body %>
+		</div>
 	 	<%= render :partial => "rates", :locals => {:passed_array => @personal} %>
 	 	<%= render :partial => "rates", :locals => {:passed_array => @group} %>		
 	 	<%= render :partial => "rates", :locals => {:passed_array => @gym} %>		
