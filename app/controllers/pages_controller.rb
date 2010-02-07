@@ -17,8 +17,6 @@ class PagesController < ApplicationController
     @group =  Calendar.name_contains('group').first.package_templates
     @gym =  PackageType.name_contains('gym').first.package_templates 
     @unlimited = PackageType.name_contains('unlimit').first.package_templates 
-    @chiropractic = Calendar.name_contains('chiro').first.package_templates
-    @nutritional = Calendar.name_contains('nutrition').first.package_templates
   end
   
   def preload_page
