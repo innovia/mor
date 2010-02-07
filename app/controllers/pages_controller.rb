@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   
   def rates  
     @personal = Calendar.name_contains('personal').first.package_templates
-    @group =  Calendar.name_contains('group').first.package_templates
+    @group =  PackageType.name_contains('classes').first.package_templates
     @gym =  PackageType.name_contains('gym').first.package_templates 
     @unlimited = PackageType.name_contains('unlimit').first.package_templates 
   end
