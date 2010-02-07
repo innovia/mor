@@ -12,6 +12,15 @@ class PagesController < ApplicationController
     @flex = MonqiClass.category('Flexibility & Strength')
   end
   
+  def rates  
+    @personal = Calendar.name_contains('personal').first.package_templates
+    @group =  Calendar.name_contains('group').first.package_templates
+    @gym =  PackageType.name_contains('gym').first.package_templates 
+    @unlimited = PackageType.name_contains('unlimit').first.package_templates 
+    @chiropractic = Calendar.name_contains('chiro').first.package_templates
+    @nutritional = Calendar.name_contains('nutrition').first.package_templates
+  end
+  
   def preload_page
     @page = Page.find_or_create_by_title(action_name)
     @picture = Picture.new 
@@ -63,4 +72,9 @@ class PagesController < ApplicationController
     redirect_to pages_url
   end
   
+  private
+  
+  def get_all_packages
+    PackageTemplate.all
+  end
 end

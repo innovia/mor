@@ -8,4 +8,7 @@ class PackageTemplate < ActiveRecord::Base
   validates_presence_of :description, :cost, :expires_in, :sessions
   validates_numericality_of :cost, :sessions
   #validates_associated :product
+  
+  
+  
 end
