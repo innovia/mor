@@ -95,7 +95,8 @@ private
  end  
   
  def require_admin
-   unless current_user
+   if current_user
+     #if someone is logged in, unless he is an admin denied permission
      unless current_user.person.roles.find_by_title("admin")
        permission_denied
      end
@@ -109,7 +110,7 @@ end
   end
   
   def require_staff
-    unless current_user
+    if current_user
       if current_user.person.roles.title_like_any("staff", "manager", "admin").empty?
         permission_denied
       end
@@ -117,7 +118,7 @@ end
   end
   
   def require_member  
-    unless current_user
+    if current_user
       unless current_user.person.roles.title_like_any("member", "staff", "manager", "admin")
         permission_denied
       end
