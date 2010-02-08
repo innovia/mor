@@ -41,10 +41,11 @@
 				<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
 			</ul>
 
+			<% unless admin? %>
 			<ul id="admin_nav">
 				<li> <%= link_to "Edit Page", "#", :id => "edit_page"  %>	</li>
 			</ul>
-	
+		<% end -%>
 		<div id="top_content_page">
 			<% unless @page.title == 'index' %>
 			<h2> 
