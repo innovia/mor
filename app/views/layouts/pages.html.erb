@@ -72,11 +72,14 @@
 			
 		</div>
 		
+		<% if admin? %>
 		<div id="edit_page_box" style="display: none;">
-			<div id="page_editor_box"><h2>
-				Edit <%= @page.title %> page
-			<span class="h2bkg"> Edit <%= @page.title %> page</span> </h2>
-			<%= render :partial => "shared/update_page" %></div>
+			<div id="page_editor_box">
+				<h2>Edit <%= @page.title %> page
+					<span class="h2bkg"> Edit <%= @page.title %> page</span> 
+				</h2>
+			<%= render :partial => "shared/update_page" %>
+			</div>
 			
 			<div id="upload_box">
 				<h2>
@@ -99,22 +102,25 @@
 					</div>
 					<a href="#" class="next">Next</a>
 					
-			<%= link_to "pictures in table mode", page_pictures_path(@page) %>
+					<%= link_to "pictures in table mode", page_pictures_path(@page) %>
+					
 				<div id="upload_pic_form">
-				<h2 class="on_white"> 
-					Upload new pictures:
-					<span class="h2bkg">Upload new pictures</span>
-				</h2>
-				<% form_for(@picture, :html => {:multipart => true}) do |f| %>
+					<h2 class="on_white">Upload new pictures:
+						<span class="h2bkg">Upload new pictures</span>
+					</h2>
+					
+					<% form_for(@picture, :html => {:multipart => true}) do |f| %>
 						<%= render :partial => "pictures/form", :locals => {:f => f}  %>
 				  <p><%= f.submit "add_picture" %></p>
-				<%- end -%>	
+					<%- end -%>	
 				</div>
 				
 			</div>
+			
 		</div>
-	</div>
+		<%= render :partial => "shared/call_yui_editor" %>
+		<% end -%>
 
-	<%= render :partial => "shared/call_yui_editor" %>
+	</div>
 </body>
 </html>
