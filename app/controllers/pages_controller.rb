@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_filter :preload_page
+  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
   
   def index
     @page = Page.find_or_create_by_title(action_name)
