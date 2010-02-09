@@ -8,6 +8,10 @@ class PeopleController < ResourceController::Base
      @people = Person.all
   end
   
+  def edit
+    @person = Person.find(params[:id])
+    @roles = @person.roles
+  end
   
   def new
     @roles = Role.all
@@ -17,29 +21,30 @@ class PeopleController < ResourceController::Base
   
   def create
     @person = Person.new(params[:person])
-    @person.roles << Role.find(params[:roles])
  
     unless params[:person][:dob].blank?
       @person.dob  =  Date.parse(params[:person][:dob])
     end
-    respond_to do |wants|
+
       if @person.save
         flash[:notice] = 'Successfully created.'
-        wants.html { redirect_to(@person) }
+        redirect_to(@person)
       else
-        wants.html { render :action => "new" }
+        render :action => "new" 
       end
-    end
   end
   
   def update
+    #if the next line return nil? set the role_ids to an empty array
+    params[:person][:role_ids] ||= []
     @person =  Person.find(params[:id])
     unless params[:person][:dob].empty?
       params[:person][:dob] = Date.parse(params[:person][:dob])
     end
+    
     if @person.update_attributes(params[:person])
         flash[:notice] = "Successfully updated..."
-        redirect_to :action => "show"
+        redirect_to :action => "show", :id => @person
       else
         flash[:error] = "could not update"
         render  :action => "edit"

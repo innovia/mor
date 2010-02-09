@@ -1,6 +1,6 @@
 <div class="body">
 	<% if @role %>
-	<h2><%=h  @role.title.capitalize.pluralize %> </h2>
+	<h2><%=h  @role.title.capitalize.humanize.pluralize %> </h2>
 	<%- else -%>
 	<h2> People </h2>
 	<%- end -%>
@@ -33,7 +33,7 @@
 			</td>
       <td><%=h person.notes %></td>
 			<td>	<% person.roles.each	do |role| %>
-						<%= link_to "#{role.title.capitalize}", person_roles_path(person), :class => "normal_link"%>
+						<%= link_to "#{role.title.capitalize.humanize}", person_roles_path(person), :class => "normal_link"%>
 						<% unless role == person.roles.last %>,<%- end -%>   
 						<%- end -%> 
 			</td>

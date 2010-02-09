@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_filter :preload_page
   before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
   
+  #caches_page :index, :classes, :rates, :about_us, :schedule, :personal_training, :specials, :staff, :news, :contact_us
+  
   def index
     @page = Page.find_or_create_by_title(action_name)
     @picture = Picture.new 
@@ -18,6 +20,11 @@ class PagesController < ApplicationController
     @group =  PackageType.name_contains('classes').first.package_templates
     @gym =  PackageType.name_contains('gym').first.package_templates 
     @unlimited = PackageType.name_contains('unlimit').first.package_templates 
+  end
+  
+  def staff
+    @personal_trainers = Role.title_contains('personal').first.people
+    @group_trainers = Role.title_contains('instructor').first.people - @personal_trainers
   end
   
   def preload_page

@@ -1,9 +1,10 @@
-<h2>Editing Person</h2>
+<h2>Editing <%= @person.full_name.capitalize %>'s information</h2>
 
 <%= error_messages_for :person %>
 
 <% form_for(:person, :url => object_url, :html => {:multipart => true,  :method => :put }) do |f| %>
-  <%= render :partial => "form", :locals => { :f => f } %>
+ 
+ <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%=submit_tag "Update"%>
   </p>

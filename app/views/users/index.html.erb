@@ -1,6 +1,6 @@
 <h2>
 <% if @role %>
-<%=h  @role.title.capitalize.pluralize %> 
+<%=h  @role.title.capitalize.humanize.pluralize %> 
 <%- else -%>
 All Users / People
 <%- end -%>

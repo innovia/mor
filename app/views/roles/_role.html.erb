@@ -4,7 +4,7 @@
 	<% else %>
 			 	 <%= link_to image_tag("add_user_64.png", :size => '32x32'), person_role_url(:id => role.id, :person_id => @person.id), :method => :put %>
 	<% end %>
-	<%= role.title.capitalize %>
+	<%= role.title.capitalize.humanize %>
 </li>
 
 

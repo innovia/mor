@@ -15,8 +15,9 @@ class CreateRoles < ActiveRecord::Migration
      Role.create({:id => 2, :title => "manager"})
      Role.create({:id => 3, :title => "staff_member"})
      Role.create({:id => 4, :title => "instructor"})
+     Role.create({:id => 6, :title => "personal_trainer"})
      Role.create({:id => 5, :title => "member"})
-     Role.create({:id => 6, :title => "developer"})
+     Role.create({:id => 7, :title => "developer"})
   end
 
   def self.down

@@ -1,0 +1,23 @@
+<h4>Group Fitness Instructors</h4>
+
+	<% @group_trainers.in_groups_of(5).each do |grp_chunk| %>
+		<ul class="left"> 
+			<% grp_chunk.each do |instructor| %>
+				<% unless instructor.nil? %>
+				<li><%= link_to instructor.full_name.capitalize, "#" %></li>
+				<% end -%>
+ 			<% end -%>
+		</ul>
+	<% end -%>
+
+<h4 class="clear">Personal Trainers</h4>
+
+<% @personal_trainers.in_groups_of(5).each do |grp_chunk| %>
+	<ul class="left"> 
+		<% grp_chunk.each do |personal| %>
+			<% unless personal.nil? %>
+			<li><%= link_to personal.full_name.capitalize, "#" %></li>
+			<% end -%>
+		<% end -%>
+	</ul>
+<% end -%>

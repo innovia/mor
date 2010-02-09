@@ -6,12 +6,14 @@ $('.date_picker').datepicker();
 	<span class="req">*</span>
 	<span class="note">select all roles that apply</span>
 </label>	
-	<%= check_box_tag('roles[]','5', {:selected => true} )-%> Member
-	<%= check_box_tag('roles[]','4') -%> Instructor
-	<%= check_box_tag('roles[]','3') -%> Staff Member (Front Desk)
-	<%= check_box_tag('roles[]','2') -%> Manager
-	<%= check_box_tag('roles[]','1') -%> Admin
+
+<% for role in Role.all() %>
+	<%# check_box_tag "name", "value of chkbox", :boolean %>
+	<%= check_box_tag "person[role_ids][]",  role.id, @roles.include?(role)%>
+	<%= role.title.capitalize.humanize %>
+<% end -%>
 </p>
+
 <p>
   <label class="desc" for="first_name"> First name
   	<span class="req">*</span>
@@ -40,3 +42,7 @@ $('.date_picker').datepicker();
 <p><label class="desc" for="photo"> Photo:
 </label></p>
 <p><%= f.file_field :photo %></p>
+
+<p><label class="desc" for="notes"> notes:
+</label></p>
+<p><%= f.text_area :notes %></p>

@@ -7,7 +7,7 @@
 </td>
 <td><%=h user.email %></td>
 <td><% user.person.roles.each	do |role| %>
-			<%= link_to "#{role.title.capitalize}", person_roles_path(user.person), :class => "normal_link"%>
+			<%= link_to "#{role.title.capitalize.humanize}", person_roles_path(user.person), :class => "normal_link"%>
 			<% unless role == user.person.roles.last %>,<%- end -%>   
 			<%- end -%> 
 </td>

@@ -1,7 +1,16 @@
 <div class="body">
-<h3>#<%=h  @person.id.to_s + " " + @person.full_name.capitalize %></h3>
+<h3>#<%=h  @person.id.to_s + " " + @person.full_name.capitalize %></h3>	
 <div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
-
+<% if @person.roles.empty? %>
+	<div class="warning">
+		<%= @person.full_name.capitalize %> does not have any roles and would not appear in the people list
+	</div>
+<%- else -%>
+(<% @person.roles.each do |r| %>
+	<%= r.title.capitalize.humanize %>
+	<%= @person.roles.last == r ? ')' : ',' %>
+	<% end -%>
+<% end -%>
 <div id="personal_info">
 <p><strong>Birthday: </strong><%=h @person.dob.strftime("%B %d, %Y") unless @person.dob.nil? %></p>
 		
