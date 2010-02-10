@@ -16,10 +16,8 @@
 	<ul class="left"> 
 		<% grp_chunk.each do |personal| %>
 			<% unless personal.nil? %>
-			<li><%= link_to personal.full_name.capitalize, "#" %></li>
+			<li><%= link_to personal.full_name.capitalize, "#", :rel => "personal_#{personal.id}", :class => "staff_links", "data-instructor"  => personal.id %></li>
 			<% end -%>
 		<% end -%>
 	</ul>
 <% end -%>
-
-<div class="apple_overlay" id="overlay"></div>

@@ -362,16 +362,18 @@ a.up, a.down		{
 	/* disabled navigational button */
 	a.disabled { visibility:hidden !important;	}
 	
-	
 	/* the overlayed element */
 	.apple_overlay {
 		display:none;
 		background-image:url(/images/overlay/transparent.png);
-		width:640px;		
+		width:375px;		
 		padding:35px;	
 		font-size:11px;
+		color: #FDFCFA ;
 	}
-
+	
+	.apple_overlay h3{ color: #FDFCFA;}
+	
 	/* default close button positioned on upper right corner */
 	.apple_overlay div.close {
 		background-image:url(/images/overlay/close.png);
@@ -381,3 +383,7 @@ a.up, a.down		{
 		width:35px;
 	}
 	
+	.image_bio {
+		float: left;
+		padding: 10px;
+	}

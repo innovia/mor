@@ -1,6 +1,12 @@
+	<div class="close"></div>
 	<h3><%= @person.full_name%></h3>
-	<%= image_tag(@person.photo.url(:original))%>
+	<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
 	<p>
-	Bio:
 		<%= @person.notes %>
 	</p>
+	
+	<script type="text/javascript">
+	$('.close').bind('click', function(event) {
+		monqi_api.close();
+	});
+	</script>

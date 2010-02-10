@@ -39,14 +39,21 @@ var horizontal = $(".category_scrollable").scrollable({size: 1,clickable: false,
 // when page loads setup keyboard focus on the first horzontal scrollable 
 horizontal.eq(0).scrollable().focus();
 
-$('.staff_links').bind('click', function(event) {
+$('.staff_links').bind('click', function(event) {	
+	 monqi_api = $('#overlay').overlay({effect: 'apple', left: 10, top:170, api: true});
+
+	if (monqi_api.isOpened()){monqi_api.close()}
+	
 	var monqi_instructor = $(this).attr("data-instructor");
 	$.get('/people/' + monqi_instructor, function(data){
 		$('#overlay').html(data);
-		$('#overlay').overlay({effect: 'apple', api: true}).load();
+		monqi_api.load();
 	}, 'script');
-		
+	
+	
 });
+
+
 
 });
 
