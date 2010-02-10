@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
   
  
   
-  has_attached_file :photo, :styles => { :small => "150x150>", :thumb => "100x100>"} 
+  has_attached_file :photo, :styles => {:small => "150x150>", :thumb => "100x100>", :original => "400x400>"} 
   
   validates_presence_of :first_name, :last_name
   

@@ -4,7 +4,7 @@
 		<ul class="left"> 
 			<% grp_chunk.each do |instructor| %>
 				<% unless instructor.nil? %>
-				<li><%= link_to instructor.full_name.capitalize, "#" %></li>
+				<li><%= link_to instructor.full_name.capitalize, "#", :rel => "instructor_#{instructor.id}", :class => "staff_links", "data-instructor"  => instructor.id %></li>
 				<% end -%>
  			<% end -%>
 		</ul>
@@ -21,3 +21,5 @@
 		<% end -%>
 	</ul>
 <% end -%>
+
+<div class="apple_overlay" id="overlay"></div>

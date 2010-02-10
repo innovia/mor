@@ -8,6 +8,16 @@ class PeopleController < ResourceController::Base
      @people = Person.all
   end
   
+  def show
+    respond_to do |wants|
+      wants.js {
+        @person = Person.find(params[:id])
+         render  :layout => false
+      }
+      
+    end
+  end
+  
   def edit
     @person = Person.find(params[:id])
     @roles = @person.roles
@@ -18,8 +28,7 @@ class PeopleController < ResourceController::Base
     @roles = @person.roles
     @member_role = Role.find_by_title("member")
   end
-  
-  
+    
   def create
     @person = Person.new(params[:person])
  

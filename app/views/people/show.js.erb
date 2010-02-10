@@ -1,0 +1,6 @@
+	<h3><%= @person.full_name%></h3>
+	<%= image_tag(@person.photo.url(:original))%>
+	<p>
+	Bio:
+		<%= @person.notes %>
+	</p>

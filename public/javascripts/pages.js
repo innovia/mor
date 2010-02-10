@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
+
 	$('#edit_page').bind('click', function(event) {
 		$('#top_content_page').toggle();
 		$('#lower_corner_box').toggle();
@@ -36,5 +38,17 @@ var horizontal = $(".category_scrollable").scrollable({size: 1,clickable: false,
  
 // when page loads setup keyboard focus on the first horzontal scrollable 
 horizontal.eq(0).scrollable().focus();
+
+$('.staff_links').bind('click', function(event) {
+	var monqi_instructor = $(this).attr("data-instructor");
+	$.get('/people/' + monqi_instructor, function(data){
+		$('#overlay').html(data);
+		$('#overlay').overlay({effect: 'apple', api: true}).load();
+	}, 'script');
+		
 });
+
+});
+
+
 
