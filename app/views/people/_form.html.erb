@@ -9,6 +9,9 @@ $('.date_picker').datepicker();
 
 <% for role in Role.all() %>
 	<%# check_box_tag "name", "value of chkbox", :boolean %>
+	<% if @person.new_record? %> 
+		<% @roles << @member_role %>
+	<% end -%>
 	<%= check_box_tag "person[role_ids][]",  role.id, @roles.include?(role)%>
 	<%= role.title.capitalize.humanize %>
 <% end -%>

@@ -14,8 +14,9 @@ class PeopleController < ResourceController::Base
   end
   
   def new
-    @roles = Role.all
-    @member = Role.find_by_title("member").id
+    @person = Person.new
+    @roles = @person.roles
+    @member_role = Role.find_by_title("member")
   end
   
   
