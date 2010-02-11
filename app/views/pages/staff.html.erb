@@ -1,3 +1,4 @@
+<% unless @staging %>
 <h4>Group Fitness Instructors</h4>
 
 	<% @group_trainers.in_groups_of(5).each do |grp_chunk| %>
@@ -20,4 +21,5 @@
 			<% end -%>
 		<% end -%>
 	</ul>
+<% end -%>
 <% end -%>

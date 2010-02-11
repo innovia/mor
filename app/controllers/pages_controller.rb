@@ -23,6 +23,7 @@ class PagesController < ApplicationController
   end
   
   def staff
+    @staging = true
     @personal_trainers = Role.title_contains('personal').first.people
     @group_trainers = Role.title_contains('instructor').first.people - @personal_trainers
   end
