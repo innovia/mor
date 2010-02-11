@@ -2,6 +2,12 @@
 $('.date_picker').datepicker();
 </script>
 
+
+<% if admin? %>
+<%= render :partial => "shared/init_yui_editor" %>
+<%= render :partial => "shared/call_yui_editor" %>
+<% end -%>
+
 <p><label class="desc"> Roles
 	<span class="req">*</span>
 	<span class="note">select all roles that apply</span>
@@ -48,4 +54,6 @@ $('.date_picker').datepicker();
 
 <p><label class="desc" for="notes"> notes:
 </label></p>
-<p><%= f.text_area :notes %></p>
+<p class="yui-skin-sam">
+<%= f.text_area :notes, :id => "page_editor" %>
+</p>

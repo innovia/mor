@@ -1,11 +1,7 @@
 $(document).ready(function() {
 				
 		style_buttons(); // Style buttons
-	
-		tool_tips();
-		
-		rich_edit_box(); 	//wysiwyg
-		
+				
 		// Working Calendar scripts
 		date_navigation(); sub_instructor(); cancel_class_listner(); 
 		reinstate_class_listner(); members_auto_complete(); style_top_class('Gym Use'); 
@@ -37,32 +33,6 @@ function style_buttons(){
 }
 
 
-function tool_tips(){
- 	$.tools.addTipEffect("slidedown",   
-
-	    // opening animation 
-	    function() {  
-	        var opacity = this.getConf().opacity; 
-	        this.getTip().css({opacity:0}).animate({top: '+=15', opacity:opacity}, 300).show(); 
-	    },  
-
-	    // closing animation 
-	    function() { 
-	        this.getTip().animate({top: '+=15', opacity:0}, 300, function() {  
-	                $(this).hide().animate({top: '+=30'}, 0); 
-	        }); 
-	    } 
-	);
-	$("#users_table a").tooltip({
-		   tip: '#tooltip',
-		effect: 'slidedown'
-		});
-}
-
-// Rich Edit Box
-function rich_edit_box(){
-	$('textarea').wysiwyg();
-}
 
 // Working Calendar Scripts
 
