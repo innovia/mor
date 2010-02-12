@@ -84,18 +84,25 @@ body {
  	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	background: #FDFCFA;
-	height:335px;
-	margin-left:308px;
-	_margin-top: -20px;
-	_padding-top: 0px;
-	_margin-left: 350px;
-	margin-top: 64px;
-	padding:20px;
+	height:330px;
+	padding:15px;
 	width:616px;
 	position: absolute;
+	top: 198px;
+	left: 550px;
 	_position: relative;
 	zoom: 1;
 	z-index: 999;
+}
+
+#address_bar {
+  position: relative;
+	left: 97px;
+	top: 3px;
+  text-indent: -9999px;
+	width:573px;
+	height:93px;
+ 	background: url(/images/Backgrounds/address_bar.png) no-repeat;
 }
 
 h2 {
@@ -134,16 +141,7 @@ h2 {
 	margin-left: 44px;
 }
 
-#address_bar {
-  position: absolute;
-	left: 99px;
-	top: 375px;
-	
-  text-indent: -9999px;
-	width:535px;
-	height:99px;
- 	background-image:url(/images/Backgrounds/address_bar.png);
-}
+
 
 #edit_page_box {
 	border: 1px solid #353535;
@@ -317,7 +315,7 @@ h2 {
 }
 
 .category_scrollable div.items div { 
-    float:left; 
+  float:left; 
 	width: 500px;
 	padding:10px;
 }
@@ -366,7 +364,7 @@ a.up, a.down		{
 	.apple_overlay {
 		display:none;
 		background-image:url(/images/overlay/transparent.png);
-		width:375px;		
+		width:375px;
 		padding:35px;	
 		font-size:11px;
 		color: #FDFCFA ;
@@ -383,7 +381,4 @@ a.up, a.down		{
 		width:35px;
 	}
 	
-	.image_bio {
-		float: left;
-		padding: 10px;
-	}
+	

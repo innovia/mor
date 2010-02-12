@@ -1,12 +1,27 @@
+<style type="text/css" media="screen">
+	.bio {
+		border:1px solid white;
+		height:250px;
+		overflow:auto;
+		padding-left:10px;
+		position:absolute;
+		width:370px;
+	}
+	.image_bio {
+		float: left;
+		padding: 5px;
+	}
+</style>
 	<div class="close"></div>
-	<h3><%= @person.full_name%></h3>
-	<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
-	<p>
-		<%= @person.notes %>
-	</p>
+		<h3><%= @person.full_name%></h3>
+				<div class="bio">
+				<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
+				<%= @person.notes %>
+				</div>
 	
 	<script type="text/javascript">
 	$('.close').bind('click', function(event) {
 		monqi_api.close();
 	});
+	
 	</script>

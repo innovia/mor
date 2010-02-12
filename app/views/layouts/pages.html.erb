@@ -37,11 +37,10 @@
 				<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
 			</ul>
 
-			<% if admin? %>
+			
 			<ul id="admin_nav">
-				<li> <%= link_to "Edit Page", "#", :id => "edit_page"  %>	</li>
+				<li><% if admin? %> <%= link_to "Edit Page", "#", :id => "edit_page"  %><% end -%></li>
 			</ul>
-		<% end -%>
 		<div id="top_content_page">
 			<% unless @page.title == 'index' %>
 			<h2> 
@@ -56,7 +55,7 @@
 				<% end -%>
 				<%= yield %>
 			</div>
-			<div id="address_bar"> 201 East 67th Street, New York, NY - (212) 327-2170</div>
+			<div id="address_bar">201 East 67th Street, New York, NY 10065 - (212) 327-2170</div>
 		</div>
 		
 		<div id="lower_corner_box">
