@@ -96,9 +96,9 @@ body {
 }
 
 #address_bar {
-  position: relative;
+  position: absolute;
 	left: 97px;
-	top: 3px;
+	top: 360px;
   text-indent: -9999px;
 	width:573px;
 	height:93px;
