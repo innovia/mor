@@ -28,7 +28,7 @@ body {
 
  #menu { height: 1px; margin-top: 55px; width: 941px }
  #menu li { display: inline; text-indent: -9999px;}
- #menu li a { float: left; width: 95px; height: 40px; padding-right: 17px !important; overflow: hidden; }
+ #menu li a { float: left; width: 95px; height: 38px; padding-right: 17px !important; overflow: hidden; }
  #menu li a { background-image: url(/images/Backgrounds/menu.png); *background-image: url(/images/Backgrounds/menu_ie.gif); }
  
  #menu li#home a { width: 116px; height: 121px; margin-right: 27px;background: transparent url(/images/Backgrounds/Qi_aura.png) no-repeat 0 160px;}
