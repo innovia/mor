@@ -1,4 +1,3 @@
-<% unless @staging %>
 <style type="text/css" media="screen">
 	#main_navi li a {
 	background:transparent url(/images/rates_icons.png) no-repeat scroll 0 0;
@@ -12,12 +11,12 @@
 	}
 </style>
 <!-- main navigator --> 
-<ul id="main_navi">
+<ul id="main_navi" style="display: none;">
 	<li><a id="home_rates">home</a></li>
-  <li><a id="personal"><%= @personal.first.calendar.name %></a></li> 
-  <li><a id="group"><%= @group.first.calendar.name %></a></li> 
-  <li><a id="gym"><%= @gym.first.package_type.name %></a></li> 
-  <li><a id="unlimited"><%= @unlimited.first.package_type.name %></a></li> 
+  <li><a id="personal"><%#= @personal.first.calendar.name %></a></li> 
+  <li><a id="group"><%#= @group.first.calendar.name %></a></li> 
+  <li><a id="gym"><%#= @gym.first.package_type.name %></a></li> 
+  <li><a id="unlimited"><%#= @unlimited.first.package_type.name %></a></li> 
 </ul>
 
 <div id="main_categories"> 
@@ -25,12 +24,11 @@
 		<div class="page">
 			<%= @page.body %>
 		</div>
-	 	<%= render :partial => "rates", :locals => {:passed_array => @personal} %>
-	 	<%= render :partial => "rates", :locals => {:passed_array => @group} %>		
-	 	<%= render :partial => "rates", :locals => {:passed_array => @gym} %>		
-	 	<%= render :partial => "rates", :locals => {:passed_array => @unlimited} %>		
+	 	<%#= render :partial => "rates", :locals => {:passed_array => @personal} %>
+	 	<%#= render :partial => "rates", :locals => {:passed_array => @group} %>		
+	 	<%#= render :partial => "rates", :locals => {:passed_array => @gym} %>		
+	 	<%#= render :partial => "rates", :locals => {:passed_array => @unlimited} %>		
 	 </div>
 </div>
 
 	
-<% end -%>
