@@ -1,45 +1,34 @@
-<div class="body">
-	<h2>Package Templates</h2>
-<%- unless @package_templates.empty? -%>
-<table>
-  <tr>
-    <th>Calendar</th>
-		<th>Package Type</th>
-    <th>Description</th>
-    <th>Cost</th>
-		<th>Sessions</th>
-    <th>Expires in</th>
-		<th class="show"></th>
-		<th class="edit"></th>
-		<th class="delete"></th>
-  </tr>
-  <%- @package_templates.each do |package_template|%>
-  <tr class=<%= cycle('odd', 'even')%> >
+<script>
+	$(document).ready(function() {
+		$('.pkg_type_selector').bind('click', function() {
+		 	pkg_type = $(this).attr("data-pkg_type");
+			$.ajax({
+			  url: '/package_templates',
+			  type: 'GET',
+			  dataType: 'script',
+			  data: 'pkg_type=' + pkg_type
+			});
+		});
+	});
+	
+</script>
+<ul>
+	<% PackageType.all.each do |pkg| %>
+	<li><%= link_to pkg.name, '#', :class => 'pkg_type_selector', "data-pkg_type" => pkg.name %></li>
+	<% end -%>
+</ul>
 
-      <td style="color:<%= package_template.calendar.color %>"><%=h package_template.calendar.name %></td>
-      <td align="center"><%=h package_template.package_type.name.capitalize %></td>			
-      <td><%=h package_template.description %></td>
-      <td align="center"><%=h number_to_currency(package_template.product.price) %></td>
-	    <td align="center" <%=h @css %>><%=h package_template.sessions %></td>
-      <td align="center"><%=h pluralize package_template.expires_in, 'month'   %> </td>
-    
-      <td align="center"><%=link_to 'Show', object_url(package_template) %></td>
-      <td align="center"><%=link_to 'Edit', edit_object_url(package_template) %></td>
-      <td align="center">
-				<% if admin? %>
-					<%=link_to 'Destroy', object_url(package_template), :confirm => 'Are you sure?', :method => :delete  %></td>
-				<% end %>
-    </tr>
-  <% end %>
-</table>
+<div class="body">
+	<h2 id="title"><%= @package_templates.first.package_type.name.capitalize %> Packages</h2>
+<%- unless @package_templates.empty? -%>
+  <div id="pt_table">
+	<%= render :partial => "package_templates_table", :locals => {:package_templates => @package_templates} %>
+  </div>
+
 <%- else -%>
 	No Packages Templates Yet.
 <%- end -%>
 
-<p>
-	<%= will_paginate %>
-</p>
 <br/>
-
 <%= button_to 'New Package Template', new_object_url %>
 </div>

@@ -1,0 +1,2 @@
+$('#title').html('<%= escape_javascript(@package_templates.first.package_type.name) %>');
+$('#pt_table').html('<%= escape_javascript(render :partial => "package_templates_table", :locals => {:package_templates => @package_templates}) %>');

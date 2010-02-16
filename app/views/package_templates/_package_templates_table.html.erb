@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Cost</th>
+	<th>Sessions</th>
+    <th>Expires in</th>
+	<th class="edit"></th>
+	<th class="delete"></th>
+  </tr>
+
+<%- package_templates.each do |package_template| %>
+ 	<tr class=<%= cycle('odd', 'even')%> >
+     <td><%=h package_template.description %></td>
+     <td align="center"><%=h number_to_currency(package_template.product.price) %></td>
+	   <td align="center" <%=h @css %>><%=h package_template.sessions %></td>
+     <td align="center"><%=h pluralize package_template.expires_in, 'month' %> </td>    
+     <td align="center"><%=link_to 'Edit', edit_object_url(package_template) %></td>
+     <td align="center">
+	<% if admin? %>
+		<%=link_to 'Destroy', object_url(package_template), :confirm => 'Are you sure?', :method => :delete  %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>

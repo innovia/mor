@@ -1,11 +1,15 @@
 class PackageTemplatesController < ResourceController::Base
    before_filter :require_user
    before_filter :require_manager
-   
-   
-      
+       
     def index
-      @package_templates = PackageTemplate.paginate(:per_page => @settings.per_page , :page => params[:page], :order => 'calendar_id')
+      respond_to do |wants|
+        wants.html { @package_templates =  PackageType.name_contains('classes').first.package_templates}
+        wants.js { 
+            pkg_type = params[:pkg_type]
+            @package_templates =  PackageType.name_contains(pkg_type).first.package_templates
+           }
+      end
     end
     
     def new
