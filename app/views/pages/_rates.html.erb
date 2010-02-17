@@ -1,31 +1,18 @@
 <div class="page">
-	<div class="navi"></div>
-	<a class="prev_horizontal browse left">Previous <<</a> 				
-	<div class="category_scrollable">
-		<div class="items">
-				<% passed_array.in_groups_of(5).each do |rates_chunk| %>
-					<div>
-						<table>
-							<tr>
-								<th>Package</th>
-								<th>Cost</th>
-								<th>Expires in*</th>
-							</tr>
-							<% rates_chunk.each do |rate| %>
-								<% unless rate.nil? %>
-									<tr>
-										<td><%= rate.description %></td>
-										<td><%= number_to_currency(rate.cost) %></td>
-										<td><%= pluralize(rate.expires_in, 'month') %> </td>
-									</tr>
-								<% end -%>
-						<% end -%>
-					</table>
-					<p>*expires from data of purchase	</p>
-					
-				</div>	
-				<% end -%>		
-		</div>
-	</div>
-	<a class="next_horizontal browse right">Next >></a>
+	<table>
+		<tr>
+			<th>Package</th>
+			<th>Cost</th>
+			<th>Expires in*(from date of purchase)</th>
+		</tr>
+		<% passed_array.each do |rate| %>
+		<% unless rate.nil? %>
+			<tr>
+				<td><%= rate.description %></td>
+				<td><%= number_to_currency(rate.cost) %></td>
+				<td><%= pluralize(rate.expires_in, 'month') %> </td>
+			</tr>
+		<% end -%>
+		<% end -%>
+	</table>
 </div>

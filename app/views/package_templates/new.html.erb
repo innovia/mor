@@ -1,3 +1,6 @@
+<script type="text/javascript">
+	default_pkg_exp = <%= @settings.default_package_expiration_date %>;
+</script>
 <h2>New Package Template</h2>
 <%= error_messages_for :package_template %>
 <% form_for(:package_template, :url => collection_url) do |f| %>

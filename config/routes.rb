@@ -60,6 +60,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :events,  :has_many =>  :members
  
   # Nested Routes
+  map.resources :package_templates, :collection => { :sort => :post }
+
   map.resources :pages,  :has_many  => :pictures
   map.resources :people, :has_many  => :phone_numbers
   map.resources :people, :has_one  => :address

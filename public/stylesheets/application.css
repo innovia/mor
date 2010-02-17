@@ -1039,3 +1039,8 @@ width:auto;
 	}
 	
 .prepend-1 { margin-left: 30px;}
+
+#pkg_types_ul li{
+	display: inline;
+	padding-right: 5px;
+}

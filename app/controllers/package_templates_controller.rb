@@ -4,17 +4,23 @@ class PackageTemplatesController < ResourceController::Base
        
     def index
       respond_to do |wants|
-        wants.html { @package_templates =  PackageType.name_contains('classes').first.package_templates}
+        wants.html { @package_templates =  PackageType.name_contains('group').first.package_templates}
         wants.js { 
-            pkg_type = params[:pkg_type]
-            @package_templates =  PackageType.name_contains(pkg_type).first.package_templates
+            @pkg_type = params[:pkg_type]
+            @package_templates =  PackageType.name_is(@pkg_type).first.package_templates
            }
       end
     end
     
+    def sort
+       params[:package_template].each_with_index do |id, index|
+         PackageTemplate.update_all(['sort_index=?', index+1], ['id=?', id])
+       end
+       render :nothing => true
+    end
+    
     def new
-      @calendars  = Calendar.all
-      @package_types = PackageType.all
+      @pkg_types = PackageType.all
       @package_template = PackageTemplate.new
     end
     
@@ -30,15 +36,13 @@ class PackageTemplatesController < ResourceController::Base
         redirect_to package_templates_path
        else
          flash[:error] = "Could not create the package template"
-         get_calendars
-         @package_types = PackageType.all
+         @pkg_types = PackageType.all
          render :action => "new"
       end
    end
     
     def edit
-      @calendars  = Calendar.all
-      @package_types = PackageType.all
+      @pkg_types = PackageType.all
       @package_template = PackageTemplate.find(params[:id])
     end
     

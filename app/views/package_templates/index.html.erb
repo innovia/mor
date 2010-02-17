@@ -1,25 +1,9 @@
-<script>
-	$(document).ready(function() {
-		$('.pkg_type_selector').bind('click', function() {
-		 	pkg_type = $(this).attr("data-pkg_type");
-			$.ajax({
-			  url: '/package_templates',
-			  type: 'GET',
-			  dataType: 'script',
-			  data: 'pkg_type=' + pkg_type
-			});
-		});
-	});
-	
-</script>
-<ul>
+<div class="body">
+<ul id="pkg_types_ul">
 	<% PackageType.all.each do |pkg| %>
-	<li><%= link_to pkg.name, '#', :class => 'pkg_type_selector', "data-pkg_type" => pkg.name %></li>
+	<li><%= link_to pkg.name, '#', :class => 'pkg_type_selector', "data-pkg_type" => pkg.name.to_s %></li>
 	<% end -%>
 </ul>
-
-<div class="body">
-	<h2 id="title"><%= @package_templates.first.package_type.name.capitalize %> Packages</h2>
 <%- unless @package_templates.empty? -%>
   <div id="pt_table">
 	<%= render :partial => "package_templates_table", :locals => {:package_templates => @package_templates} %>

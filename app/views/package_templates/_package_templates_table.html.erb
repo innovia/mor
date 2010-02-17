@@ -1,4 +1,5 @@
-<table>
+<h2 id="title"><%= @package_templates.first.package_type.name.capitalize %> Packages</h2>
+<table id="sortable">
   <tr>
     <th>Description</th>
     <th>Cost</th>
@@ -7,9 +8,9 @@
 	<th class="edit"></th>
 	<th class="delete"></th>
   </tr>
-
+<tbody class="content">
 <%- package_templates.each do |package_template| %>
- 	<tr class=<%= cycle('odd', 'even')%> >
+	<% content_tag_for(:tr, package_template) do %>
      <td><%=h package_template.description %></td>
      <td align="center"><%=h number_to_currency(package_template.product.price) %></td>
 	   <td align="center" <%=h @css %>><%=h package_template.sessions %></td>
@@ -19,6 +20,22 @@
 	<% if admin? %>
 		<%=link_to 'Destroy', object_url(package_template), :confirm => 'Are you sure?', :method => :delete  %></td>
 	<% end %>
-  </tr>
+ <% end %>
 <% end %>
+</tbody>
 </table>
+
+<script type="text/javascript">	
+$("#sortable tbody.content").sortable({
+ 	dropOnEmpty: false, 
+	axis: 'y',
+	cursor: 'crosshair',
+	opacity: 0.4,
+	items: 'tr',
+	
+	update: function() {
+		  $.post('<%= sort_package_templates_path %>', $(this).sortable('serialize'));
+	}
+});
+$("#sortable tbody.content").disableSelection();
+</script>

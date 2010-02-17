@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   
   filter_parameter_logging :credit_card, :password, :password_confirmation, :old_password, :email
   
-  helper_method :admin?, :manager?, :staff?, :member?, :today, :current_user_session, :current_user
+  helper_method :admin?, :manager?, :staff?, :member?, :today, :current_user_session, :current_user, :all_roles
+  
   
   def modalbox_prep
     @event = Event.find(params[:id])
@@ -22,6 +23,9 @@ class ApplicationController < ActionController::Base
   end
     
 protected
+    def all_roles
+      @roles = Role.all
+    end
     
     def admin?
       unless current_user.nil?

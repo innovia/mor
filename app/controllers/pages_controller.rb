@@ -16,10 +16,10 @@ class PagesController < ApplicationController
   end
   
   def rates  
-    #@personal =  Calendar.name_contains('personal').first.package_templates
-    #@group =  PackageType.name_contains('classes').first.package_templates
-    #@gym =  PackageType.name_contains('gym').first.package_templates 
-    #@unlimited = PackageType.name_contains('unlimit').first.package_templates 
+    @group = rates_for_pkg('classes')
+    @personal = rates_for_pkg('personal')
+    @gym =  rates_for_pkg('gym')
+    @unlimited = rates_for_pkg('unlimited')
   end
   
   def staff
@@ -83,5 +83,9 @@ class PagesController < ApplicationController
   
   def get_all_packages
     PackageTemplate.all
+  end
+  
+  def rates_for_pkg(pkg_type)
+     PackageType.name_contains(pkg_type).first.package_templates
   end
 end

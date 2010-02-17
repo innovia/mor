@@ -9,14 +9,16 @@
 	.category_scrollable {
 		padding-top: 0px;
 	}
+	
+	td { padding: 0px;}
 </style>
 <!-- main navigator --> 
-<ul id="main_navi" style="display: none;">
+<ul id="main_navi">
 	<li><a id="home_rates">home</a></li>
-  <li><a id="personal"><%#= @personal.first.calendar.name %></a></li> 
-  <li><a id="group"><%#= @group.first.calendar.name %></a></li> 
-  <li><a id="gym"><%#= @gym.first.package_type.name %></a></li> 
-  <li><a id="unlimited"><%#= @unlimited.first.package_type.name %></a></li> 
+  <li><a id="personal">Personal Training Rates</a></li> 
+  <li><a id="group">Group Classes Rates</a></li> 
+  <li><a id="gym">Gym Use Rates</a></li> 
+  <li><a id="unlimited">Unlimited Classes & Gym Use Rates</a></li> 
 </ul>
 
 <div id="main_categories"> 
@@ -24,10 +26,11 @@
 		<div class="page">
 			<%= @page.body %>
 		</div>
-	 	<%#= render :partial => "rates", :locals => {:passed_array => @personal} %>
-	 	<%#= render :partial => "rates", :locals => {:passed_array => @group} %>		
-	 	<%#= render :partial => "rates", :locals => {:passed_array => @gym} %>		
-	 	<%#= render :partial => "rates", :locals => {:passed_array => @unlimited} %>		
+	 	
+		<%= render :partial => "rates", :locals => {:passed_array => @group} %>
+		<%= render :partial => "rates", :locals => {:passed_array => @personal} %>
+		<%= render :partial => "rates", :locals => {:passed_array => @gym} %>
+		<%= render :partial => "rates", :locals => {:passed_array => @unlimited} %>
 	 </div>
 </div>
 

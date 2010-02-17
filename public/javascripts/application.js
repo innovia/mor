@@ -6,21 +6,83 @@ $(document).ready(function() {
 		date_navigation(); sub_instructor(); cancel_class_listner(); 
 		reinstate_class_listner(); members_auto_complete(); style_top_class('Gym Use'); 
 		
-		//Package templates scripts
-		calendar_drop_down(); $('#package_type').hide(); $('#package_template_form').hide(); $('#auto_complete_package').hide();
-		
-		// packages scripts
-		populate_packages(); show_default_package_and_override();
-		
 		// event templates
 		repeat_options(); end_repeat_options(); frequency_options(); set_start_end_date_pickers();
 		
 		// store scripts
 		add_to_cart();
+		new_package_selector();
+		$('.pkg_type_selector').bind('click', function() {
+		 												 	pkg_type = $(this).attr("data-pkg_type");
+															$.ajax({
+															  url: '/package_templates',
+															  type: 'GET',
+															  dataType: 'script',
+															  data: 'pkg_type=' + pkg_type
+															});
+		});
+		
 });
 
 jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
 
+// Package templates
+function clear_sessions(){
+	$('#package_template_sessions').val('');
+	$('#package_template_expires_in').val(default_pkg_exp);
+}
+
+
+function new_package_selector(){
+$('#package_template_package_type_id').bind('change', function(event) {
+	var pkg_type = $('#package_template_package_type_id :selected').text();
+	switch(pkg_type) {
+		case "Group Classes": 
+			$('#package_template_calendar_id').val(1);
+			clear_sessions();
+		break;
+		
+		case "Gym Use":
+			$('#package_template_calendar_id').val(1);		
+			clear_sessions();			
+		break;
+		
+		case  "Unlimited Classes and Gym Use":
+			$('#package_template_calendar_id').val(1);
+			$('#package_template_sessions').val('30');
+			$('#package_template_expires_in').val('1');
+		break;
+			
+		case "Personal Training":
+			$('#package_template_calendar_id').val(2);		
+			clear_sessions();
+		break;
+		
+		default:
+			$('#package_template_calendar_id').val('');		
+			clear_sessions();
+		break;
+	
+	}
+});
+
+}
+
+
+// Packages
+function populate_packages(){
+		$('#package_calendar_id').change(function() {
+				$('#package_template_form').effect("slide", "slow");
+				$('#package_package_template_id').load( "/package_templates/by_calendar", {calendar_id: $('#package_calendar_id').val() });
+		});
+}
+
+function show_default_package_and_override(){
+	$('#package_package_template_id').bind('change',function() {
+		$('#auto_complete_package').load( "/packages/pkg", {package_template_id: $('#package_package_template_id').val() })
+		$('#auto_complete_package').show();
+	});
+}
 
 function style_buttons(){
 		$("input:submit").addClass("mq-button ui-state-default ui-corner-all");
@@ -59,7 +121,7 @@ function date_navigation(){
 																			onSelect: function(){set_date_controls('popup_calendar')}
 																		}); // end of date picker
 		
-} // eof date navigation
+} // date navigation
 
 function set_date_controls(day){
   var selected_date;
@@ -173,57 +235,7 @@ function sub_instructor(){
 }
 
 
-// Package template form
-function calendar_drop_down(){
-				$('#package_template_calendar_id').change(function() {
-							var selected_calendar = $('#package_template_calendar_id').val();
-									switch(selected_calendar){
-									case "": // select a packgae / calnedar
-													$('#package_type').hide();
-													$('#package_template_form').hide();
-										break;
-									case "1": // Group Calnedar
-													$('#package_type').show();
-													$('#package_template_form').show();
-										break;
-									default: // any other calendar
-													$('#package_type').hide();
-													$('#package_template_package_type_1').attr("checked", "checked");
-													$('#package_template_form').show();
-										break;
-									} // end of switch
-									auto_fill_for_unlimited_package_type();
-				
-					}); // on change end of function																																
-} // end of calendar drop down
 
-function auto_fill_for_unlimited_package_type(){
-		$('input:radio').bind("click", function() {
-		package_type = $('input:radio:checked').val();
-		if (package_type == 2) {
-			$('#package_template_sessions').val('30');
-			$('#package_template_expires_in').val('1');	
-		} else{
-		  $('#package_template_sessions').val('');
-			$('#package_template_expires_in').val('')
-		}
-	});
-}
-
-// Packages
-function populate_packages(){
-		$('#package_calendar_id').change(function() {
-				$('#package_template_form').effect("slide", "slow");
-				$('#package_package_template_id').load( "/package_templates/by_calendar", {calendar_id: $('#package_calendar_id').val() });
-		});
-}
-
-function show_default_package_and_override(){
-	$('#package_package_template_id').bind('change',function() {
-		$('#auto_complete_package').load( "/packages/pkg", {package_template_id: $('#package_package_template_id').val() })
-		$('#auto_complete_package').show();
-	});
-}
 
 // Event template Form
 
