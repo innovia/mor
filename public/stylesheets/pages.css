@@ -1,10 +1,11 @@
-.show-e{
-	border: 1px solid red;
-}
+.red {border: 3px solid red;}
+.green {border: 3px solid green;}
+.blue {border: 3px solid blue;}
 
 /* ie png fix */
  img, div { behavior: url(/iepngfix/iepngfix.htc) }
 
+	ul {list-style: none !important;}
 * html
     {
     overflow-y: hidden;
@@ -16,7 +17,6 @@
     }
 
 body { 
-	background: #FFFFFF url('/images/Backgrounds/sun_zen.jpg') no-repeat scroll center top !important; 
 	color:#353535 !important;
 	font-family:Arial,Helvetica,sans-serif !important;
 	font-size:12px !important;
@@ -26,7 +26,12 @@ body {
 	padding:0 !important;
 }
 
- #menu { height: 1px; margin-top: 55px; width: 941px }
+#menu_bar_and_logo {
+	width: 100%;
+	height: 200px;
+}
+
+#menu { position: absolute; height: 38px; margin-top: 55px; margin-bottom: 0px; width: 941px }
  #menu li { display: inline; text-indent: -9999px;}
  #menu li a { float: left; width: 95px; height: 38px; padding-right: 17px !important; overflow: hidden; }
  #menu li a { background-image: url(/images/Backgrounds/menu.png); *background-image: url(/images/Backgrounds/menu_ie.gif); }
@@ -78,7 +83,18 @@ body {
  #menu.contact_us li#contact_us a { background-position: -686px -80px; width: 77px; }
 
 
+#page_body {
+	background: #FFFFFF url('/images/Backgrounds/sun_zen.jpg') no-repeat scroll center top !important; 
+	position: relative;
+	width: 1022px;
+	margin: 0 auto;
+}
 
+#filler_left {
+	float: left;
+	width: 100%;
+	background: #FFFFFF url('/images/Backgrounds/clean_zen_left.jpg') repeat-x center top !important; 
+}
 #top_content_page {
  	border: 1px solid #353535;
  	-moz-border-radius: 5px;
@@ -87,23 +103,34 @@ body {
 	height:330px;
 	padding:15px;
 	width:616px;
-	position: absolute;
-	top: 198px;
-	left: 550px;
-	_position: relative;
-	zoom: 1;
-	z-index: 999;
+	z-index: 4;
+	position: relative;
+	left: 358px;
 }
 
 #address_bar {
-  position: absolute;
-	left: 97px;
-	top: 360px;
   text-indent: -9999px;
 	width:573px;
 	height:93px;
  	background: url(/images/Backgrounds/address_bar.png) no-repeat;
+	position: relative;
+	left: 480px;
+	width:573px;
 }
+
+#lower_corner_box {
+ 	border: 1px solid #353535;
+ 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height: 168px;
+	width:308px;
+	z-index: 1;
+	position: relative;
+	top: -150px;
+	left: 70px;
+}
+
 
 h2 {
 	color:#FFFFFF !important;
@@ -129,18 +156,6 @@ h2 {
 	top:-1px;
 	z-index:2;
 }
-
-#lower_corner_box {
- 	border: 1px solid #353535;
- 	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	background: #FDFCFA;
-	height: 168px;
-	width:308px;
-	margin-top: 362px;
-	margin-left: 44px;
-}
-
 
 
 #edit_page_box {

@@ -23,7 +23,9 @@
 <link rel="icon" href="http://monqifitness.com/images/logo_footer.gif"/> 
 </head>
 <body>
-	<div class="container">		
+	<div id="filler_left"></div>
+	<div id="page_body">		
+		<div id="menu_bar_and_logo">
 			<ul id="menu" class="<%= @page.title %> span-24 last">
 				<li id="home"><%= link_to "Home", pages_path %></li>			
 				<li id="about_us"><%= link_to "About us", about_us_path %></li>
@@ -36,11 +38,13 @@
 				<li id="news"><%= link_to "News", news_path %></li>
 				<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
 			</ul>
-
-			
+			<% if admin? %> 
 			<ul id="admin_nav">
-				<li><% if admin? %> <%= link_to "Edit Page", "#", :id => "edit_page"  %><% end -%></li>
+				<li><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
 			</ul>
+			<% end -%>		
+	</div> <!-- /menu_bar_and_logo -->
+		
 		<div id="top_content_page">
 			<% unless @page.title == 'index' %>
 			<h2> 
@@ -55,8 +59,8 @@
 				<% end -%>
 				<%= yield %>
 			</div>
-			<div id="address_bar">201 East 67th Street, New York, NY 10065 - (212) 327-2170</div>
 		</div>
+		<div id="address_bar">201 E67th St New York, NY 10065 - (212) 327-2170</div>
 		
 		<div id="lower_corner_box">
 			<div id="gallery">
@@ -68,52 +72,8 @@
 		</div>
 		
 		<% if admin? %>
-		<div id="edit_page_box" style="display: none;">
-			<div id="page_editor_box">
-				<h2>Edit <%= @page.title %> page
-					<span class="h2bkg"> Edit <%= @page.title %> page</span> 
-				</h2>
-			<%= render :partial => "shared/update_page" %>
-			</div>
-			
-			<div id="upload_box">
-				<h2>
-					Upload Pictures
-					<span class="h2bkg"><%= @page.title %>'s Pictures</span>
-				</h2>
-					<a href="#" class="prev">Prev</a>
-					<div id="thumbs_scrollable" class="scrollable">
-						<div class="items">
-							<% @page.pictures.each do |pic| %>
-							<div class="page_pic_thumb item">						
-							<%= image_tag(pic.photo.url(:thumb)) %>
-							<%= image_tag( "icons/large_error.png",  :size => "24x24", 
-							 																				"data-pic"  => pic.id,
-																											:title => "delete picutre",
-																											:class => "delete_icon" ) %>
-							</div>
-						<% end -%>
-						</div>
-					</div>
-					<a href="#" class="next">Next</a>
-					
-					<%= link_to "pictures in table mode", page_pictures_path(@page) %>
-					
-				<div id="upload_pic_form">
-					<h2 class="on_white">Upload new pictures:
-						<span class="h2bkg">Upload new pictures</span>
-					</h2>
-					
-					<% form_for(@picture, :html => {:multipart => true}) do |f| %>
-						<%= render :partial => "pictures/form", :locals => {:f => f}  %>
-				  <p><%= f.submit "add_picture" %></p>
-					<%- end -%>	
-				</div>
-				
-			</div>
-			
-		</div>
-		<%= render :partial => "shared/call_yui_editor" %>
+			<%= render :partial => 'edit_page' %>
+			<%= render :partial => "shared/call_yui_editor" %>
 		<% end -%>
 	</div>
 	
