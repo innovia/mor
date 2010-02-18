@@ -31,7 +31,7 @@ body {
 	height: 200px;
 }
 
-#menu { position: absolute; height: 38px; margin-top: 55px; margin-bottom: 0px; width: 941px }
+#menu { position: relative; height: 38px; top: 55px; left: 38px; width: 941px }
  #menu li { display: inline; text-indent: -9999px;}
  #menu li a { float: left; width: 95px; height: 38px; padding-right: 17px !important; overflow: hidden; }
  #menu li a { background-image: url(/images/Backgrounds/menu.png); *background-image: url(/images/Backgrounds/menu_ie.gif); }
