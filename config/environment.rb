@@ -8,7 +8,6 @@
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-
 Rails::Initializer.run do |config|
   
   # Settings in config/environments/* take precedence over those specified here.
@@ -25,7 +24,7 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-    config.gem "activemerchant"
+  #  config.gem "activemerchant"
     config.gem "authlogic"
     config.gem 'searchlogic'
     config.gem 'will_paginate'
