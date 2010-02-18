@@ -19,14 +19,14 @@ config.action_view.cache_template_loading            = true
 # config.action_controller.asset_host                  = "http://assets.example.com"
 
 
-config.after_initialize do
-   ActiveMerchant::Billing::Base.mode = :test
-end
+#config.after_initialize do
+#   ActiveMerchant::Billing::Base.mode = :test
+#end
 
-config.to_prepare do
-  OrderTransaction.gateway = 
-    ActiveMerchant::Billing::BraintreeGateway.new(
-      :login  => 'demo',
-      :password => 'password'
-    )
-end
+#config.to_prepare do
+#  OrderTransaction.gateway = 
+#    ActiveMerchant::Billing::BraintreeGateway.new(
+#      :login  => 'demo',
+#      :password => 'password'
+#   )
+#end
