@@ -24,6 +24,7 @@ body {
 	line-height:18px !important;
 	margin:0 !important;
 	padding:0 !important;
+	text-align: center; 
 }
 
 #menu_bar_and_logo {
@@ -88,13 +89,23 @@ body {
 	position: relative;
 	width: 1022px;
 	margin: 0 auto;
+	text-align: left;
 }
 
+.MonqiCols {width: 50%; position: absolute; top: 0; text-align: left; border: 1px solid blue; height: 768px;}
+
 #filler_left {
-	float: left;
-	width: 100%;
+	left: 0;
+	margin-right: 511px;
 	background: #FFFFFF url('/images/Backgrounds/clean_zen_left.jpg') repeat-x center top !important; 
 }
+
+#filler_right {
+	right: 0;
+	margin-left: 511px;
+	background: #FFFFFF url('/images/Backgrounds/clean_zen_right.jpg') repeat-x center top !important; 
+}
+
 #top_content_page {
  	border: 1px solid #353535;
  	-moz-border-radius: 5px;
@@ -126,8 +137,8 @@ body {
 	height: 168px;
 	width:308px;
 	z-index: 1;
-	position: relative;
-	top: -150px;
+	position: absolute;
+	top: 457px;
 	left: 70px;
 }
 
