@@ -1,3 +1,8 @@
+<style type="text/css" media="screen">
+	#main_navi {
+		margin-top: -55px !important;
+	}
+</style>
 <!-- main navigator --> 
 <ul id="main_navi"> 
   <li><a id="yoga">Yoga</a></li> 
@@ -5,11 +10,12 @@
   <li><a id="flex">Flexibility & Strength</a></li> 
 </ul>
 
-<div id="main_categories"> 
-	 <div id="categories_pages">
+<div id="main"> <!-- root element for the main scrollable -->
+	 <div id="pages">
 	 	<%= render :partial => "classes_pages", :locals => {:classes => @yoga} %>
 	 	<%= render :partial => "classes_pages", :locals => {:classes => @cardio} %>
 	 	<%= render :partial => "classes_pages", :locals => {:classes => @flex} %>		
 	 </div>
 </div>		
+
 

@@ -4,7 +4,7 @@ $(document).ready(function() {
 	
 	$('#thumbs_scrollable').scrollable({size: 1});
 	
-	$("#main_categories").scrollable({ 
+	$("#main").scrollable({ 
 	  vertical: true, 
 	  size: 1, 
 	  clickable: false,
@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
 // horizontal scrollables. each one is circular and has its own navigator instance 
-var horizontal = $(".category_scrollable").scrollable({size: 1,clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator(".navi"); 
+var horizontal = $(".scrollable").scrollable({size: 1,clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator(".navi"); 
 
 
 // when page loads setup keyboard focus on the first horzontal scrollable 
@@ -38,7 +38,9 @@ $('.delete_icon').bind('click', function(event) {
 
 });
 
-
+$('.more_info').bind('click', function(event) {
+	$("a[rel]").overlay();
+});
 
 
 $('.staff_links').bind('click', function(event) {	

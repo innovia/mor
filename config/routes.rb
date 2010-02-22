@@ -11,7 +11,8 @@ ActionController::Routing::Routes.draw do |map|
     page.specials 'specials', :action => "specials"
     page.staff 'staff', :action => "staff"
     page.news 'news', :action => "news"
-    page.contact_us 'contact_us', :action => "contact_us"    
+    page.contact_us 'contact_us', :action => "contact_us"   
+    page.ami 'ami', :action => "ami"    
   end
   
 

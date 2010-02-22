@@ -210,31 +210,6 @@ body {
 		width:275px;
 	}
 
-	/* root element for horizontal scrollables */
-	.scrollable {
-		position: relative;
-		overflow:hidden;
-		height: 300px;
-		width: 400px;
-		float: left;
-	}
-
-	/* root element for horizontal scrollable items */
-	.scrollable .items {
-		width:20000em;
-		position:absolute;
-		clear:both;
-	}
-
-	/* single horizontal slide  */
-	.item {
-		float:left;
-		width: 100px;
-		margin: 15px 15px 0 15px;
-	}
-
-
-
 	/* Scrollable categories */
 	#main_navi {
 		list-style: none;
@@ -243,14 +218,16 @@ body {
 	}
 
 	#main_navi li { float: left; display: inline;}
-
+	
 	#main_navi li a {background: url(/images/classes_icons.png) no-repeat; 
 										height: 87px;
 										width:178px;
 										cursor:pointer;
 										overflow: hidden;
 										display: block;
-										text-indent: -9999px;}
+										text-indent: -9999px;
+										text-decoration: none !important;
+										}
 
 	#main_navi li a#yoga {background-position: 0px 0px;}
 	#main_navi li a#cardio {background-position:-184px 0px;}
@@ -269,68 +246,71 @@ body {
 	#main_navi li a#group 	 {background-position: -94px 0px;}
 	#main_navi li a#gym			 {background-position: -188px 0px;}
 	#main_navi li a#unlimited{background-position: -277px 0px;}
-	#main_navi li a#chiro		 {background-position: -364px 0px;}
-	#main_navi li a#nutrit	 {background-position: -452px 0px;}
+
 
 	#main_navi li a#personal:hover  {background-position: 0px -80px;}
 	#main_navi li a#group:hover  	 {background-position: -94px -80px;}
 	#main_navi li a#gym:hover 			 {background-position: -188px -80px;}
 	#main_navi li a#unlimited:hover {background-position: -277px -80px;}
-	#main_navi li a#chiro:hover 	 {background-position: -364px -80px;}
-	#main_navi li a#nutrit:hover 	 {background-position: -452px -80px;}
-
+	
 	#main_navi li.active a#personal {background-position: 0px -164px;}
 	#main_navi li.active a#group 	 {background-position: -94px -164px;}
 	#main_navi li.active a#gym			 {background-position: -188px -164px;}
 	#main_navi li.active a#unlimited{background-position: -277px -164px;}
-	#main_navi li.active a#chiro		 {background-position: -364px -164px;}
-	#main_navi li.active a#nutrit	 {background-position: -452px -164px;}
+	
 
-
-	#main_categories { 
+	#main { 
 	    position:relative; 
 	    overflow:hidden; 
-	    height: 285px; 
+	    height: 255px; 
 			clear: both;
-	} 
+	}
 
+	ul.navi li {
+		display: inline;
+		margin-bottom: 5px !important;
+	}
+	
+	ul.navi li a {
+		text-decoration: none !important;
+		margin-right: 5px;
+		color: brown;
+	}
 	/* root element for pages */ 
-	#categories_pages { 
+	#pages { 
 	    position:absolute; 
 	    height:20000em; 
 	} 
-
+	
+	/* single page */
 	.page {
 		width:610px;
-		height:272px;
-		margin-bottom:40px;
+		height:245px;
+		margin-bottom: 40px;
 	}
 
 	/* root element for horizontal scrollables this element stay still while scrolling*/ 
-	.category_scrollable {
-		padding-top:30px;     
+	.scrollable {
 		float: left;
-		height: 267px; 
+		height: 200px; 
 		width: 510px;
 		position:relative; 
 	 	overflow: hidden; 
-		margin-left:20px;   
-	} 
+		margin-left: 20px;
+	}
 
 	/* root element for scrollable items */ 
-	.category_scrollable div.items { 
+	.scrollable div.items { 
 	    width:20000em; 
 	    position:absolute; 
 	    clear:both; 
 	}
-
-	.category_scrollable div.items div { 
+	
+	.scrollable div.items div.item { 
 	  float:left; 
 		width: 500px;
 		padding:10px;
 	}
-
-
 
 	/* prev, next, prevPage and nextPage buttons */
 	a.browse {
@@ -340,7 +320,7 @@ body {
 		height:32px;
 		cursor:pointer;
 		text-indent: -9999px;
-		margin-top: 95px;
+		margin-top: 78px;
 	}
 
 	/* right */
@@ -392,3 +372,24 @@ body {
 			
 		}
 
+
+.full_description {
+	clear: both;
+	display: none;
+	z-index: 10000;
+	background-color:#333; 
+  width:675px;     
+  min-height:500px; 
+  border:1px solid #666;    
+  -moz-box-shadow:0 0 90px 5px #000; 
+  -webkit-box-shadow: 0 0 90px #000;
+}
+.full_description .close { 
+    background-image:url(../img/overlay/close.png); 
+    position:absolute; 
+    right:-15px; 
+    top:-15px; 
+    cursor:pointer; 
+    height:35px; 
+    width:35px; 
+}
