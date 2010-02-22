@@ -1,0 +1,213 @@
+body {padding-bottom: 200px;}
+
+#firebug {
+    z-index: 2147483583;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    color: #000;
+    background-color: #fff;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+#firebug a {text-decoration: none;}
+#firebug a:hover {text-decoration: underline;}
+
+#firebug .toolbar {
+    height: 14px;
+    padding: 2px 6px;
+    font-size: 11px;
+    border-top: 1px solid ThreeDHighlight;
+    border-bottom: 1px solid ThreeDShadow;
+    background: ThreeDFace;
+    text-align: right;
+}
+#firebug .toolbar a.clear {float: left;}
+
+#firebug .log {
+    overflow: auto;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 161px;
+}
+
+#firebug .cli {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    padding: 1px 2px 1px 22px;
+    border: none;
+    border-top: 1px solid ThreeDShadow;
+    color: #000;
+    background: #eee url(firebug.png) 2px 50% no-repeat;
+}
+
+/************************************************************************************************/
+
+#firebug .logRow {
+    position: relative;
+    border-bottom: 1px solid #D7D7D7;
+    padding: 2px 4px 1px 6px;
+    background-color: #fff;
+}
+
+#firebug .logRow-command {
+    font-family: Monaco, monospace;
+    color: blue;
+    font-size: smaller;
+}
+
+#firebug .objectBox-null {
+    padding: 0 2px;
+    border: 1px solid #666;
+    background-color: #888;
+    color: #fff;
+}
+
+#firebug .objectBox-string {
+    font-family: Monaco, monospace;
+    color: red;
+    white-space: pre;
+}
+
+#firebug .objectBox-number {
+    color: #008;
+}
+
+#firebug .objectBox-function {
+    font-family: Monaco, monospace;
+    color: DarkGreen;
+}
+
+#firebug .objectBox-object {
+    color: DarkGreen;
+    font-weight: bold;
+}
+
+/************************************************************************************************/
+
+#firebug .logRow-info,
+#firebug .logRow-error,
+#firebug .logRow-warning {
+    background: #fff no-repeat 2px 2px;
+    padding-left: 20px;
+    padding-bottom: 3px;
+}
+
+#firebug .logRow-info {
+    background-image: url(infoIcon.png);
+}
+
+#firebug .logRow-warning {
+    background-color: cyan;
+    background-image: url(warningIcon.png);
+}
+
+#firebug .logRow-error {
+    background-color: LightYellow;
+    background-image: url(errorIcon.png);
+}
+
+#firebug .errorMessage {
+    vertical-align: top;
+    color: #f00;
+}
+
+#firebug .objectBox-sourceLink {
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    padding-left: 8px;
+    font-family: Lucida Grande, sans-serif;
+    font-weight: bold;
+    color: #00f;
+}
+
+/************************************************************************************************/
+
+#firebug .logRow-group {
+    background: #eee;
+    border-bottom: none;
+}
+
+#firebug .logGroup {
+    background: #eee;
+}
+
+#firebug .logGroupBox {
+    margin-left: 24px;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+}
+
+/************************************************************************************************/
+
+#firebug .selectorTag,
+#firebug .selectorId,
+#firebug .selectorClass {
+    font-family: Monaco, monospace;
+    font-weight: normal;
+}
+
+#firebug .selectorTag {
+    color: #00f;
+}
+
+#firebug .selectorId {
+    color: DarkBlue;
+}
+
+#firebug .selectorClass {
+    color: #f00;
+}
+
+/************************************************************************************************/
+
+#firebug .objectBox-element {
+    font-family: Monaco, monospace;
+    color: #008;
+}
+
+#firebug .nodeChildren {
+    margin-left: 16px;
+}
+
+#firebug .nodeTag {
+    color: blue;
+}
+
+#firebug .nodeValue {
+    color: #f00;
+    font-weight: normal;
+}
+
+#firebug .nodeText,
+#firebug .nodeComment {
+    margin: 0 2px;
+    vertical-align: top;
+}
+
+#firebug .nodeText {
+    color: #333;
+}
+
+#firebug .nodeComment {
+    color: DarkGreen;
+}
+
+/************************************************************************************************/
+
+#firebug .propertyNameCell {
+    vertical-align: top;
+}
+
+#firebug .propertyName {
+    font-weight: bold;
+}
