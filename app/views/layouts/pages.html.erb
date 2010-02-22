@@ -1,66 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<title>MonQi on Rails</title>
+<title>MonQi Fitness NYC 212-327-2170</title>
 <%= stylesheet_link_tag 'jquery.alerts', 'pages' %>					
 <%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
 <%= stylesheet_link_tag "blueprint/print", :media => "print" %>
 
-<!--[if IE]>
-	<link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/>
-<![endif]-->
+<!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
 
 <%= javascript_include_tag "jquery", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "pages" %>
 
 <% if admin? %>
-<%= render :partial => "shared/init_yui_editor" %>
+	<%= render :partial => "shared/init_yui_editor" %>
 <% end -%>
-										
-<link rel="icon" href="http://monqifitness.com/images/logo_footer.gif"/> 
 </head>
 <body>
-	<div id="page_body" class="container">		
+	<div class="container" id="page_body">
 		<div id="menu_bar_and_logo" class="span-24 last">
-			<div id="menu_bar" class="span-24">
-			<a id="home" class="span-10"></a>
-			<ul id="menu" class="<%= @page.title %> span-18">
-					<li id="about_us"><%= link_to "About us", about_us_path %></li>
-					<li id="classes"><%= link_to "Classes", classes_path %></li>
-					<li id="personal_training"><%= link_to "Personal training", personal_training_path %></li>
-					<li id="schedule"><%= link_to "Schedule", schedule_path %></li>
-					<li	id="rates"><%= link_to "Rates",  rates_path %></li>
-					<li id="specials"><%= link_to "Specials", specials_path %></li>
-					<li id="staff"><%= link_to "Staff", staff_path %></li>
-					<li id="news"><%= link_to "News", news_path %></li>
-					<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
-			</ul>
-			</div>
-			
-			<% if admin? %> 
-			<ul id="admin_nav">
-				<li><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
-			</ul>
-			<% end -%>		
-	</div> <!-- /menu_bar_and_logo -->
-		
-		<div id="top_content_page">
+				<div id="menu_bar" class="span-24">
+					<%= link_to "Home", pages_path, :id => "home", :class => "span-10" %>
+					<ul id="menu" class="<%= @page.title %> span-18">
+						<li id="about_us"><%= link_to "About us", about_us_path %></li>
+						<li id="classes"><%= link_to "Classes", classes_path %></li>
+						<li id="personal_training"><%= link_to "Personal training", personal_training_path %></li>
+						<li id="schedule"><%= link_to "Schedule", schedule_path %></li>
+						<li	id="rates"><%= link_to "Rates",  rates_path %></li>
+						<li id="specials"><%= link_to "Specials", specials_path %></li>
+						<li id="staff"><%= link_to "Staff", staff_path %></li>
+						<li id="news"><%= link_to "News", news_path %></li>
+						<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
+					</ul>
+					<% if admin? %> 
+						<ul id="admin_nav">
+							<li><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
+						</ul>
+					<% end -%>
+				</div>
+			</div> <!-- /menu_bar_and_logo -->
+
+		<div id="top_content_page" class="clear span-16 last">
 			<% unless @page.title == 'index' %>
-			<h2> 
-				<%= @page.title.humanize %>
-			<span class="h2bkg"><%= @page.title.humanize %></span>
-			</h2>
+				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
 			<% end -%>
-	
-			<div class="text_block">
-				<% unless @page.title == 'rates' %>
+
+			<% unless @page.title == 'rates' %>
 				<%= @page.body %>
-				<% end -%>
-				<%= yield %>
-			</div>
+			<% end -%>
+			
+			<%= yield %>
 		</div>
-		<div id="address_bar">201 E67th St New York, NY 10065 - (212) 327-2170</div>
+
+		<div id="address_bar" class="span-13">201 E67th St New York, NY 10065 - (212) 327-2170</div>
+		
 		
 		<div id="lower_corner_box">
 			<div id="gallery">
@@ -68,15 +61,10 @@
 						<%= image_tag(pic.photo.url(:box)) %>
 				<% end -%>
 			</div>
-			
 		</div>
-		
-		<% if admin? %>
-			<%= render :partial => 'edit_page' %>
-			<%= render :partial => "shared/call_yui_editor" %>
-		<% end -%>
-	</div>
+		<div class="apple_overlay" id="overlay"></div>
+	</div><!-- /container -->
 	
-	<div class="apple_overlay" id="overlay"></div>
 </body>
 </html>
+

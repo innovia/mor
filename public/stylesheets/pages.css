@@ -1,7 +1,3 @@
-.red {border: 3px solid red;}
-.green {border: 3px solid green;}
-.blue {border: 3px solid blue;}
-
 /* ie png fix */
  img, div { behavior: url(/iepngfix/iepngfix.htc) }
 
@@ -19,7 +15,8 @@ body {
 }
 
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}
-#home { margin-top: -46px; margin-left: 10px; height: 185px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
+#home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 185px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
+#home:hover {background-position: 0 -194px;}
 
 
 #menu { margin-top: -139px; margin-left: 219px; padding: 0;}
@@ -77,3 +74,321 @@ body {
 #menu.staff li#staff a { background-position: -524px -76px; width: 50px;}
 #menu.news li#news a { background-position: -572px -76px;  width: 55px;}
 #menu.contact_us li#contact_us a { background-position: -626px -76px; width: 87px; }
+
+#page_body {
+	position: relative;
+}
+#top_content_page {
+	position: relative;
+ 	border: 1px solid #353535;
+ 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height:360px;
+	padding:15px;
+	margin-left:262px;
+	z-index: 999;
+}
+
+#address_bar {
+  text-indent: -9999px;
+	height:93px;
+ 	background: url(/images/Backgrounds/address_bar.png) no-repeat;
+	margin-left: 405px;
+}
+
+#lower_corner_box {
+ 	border: 1px solid #353535;
+ 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #FDFCFA;
+	height: 168px;
+	width:308px;
+	z-index: 1;
+	position: absolute;
+	top: 504px;
+	left: 14px;
+}
+
+#gallery img {
+  display: block;
+	width: 250px; 
+	height: 168px; 
+	margin-left: 30px;
+}
+
+
+
+		<% if admin? %>
+			<%= render :partial => 'edit_page' %>
+			<%= render :partial => "shared/call_yui_editor" %>
+		<% end -%>
+
+
+	* html #page_body {
+	height: 100%;
+	}
+
+
+
+
+
+
+	h2 {
+		color:#FFFFFF !important;
+		font-size:18px !important;
+		font-weight:normal !important;
+		line-height:22px !important;
+		margin:0 !important;
+		padding:0 0 5px !important;
+		position:relative !important;
+		z-index:4 !important;
+	}
+
+	.h2bkg {
+		color:#F66818;
+		font-family:Georgia,"Nimbus Roman No9 L",serif;
+		font-size:18px;
+		font-weight:normal;
+		left:-1px;
+		line-height:22px;
+		margin:0;
+		padding:0 0 5px;
+		position:absolute;
+		top:-1px;
+		z-index:2;
+	}
+
+
+	#edit_page_box {
+		border: 1px solid #353535;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		background: #FDFCFA;
+		height: 400px;
+		width:950px;
+		padding: 20px;
+		margin-top:85px;
+	}
+
+	#page_editor_box {
+	 width: 624px;
+	 border-right: 1px solid orange;
+	 float: left;
+	}
+
+	#upload_box {
+		width: 303px;
+		float:left;
+		margin-left:20px;
+	}
+	.left {float: left;}
+	.right {float: right;}
+
+
+	.page_pic_thumb {
+		float:left;
+		padding:5px;
+		position: relative;
+		margin-right: 17px;
+	}
+
+	.delete_icon {
+	 position: absolute;
+	 right: -6px;
+	 top: -8px;
+	}
+
+	#upload_pic_form {
+		clear: both;
+		margin-top:15px;
+	}
+
+	#thumbs_scrollable {
+		float:left;
+		height:140px;
+		width:275px;
+	}
+
+	/* root element for horizontal scrollables */
+	.scrollable {
+		position: relative;
+		overflow:hidden;
+		height: 300px;
+		width: 400px;
+		float: left;
+	}
+
+	/* root element for horizontal scrollable items */
+	.scrollable .items {
+		width:20000em;
+		position:absolute;
+		clear:both;
+	}
+
+	/* single horizontal slide  */
+	.item {
+		float:left;
+		width: 100px;
+		margin: 15px 15px 0 15px;
+	}
+
+
+
+	/* Scrollable categories */
+	#main_navi {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	#main_navi li { float: left; display: inline;}
+
+	#main_navi li a {background: url(/images/classes_icons.png) no-repeat; 
+										height: 87px;
+										width:178px;
+										cursor:pointer;
+										overflow: hidden;
+										display: block;
+										text-indent: -9999px;}
+
+	#main_navi li a#yoga {background-position: 0px 0px;}
+	#main_navi li a#cardio {background-position:-184px 0px;}
+	#main_navi li a#flex {background-position:-353px 0px; width: 230px;}
+
+	#main_navi li a#yoga:hover {background-position: 0px -127px;}
+	#main_navi li a#cardio:hover {background-position: -184px -127px;}
+	#main_navi li a#flex:hover {background-position: -353px -127px; width: 230px;}
+
+	#main_navi li.active  a#yoga {background-position: 0px -246px; height: 106px;}
+	#main_navi li.active  a#cardio {background-position:-184px -247px; height: 106px;}
+	#main_navi li.active  a#flex {background-position:-353px -246px; width: 230px; height: 106px;}
+
+	#main_navi li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px;}
+	#main_navi li a#personal {background-position: 0px 0px;}
+	#main_navi li a#group 	 {background-position: -94px 0px;}
+	#main_navi li a#gym			 {background-position: -188px 0px;}
+	#main_navi li a#unlimited{background-position: -277px 0px;}
+	#main_navi li a#chiro		 {background-position: -364px 0px;}
+	#main_navi li a#nutrit	 {background-position: -452px 0px;}
+
+	#main_navi li a#personal:hover  {background-position: 0px -80px;}
+	#main_navi li a#group:hover  	 {background-position: -94px -80px;}
+	#main_navi li a#gym:hover 			 {background-position: -188px -80px;}
+	#main_navi li a#unlimited:hover {background-position: -277px -80px;}
+	#main_navi li a#chiro:hover 	 {background-position: -364px -80px;}
+	#main_navi li a#nutrit:hover 	 {background-position: -452px -80px;}
+
+	#main_navi li.active a#personal {background-position: 0px -164px;}
+	#main_navi li.active a#group 	 {background-position: -94px -164px;}
+	#main_navi li.active a#gym			 {background-position: -188px -164px;}
+	#main_navi li.active a#unlimited{background-position: -277px -164px;}
+	#main_navi li.active a#chiro		 {background-position: -364px -164px;}
+	#main_navi li.active a#nutrit	 {background-position: -452px -164px;}
+
+
+	#main_categories { 
+	    position:relative; 
+	    overflow:hidden; 
+	    height: 285px; 
+			clear: both;
+	} 
+
+	/* root element for pages */ 
+	#categories_pages { 
+	    position:absolute; 
+	    height:20000em; 
+	} 
+
+	.page {
+		width:610px;
+		height:272px;
+		margin-bottom:40px;
+	}
+
+	/* root element for horizontal scrollables this element stay still while scrolling*/ 
+	.category_scrollable {
+		padding-top:30px;     
+		float: left;
+		height: 267px; 
+		width: 510px;
+		position:relative; 
+	 	overflow: hidden; 
+		margin-left:20px;   
+	} 
+
+	/* root element for scrollable items */ 
+	.category_scrollable div.items { 
+	    width:20000em; 
+	    position:absolute; 
+	    clear:both; 
+	}
+
+	.category_scrollable div.items div { 
+	  float:left; 
+		width: 500px;
+		padding:10px;
+	}
+
+
+
+	/* prev, next, prevPage and nextPage buttons */
+	a.browse {
+		background:url(/images/scrollable/arrow/circle_arrows.png) no-repeat;
+		display:block;
+		width:31px;
+		height:32px;
+		cursor:pointer;
+		text-indent: -9999px;
+		margin-top: 95px;
+	}
+
+	/* right */
+	a.right 				{ background-position: 100% -32px;; clear:right; margin-left: 0px; }
+
+	/* left */
+	a.left					{ background-position: 0 -32px; margin-left: 0px; } 
+
+
+	/* up and down */
+	a.up, a.down		{ 
+		background:url(/images/scrollable/vert_large.png) no-repeat; 
+		float: none;
+		margin: 10px 50px;
+	}
+
+		/* up */
+		a.up:hover  		{ background-position:-30px 0; }
+		a.up:active  		{ background-position:-60px 0; }
+
+		/* down */
+		a.down 					{ background-position: 0 -30px; }
+		a.down:hover  	{ background-position:-30px -30px; }
+		a.down:active  	{ background-position:-60px -30px; } 
+
+
+		/* disabled navigational button */
+		a.disabled { visibility:hidden !important;	}
+
+		/* the overlayed element */
+		.apple_overlay {
+			display:none;
+			background-image:url(/images/overlay/transparent.png);
+			width:375px;
+			padding:35px;	
+			font-size:11px;
+			color: #FDFCFA ;
+		}
+
+		.apple_overlay h3{ color: #FDFCFA;}
+
+		/* default close button positioned on upper right corner */
+		.apple_overlay div.close {
+			background-image:url(/images/overlay/close.png);
+			position:absolute; right:5px; top:5px;
+			cursor:pointer;
+			height:35px;
+			width:35px;
+			
+		}
+
