@@ -4,9 +4,10 @@ class CreatePackageTypes < ActiveRecord::Migration
       t.string :name    
       t.timestamps
     end
-    PackageType.create(:name => "Classes")
-    PackageType.create(:name => "Unlimited")
-    PackageType.create(:name => "Gym use")
+    PackageType.create(:name => "Group Classes")
+    PackageType.create(:name => "Gym Use")
+    PackageType.create(:name => "Unlimited and Gym Use")
+    PackageType.create(:name => "Personal Training")
   end
 
   def self.down

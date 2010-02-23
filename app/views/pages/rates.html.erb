@@ -21,12 +21,11 @@
   <li><a id="unlimited">Unlimited Classes & Gym Use Rates</a></li> 
 </ul>
 
-<div id="main_categories"> 
-	 <div id="categories_pages">
+<div id="main"> 
+	 <div id="pages">
 		<div class="page">
 			<%= @page.body %>
 		</div>
-	 	
 		<%= render :partial => "rates", :locals => {:passed_array => @group} %>
 		<%= render :partial => "rates", :locals => {:passed_array => @personal} %>
 		<%= render :partial => "rates", :locals => {:passed_array => @gym} %>

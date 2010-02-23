@@ -3,13 +3,14 @@ class PagesController < ApplicationController
   before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
   
   #caches_page :index, :classes, :rates, :about_us, :schedule, :personal_training, :specials, :staff, :news, :contact_us
-
-  def ami
-  end
   
   def index
     @page = Page.find_or_create_by_title(action_name)
     @picture = Picture.new 
+  end
+  
+  def personal_training
+    
   end
   
   def classes
@@ -89,6 +90,6 @@ class PagesController < ApplicationController
   end
   
   def rates_for_pkg(pkg_type)
-     PackageType.name_contains(pkg_type).first.package_templates
+    PackageType.name_contains(pkg_type).first.package_templates
   end
 end

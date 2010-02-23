@@ -44,7 +44,7 @@
 				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
 			<% end -%>
 
-			<% unless @page.title == 'rates' %>
+			<% unless @page.title == 'rates' or 'personal_training' %>
 				<%= @page.body %>
 			<% end -%>
 			
@@ -62,8 +62,10 @@
 			</div>
 		</div>
 		<div class="apple_overlay" id="overlay"></div>
+		<% if admin? %>
+			<%= render :partial => "editor" %>	
+		<% end -%>
 	</div><!-- /container -->
-	
 </body>
 </html>
 

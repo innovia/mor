@@ -166,9 +166,9 @@ body {
 		-webkit-border-radius: 5px;
 		background: #FDFCFA;
 		height: 400px;
-		width:950px;
 		padding: 20px;
-		margin-top:85px;
+		position: absolute;
+		top: 200px;
 	}
 
 	#page_editor_box {
@@ -392,4 +392,8 @@ body {
     cursor:pointer; 
     height:35px; 
     width:35px; 
+}
+
+.rates_table {
+	margin-left: 65px;
 }
