@@ -11,7 +11,6 @@ class PagesController < ApplicationController
   
   def pt_request
     @pt_req = params
-    debugger
     Notifier.deliver_personal_training_online_request(@pt_req)
     redirect_to :thank_you
   end
