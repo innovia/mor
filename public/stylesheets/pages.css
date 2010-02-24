@@ -14,6 +14,21 @@ body {
 	background: #FFF url('/images/Backgrounds/body_background.jpg') no-repeat top center !important;
 }
 
+#admin_nav {
+						position: absolute;
+						top: 0;
+						left: 183px;
+}
+
+#admin_nav li#edit_icon {background: transparent url(/images/edit.png) no-repeat; }
+#admin_nav li a {cursor: pointer;
+								 display:block;
+								 height: 48px;
+								 width: 75px; 
+								 text-indent: -9999px; 
+								 overflow: hidden;  
+								}
+
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}
 #home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 185px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
 #home:hover {background-position: 0 -194px;}
@@ -165,23 +180,27 @@ body {
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		background: #FDFCFA;
-		height: 400px;
+		height: 522px;
 		padding: 20px;
 		position: absolute;
-		top: 200px;
+		top: 105px;
+		left: 30px;
+		width: 847px;
 	}
 
 	#page_editor_box {
-	 width: 624px;
-	 border-right: 1px solid orange;
-	 float: left;
+	 width: 612px;
+	 margin-left:17px;
+	margin-top:20px;
 	}
 
 	#upload_box {
-		width: 303px;
-		float:left;
-		margin-left:20px;
+		border-bottom:2px solid brown;
+		height: 117px;
+		padding-left: 10px;
 	}
+	
+	
 	.left {float: left;}
 	.right {float: right;}
 
@@ -197,17 +216,17 @@ body {
 	 position: absolute;
 	 right: -6px;
 	 top: -8px;
+	 cursor: pointer;
 	}
 
 	#upload_pic_form {
-		clear: both;
-		margin-top:15px;
+		position:absolute;
+		right:30px;
+		top:33px;
 	}
 
-	#thumbs_scrollable {
-		float:left;
-		height:140px;
-		width:275px;
+	p.note a {
+		text-decoration: none;
 	}
 
 	/* Scrollable categories */
@@ -241,22 +260,26 @@ body {
 	#main_navi li.active  a#cardio {background-position:-184px -247px; height: 106px;}
 	#main_navi li.active  a#flex {background-position:-353px -246px; width: 230px; height: 106px;}
 
-	#main_navi li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px;}
-	#main_navi li a#personal {background-position: 0px 0px;}
-	#main_navi li a#group 	 {background-position: -94px 0px;}
-	#main_navi li a#gym			 {background-position: -188px 0px;}
-	#main_navi li a#unlimited{background-position: -277px 0px;}
 
 
-	#main_navi li a#personal:hover  {background-position: 0px -80px;}
-	#main_navi li a#group:hover  	 {background-position: -94px -80px;}
-	#main_navi li a#gym:hover 			 {background-position: -188px -80px;}
-	#main_navi li a#unlimited:hover {background-position: -277px -80px;}
+
+	#main_navi li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px !important;}
 	
-	#main_navi li.active a#personal {background-position: 0px -164px;}
-	#main_navi li.active a#group 	 {background-position: -94px -164px;}
-	#main_navi li.active a#gym			 {background-position: -188px -164px;}
-	#main_navi li.active a#unlimited{background-position: -277px -164px;}
+	#main_navi li a#group 	 {background-position: 0px 0px; width: 82px!important;}
+	#main_navi li a#gym			 {background-position: -112px 0px;  width:75px!important;}
+	#main_navi li a#personal {background-position: -216px 0px; width:151px!important;}
+	#main_navi li a#unlimited{background-position: -389px 0px; width: 166px!important;}
+
+
+	#main_navi li a#group:hover  	 {background-position: 0px -70px; width: 82px!important;}
+	#main_navi li a#gym:hover 			 {background-position: -112px -70px;  width:75px!important;}
+	#main_navi li a#personal:hover  {background-position: -216px -70px; width:151px!important;}
+	#main_navi li a#unlimited:hover {background-position: -389px -70px; width: 166px!important;}
+	
+	#main_navi li.active a#group 	 {background-position: 0px -164px; width: 82px!important;}
+	#main_navi li.active a#gym			 {background-position: -112px -164px;  width:75px!important;}
+	#main_navi li.active a#personal {background-position: -216px -164px; width:151px!important;}
+	#main_navi li.active a#unlimited{background-position: -389px -164px; width: 166px!important;}
 	
 
 	#main { 

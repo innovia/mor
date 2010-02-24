@@ -12,10 +12,12 @@
 		<div class="items">
 			<% classes.each do |cls| %>
 				<div class="item">
-					<h3><%= cls.title %></h3>
-					<p><%#= truncate(cls.description, 480, "<br/><a href='#' class='more_info' rel='#cls_#{cls.id}'>More...</a>") %>
-						<%= cls.description %></p>
-					</p>
+					<h3><%= cls.title %>
+					<% if admin? %>
+					<%= link_to image_tag("icons/comment_edit.png") + "edit class info",edit_monqi_class_path(cls) %>
+					<% end %>
+					</h3>
+					<p><%= cls.description %></p>
 				</div>
 			<% end -%>
 		</div> <!-- /items -->

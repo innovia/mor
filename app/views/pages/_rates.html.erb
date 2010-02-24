@@ -1,4 +1,7 @@
 <div class="page">
+	<% if admin? %>
+		<%= link_to image_tag("icons/money_dollar.png") + "Edit Packages Rates", package_templates_path %>
+	<% end %>
 	<table class="rates_table">
 		<tr>
 			<th>Package</th>

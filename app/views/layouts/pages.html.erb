@@ -32,8 +32,8 @@
 						<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
 					</ul>
 					<% if admin? %> 
-						<ul id="admin_nav">
-							<li><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
+						<ul id="admin_nav" class="span-17">
+							<li id="edit_icon"><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
 						</ul>
 					<% end -%>
 				</div>
@@ -61,10 +61,13 @@
 				<% end -%>
 			</div>
 		</div>
+		
 		<div class="apple_overlay" id="overlay"></div>
+		
 		<% if admin? %>
 			<%= render :partial => "editor" %>	
 		<% end -%>
+	
 	</div><!-- /container -->
 </body>
 </html>

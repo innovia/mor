@@ -20,10 +20,10 @@ class PagesController < ApplicationController
   end
   
   def rates  
-    @group = rates_for_pkg('classes')
-    @personal = rates_for_pkg('personal')
-    @gym =  rates_for_pkg('gym')
-    @unlimited = rates_for_pkg('unlimited')
+    @group = rates_for_pkg('Group Classes')
+    @gym =  rates_for_pkg('Gym Use')
+    @personal = rates_for_pkg('Personal Training')
+    @unlimited = rates_for_pkg('Unlimited and Gym Use')
   end
   
   def staff
@@ -90,6 +90,6 @@ class PagesController < ApplicationController
   end
   
   def rates_for_pkg(pkg_type)
-    PackageType.name_contains(pkg_type).first.package_templates
+    PackageType.find_by_name(pkg_type).package_templates
   end
 end

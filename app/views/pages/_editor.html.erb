@@ -1,37 +1,38 @@
 	<div id="edit_page_box" style="display: none;">
-		<div id="page_editor_box" class="span-22">
-			<h2>Edit <%= @page.title %> page
-				<span class="h2bkg"> Edit <%= @page.title %> page</span> 
-			</h2>
-		<%= render :partial => "shared/update_page" %>
-		</div>
-		
 		<div id="upload_box">
 			<h2>
 				Upload Pictures
-				<span class="h2bkg"><%= @page.title %>'s Pictures</span>
+				<span class="h2bkg"><%= @page.title.capitalize.humanize %> Page Pictures</span>
 			</h2>
-				<a href="#" class="prev">Prev</a>
-				<div id="thumbs_scrollable" class="scrollable">
-					<div class="items">
-						<% @page.pictures.each do |pic| %>
-						<div class="page_pic_thumb item">						
-						<%= image_tag(pic.photo.url(:thumb)) %>
-						<%= image_tag( "icons/large_error.png",  :size => "24x24", 
+			
+				<div class="items">
+					<%- unless @page.pictures.empty? -%>
+					<% @page.pictures.in_groups_of(3).first.each do |pic| %>
+							<% unless pic.nil? %>
+							<div class="page_pic_thumb item">						
+							<%= image_tag(pic.photo.url(:thumb)) %>
+							<%= image_tag( "icons/large_error.png",  :size => "24x24", 
 						 														"data-pic"  => pic.id,
 																				:title => "delete picutre",
 																				:class => "delete_icon" ) %>
-						</div>
+							</div>
+							<% end -%>
+						<% end -%>
 					<% end -%>
-					</div>
 				</div>
-				<a href="#" class="next">Next</a>
 				
-				<%= link_to "pictures in table mode", page_pictures_path(@page) %>
+				<%- unless @page.pictures.empty? -%>
+				<p class="note">*showing 3 out of <%= @page.pictures.size %> pictures,
+									 <br/> click on table mode to see all
+									 <p>
+				<% end -%>
+				<%= link_to image_tag("icons/table_edit.png") + "pictures in table mode", page_pictures_path(@page) %>
+				</p>
+				</p>
 				
 			<div id="upload_pic_form">
-				<h2 class="on_white">Upload new pictures:
-					<span class="h2bkg">Upload new pictures</span>
+				<h2 class="on_white">Upload a new picture:
+					<span class="h2bkg">Upload a new picture</span>
 				</h2>
 				
 				<% form_for(@picture, :html => {:multipart => true}) do |f| %>
@@ -41,6 +42,14 @@
 			</div>
 			
 		</div>
+	
+		<div id="page_editor_box">
+			<h2>Edit <%= @page.title %> page
+				<span class="h2bkg"> Edit the <%= @page.title.capitalize.humanize %> page</span> 
+			</h2>
+		<%= render :partial => "shared/update_page" %>
+		</div> <!-- /page editor box -->
+		
 		
 	</div>
 	<%= render :partial => "shared/call_yui_editor" %>

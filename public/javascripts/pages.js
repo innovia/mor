@@ -23,9 +23,13 @@ horizontal.eq(0).scrollable().focus();
 
 
 $('#edit_page').bind('click', function(event) {
-	$('#top_content_page').toggle();
-	$('#lower_corner_box').toggle();
-	$('#edit_page_box').toggle();
+	$('#address_bar').slideToggle();
+	$('#top_content_page').slideToggle("slow", function(){	
+		$('#lower_corner_box').slideToggle("slow", function(){
+			$('#edit_page_box').slideToggle("slow");
+			})
+		})
+	
 });
 
 $('.delete_icon').bind('click', function(event) {

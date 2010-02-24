@@ -277,11 +277,10 @@ div.error h3{
 	margin-left: 40px;
 }
 
-.fieldWithErrors{
-	padding: 3px;
-	border: 1px solid #A21C24;
+.fieldWithErrors input{
+	background: pink;
+	border: 1px solid red;
 	display: inline;
-	
 }
 
 
@@ -299,6 +298,7 @@ div.error h3{
 	margin:0 0 16px 8px;
 	padding:12px;
 	width: 365px;
+	right: 160px;
 }
 
 #login_error .errorExplanation h2{
