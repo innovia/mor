@@ -29,4 +29,12 @@ class Notifier < ActionMailer::Base
     body          :edit_password_reset_url => edit_password_reset_url(user.perishable_token)  
  end
 
+
+ def personal_training_online_request(params)
+    @pt_req = params
+     subject     "Personal Training Online Request from #{params[:first_name]} #{params[:last_name]}"
+     from        "#{params[:email]}"
+     recipients  "info@monqifitness.com, ami.mahloof@gmail.com"
+     sent_on     Time.now
+ end
 end

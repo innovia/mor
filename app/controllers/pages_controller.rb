@@ -9,8 +9,17 @@ class PagesController < ApplicationController
     @picture = Picture.new 
   end
   
-  def personal_training
-    
+  def pt_request
+    @pt_req = params
+    debugger
+    Notifier.deliver_personal_training_online_request(@pt_req)
+    redirect_to :thank_you
+  end
+  
+  def contact_form
+    @contact = params
+    Notifier.deliver_contact_us_form(@contact)
+    redirect_to :thank_you
   end
   
   def classes

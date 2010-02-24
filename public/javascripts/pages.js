@@ -8,6 +8,7 @@ $(document).ready(function() {
 	  vertical: true, 
 	  size: 1, 
 	  clickable: false,
+		keyboard: false,
 		prev: 'a.prev_page',
 		next: 'a.next_page',
 	}).navigator("#main_navi");
@@ -58,5 +59,11 @@ $.get('/people/' + monqi_instructor, function(data){
 	monqi_api.load();
 }, 'script');
 });
+
+
+$('#conditions').bind('click', function(event) {
+	$(this).val('');
+});
+
 
 }); // doc ready

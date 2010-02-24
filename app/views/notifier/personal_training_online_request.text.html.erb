@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+ <head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  
+</head>
+  
+<body>
+	<h2>Personal Training Request: </h2>
+
+<%= "<strong>#{@pt_req[:first_name]} #{@pt_req[:last_name]}</strong> would like to schedule an appointment for a Personal Training session" %>
+
+<p>
+<%= @pt_req[:gender] == "female" ? 'She' : 'He' %> wish to start on:
+<strong><%= @pt_req[:start_date] %></strong>
+</p>
+
+<p>
+	<h3><%= @pt_req[:gender] == "female" ? 'Her' : 'His' %> Contact information:</h3>
+	<p><strong>email:</strong> <%= @pt_req[:email] %></p>
+	<p><strong>Home Phone:</strong> <%= @pt_req[:home_phone].blank? ? 'left blank' : @pt_req[:home_phone] %></p>
+	<p><strong>Work Phone:</strong> <%= @pt_req[:work_phone].blank? ? 'left blank' : @pt_req[:work_phone] %></p>
+	<p><strong>Cell phone:</strong> <%= @pt_req[:cell_phone].blank? ? 'left blank' : @pt_req[:cell_phone] %> </p>
+</p>
+
+
+<% if @pt_req[:first_time] %>
+</br>
+<p>
+	<strong>Please note:</br></strong>
+	<%= @pt_req[:gender] == "female" ? 'She' : 'He' %> is a first time client, and was referred by 
+	<strong><%= @pt_req[:referred_by]%></strong>
+</p>
+<% end %>
+
+<h3>Request summary:</h3>
+Age: <strong><%= @pt_req[:age] %></strong>
+Height: <strong><%= @pt_req[:height] %></strong>
+Weight: <strong><%= @pt_req[:weight] %></strong>
+
+<h3> Medical Condition, Medications, Allergies:	</h3>
+<%= @pt_req[:conditions] %>
+
+<h3> Goals or Reasons</h3>
+<%= @pt_req[:goals] %>
+
+<h3> Preferences</h3>
+<strong>Trainer Preference: </strong><%= @pt_req[:trainer_preference] %><br/>
+<%= @pt_req[:gender] == "female" ? 'She' : 'He' %> Would like to come in <strong><%= @pt_req[:times_a_week] %> times a week</strong>. <br/>
+
+<strong>Preferred days: </strong><%= @pt_req[:preferred_days].join(" ") %><br/>
+<strong>Session duration:</strong> <%= @pt_req[:session_duration].join(" ") %><br/>
+<%= @pt_req[:gender] == "female" ? 'She' : 'He' %> wish to start on <%= @pt_req[:start_date] %><br/>
+</body>
+</html>

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     page.staff 'staff', :action => "staff"
     page.news 'news', :action => "news"
     page.contact_us 'contact_us', :action => "contact_us"   
-    page.ami 'ami', :action => "ami"    
+    page.thank_you 'thank_you', :action => "thank_you"    
   end
   
 

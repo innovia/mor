@@ -1,0 +1,86 @@
+<div class="page">
+<h3>Personal Training Request</h3>
+<strong>First name:</strong><%= text_field_tag(:first_name) %>
+<strong>Last name:</strong><%= text_field_tag(:last_name) %>
+<p>
+		<label class="form male">
+			Gender:
+	    <input type="radio" id="gender_male" name="gender" value="male" />
+	    Male
+		</label>
+		<label class="form female">
+	    <input type="radio" id="gender_female" name="gender" value="female" />
+	    Female
+		</label>
+		<br/>
+<strong>Age:</strong> <%= text_field_tag(:age, {}, :size => "2", :maxlength => "2") %>
+<strong>Height:</strong> <%= text_field_tag(:feet, {}, :size => "1", :maxlength => "1") %> feet <%= text_field_tag(:inch, {}, :size => "2", :maxlength => "2") %> inch
+<strong>Weight:</strong> <%= text_field_tag(:weight, {}, :size => "3", :maxlength => "3") %> lbs
+</p>
+
+<p>
+<strong>Telephone #:</strong><br/>
+							 <strong>Home:</strong> <%= text_field_tag(:home_phone, {}, :size => "12", :maxlength => "12") %>
+							 <strong>Work:</strong> <%= text_field_tag(:work_phone, {}, :size => "12", :maxlength => "12") %>
+							 <strong>Mobile:</strong> <%= text_field_tag(:cell_phone, {}, :size => "12", :maxlength => "12") %><br/>
+  				    <strong> e-mail:</strong> <%= text_field_tag(:email) %>
+</p>
+<p>
+	<%= text_area_tag(:conditions, "list any medical problems or medications.", :rows => 3, :id => "conditions") %>
+</p>
+</div> <!-- /page -->
+
+<div class="page">
+	<h3>Personal Training Request</h2>
+		<strong>Goals or reason for training: </strong><br/> <%= text_area_tag(:goals, {}, :rows => 3) %>
+		<p><strong>do you prefer a male or female trainer</strong> (if known, list trainer’s name)<br/>
+		<%= text_field_tag(:trainer_preference) %>
+		<br/>
+		<strong>how many times a week:</strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
+	<strong>	preferred days:</strong>
+		<%= check_box_tag('preferred_days[]','Mon') -%> Mon
+	 	<%= check_box_tag('preferred_days[]','Tue') -%> Tue
+	 	<%= check_box_tag('preferred_days[]','Wed') -%> Wed
+	 	<%= check_box_tag('preferred_days[]','Thu') -%> Thu
+	 	<%= check_box_tag('preferred_days[]','Fri') -%> Fri
+	 	<%= check_box_tag('preferred_days[]','Sat') -%> Sat
+		<%= check_box_tag('preferred_days[]','Sun') -%> Sun
+		
+		<br/>	<br/>
+		<strong>How long would you like the session:</strong> 	
+		<%= check_box_tag('session_duration[]','45 min') -%> 45 Minutes
+		<%= check_box_tag('session_duration[]','1 hour') -%> 1 Hour
+		</p>
+</div><!-- /page -->
+
+<div class="page">
+	<h3>Personal Training Request</h2>
+		
+	<strong>	When do you wish to start: </strong><%= text_field_tag(:start_date) %> <br/>
+		
+		
+		<p> 
+		<strong> First Time Client?	</strong> <%= check_box_tag :first_time %>
+
+		 <strong>Referred by:</strong> <%= text_field_tag :referred_by,{}, :size => 20 %>
+		</p>
+		
+		<strong>By checking this checkbox you agree to our 24-hour cancellation policy*  </strong>
+<br/>	<br/>	
+<p>
+24-hour cancellation policy:  If you must change or cancel a scheduled appointment, please call your trainer directly to cancel at least 24-hours prior to your session or you will be charged for the session.
+</p>
+<p>
+	<%= check_box_tag('agree') -%><strong> Yes I agree</strong>
+</p>
+	<p><%= submit_tag "Send request", :disable_with => 'Sending Request...' %></p>
+
+</div><!-- /page -->
+
+<style type="text/css" media="screen">
+	textarea {
+		height: 71px !important;
+		width: 540px !important;
+	}
+</style>
+
