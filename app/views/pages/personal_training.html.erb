@@ -1,18 +1,74 @@
- <% form_tag(:action => "pt_request") do %>
-<div id="main"> 
-	<div id="pages">
-		<div class="page">
+<div id="error_box">
+	<%= link_to image_tag( "icons/large_error.png",  :size => "24x24", 
+														:title => "Close",
+														:class => "delete_icon" ) %>
+</div>
+<%= javascript_include_tag "jquery.history", "jquery.form", "jquery.validate", "jquery.form.wizard-2.0.0-RC3-min" %>
+ <% form_tag({:action => "pt_request"}, :id => "pt_form") do %>			
+		<div id="pg1" class="page step">
 			<%= @page.body %><br/>
-			<a class="next_page">Personal Trainer Request Form</a>
 		</div><!-- /page -->
-			<%= render :partial => "pt_request" %>
-	</div><!-- /pages -->
-</div><!-- /main -->
-<a class="prev_page">Back</a> 
-<a class="next_page">Next</a>
+		<%= render :partial => "pt_request" %>
+		<div id="navigation"> 							
+			<input type="reset" value="Back" class="navigation_button" disabled="">
+			<input type="submit" value="Next" class="navigation_button">
+		</div>
 <% end -%>
 
 <style type="text/css" media="screen">
-	#main {height: 320px !important;}
 	.page {margin-bottom:80px !important; height: 315px !important;}
+	p {margin:0 0 0.5em;}
+	textarea {
+		height: 71px !important;
+		width: 540px !important;
+	}
+	#navigation{ 
+							display:inline;
+							left:539px;
+							position:relative;
+							top:-74px;
+	}
+	
+	#error_box {
+		background-color:#FDFCFA;
+		border: 1px solid black;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		left:200px;
+		position:absolute;
+		top: 25px;
+		padding:17px;
+		list-style: none;
+		}
+.delete_icon { 		
+		right:-12px;
+		top:-14px;
+		}
 </style>
+
+<script type="text/javascript" charset="utf-8">
+	$('#error_box').hide();
+	
+	$('.delete_icon').bind('click', function(event) {
+		$('#error_box').fadeOut();
+	});
+	$(function(){
+	      $("#pt_form").formwizard({ 
+	        //form wizard settings
+	        historyEnabled : true, 
+	        formPluginEnabled: true, 
+	        validationEnabled : true,
+					focusFirstInput: true,
+					textSubmit: 'Send request'
+					},
+	       {
+	         //validation settings
+					
+	       },
+	       {
+	         // form plugin settings
+	       }
+	      );
+	    });
+	
+</script>

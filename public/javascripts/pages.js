@@ -11,8 +11,7 @@ $(document).ready(function() {
 		keyboard: false,
 		prev: 'a.prev_page',
 		next: 'a.next_page',
-	}).navigator("#main_navi");
-
+	}).navigator({navi: "#main_navi"});
 
 
 // horizontal scrollables. each one is circular and has its own navigator instance 
@@ -64,6 +63,53 @@ $.get('/people/' + monqi_instructor, function(data){
 $('#conditions').bind('click', function(event) {
 	$(this).val('');
 });
+$('input[type="submit"]').attr('disabled','disabled');
 
+$('#agree').bind('click', function(event) {
+	if ($(this).attr('checked')) {
+		if ( $('input[type="submit"]').val() == 'Send request') {$('input[type="submit"]').removeAttr('disabled');} 
+	} else {
+	$('input[type="submit"]').attr('disabled','disabled');
+	}
+});
 
+	$('.phone').mask("(999) 999-9999");
+	
+	jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+	    phone_number = phone_number.replace(/\s+/g, ""); 
+		return this.optional(element) || phone_number.length > 9 &&
+			phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+	}, "invalid phone number");
+	
+	
+	$('#pt_form').validate({
+		errorLabelContainer: "#error_box",
+		   wrapper: "li",
+		   submitHandler: function() { alert("Submitted!")},
+		rules: {
+						first_name: { required: true, minlength: 2 },
+						last_name: { required: true, minlength: 2 },
+						email: { required: true, email: true },
+						gender: "required",
+						phone_number:{ required: true, phoneUS: true }
+		}, // End Rules		
+		messages: {
+		     		first_name:{
+						required: "First name required",
+		        minlength: jQuery.format("First name has to be at least {0} characters!")
+		     		},
+						last_name:{
+		       	required: "Last name required",
+		       	minlength: jQuery.format("Last name has to be at least {0} characters!")
+		     		},
+						email: {
+				   	required: "e-mail required",
+					 	email: "email address is invalid"
+						},
+						gender:{ required: "Gender required"},
+						phone_number:{ required: "phone number required" }
+		} // End Messages 
+	}); // End Validation
+	
+	
 }); // doc ready
