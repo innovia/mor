@@ -1,7 +1,7 @@
 <div id="error_box">
 	<%= link_to image_tag( "icons/large_error.png",  :size => "24x24", 
 														:title => "Close",
-														:class => "delete_icon" ) %>
+														:class => "closebox" ) %>
 </div>
 <%= javascript_include_tag "jquery.history", "jquery.form", "jquery.validate", "jquery.form.wizard-2.0.0-RC3-min" %>
  <% form_tag({:action => "pt_request"}, :id => "pt_form") do %>			
@@ -34,24 +34,34 @@
 		border: 1px solid black;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
-		left:200px;
+		left:157px;
 		position:absolute;
-		top: 25px;
+		top: -75px;
 		padding:17px;
 		list-style: none;
 		}
-.delete_icon { 		
+.closebox { 		
 		right:-12px;
 		top:-14px;
 		}
+		
+.error {
+	border-color: #FDFCFA;
+	border:2px solid #DDDDDD;
+	margin-bottom: 5px;
+	padding:0;
+	}
+
 </style>
 
 <script type="text/javascript" charset="utf-8">
 	$('#error_box').hide();
 	
-	$('.delete_icon').bind('click', function(event) {
-		$('#error_box').fadeOut();
+	$('.closebox').bind('click', function(event) {
+		$('#error_box').fadeOut('fast');
+		return false;
 	});
+	
 	$(function(){
 	      $("#pt_form").formwizard({ 
 	        //form wizard settings
@@ -71,4 +81,107 @@
 	      );
 	    });
 	
+			$('.phone').mask("(999) 999-9999");
+
+			jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+			    phone_number = phone_number.replace(/\s+/g, ""); 
+				return this.optional(element) || phone_number.length > 9 &&
+					phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+			}, "invalid phone number");
+
+			
+			jQuery.validator.addMethod("require_from_group", function(value, element, options) {
+			   //From the options array, find out what selector matches
+			   //our group of inputs and how many of them should be filled.
+			   numberRequired = options[0];
+			   selector = options[1];
+			   var commonParent = $(element).parents('form');
+			   var numberFilled = 0;       
+			   commonParent.find(selector).each(function(){
+			   //Look through fields matching our selector and total up
+			   //how many of them have been filled
+			     if ($(this).val()) {
+			       numberFilled++;
+			     }
+			   });
+			   if (numberFilled >= numberRequired) {
+			     //For imputs matching our selector, remove error class
+			     //from their text
+			     commonParent.find(selector).removeClass('error');
+			     //Also look for inserted error messages and mark them
+			     //with class 'checked'
+			     var remainingErrors = commonParent.find(selector)
+			     .next('label.error').not('.checked');
+			     remainingErrors.text("").addClass('checked');
+			     //Tell the Validate plugin that this test passed
+			     return true;
+			   }
+			 //The {0} in the next line is the 0th item in the options array
+			 }, jQuery.format("Please provide at least one phone number we can reach you at."));
+			
+			jQuery.validator.addClassRules("fillone", {
+			    require_from_group: [1,".fillone"]
+			});
+			
+			jQuery.validator.addMethod("atLeastOneDay", function(value, element) {
+			   var $module = $(el).parents('form');
+				        return $module.find('.day:checked').length;
+				
+			}, "You have to select at least one day");
+			
+			
+			$.validator.addClassRules('day', {
+			'atLeastOneDay' : true
+			});
+			
+			
+ 
+			$('#pt_form').validate({
+				   debug: true,
+					 errorLabelContainer: "#error_box",
+				   wrapper: "li",
+				   submitHandler: function() { alert("Submitted!")},
+				rules: {
+								first_name: { required: true, minlength: 2 },
+								last_name: { required: true, minlength: 2 },
+								email: { required: true, email: true },
+								gender: "required",
+								phone_number:{ phoneUS: true },
+								age: "number",
+								feet: {number: true},
+								inch:{number: true},
+								weight: {number: true},
+								conditions: "required",
+								goals: "required",
+								times_a_week: {required: true, number: true},
+								day: {atLeastOneDay: true}
+				}, // End Rules	
+				
+				groups: {
+									phone_numbers: "home_phone work_phone cell_phone",
+									days: "preferred_days_"
+				},
+				messages: {
+				     		first_name:{
+								required: "First name required",
+				        minlength: jQuery.format("First name has to be at least {0} characters!")
+				     		},
+								last_name:{
+				       	required: "Last name required",
+				       	minlength: jQuery.format("Last name has to be at least {0} characters!")
+				     		},
+								email: {
+						   	required: "e-mail required",
+							 	email: "email address is invalid"
+								},
+								gender:{ required: "Gender required"},
+								age: {number: "age must be a number"},
+								feet: {number: "feet must be a number"},
+								inch: {number: "inch must be a number"},
+								weight: {number: "weight must be a number"},
+								goals:{ required: "We need to know what are your goals so we can pair you with the right trainer."},
+								conditions: {required: "<p>It is very important we know if you're having any medical issues </p><p align='center'> if you don't have any just type none.</p>"},
+								times_a_week: {required: "how many times a week would you like to come in?", number: "how many times a week must be a number"}
+				} // End Messages 
+			}); // End Validation
 </script>

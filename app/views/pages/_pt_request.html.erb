@@ -13,19 +13,20 @@
 	    Female
 		</label>
 		<br/>
-<strong>Age:<span class="req">*</span></strong> <%= text_field_tag(:age, {}, :size => "2", :maxlength => "2") %>
-<strong>Height:<span class="req">*</span></strong> <%= text_field_tag(:feet, {}, :size => "1", :maxlength => "1") %> feet <%= text_field_tag(:inch, {}, :size => "2", :maxlength => "2") %> inch
-<strong>Weight:<span class="req">*</span></strong> <%= text_field_tag(:weight, {}, :size => "3", :maxlength => "3") %> lbs
+<strong>Age:</strong> <%= text_field_tag(:age, {}, :size => "2", :maxlength => "2") %>
+<strong>Height:</strong> <%= text_field_tag(:feet, {}, :size => "1", :maxlength => "1") %> feet <%= text_field_tag(:inch, {}, :size => "2", :maxlength => "2") %> inch
+<strong>Weight</strong> <%= text_field_tag(:weight, {}, :size => "3", :maxlength => "3") %> lbs
 </p>
 
 <p>
 <strong>Telephone #:</strong><br/>
-							 <strong>Home:</strong> <%= text_field_tag(:home_phone, {}, :size => "12",  :class => "phone") %>
-							 <strong>Work:</strong> <%= text_field_tag(:work_phone, {}, :size => "12", :class => "phone") %>
-							 <strong>Mobile:<span class="req">*</span></strong> <%= text_field_tag(:cell_phone, {}, :size => "12", :class => "phone") %><br/>
+							 <strong>Home:</strong> <%= text_field_tag(:home_phone, {}, :size => "12",  :class => "phone fillone") %>
+							 <strong>Work:</strong> <%= text_field_tag(:work_phone, {}, :size => "12", :class => "phone fillone") %>
+							 <strong>Mobile:<span class="req">*</span></strong> <%= text_field_tag(:cell_phone, {}, :size => "12", :class => "phone fillone") %><br/>
   				    <strong> e-mail:<span class="req">*</span></strong> <%= text_field_tag(:email) %>
 </p>
 <p>
+	<strong>Medical conditions, medications, allergies:</strong><span class="req">*</span><br/>
 	<%= text_area_tag(:conditions, "list any medical problems or medications.", :rows => 3, :id => "conditions") %>
 </p>
 </div> <!-- /page -->
@@ -38,13 +39,13 @@
 		<br/>
 		<strong>how many times a week:</strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
 	<strong>	preferred days:<span class="req">*</span></strong>
-		<%= check_box_tag('preferred_days[]','Mon') -%> Mon
-	 	<%= check_box_tag('preferred_days[]','Tue') -%> Tue
-	 	<%= check_box_tag('preferred_days[]','Wed') -%> Wed
-	 	<%= check_box_tag('preferred_days[]','Thu') -%> Thu
-	 	<%= check_box_tag('preferred_days[]','Fri') -%> Fri
-	 	<%= check_box_tag('preferred_days[]','Sat') -%> Sat
-		<%= check_box_tag('preferred_days[]','Sun') -%> Sun
+		<%= check_box_tag('preferred_days[]','Mon', :class => "days") -%> Mon
+	 	<%= check_box_tag('preferred_days[]','Tue', :class => "days") -%> Tue
+	 	<%= check_box_tag('preferred_days[]','Wed', :class => "days") -%> Wed
+	 	<%= check_box_tag('preferred_days[]','Thu', :class => "days") -%> Thu
+	 	<%= check_box_tag('preferred_days[]','Fri', :class => "days") -%> Fri
+	 	<%= check_box_tag('preferred_days[]','Sat', :class => "days") -%> Sat
+		<%= check_box_tag('preferred_days[]','Sun', :class => "days") -%> Sun
 		
 		<br/>	<br/>
 		<strong>How long would you like the session:<span class="req">*</span></strong> 	
@@ -71,5 +72,4 @@
 <p>
 	<%= check_box_tag('agree') -%><strong> Yes I agree<span class="req">*</span></strong>
 </p>
-	<p><%= submit_tag "Send request", :disable_with => 'Sending Request...' %></p>
 </div><!-- /page -->

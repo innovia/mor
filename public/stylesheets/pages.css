@@ -201,8 +201,9 @@ body {
 		margin-right: 17px;
 	}
 
-	.delete_icon {
+	.delete_icon, .closebox {
 	 position: absolute;
+	 z-index: 9999;
 	 right: -6px;
 	 top: -8px;
 	 cursor: pointer;
