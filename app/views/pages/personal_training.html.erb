@@ -3,7 +3,7 @@
 														:title => "Close",
 														:class => "closebox" ) %>
 </div>
-<%= javascript_include_tag "jquery.history", "jquery.form", "jquery.validate", "jquery.form.wizard-2.0.0-RC3-min" %>
+<%= javascript_include_tag "jquery.history", "jquery.form", "jquery.validate", "jquery.form.wizard-2.0.0-RC3-min", "jquery.metadata" %>
  <% form_tag({:action => "pt_request"}, :id => "pt_form") do %>			
 		<div id="pg1" class="page step">
 			<%= @page.body %><br/>
@@ -24,9 +24,8 @@
 	}
 	#navigation{ 
 							display:inline;
-							left:539px;
-							position:relative;
-							top:-74px;
+							float: right;
+							margin-top:-72px;
 	}
 	
 	#error_box {
@@ -122,22 +121,12 @@
 			jQuery.validator.addClassRules("fillone", {
 			    require_from_group: [1,".fillone"]
 			});
-			
-			jQuery.validator.addMethod("atLeastOneDay", function(value, element) {
-			   var $module = $(el).parents('form');
-				        return $module.find('.day:checked').length;
-				
-			}, "You have to select at least one day");
-			
-			
-			$.validator.addClassRules('day', {
-			'atLeastOneDay' : true
-			});
-			
-			
  
+			$.metadata.setType("attr", "validate");
+	
 			$('#pt_form').validate({
 				   debug: true,
+					 onkeyup: false,
 					 errorLabelContainer: "#error_box",
 				   wrapper: "li",
 				   submitHandler: function() { alert("Submitted!")},
@@ -146,20 +135,18 @@
 								last_name: { required: true, minlength: 2 },
 								email: { required: true, email: true },
 								gender: "required",
-								phone_number:{ phoneUS: true },
+								phone_numbers:{ phoneUS: true },
 								age: "number",
 								feet: {number: true},
 								inch:{number: true},
 								weight: {number: true},
 								conditions: "required",
 								goals: "required",
-								times_a_week: {required: true, number: true},
-								day: {atLeastOneDay: true}
+								times_a_week: {required: true, number: true}
 				}, // End Rules	
 				
 				groups: {
-									phone_numbers: "home_phone work_phone cell_phone",
-									days: "preferred_days_"
+									phone_numbers: "home_phone work_phone cell_phone"
 				},
 				messages: {
 				     		first_name:{
@@ -181,7 +168,7 @@
 								weight: {number: "weight must be a number"},
 								goals:{ required: "We need to know what are your goals so we can pair you with the right trainer."},
 								conditions: {required: "<p>It is very important we know if you're having any medical issues </p><p align='center'> if you don't have any just type none.</p>"},
-								times_a_week: {required: "how many times a week would you like to come in?", number: "how many times a week must be a number"}
+								times_a_week: {required: "how many times a week would you like to come in?", number: "how many times a week must be a number"},
 				} // End Messages 
 			}); // End Validation
 </script>

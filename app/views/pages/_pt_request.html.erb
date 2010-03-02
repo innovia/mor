@@ -19,15 +19,15 @@
 </p>
 
 <p>
-<strong>Telephone #:</strong><br/>
+<strong>Telephone #:</strong><span class="req">*</span><br/>
 							 <strong>Home:</strong> <%= text_field_tag(:home_phone, {}, :size => "12",  :class => "phone fillone") %>
 							 <strong>Work:</strong> <%= text_field_tag(:work_phone, {}, :size => "12", :class => "phone fillone") %>
-							 <strong>Mobile:<span class="req">*</span></strong> <%= text_field_tag(:cell_phone, {}, :size => "12", :class => "phone fillone") %><br/>
+							 <strong>Mobile:</strong> <%= text_field_tag(:cell_phone, {}, :size => "12", :class => "phone fillone") %><br/>
   				    <strong> e-mail:<span class="req">*</span></strong> <%= text_field_tag(:email) %>
 </p>
 <p>
 	<strong>Medical conditions, medications, allergies:</strong><span class="req">*</span><br/>
-	<%= text_area_tag(:conditions, "list any medical problems or medications.", :rows => 3, :id => "conditions") %>
+	<%= text_area_tag(:conditions,{} ,:rows => 3, :id => "conditions") %>
 </p>
 </div> <!-- /page -->
 
@@ -39,14 +39,15 @@
 		<br/>
 		<strong>how many times a week:</strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
 	<strong>	preferred days:<span class="req">*</span></strong>
-		<%= check_box_tag('preferred_days[]','Mon', :class => "days") -%> Mon
-	 	<%= check_box_tag('preferred_days[]','Tue', :class => "days") -%> Tue
-	 	<%= check_box_tag('preferred_days[]','Wed', :class => "days") -%> Wed
-	 	<%= check_box_tag('preferred_days[]','Thu', :class => "days") -%> Thu
-	 	<%= check_box_tag('preferred_days[]','Fri', :class => "days") -%> Fri
-	 	<%= check_box_tag('preferred_days[]','Sat', :class => "days") -%> Sat
-		<%= check_box_tag('preferred_days[]','Sun', :class => "days") -%> Sun
-		
+		<%= check_box_tag('preferred_days[]','Mon',false, :validate => "required:true") -%> Mon
+	 	<%= check_box_tag('preferred_days[]','Tue',false) -%> Tue
+	 	<%= check_box_tag('preferred_days[]','Wed',false) -%> Wed
+	 	<%= check_box_tag('preferred_days[]','Thu',false) -%> Thu
+	 	<%= check_box_tag('preferred_days[]','Fri',false) -%> Fri
+	 	<%= check_box_tag('preferred_days[]','Sat',false) -%> Sat
+		<%= check_box_tag('preferred_days[]','Sun',false) -%> Sun
+		<br/>
+		<label for="preferred_days[]" class="error">Please select at least one day of the week.</label>
 		<br/>	<br/>
 		<strong>How long would you like the session:<span class="req">*</span></strong> 	
 		<%= check_box_tag('session_duration[]','45 min') -%> 45 Minutes
@@ -70,6 +71,8 @@
 24-hour cancellation policy:  If you must change or cancel a scheduled appointment, please call your trainer directly to cancel at least 24-hours prior to your session or you will be charged for the session.
 </p>
 <p>
-	<%= check_box_tag('agree') -%><strong> Yes I agree<span class="req">*</span></strong>
+	<%= check_box_tag('agree',{} ,false, :validate => "required:true") -%><strong> Yes I agree<span class="req">*</span></strong>
+	<br/>
+	<label for="agree" class="error">You must agree to the cancelation policy, if you want to sumbit the request</label>
 </p>
 </div><!-- /page -->

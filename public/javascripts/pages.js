@@ -60,9 +60,8 @@ $.get('/people/' + monqi_instructor, function(data){
 });
 
 
-$('#conditions').bind('click', function(event) {
-	$(this).val('');
-});
+
+
 $('input[type="submit"]').attr('disabled','disabled');
 
 $('#agree').bind('click', function(event) {
