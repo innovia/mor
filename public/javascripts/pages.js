@@ -57,14 +57,7 @@ $.get('/people/' + monqi_instructor, function(data){
 }, 'script');
 });
 
-$('input[type="submit"]').attr('disabled','disabled');
 
-$('#agree').bind('click', function(event) {
-	if ($(this).attr('checked')) {
-		if ( $('input[type="submit"]').val() == 'Send request') {$('input[type="submit"]').removeAttr('disabled');} 
-	} else {
-	$('input[type="submit"]').attr('disabled','disabled');
-	}
-});
+
 
 }); // doc ready
