@@ -11,7 +11,7 @@ $(document).ready(function() {
 		keyboard: false,
 		prev: 'a.prev_page',
 		next: 'a.next_page'
-	}).navigator("#main_navi");
+	}).navigator(".main_navi");
 
 var horizontal = $(".scrollable").scrollable({size: 1, clickable: false, prev: 'a.prev_horizontal', next: 'a.next_horizontal'}).navigator(".navi"); 
 

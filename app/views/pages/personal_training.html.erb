@@ -4,7 +4,7 @@
 														:class => "closebox" ) %>
 </div>
 <%= javascript_include_tag "jquery.history", "jquery.form", "jquery.validate", "jquery.form.wizard-2.0.0-RC3-min", "jquery.metadata" %>
- <% form_tag({:action => "pt_request"}) do %>			
+ <% form_tag({:action => "pt_request"}, :id => "pt_form") do %>			
 		<div id="pg1" class="page step">
 			<%= @page.body %><br/>
 		</div><!-- /page -->
@@ -25,7 +25,7 @@
 	#navigation{ 
 							display:inline;
 							float: right;
-							margin-top:-72px;
+							margin-top:-60px;
 	}
 	
 	#error_box {

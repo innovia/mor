@@ -30,11 +30,11 @@ body {
 								}
 
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}
-#home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 185px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
+#home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 162px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
 #home:hover {background-position: 0 -194px;}
 
 
-#menu { margin-top: -139px; margin-left: 219px; padding: 0;}
+#menu { margin-top: -118px; margin-left: 219px; padding: 0;}
 #menu li { float: left;}
 #menu li a {
 						cursor: pointer;
@@ -99,7 +99,7 @@ body {
  	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	background: #FDFCFA;
-	height:360px;
+	height:378px;
 	padding:15px;
 	margin-left:262px;
 	z-index: 999;
@@ -226,12 +226,11 @@ body {
 		padding: 0;
 	}
 
-	#main_navi li { float: left; 
-									height: 87px;
-									line-height: 87px;
-								}
+	#main_navi li { float: left; display:inline;}
 	
 	#main_navi li a {background: url(/images/classes_icons.png) no-repeat; 
+										height: 87px;
+										width: 178px;
 										cursor:pointer;
 										overflow: hidden;
 										display: block;										
@@ -252,25 +251,44 @@ body {
 	#main_navi li.active  a#flex {background-position:-353px -246px; width: 230px; height: 106px;}
 
 
+	#main_navi_rates {
+		list-style: none;
+		margin-left:30px;
+		margin-top:-36px;
+	}
 
-
-	#main_navi li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px !important;}
+	#main_navi_rates li {
+		float: left;
+		height:65px !important;
+		line-height: 65px;
+	}
 	
-	#main_navi li a#group 	 {background-position: 0px 0px; width: 82px!important;}
-	#main_navi li a#gym			 {background-position: -112px 0px;  width:75px!important;}
-	#main_navi li a#personal {background-position: -216px 0px; width:151px!important;}
-	#main_navi li a#unlimited{background-position: -389px 0px; width: 166px!important;}
+		#main_navi_rates li a {
+		cursor: pointer;
+		display:block;
+		background:transparent url(/images/rates_icons.png) no-repeat scroll 0 0;
+		overflow: hidden;  
+		text-decoration: none !important;
+		text-indent: -9999px;
+		}
 
-
-	#main_navi li a#group:hover  	 {background-position: 0px -70px; width: 82px!important;}
-	#main_navi li a#gym:hover 			 {background-position: -112px -70px;  width:75px!important;}
-	#main_navi li a#personal:hover  {background-position: -216px -70px; width:151px!important;}
-	#main_navi li a#unlimited:hover {background-position: -389px -70px; width: 166px!important;}
+	#main_navi_rates li a#home_rates {background: url(/images/icons/home_small.png) no-repeat; width: 48px !important;}
 	
-	#main_navi li.active a#group 	 {background-position: 0px -164px; width: 82px!important;}
-	#main_navi li.active a#gym			 {background-position: -112px -164px;  width:75px!important;}
-	#main_navi li.active a#personal {background-position: -216px -164px; width:151px!important;}
-	#main_navi li.active a#unlimited{background-position: -389px -164px; width: 166px!important;}
+	#main_navi_rates li a#group 	 {background-position: 0px 0px; width: 82px!important;}
+	#main_navi_rates li a#gym			 {background-position: -112px 0px;  width:75px!important;}
+	#main_navi_rates li a#personal {background-position: -216px 0px; width:151px!important;}
+	#main_navi_rates li a#unlimited{background-position: -389px 0px; width: 166px!important;}
+
+
+	#main_navi_rates li a#group:hover  	 {background-position: 0px -70px; width: 82px!important;}
+	#main_navi_rates li a#gym:hover 			 {background-position: -112px -70px;  width:75px!important;}
+	#main_navi_rates li a#personal:hover  {background-position: -216px -70px; width:151px!important;}
+	#main_navi_rates li a#unlimited:hover {background-position: -389px -70px; width: 166px!important;}
+	
+	#main_navi_rates li.active a#group 	 {background-position: 0px -164px; width: 82px!important;}
+	#main_navi_rates li.active a#gym			 {background-position: -112px -164px;  width:75px!important;}
+	#main_navi_rates li.active a#personal {background-position: -216px -164px; width:151px!important;}
+	#main_navi_rates li.active a#unlimited{background-position: -389px -164px; width: 166px!important;}
 	
 
 	#main { 
@@ -301,7 +319,6 @@ body {
 		width:610px;
 		height:245px;
 		margin-bottom: 40px;
-		*margin-top: 60px;
 	}
 
 	/* root element for horizontal scrollables this element stay still while scrolling*/ 
