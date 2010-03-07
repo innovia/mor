@@ -8,12 +8,6 @@ $('.closebox').bind('click', function(event) {
 	$('.phone').mask("(999) 999-9999");
 	$.metadata.setType("attr", "validate");
 
-//$('#start_date').datepicker();
-
-$.validator.setDefaults({
-	submitHandler: function() { alert("submitted!"); }
-});
-
 	jQuery.validator.addMethod("require_from_group", function(value, element, options) {
 	   //From the options array, find out what selector matches
 	   //our group of inputs and how many of them should be filled.

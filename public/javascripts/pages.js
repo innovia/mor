@@ -59,5 +59,4 @@ $.get('/people/' + monqi_instructor, function(data){
 
 
 
-
 }); // doc ready
