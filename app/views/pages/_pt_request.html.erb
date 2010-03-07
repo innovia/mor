@@ -4,7 +4,7 @@
 <strong>Last name:<span class="req">*</span></strong><%= text_field_tag(:last_name) %>
 <p>
 		<label class="form male">
-			Gender:
+			Gender:<span class="req">*</span></strong>
 	    <input type="radio" id="gender_male" name="gender" value="male" />
 	    Male
 		</label>
@@ -14,8 +14,8 @@
 		</label>
 		<br/>
 <strong>Age:</strong> <%= text_field_tag(:age, {}, :size => "2", :maxlength => "2") %>
-<strong>Height:</strong> <%= text_field_tag(:feet, {}, :size => "1", :maxlength => "1") %> feet <%= text_field_tag(:inch, {}, :size => "2", :maxlength => "2") %> inch
-<strong>Weight</strong> <%= text_field_tag(:weight, {}, :size => "3", :maxlength => "3") %> lbs
+<strong>Height:</strong> <%= text_field_tag(:feet, {}, :size => "1", :maxlength => "1") %> <strong>feet</strong> <%= text_field_tag(:inch, {}, :size => "2", :maxlength => "2") %> <strong>inch</strong>
+<strong>Weight</strong> <%= text_field_tag(:weight, {}, :size => "3", :maxlength => "3") %> <strong>lbs</strong>
 </p>
 
 <p>
@@ -37,9 +37,9 @@
 		<p><strong>do you prefer a male or female trainer</strong> (if known, list trainer’s name)<br/>
 		<%= text_field_tag(:trainer_preference) %>
 		<br/>
-		<strong>how many times a week:</strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
+		<strong>how many times a week:</strong><span class="req">*</span></strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
 	<strong>	preferred days:<span class="req">*</span></strong>
-		<%= check_box_tag('preferred_days[]','Mon',false, :validate => "required:true") -%> Mon
+		<%= check_box_tag('preferred_days[]','Mon',false, :validate => "required: true") -%> Mon
 	 	<%= check_box_tag('preferred_days[]','Tue',false) -%> Tue
 	 	<%= check_box_tag('preferred_days[]','Wed',false) -%> Wed
 	 	<%= check_box_tag('preferred_days[]','Thu',false) -%> Thu
@@ -49,7 +49,7 @@
 		<br/>
 		<label for="preferred_days[]" class="error">Please select at least one day of the week.</label>
 		<br/>	<br/>
-		<strong>How long would you like the session:<span class="req">*</span></strong> 	
+		<strong>How long would you like the session:</strong> 	
 		<%= check_box_tag('session_duration[]','45 min') -%> 45 Minutes
 		<%= check_box_tag('session_duration[]','1 hour') -%> 1 Hour
 		</p>

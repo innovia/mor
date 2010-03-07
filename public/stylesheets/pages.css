@@ -226,16 +226,17 @@ body {
 		padding: 0;
 	}
 
-	#main_navi li { float: left; display: inline;}
+	#main_navi li { float: left; 
+									height: 87px;
+									line-height: 87px;
+								}
 	
 	#main_navi li a {background: url(/images/classes_icons.png) no-repeat; 
-										height: 87px;
-										width:178px;
 										cursor:pointer;
 										overflow: hidden;
-										display: block;
-										text-indent: -9999px;
+										display: block;										
 										text-decoration: none !important;
+										text-indent: -9999px;
 										}
 
 	#main_navi li a#yoga {background-position: 0px 0px;}
@@ -300,6 +301,7 @@ body {
 		width:610px;
 		height:245px;
 		margin-bottom: 40px;
+		*margin-top: 60px;
 	}
 
 	/* root element for horizontal scrollables this element stay still while scrolling*/ 

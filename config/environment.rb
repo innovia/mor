@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
     config.gem 'searchlogic'
     config.gem 'will_paginate'
     config.gem "vpim"
-    config.gem "giraffesoft-resource_controller", :lib => "resource_controller", :version => '>= 0.6.5', :source => 'http://gems.github.com'
+    config.gem "giraffesoft-resource_controller", :lib => "resource_controller", :source => 'http://gems.github.com'
     config.gem "paperclip"
     config.gem 'haml'
         
