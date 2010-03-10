@@ -470,3 +470,6 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;
 	float:right;
 	width:47%;
 }
+
+a {text-decoration: none !important; color: #F66818 !important; font: 115% !important;}
+a:hover {color: red !important; font-weight: bold;}
