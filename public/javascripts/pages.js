@@ -47,14 +47,12 @@ $('.more_info').bind('click', function(event) {
 
 $('.staff_links').bind('click', function(event) {	
  monqi_api = $('#overlay').overlay({effect: 'apple', left: 10, top:170, api: true});
+ if (monqi_api.isOpened()){monqi_api.close();}
 
-if (monqi_api.isOpened()){monqi_api.close()}
-
-var monqi_instructor = $(this).attr("data-instructor");
-$.get('/people/' + monqi_instructor, function(data){
-	$('#overlay').html(data);
-	monqi_api.load();
-}, 'script');
+	var monqi_instructor = $(this).attr("data-instructor");
+	$.get("/people/" + monqi_instructor, function(data){
+		$('#overlay').html(data);
+		monqi_api.load(); }, 'script');
 });
 
 

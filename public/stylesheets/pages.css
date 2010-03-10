@@ -319,7 +319,7 @@ body {
 		width:610px;
 		height:245px;
 		margin-bottom: 40px;
-	}
+		}
 
 	/* root element for horizontal scrollables this element stay still while scrolling*/ 
 	.scrollable {
@@ -386,10 +386,11 @@ body {
 		.apple_overlay {
 			display:none;
 			background-image:url(/images/overlay/transparent.png);
-			width:375px;
 			padding:35px;	
 			font-size:11px;
 			color: #FDFCFA ;
+			width: 398px;
+			height: 340px;
 		}
 
 		.apple_overlay h3{ color: #FDFCFA;}
@@ -401,7 +402,6 @@ body {
 			cursor:pointer;
 			height:35px;
 			width:35px;
-			
 		}
 
 		.req {

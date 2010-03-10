@@ -1,5 +1,5 @@
 class PeopleController < ResourceController::Base
-  before_filter :require_user, :require_staff
+  before_filter :require_user, :require_staff, :except => 'show'
   
   def index 
      @role = Role.find(params[:role_id])

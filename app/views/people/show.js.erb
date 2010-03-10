@@ -3,18 +3,22 @@
 		border:1px solid white;
 		height:250px;
 		overflow:auto;
-		padding-left:10px;
-		position:absolute;
-		width:370px;
+		padding: 20px 10px 0px 10px;
+		position: relative;
+		width: 370px;
+		font-size: 16px;
+		line-height: 1.5em;
 	}
 	.image_bio {
+		width: 150px;
+		height: 150px;
 		float: left;
-		padding: 5px;
+		padding: 0px 30px 10px 20px;
 	}
 </style>
 	<div class="close"></div>
-		<h3><%= @person.full_name%></h3>
-				<div class="bio">
+		<h3 align="left"><%= @person.full_name%></h3>
+				<div class="bio" align="left">
 				<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
 				<%= @person.notes %>
 				</div>

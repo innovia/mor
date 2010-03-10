@@ -41,13 +41,10 @@ $('.closebox').bind('click', function(event) {
 	    require_from_group: [1,".fillone"]
 	});
 
-	
-
 $(function(){
 	$("#pt_form").formwizard({ 
   	 //form wizard settings
       historyEnabled : true, 
-      formPluginEnabled: true, 
       validationEnabled: true,
 			focusFirstInput: true,
 			textSubmit: 'Send request'
@@ -93,7 +90,5 @@ $(function(){
 								conditions: {required: "<p>It is very important for us to know if you're having any medical issues </p><p align='center'> if you don't have any just type none.</p>"},
 								times_a_week: {required: "how many times a week would you like to come in?", number: "how many times a week must be a number"}	
 			} // End Messages
-	},{
-     // form plugin settings
   });
 });
