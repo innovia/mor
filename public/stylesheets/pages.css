@@ -459,3 +459,14 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;
 	position:relative;
 	right:438px;
 }
+
+#instructors_staff_list{
+	width: 50%;
+	float: left;
+	border-right:1px solid #999999;
+}
+
+#pt_staff_list {
+	float:right;
+	width:47%;
+}
