@@ -45,7 +45,7 @@
 				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
 			<% end -%>
 
-			<% unless @page.title == 'rates' or @page.title == 'personal_training' or @page.title == 'staff' %>
+			<% unless @page.title == 'rates' or @page.title == 'personal_training' or @page.title == 'staff' or @page.title == 'contact_us' %>
 				<%= @page.body %>
 			<% end -%>
 			

@@ -1,0 +1,29 @@
+<div class="left append-1">
+	<label>First Name: <span class="req">*</span></label><br/>
+	<%= text_field_tag :first_name,{}, :size => 18 %>
+</div>
+
+<div class="left append-1">
+<label>Last Name: <span class="req">*</span></label><br/>
+<%= text_field_tag :last_name,{}, :size => 18 %>
+</div>	
+	
+<div class="left">
+<strong>e-mail</strong><span class="req">*</span><br/>
+<%= text_field_tag :email, {}, :size => 18 %>
+</div>
+
+<div class="clear">
+<br/>
+<label>Subject:<span class="req">*</span></label>
+<%= text_field_tag :subject , {}, :size => 48 %>
+</div>
+
+<br/>
+<strong>Message:</strong><br/> <%= text_area_tag :body %>
+<%= submit_tag	"contact us", :class => "submit_button" %>
+
+<style type="text/css" media="screen">
+	#body { height: 200px !important;}
+	.submit_button { margin-left: 145px;}
+</style>
