@@ -37,6 +37,8 @@ class PagesController < ApplicationController
   def staff
     @personal_trainers = Role.title_contains('personal').first.people
     @group_trainers = Role.title_contains('instructor').first.people - @personal_trainers
+    @instructor_role = Role.title_contains('instructor')
+    @pt_role = Role.title_contains('personal')
   end
   
   def preload_page

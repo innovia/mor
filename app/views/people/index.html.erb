@@ -10,13 +10,10 @@
 	    <th>First</th>
 	    <th>Middle</th>
 	    <th>Last</th>
-	    <th>Dob</th>
+	    <th>Date of birth</th>
 	    <th>Email</th>
-	    <th>Notes</th>
 			<th>Roles</th>
 			<th class="packages"></th>
-		<th class="address"></th>
-		<th class="phone"></th>
 		<th class="show"></th>
 		<th class="edit"></th>
 		<th class="delete"></th>
@@ -28,10 +25,9 @@
       <td><%=h person.middle_name %></td>
       <td><%=h person.last_name %></td>
       <td align="center"><%=h person.dob.strftime("%b %d %Y") unless person.dob.nil? %></td>
-      <td align="center">
-					<%=h person.email %>
+      <td align="left">
+					<%= mail_to(person.email) %>
 			</td>
-      <td><%=h person.notes %></td>
 			<td>	<% person.roles.each	do |role| %>
 						<%= link_to "#{role.title.capitalize.humanize}", person_roles_path(person), :class => "normal_link"%>
 						<% unless role == person.roles.last %>,<%- end -%>   
@@ -39,8 +35,6 @@
 			</td>
      
 	  <td align="center"><%= link_to "Packages", person_packages_path(person) %></td>
-	  <td align="center"><%= link_to "Address", person_address_url(person) %></td>
-	  <td align="center"><%= link_to "Phone Numbers", person_phone_numbers_path(person) %></td>
 	  <td align="center"><%=link_to 'Show', object_url(person) %></td>
     <td align="center"><%=link_to 'Edit', edit_object_url(person) %></td>
     <td align="center"><%=link_to 'Destroy', object_url(person), :confirm => 'Are you sure?', :method => :delete %></td>

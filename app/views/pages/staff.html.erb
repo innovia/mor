@@ -1,5 +1,9 @@
 <div id="instructors_staff_list">
-	<h4>Group Fitness Instructors</h4>
+	<h4>Group Fitness Instructors 
+		<% if admin? %>
+			- <%= link_to "Edit Instructors", role_people_path(@instructor_role) %>
+		<% end -%>
+	</h4>
 	<% @group_trainers.in_groups_of(15).each do |grp_chunk| %>
 		<ul class="left"> 
 			<% grp_chunk.each do |instructor| %>
@@ -13,7 +17,11 @@
 
 
 <div id="pt_staff_list">
-	<h4 class="clear">Personal Trainers</h4>
+	<h4 class="clear">Personal Trainers
+			<% if admin? %>
+				- <%= link_to "Edit Personal Trainers", role_people_path(@pt_role) %>
+			<% end -%>
+	</h4>
 <% @personal_trainers.in_groups_of(15).each do |grp_chunk| %>
 	<ul class="left"> 
 		<% grp_chunk.each do |personal| %>

@@ -10,8 +10,9 @@ class PeopleController < ResourceController::Base
   
   def show
     respond_to do |wants|
+      @person = Person.find(params[:id])    
+      wants.html {}
       wants.js {
-        @person = Person.find(params[:id])
          render  :layout => false
       }
       

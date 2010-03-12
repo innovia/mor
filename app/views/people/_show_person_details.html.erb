@@ -3,7 +3,7 @@
 <div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
 <% if @person.roles.empty? %>
 	<div class="warning">
-		<%= @person.full_name.capitalize %> does not have any roles and would not appear in the people list
+		<%= @person.full_name %> does not have any roles and would not appear in the people list
 	</div>
 <%- else -%>
 (<% @person.roles.each do |r| %>
@@ -11,6 +11,7 @@
 	<%= @person.roles.last == r ? ')' : ',' %>
 	<% end -%>
 <% end -%>
+<p><%= link_to "Show on Staff public page", staff_path %></p>
 <div id="personal_info">
 <p><strong>Birthday: </strong><%=h @person.dob.strftime("%B %d, %Y") unless @person.dob.nil? %></p>
 		
