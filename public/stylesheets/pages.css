@@ -20,8 +20,7 @@ body {
 						left: 183px;
 }
 
-#admin_nav li#edit_icon {background: transparent url(/images/edit.png) no-repeat; }
-#admin_nav li#back_end {background: transparent url(/images/house_go.png) no-repeat;}
+#admin_nav li { float: left;}
 #admin_nav li a {cursor: pointer;
 				 display:block;
 				 height: 48px;
@@ -29,6 +28,9 @@ body {
 				 text-indent: -9999px; 
 				 overflow: hidden;  
 								}
+#admin_nav li#edit_icon {background: transparent url(/images/edit.png) no-repeat; }
+#admin_nav li#back_end {background: transparent url(/images/back_end.png) no-repeat; margin-left: 30px;}
+
 
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}
 #home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 162px; background: transparent url(/images/Backgrounds/logo.png) no-repeat}
