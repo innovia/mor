@@ -9,6 +9,10 @@
 	<% end -%>
 <p>
 	<div id="navigation">
+		<p>
+		<li class="li_first"> <%= link_to image_tag("website.png", :size => "100x75") + "Front Public Pages", pages_path %></li>
+		</p>
+		<br/> <br/>
 		<li class="li_first"><%= link_to "Home", home_path %></li> 
 		<li><%= link_to "Classes", monqi_classes_path %></li> 
 		<% if manager? %>
