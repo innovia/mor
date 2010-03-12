@@ -17,8 +17,8 @@
 	}
 </style>
 	<div class="close"></div>
-		<h3 align="left"><%= @person.full_name%></h3>
-		<%= link_to image_tag("icons/user_edit.png") + "Edit Person", edit_person_path(@person) %>
+		<h3 align="left" class="left"><%= @person.full_name%></h3>
+		<%= link_to image_tag("icons/user_edit.png") + "Edit Person", edit_person_path(@person), :class => "right" %>
 				<div class="bio" align="left">
 				<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
 				<%= @person.notes %>
