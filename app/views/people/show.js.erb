@@ -10,17 +10,17 @@
 		line-height: 1.5em;
 	}
 	.image_bio {
-		width: 150px;
-		height: 150px;
 		float: left;
 		padding: 0px 30px 10px 20px;
 	}
 </style>
 	<div class="close"></div>
 		<h3 align="left" class="left"><%= @person.full_name%></h3>
-		<%= link_to image_tag("icons/user_edit.png") + "Edit Person", edit_person_path(@person), :class => "right" %>
+			<% if admin? %>
+			<%= link_to image_tag("icons/user_edit.png") + "Edit Person", edit_person_path(@person), :class => "right" %>
+			<% end -%>
 				<div class="bio" align="left">
-				<%= image_tag(@person.photo.url(:original), :class => 'image_bio')%>
+				<%= image_tag(@person.photo.url(:thumb), :class => 'image_bio')%>
 				<%= @person.notes %>
 				</div>
 	

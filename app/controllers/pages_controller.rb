@@ -35,8 +35,8 @@ class PagesController < ApplicationController
   end
   
   def staff
-    @personal_trainers = Role.title_contains('personal').first.people.ascend_by_first_name
-    @group_trainers = Role.title_contains('instructor').first.people.ascend_by_first_name - @personal_trainers
+    @personal_trainers = Role.title_contains('personal').first.people.ascend_by_last_name
+    @group_trainers = Role.title_contains('instructor').first.people.ascend_by_last_name - @personal_trainers
     @instructor_role = Role.title_contains('instructor')
     @pt_role = Role.title_contains('personal')
   end
