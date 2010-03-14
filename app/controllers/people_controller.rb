@@ -13,12 +13,11 @@ class PeopleController < ResourceController::Base
     
     respond_to do |wants|
       wants.html {
-        bday_pref =  @person.birthday_visibility
-          case 
-          	when bday_pref.include?("full") then bv =	"%B %d, %Y"
-          	when bday_pref.include?("only") then bv =	"%B %d"
-          	when bday_pref.include?("Don't") then bv = "%B %d"
-          	else "%B %d, %Y"
+        
+         bv = case @person.birthday_visibility
+          	when /full/ then bv =	"%B %d, %Y"
+          	when /only/ then bv = "%B %d"
+          	else ""
           end 
           
           @birthday = @person.dob.strftime(bv)
