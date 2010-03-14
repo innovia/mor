@@ -42,7 +42,13 @@ $('.date_picker').datepicker();
 </p>
 <p>
 <label class="desc" for="dob"> Birthday:</label>
-<br/> <%= f.text_field :dob, :class => "date_picker" %>
+<br/> <%= f.text_field :dob %>
+</p>
+
+<% @options = ["Show my full birthday in my profile.", "Show only month & day in my profile.", "Don't show my birthday in my profile."] %>
+<p>
+<br/> 
+<%= f.select(:birthday_visibility, @options) %>
 </p>
 
 <p><label class="desc" for="email"> email</label>

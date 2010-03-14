@@ -9,9 +9,20 @@ class PeopleController < ResourceController::Base
   end
   
   def show
+    @person = Person.find(params[:id])  
+    
     respond_to do |wants|
-      @person = Person.find(params[:id])    
-      wants.html {}
+      wants.html {
+        bday_pref =  @person.birthday_visibility
+          case 
+          	when bday_pref.include?("full") then bv =	"%B %d, %Y"
+          	when bday_pref.include?("only") then bv =	"%B %d"
+          	when bday_pref.include?("Don't") then bv = "%B %d"
+          	else "%B %d, %Y"
+          end 
+          
+          @birthday = @person.dob.strftime(bv)
+      }
       wants.js {
          render  :layout => false
       }

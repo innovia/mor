@@ -13,7 +13,9 @@
 <% end -%>
 <p><%= link_to "Show on Staff public page", staff_path %></p>
 <div id="personal_info">
-<p><strong>Birthday: </strong><%=h @person.dob.strftime("%B %d, %Y") unless @person.dob.nil? %></p>
+
+
+<p><strong>Birthday: </strong><%=h @birthday %></p>
 		
 <div id="address_info">
 <p><strong>Address: </strong> 
@@ -40,8 +42,8 @@
 </div>
 	
 <div id="personal_info_part2">
-<p><strong>Email:</strong><%=h @person.email %></p>
-<p><strong>Notes:</strong><%=h @person.notes %></p>
+<p><strong>Email:</strong><%=mail_to(@person.email) %></p>
+<p><strong>Notes:</strong><%= @person.notes %></p>
 </div>
 
 </div>

@@ -1,5 +1,11 @@
 $(document).ready(function() {
-				
+		
+		$("#person_dob").datepicker({
+																		changeYear: true,
+																		changeMonth: true,
+																		yearRange: '1900:2010'
+																	});
+			
 		style_buttons(); // Style buttons
 				
 		// Working Calendar scripts
