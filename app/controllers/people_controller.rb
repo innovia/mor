@@ -3,14 +3,13 @@ class PeopleController < ResourceController::Base
   
   def index 
      @role = Role.find(params[:role_id])
-     @people = @role.people
+     @people = @role.people.ascend_by_last_name 
    rescue ActiveRecord::RecordNotFound
-     @people = Person.all
+     @people = Person.order("last_name ASC")
   end
   
   def show
     @person = Person.find(params[:id])  
-    
     respond_to do |wants|
       wants.html {
         
@@ -20,7 +19,9 @@ class PeopleController < ResourceController::Base
           	else ""
           end 
           
-          @birthday = @person.dob.strftime(bv)
+          unless @person.dob.nil?
+            @birthday = @person.dob.strftime(bv)
+          end
       }
       wants.js {
          render  :layout => false
@@ -30,7 +31,8 @@ class PeopleController < ResourceController::Base
   end
   
   def edit
-    @person = Person.find(params[:id])
+    @person = Person.find(params[:id]) 
+    @person.dob.nil? ? "" : @person.dob.strftime("%m/%d/%Y")  
     @roles = @person.roles
   end
   

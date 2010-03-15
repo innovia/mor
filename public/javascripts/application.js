@@ -1,10 +1,6 @@
 $(document).ready(function() {
 		
-		$("#person_dob").datepicker({
-																		changeYear: true,
-																		changeMonth: true,
-																		yearRange: '1900:2010'
-																	});
+		$("#person_dob").mask("99/99/9999",{placeholder:" "});
 			
 		style_buttons(); // Style buttons
 				
@@ -95,9 +91,10 @@ function style_buttons(){
 		$("input:submit").hover(function(){ $(this).addClass("ui-state-hover");},
 														function(){ $(this).removeClass("ui-state-hover");});
 														
-		$("button").addClass("mq-button ui-state-default ui-corner-all");
-		$("button").hover(function(){ $(this).addClass("ui-state-hover");},
+		$("button, .a2button").addClass("mq-button ui-state-default ui-corner-all");
+		$("button, .a2button").hover(function(){ $(this).addClass("ui-state-hover");},
 														function(){ $(this).removeClass("ui-state-hover");});
+														
 }
 
 

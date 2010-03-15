@@ -36,6 +36,7 @@ body {
 background-color: #4B7399; /* #FDE */
 margin: 15px 100px;
 font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+font-size: 100%;
 }
 
 a:hover {
@@ -946,7 +947,7 @@ dd .footer{
     display: none; /* disabled tabs don't show up */
 }
 
-
+.ui-state-hover {color: #1D5987 !important;}
 button .mq-button{
 overflow:visible;
 width:auto;

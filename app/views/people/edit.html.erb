@@ -6,14 +6,7 @@
 <% form_for(:person, :url => object_url, :html => {:multipart => true,  :method => :put }) do |f| %>
  
  <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%=submit_tag "Update"%>
-  </p>
+    <%= submit_tag "Update", :class => "left"%>
+		<%= button_to 'cancel', collection_url, :class => "prepend-1" %>
 <% end %>
-
-<br/>
-
-<%= link_to 'Show', object_url %>
-|
-<%= link_to 'Back', collection_url %>
 </div>

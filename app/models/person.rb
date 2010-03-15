@@ -26,6 +26,7 @@ class Person < ActiveRecord::Base
   end
 
 
+
   
 # passing a user query to find names begins with that
 # search should only find people

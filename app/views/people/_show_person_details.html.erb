@@ -15,8 +15,10 @@
 <div id="personal_info">
 
 
-<p><strong>Birthday: </strong><%=h @birthday %></p>
-		
+<p>
+<% unless @birthday.blank? %>
+	<strong>Birthday:</strong><%=h @birthday %></p>
+<% end -%>
 <div id="address_info">
 <p><strong>Address: </strong> 
 			<%- if @person.address -%>

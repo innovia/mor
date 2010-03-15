@@ -1,5 +1,5 @@
 <%= render :partial => 'show_person_details' %>
 
-<%= link_to 'Edit', edit_object_url %>
-|
-<%= link_to 'Back', collection_url %>
+<p>
+<%= link_to "Edit #{@person.first_name.capitalize}'s Info", edit_object_url, :class => "a2button" %>
+<%= link_to 'Show All People', collection_url , :class => "prepend-1 a2button" %></p>
