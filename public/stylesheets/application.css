@@ -492,47 +492,10 @@ div.row span.formw {
   text-align: left;
   }
 
-.show {
-		background-image: url('/images/icons/information.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
 
-.edit{
-		background-image: url('/images/icons/page_edit.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
-
-.delete{
-		background-image: url('/images/icons/cross.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
-
-.packages{
-		background-image: url('/images/icons/package.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
-
-
-.phone{
-		background-image: url('/images/icons/phone.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
-
-.address{
-		background-image: url('/images/icons/house.png');
-		background-repeat: no-repeat;
-		background-position: center center;
-}
 
 .clock{
-		background-image: url('/images/clock.png');
-		background-repeat: no-repeat;
-		background-position: center center;
+		background: url('/images/clock.png')  no-repeat center center !important;
 }
 
 .attendees{
@@ -1045,3 +1008,15 @@ width:auto;
 	display: inline;
 	padding-right: 5px;
 }
+
+.roles_cell{ font-size: 75% !important;}
+
+
+
+
+
+/* Tables */
+
+tr.over {background: blue !important; font-weight: bold; color:#333;}
+td {border-bottom: 1px solid #ededed !important;}
+tbody tr td{ border-right: 0px !important;}

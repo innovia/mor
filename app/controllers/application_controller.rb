@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   
   helper_method :admin?, :manager?, :staff?, :member?, :today, :current_user_session, :current_user, :all_roles
   
-  
   def modalbox_prep
     @event = Event.find(params[:id])
     render :layout => false

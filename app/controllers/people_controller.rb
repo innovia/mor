@@ -12,16 +12,6 @@ class PeopleController < ResourceController::Base
     @person = Person.find(params[:id])  
     respond_to do |wants|
       wants.html {
-        
-         bv = case @person.birthday_visibility
-          	when /full/ then bv =	"%B %d, %Y"
-          	when /only/ then bv = "%B %d"
-          	else ""
-          end 
-          
-          unless @person.dob.nil?
-            @birthday = @person.dob.strftime(bv)
-          end
       }
       wants.js {
          render  :layout => false
@@ -33,13 +23,13 @@ class PeopleController < ResourceController::Base
   def edit
     @person = Person.find(params[:id]) 
     @person.dob.nil? ? "" : @person.dob.strftime("%m/%d/%Y")  
-    @roles = @person.roles
+    get_roles_and_bday_options
   end
   
   def new
     @person = Person.new
-    @roles = @person.roles
     @member_role = Role.find_by_title("member")
+    get_roles_and_bday_options
   end
     
   def create
@@ -60,11 +50,7 @@ class PeopleController < ResourceController::Base
   def update
     #if the next line return nil? set the role_ids to an empty array
     params[:person][:role_ids] ||= []
-    @person =  Person.find(params[:id])
-    unless params[:person][:dob].empty?
-      params[:person][:dob] = Date.parse(params[:person][:dob])
-    end
-    
+    @person =  Person.find(params[:id])  
     if @person.update_attributes(params[:person])
         flash[:notice] = "Successfully updated..."
         redirect_to :action => "show", :id => @person
@@ -78,5 +64,11 @@ class PeopleController < ResourceController::Base
     @person = Person.find(params[:id])
     render  :layout => false   
   end
-  
+
+private
+
+  def get_roles_and_bday_options
+    @roles = @person.roles
+    @bday_options = ["Show my full birthday in my profile.", "Show only month & day in my profile.", "Don't show my birthday in my profile."]
+  end
 end

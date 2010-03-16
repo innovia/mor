@@ -14,10 +14,9 @@
 <p><%= link_to "Show on Staff public page", staff_path %></p>
 <div id="personal_info">
 
-
 <p>
 <% unless @birthday.blank? %>
-	<strong>Birthday:</strong><%=h @birthday %></p>
+	<strong>Birthday:</strong><%=h set_birthday_visibility(@person) %></p>
 <% end -%>
 <div id="address_info">
 <p><strong>Address: </strong> 

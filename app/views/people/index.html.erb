@@ -5,7 +5,11 @@
 	<h2> People </h2>
 	<%- end -%>
 <% unless @people.empty? %>
-<table>
+
+Filter: <%= text_field_tag :filter %>
+
+<table class="tablesorter stripes">
+	<thead> 
 	<tr>
 	    <th>First</th>
 	    <th>Middle</th>
@@ -13,22 +17,23 @@
 	    <th>Date of birth</th>
 	    <th>Email</th>
 			<th>Roles</th>
-			<th class="packages"></th>
-		<th class="show"></th>
-		<th class="edit"></th>
-		<th class="delete"></th>
+			<th><%= image_tag('icons/package.png') %></th>
+		<th><%= image_tag('icons/information.png') %></th>
+		<th><%= image_tag('icons/page_edit.png') %></th>
+		<th><%= image_tag('icons/cross.png') %></th>
 	</tr>
-		
+	</thead>	
+	<tbody>
   <%- @people.each do |person|%>
-  <tr class=<%= cycle('odd', 'even')%> >
+  <tr>
       <td><%=h person.first_name %></td>
       <td><%=h person.middle_name %></td>
       <td><%=h person.last_name %></td>
-      <td align="center"><%=h person.dob.strftime("%b %d %Y") unless person.dob.nil? %></td>
+      <td align="center"><%=h set_birthday_visibility(person) %></td>
       <td align="left">
 					<%= mail_to(person.email) %>
 			</td>
-			<td>	<% person.roles.each	do |role| %>
+			<td class="roles_cell">	<% person.roles.each	do |role| %>
 						<%= link_to "#{role.title.capitalize.humanize}", person_roles_path(person), :class => "normal_link"%>
 						<% unless role == person.roles.last %>,<%- end -%>   
 						<%- end -%> 
@@ -40,6 +45,7 @@
     <td align="center"><%=link_to 'Destroy', object_url(person), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
+	</tbody>
 </table>
 <%- else -%>
   there's no one here

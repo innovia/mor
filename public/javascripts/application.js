@@ -1,7 +1,38 @@
 $(document).ready(function() {
 		
-		$("#person_dob").mask("99/99/9999",{placeholder:" "});
-			
+		$("#person_birthday_visibility").bind('change', function(event) {
+			switch($(this).val()){
+				case "Show only month & day in my profile.":
+				$('#person_dob_1i').hide();
+			 	break;
+				case "Don't show my birthday in my profile.":
+					$('#person_dob_1i').hide();
+					$('#person_dob_2i').hide();
+					$('#person_dob_3i').hide();
+				break;
+				default:
+					$('#person_dob_1i').show();
+					$('#person_dob_2i').show();
+					$('#person_dob_3i').show();
+			}
+		});
+		
+		$('table').tablesorter({ sortList: [[2,0]] }); 
+		
+		
+		$("table.stripes tr:even").addClass('alt');
+		
+		$('table.stripes tr').mouseover(function() {
+			$(this).addClass('over');}).mouseout(function() {
+				$(this).removeClass('over');
+		});
+		
+		theTable = $('table.stripes')
+		$("#filter").keyup(function() {
+		    $.uiTableFilter( theTable, this.value, "Last" );
+		  })
+		
+		
 		style_buttons(); // Style buttons
 				
 		// Working Calendar scripts

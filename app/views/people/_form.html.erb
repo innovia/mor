@@ -13,6 +13,7 @@ $('.date_picker').datepicker();
 	<span class="note">select all roles that apply</span>
 </label>	
 
+<%- if admin? -%>
 <% for role in Role.all() %>
 	<%# check_box_tag "name", "value of chkbox", :boolean %>
 	<% if @person.new_record? %> 
@@ -22,7 +23,7 @@ $('.date_picker').datepicker();
 	<%= role.title.capitalize.humanize %>
 <% end -%>
 </p>
-
+<% end -%>
 <p>
   <label class="desc" for="first_name"> First name
   	<span class="req">*</span>
@@ -42,14 +43,13 @@ $('.date_picker').datepicker();
 </p>
 <p>
 <label class="desc" for="dob"> Birthday:</label>
-<br/> <%= f.text_field :dob %> <span>mm/dd/yyyy</span>
+<p>
+<%= f.select(:birthday_visibility, @bday_options) %>
+</p>
+<br/> <%= f.date_select :dob,  :order => [:month, :day, :year ], :start_year => 1920,  :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' } %>
 </p>
 
-<% @options = ["Show my full birthday in my profile.", "Show only month & day in my profile.", "Don't show my birthday in my profile."] %>
-<p>
-<br/> 
-<%= f.select(:birthday_visibility, @options) %>
-</p>
+
 
 <p><label class="desc" for="email"> email</label>
   <%= f.text_field :email %>
