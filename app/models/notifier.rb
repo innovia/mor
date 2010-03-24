@@ -41,7 +41,7 @@ class Notifier < ActionMailer::Base
  def contact_us_form(params)
    @mailer = params
    from "#{params[:email]}"
-   recipients  "ami.mahloof@med.nyu.edu"
+   recipients  "info@monqifitness.com, ami.mahloof@gmail.com"
    subject     "Web contact us form ::: #{params[:subject]}"
    reply_to    "#{params[:email]}"
    sent_on     Time.now
