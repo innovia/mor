@@ -15,11 +15,6 @@ class PagesController < ApplicationController
     redirect_to :thank_you
   end
   
-  def contact_form
-    @contact = params
-    Notifier.deliver_contact_us_form(@contact)
-    redirect_to :thank_you
-  end
   
   def classes
     @yoga = MonqiClass.category('Yoga')
@@ -56,13 +51,20 @@ class PagesController < ApplicationController
   end
   
   def create
-    @page = Page.new(params[:page])
-    if @page.save
-      flash[:notice] = "Successfully created page."
-      redirect_to @page.title.to_sym
+      if  params[:page][:title] == "contact_us"
+      @contact = params
+      Notifier.deliver_contact_us_form(@contact)
+      flash[:notice] = "Sent"
+      redirect_to :thank_you
     else
-      render :action => 'new'
-    end
+      @page = Page.new(params[:page])
+      if @page.save
+        flash[:notice] = "Successfully created page."
+        redirect_to @page.title.to_sym
+      else
+        render :action => 'new'
+      end
+    end    
   end
   
   def edit

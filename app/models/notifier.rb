@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base  
-  default_url_options[:host] = "monqifitness.com:5000"  
+  default_url_options[:host] = "monqifitness.com"  
 
   def activation_instructions(user)
      subject       "Activation Instructions"
@@ -32,9 +32,19 @@ class Notifier < ActionMailer::Base
 
  def personal_training_online_request(params)
     @pt_req = params
-     subject     "Personal Training Online Request from #{params[:first_name]} #{params[:last_name]}"
      from        "#{params[:email]}"
+     subject     "Personal Training Online Request from #{params[:first_name]} #{params[:last_name]}"
      recipients  "info@monqifitness.com, ami.mahloof@gmail.com"
      sent_on     Time.now
  end
+   
+ def contact_us_form(params)
+   @mailer = params
+   from "#{params[:email]}"
+   recipients  "ami.mahloof@med.nyu.edu"
+   subject     "Web contact us form ::: #{params[:subject]}"
+   reply_to    "#{params[:email]}"
+   sent_on     Time.now
+ end
+ 
 end

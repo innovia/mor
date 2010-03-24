@@ -23,4 +23,12 @@ config.to_prepare do
   #    :login  => 'demo',
   #    :password => 'password'
   #  )
+  
+  # Email settings
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.med.nyu.edu",
+    :port => 25,
+    :domain => "monqifitness.com"
+  }
 end

@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
     config.gem "authlogic"
+    config.gem "twitterland"
     config.gem 'searchlogic'
     config.gem 'will_paginate'
     config.gem "vpim"
