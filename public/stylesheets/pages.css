@@ -474,5 +474,19 @@ ul#pages_navigator li a.prev_page { background-position: 0px -17px;
 	width:47%;
 }
 
-a {text-decoration: none !important; color: #F66818 !important; font: 115% !important;}
+a {text-decoration: none !important; color: brown !important; font-size: 115% !important;}
 a:hover {color: red !important; font-weight: bold;}
+
+#news_flash {
+	padding: 8px;
+	color:DimGray;
+	font-size:131%;
+	height:100px;
+	margin-left:405px;
+	position:relative;
+	text-align:left;
+	top:37px;
+	width:500px;
+}
+
+#news_flash a {text-decoration: none !important; color: #F66818 !important; font-size: 85% !important}

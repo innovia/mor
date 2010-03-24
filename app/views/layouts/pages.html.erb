@@ -38,15 +38,25 @@
 							<li id="back_end"><%= link_to "Back End Pages", home_path %></li>
 						</ul>
 					<% end -%>
+					<% if @page.title == 'index' %>
+							<div id="news_flash">
+								<% if admin? %>
+									<%= link_to image_tag("icons/application_form_edit.png") + "Edit News", news_flash_path %>
+								<% end -%>
+								<%= @news_flash %>
+							</div>
+					<% end -%>
 				</div>
 			</div> <!-- /menu_bar_and_logo -->
 
+			
+			
 		<div id="top_content_page" class="clear span-16 last">
 			<% unless @page.title == 'index' %>
 				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
 			<% end -%>
-
-			<% unless @page.title == 'rates' or @page.title == 'personal_training' or @page.title == 'staff' or @page.title == 'contact_us' %>
+			<% stripped_content_from_pages = ['rates', 'personal_training', 'staff', 'contact_us'] %>
+			<% unless stripped_content_from_pages.include?(@page.title)%>
 				<%= @page.body %>
 			<% end -%>
 			
@@ -54,7 +64,6 @@
 		</div>
 
 		<div id="address_bar" class="span-13">201 E67th St New York, NY 10065 - (212) 327-2170</div>
-		
 		
 		<div id="lower_corner_box">
 			<div id="gallery">

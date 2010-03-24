@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def index
     @page = Page.find_or_create_by_title(action_name)
     @picture = Picture.new 
+    @news_flash = Page.find_or_create_by_title('news_flash').body
   end
   
   def pt_request
