@@ -1020,3 +1020,6 @@ width:auto;
 tr.over {background: blue !important; font-weight: bold; color:#333;}
 td {border-bottom: 1px solid #ededed !important;}
 tbody tr td{ border-right: 0px !important;}
+
+
+#repeat_select { margin: 20px 0px 0px 154px;}

@@ -1,84 +1,34 @@
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-		if (<%= @classes.empty? %>) {
-			$('#no_classes').dialog({
-																bgiframe: true,
-																modal: true,
-																title: "Classes Required",
-																width: 500,
-																buttons: {
-																				'Create a class': function() {
-																					window.location.replace("<%= new_monqi_class_path %>");
-																				},
-																				Cancel: function() {
-																									$(this).dialog('close');
-																								}
-																}
-															});
-		} else {
-			$('#no_classes').hide();
-		};
-		
-		if (<%= @instructors.empty? %>) {
-			$('#no_instructors').dialog({
-																bgiframe: true,
-																modal: true,
-																title: "Instructor Required",
-																width: 500,
-																buttons: {
-																				'Assign Role': function() {
-																					window.location.replace("<%= people_path %>");
-																				},
-																				Cancel: function() {
-																									$(this).dialog('close');
-																								}
-																}
-															});
-		} else {
-				$('#no_instructors').hide();
-		};
-	});
-</script>
-
-<%= render :partial => "shared/init_yui_editor" %>
-<%= render :partial => "shared/call_yui_editor" %>
-
-<div id="no_classes">
-	There are no classes to schedule from. <br/> 
-	please create some classes
-</div>
-
-<div id="no_instructors">
-	There are no people with a role of an Instructor assigned.<br/>
-	please assign an instructor role to a person.
-</div>
-<p>
+<div>
 <%= f.hidden_field :calendar_id, :value  => "1" %>
  
  Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title", :prompt => 'Select a class') %>
 
- Level: <%= f.select(:level, { "Basic" => "Basics", "Open" => "Open"}, :prompt => 'select a level') %>
+ Level: <%= f.select(:level, { "Basic" => "Basics", "Open" => "Open"}, :prompt => 'Select a level') %>
 
  Instructor:	
-		<%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'select a instructor') %>
-</p>
-
-<%= render :partial => 'start_end_set', :locals => { :f => f }%>
-
-
-<p>
-  <label for="event_template_allday">All day:</label>
-  <%= f.check_box :allday, :id => "allday" %>
-</p>
-
-<%= render :partial => 'repeat' %>
+		<%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'Select an instructor') %>
+</div>
 <br/>
-<%= render :partial => 'custom_repeat', :locals => { :f => f }  %>
+<div id="start_end_set">
+	<span>
+		First class occurs on:
+		<%= text_field_tag("start_at", Date.today.strftime("%m/%d/%Y"), {:size => 8, :id => "start_date"}) %>
+		
+		<span id="time_pickers">
+		  <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
+			to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
+		</span>
+		<%= hidden_field_tag("end_at",  Date.today.strftime("%m/%d/%Y"), {:id => "end_date"})  %>
+		<span>
+			All day <%= f.check_box :allday, :id => "allday" %>
+		</span>
+		</span>
+</div>
 
-<%= render :partial => 'end_repeat', :locals => { :f => f } %>
-<br/>
-
-  <label for="event_template_notes">Notes:</label>
-  <p class="yui-skin-sam">
-	<%= f.text_area :notes, :id => "page_editor" %>
-	</p>
+<div id="repeat_select">
+ 	Repeats: <%= select(:event_template, :repeat, 
+					   [['Does not repeat', 'Does not repeat'],
+					   ['Every day', 'daily'], ['Every week', 'weekly'],[ 'Every month', 'monthly'], ['Every year',  'yearly'], 	
+					   ['Custom...', 'custom']], 		
+					   {:selected => 'Does not repeat'}) %>
+</div>
