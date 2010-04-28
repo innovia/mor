@@ -37,8 +37,30 @@
 <div id="repeat_indicator" style="display: none;"></div>
 
 <div id="interval_select" style="display: none;">
-	Repeat every: <%= f.text_field :interval, :size => 2, :value => "1" %>
+	<% @array = Array.new(30) {|i| 1+i} %>
+	Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
+	<br/><br/>
+	<div id="range" style="display:none;">
+		Range: 
+		<br/>
+		<p>
+		Starts: <%= text_field_tag(:start_clone, {}, {:disabled => "true", :size => 10}) %>
+		
+		<span id="end_repeat_block">
+				Ends: 
+					<%= radio_button_tag :on_date, :on_date %> Until 
+						<span id="on_date"> <%= f.text_field :until, :class => "date_picker", :size => 10 %> </span>
+				
+					<p id="repeat_end_after"><%= radio_button_tag :after, :after %> After
+						<span id="after">
+						<%= f.text_field :count ,:size => 2 %> Occurrences
+						</span>	</p>
+		</span>
+
+		</p>
+	</div>
 </div>
+
 
 
 <div id="custom_repeat"  class="repeat" style="display: none;">
@@ -49,8 +71,6 @@
 <%= render :partial => 'custom_weekly', :locals => { :f => f }  %>
 </div>
 
-<%= render :partial => 'end_repeat', :locals => { :f => f } %>
-<br/>
 
 <script type="text/javascript" charset="utf-8">
 	$('#event_template_monqi_class_id').combobox();

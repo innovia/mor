@@ -1031,13 +1031,14 @@ font-size:110%;
 padding:8px 6px;
 margin: 7px 0 0 159px;
 text-align:center;
-width:60px;
+width:200px;
 }
 
-#custom_repeat {
-	
-}
+#interval_select {margin:12px 0 0 154px;}
 
+#repeat_end_after{ margin-top:6px;
+									 padding-left:188px;
+}
 /* Time Picker */
 div.time-picker {
 	font: bold 0.8em  Segoe UI, Arial, sans-serif;

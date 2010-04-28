@@ -35,29 +35,53 @@ function repeat_options(){
 					$('#custom_repeat').hide();
 					$('#repeat_indicator').hide();
 					$('#interval_select').hide();
+					$('#event_template_interval').val('');
 					break;
 
-					case "custom": //Custom selected
+					case "Custom": //Custom selected
 					$('#repeat_indicator').html($(this).val()).show();
 					$('#custom_repeat').show();
 					$('#interval_select').hide();
 					break;
 
+					case "Daily":
+						trigger_repeat();
+						$('#start_clone').val($('#start_date').val());
+						$('#range').show();
+
+					break;
+					
 					default: // Every X selected
-					$('#repeat_indicator').html($(this).val()).show();
-					$('#custom_repeat').hide();
-					$('#interval_select').show();
+						trigger_repeat();
 					break;
 				} // end of switch
 	 }); // end of change function
 } // end of repeat_options
 
+function trigger_repeat() {
+	$('#repeat_indicator').html($('#event_template_repeat').val()).show();
+	$('#repeat_every_x').html($('#event_template_repeat :selected').text().replace('Every', '').trim());
+	$('#custom_repeat').hide();
+	$('#interval_select').show();
+};
+
+
 function end_repeat_options(){
 	
-	$('#interval').bind('change', function(event) {
+	$('#event_template_interval').bind('change', function() {
+		var val = $('#repeat_every_x'); 
 		
+		if ($('#event_template_interval :selected').val() > 1) {
+			// add 's' to day, week ,month year 
+	 		val.html(val.text().replace(val.text(), $('#event_template_repeat :selected').text().replace('Every', '').trim() + 's')); 
+			$('#repeat_indicator').html('Every ' + $('#event_template_interval :selected').val() + ' ' + val.html() );
+		} else {
+			val.html($('#event_template_repeat :selected').text().replace('Every', '').trim());
+			$('#repeat_indicator').html( $('#event_template_repeat :selected').val()); 
+		}
+		
+				
 	});
-	
 	
 	$('#end_repeat').bind('change', function() {
 		var val = $('#end_repeat').val();
