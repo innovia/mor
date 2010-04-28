@@ -1,3 +1,5 @@
+<%= javascript_include_tag "combobox", :cache => true %>
+		
 <div>
 <%= f.hidden_field :calendar_id, :value  => "1" %>
  
@@ -28,7 +30,29 @@
 <div id="repeat_select">
  	Repeats: <%= select(:event_template, :repeat, 
 					   [['Does not repeat', 'Does not repeat'],
-					   ['Every day', 'daily'], ['Every week', 'weekly'],[ 'Every month', 'monthly'], ['Every year',  'yearly'], 	
-					   ['Custom...', 'custom']], 		
+					   ['Every day', 'Daily'], ['Every week', 'Weekly'],[ 'Every month', 'Monthly'], ['Every year',  'Yearly'], 	
+					   ['Custom...', 'Custom']], 		
 					   {:selected => 'Does not repeat'}) %>
 </div>
+<div id="repeat_indicator" style="display: none;"></div>
+
+<div id="interval_select" style="display: none;">
+	Repeat every: <%= f.text_field :interval, :size => 2, :value => "1" %>
+</div>
+
+
+<div id="custom_repeat"  class="repeat" style="display: none;">
+	Frequency: 
+  	<%#= select_tag(:event_template, :freq, [ ['Daily', "daily"], ['Weekly', "weekly"], ['Monthly', "monthly"] ] %>
+	
+	
+<%= render :partial => 'custom_weekly', :locals => { :f => f }  %>
+</div>
+
+<%= render :partial => 'end_repeat', :locals => { :f => f } %>
+<br/>
+
+<script type="text/javascript" charset="utf-8">
+	$('#event_template_monqi_class_id').combobox();
+	$('#event_template_instructor_id').combobox();
+</script>

@@ -9,7 +9,7 @@ class EventTemplatesController < ResourceController::Base
     def new
         get_calendars
         get_instructors
-        get_monqi_classes
+        get_monqi_classes_names
         @event_template = EventTemplate.new
     end
     
@@ -27,7 +27,7 @@ class EventTemplatesController < ResourceController::Base
         else
           get_calendars
           get_instructors
-          get_monqi_classes
+          get_monqi_classes_names
           wants.html { render :action => "new" }
         end
       end
@@ -36,7 +36,7 @@ class EventTemplatesController < ResourceController::Base
     def edit
     get_calendars
     get_instructors
-    get_monqi_classes
+    get_monqi_classes_names
     get_event
   end
   
@@ -66,8 +66,8 @@ class EventTemplatesController < ResourceController::Base
     @event_template = EventTemplate.find(params[:id])
   end
   
-  def get_monqi_classes
-    @classes = MonqiClass.all
+  def get_monqi_classes_names
+    @classes = MonqiClass.all(:select => "id, title")
   end
     
   def delete_personal_training_session

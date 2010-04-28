@@ -1011,15 +1011,59 @@ width:auto;
 
 .roles_cell{ font-size: 75% !important;}
 
-
-
-
-
 /* Tables */
-
 tr.over {background: blue !important; font-weight: bold; color:#333;}
 td {border-bottom: 1px solid #ededed !important;}
 tbody tr td{ border-right: 0px !important;}
 
-
 #repeat_select { margin: 20px 0px 0px 154px;}
+.repeat {
+border-bottom:1px solid #333;
+}
+
+#repeat_indicator {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#B0D4B0 none repeat scroll 0 0;
+border:1px solid #737B73;
+font-size:110%;
+padding:8px 6px;
+margin: 7px 0 0 159px;
+text-align:center;
+width:60px;
+}
+
+#custom_repeat {
+	
+}
+
+/* Time Picker */
+div.time-picker {
+	font: bold 0.8em  Segoe UI, Arial, sans-serif;
+  position: absolute;
+  height: 200px;
+  width:4em; /* needed for IE */
+  overflow: auto;
+  background: #feeebd;
+  border: 1px solid #8e846b;
+  z-index: 99;
+	color: #383838;
+}
+div.time-picker-12hours {
+  width:6em; /* needed for IE */
+}
+
+div.time-picker ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+div.time-picker li {
+  padding: 1px;
+  cursor: pointer;
+}
+div.time-picker li.selected {
+  background: #316AC5;
+  color: #fff;
+}

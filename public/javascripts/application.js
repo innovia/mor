@@ -1,5 +1,9 @@
 $(document).ready(function() {
-		
+		$("Form").bind("keypress", function(e) {
+		  if (e.keyCode == 34) return false;
+		});
+
+
 		$("#person_birthday_visibility").bind('change', function(event) {
 			switch($(this).val()){
 				case "Show only month & day in my profile.":
@@ -35,7 +39,7 @@ $(document).ready(function() {
 		style_buttons(); // Style buttons
 				
 		date_navigation(); sub_instructor(); cancel_class_listner(); 
-		reinstate_class_listner(); members_auto_complete(); style_top_class('Gym Use'); 
+		reinstate_class_listner(); members_auto_complete(); 
 		
 		// event templates
 		repeat_options(); end_repeat_options(); frequency_options(); set_start_end_date_pickers();
@@ -130,12 +134,6 @@ function style_buttons(){
 
 // Working Calendar Scripts
 
-function style_top_class(classTitle){
-	if ($('#class_time').is(":contains('Gym')")) {
-	
-	}
-}
-
 // Date Selection - home page
 function date_navigation(){	
 		$('#prev_day').live('click', function() {
@@ -151,7 +149,7 @@ function date_navigation(){
 																			buttonImage: '/images/calendar.gif', 
 																			buttonImageOnly: true, 
 																			onSelect: function(){set_date_controls('popup_calendar')}
-																		}); // end of date picker
+	  }); // end of date picker
 		
 } // date navigation
 
@@ -265,10 +263,6 @@ function sub_instructor(){
 		// Act on the event
 	});
 }
-
-
-
-
 
 
 // Store Scripts
