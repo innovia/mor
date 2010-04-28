@@ -48,13 +48,13 @@
 		
 		<span id="end_repeat_block">
 				Ends: 
-					<%= radio_button_tag :on_date, :on_date %> Until 
-						<span id="on_date"> <%= f.text_field :until, :class => "date_picker", :size => 10 %> </span>
+					<%= radio_button_tag :end_repeat_radio, :on_date %> Until 
+						<span id="on_date"></span>
 				
-					<p id="repeat_end_after"><%= radio_button_tag :after, :after %> After
-						<span id="after">
-						<%= f.text_field :count ,:size => 2 %> Occurrences
-						</span>	</p>
+					<p id="repeat_end_after">
+						<%= radio_button_tag :end_repeat_radio, :after %> After
+						<span id="after"></span>	
+					</p>
 		</span>
 
 		</p>

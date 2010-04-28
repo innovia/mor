@@ -5,7 +5,7 @@ function	set_start_end_date_pickers(){
 	
 		$('#start_date').datepicker({
 			onSelect: function(){
-				$('#end_date').val($(this).val());
+				$('#start_clone').val($(this).val());
 			}
 		});	
 		
@@ -48,7 +48,26 @@ function repeat_options(){
 						trigger_repeat();
 						$('#start_clone').val($('#start_date').val());
 						$('#range').show();
-
+						$('#end_repeat_radio_on_date').bind('click', function() {
+							$('#on_date').html('<input type="text" size="10" name="event_template[until]" id="event_template_until" class="date_picker">');
+							$('.date_picker').datepicker({
+							    beforeShow: function(input, inst)
+							    {
+							        inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
+							    }
+							});
+							$('#event_template_until').focus();
+							
+						 	var d = 	$.datepicker.parseDate('mm/dd/yy', $('#start_date').val());
+							 	  d.setDate(d.getDate() + 30); // Add 30 days
+						      $('#event_template_until').datepicker('setDate', d);
+						  $('#repeat_indicator').html('Every ' + $('#event_template_interval :selected').val() + ' ' + $('#repeat_every_x').html() + ', Until ' + $.datepicker.parseDate('M d, YY', $('#event_template_until').val()))
+							$('#after').html('');
+						});
+						$('#end_repeat_radio_after').bind('click', function() {
+							$('#on_date').html('');
+							$('#after').html('<input type="text" size="2" name="event_template[count]" id="event_template_count"> Occurrences');
+						});
 					break;
 					
 					default: // Every X selected
