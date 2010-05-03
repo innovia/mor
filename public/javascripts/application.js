@@ -42,7 +42,7 @@ $(document).ready(function() {
 		reinstate_class_listner(); members_auto_complete(); 
 		
 		// event templates
-		repeat_options(); end_repeat_options(); frequency_options(); set_start_end_date_pickers();
+		repeat_options(); frequency_options(); set_start_end_date_pickers();
 		
 		// store scripts
 		add_to_cart();
