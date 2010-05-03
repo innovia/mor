@@ -41,9 +41,7 @@ $(document).ready(function() {
 		date_navigation(); sub_instructor(); cancel_class_listner(); 
 		reinstate_class_listner(); members_auto_complete(); 
 		
-		// event templates
-		repeat_options(); frequency_options(); set_start_end_date_pickers();
-		
+				
 		// store scripts
 		add_to_cart();
 		new_package_selector();

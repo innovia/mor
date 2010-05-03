@@ -7,10 +7,10 @@
 
  Level: <%= f.select(:level, { "Basic" => "Basics", "Open" => "Open"}, :prompt => 'Select a level') %>
 
- Instructor:	
-		<%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'Select an instructor') %>
+ Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'Select an instructor') %>
 </div>
 <br/>
+
 <div id="start_end_set">
 	<span>
 		First class occurs on:
@@ -24,16 +24,17 @@
 		<span>
 			All day <%= f.check_box :allday, :id => "allday" %>
 		</span>
-		</span>
+  </span>
 </div>
 
 <div id="repeat_select">
  	Repeats: <%= select(:event_template, :repeat, 
 					   [['Does not repeat', 'Does not repeat'],
-					   ['Every day', 'Daily'], ['Every week', 'Weekly'],[ 'Every month', 'Monthly'], ['Every year',  'Yearly'], 	
+					   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly'], 	
 					   ['Custom...', 'Custom']], 		
 					   {:selected => 'Does not repeat'}) %>
 </div>
+
 <div id="repeat_indicator" style="display: none;"></div>
 
 <div id="interval_select" style="display: none;">
@@ -41,6 +42,7 @@
 	Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
 	<br/><br/>
 		<div id="select_week_days"></div>
+	
 	<div id="range" style="display:none;">
 		Range: 
 		<br/>
@@ -61,10 +63,6 @@
 		</p>
 	</div><!-- /range -->
 </div>
-
-
-
-
 
 <script type="text/javascript" charset="utf-8">
 	$('#event_template_monqi_class_id').combobox();
