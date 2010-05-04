@@ -1,5 +1,12 @@
 <%= javascript_include_tag "combobox", "date", :cache => true %>
-		
+
+<p>Date: <input type="text" id="datepicker"></p>
+<script type="text/javascript">
+$(function() {
+	$("#datepicker").datepicker();
+});
+</script>
+
 <div>
 <%= f.hidden_field :calendar_id, :value  => "1" %>
  

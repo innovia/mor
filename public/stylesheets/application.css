@@ -784,6 +784,7 @@ overflow: auto;
 	font-weight: bold;
 }
 
+
 .total-row {
 	border-bottom-style: solid 1px red;
 }
@@ -842,7 +843,6 @@ dd .footer{
 
 }
 
-
 #shop_by_pkg_type {
 	float: left;
 	width: 150px;
@@ -877,7 +877,6 @@ dd .footer{
 		margin: 10px 0;
 		width: 30%;
 }
-
 #address_info p {
 	margin: 10px 0px 10px 70px;
 }
@@ -906,55 +905,6 @@ dd .footer{
  display: inline;
 }
 
-.ui-state-disabled {
-    display: none; /* disabled tabs don't show up */
-}
-
-.ui-state-hover {color: #1D5987 !important;}
-button .mq-button{
-overflow:visible;
-width:auto;
-}
-
-.mq-button{
-	outline: 0; 
-  margin:0 4px 0 0; 
-  padding: .4em 1em; 
-  text-decoration:none !important; 
-  cursor:pointer; 
-  position: relative; 
-  text-align: center; 
-  zoom: 1; 
-	height:30px;
-	margin-right:-5px;
-}
-
-.mq-buttonset{
-}
-.mq-buttonset-single .mq-buttonset{
-	margin-right: -1px;
-}
-
-
-#packages{
-	width:	400px;
-}
-
-#package_template_field_set{
-	width: 420px;
-	border: 1px solid #999;
-}
-
-.row{
- height: 150px;
-}
-
-.auto_suggest img{
-	float:left;
-	margin-right:10px;
- 	width: 48px;
- 	height: 48px;
-}
 
 #self{
 	position: absolute;
@@ -1001,12 +951,57 @@ width:auto;
 	.monqi_data{
 	background: #EBF2FD
 	}
+	.mq-buttonset{
+	}
+	.mq-buttonset-single .mq-buttonset{
+		margin-right: -1px;
+	}
+	
+	.ui-state-hover {color: #1D5987 !important;}
+	button .mq-button{
+	overflow:visible;
+	width:auto;
+	}
+	
+	.auto_suggest img{
+		float:left;
+		margin-right:10px;
+	 	width: 48px;
+	 	height: 48px;
+	}
+	
+	.row{
+	 height: 150px;
+	}
+	
+	.mq-button{
+		outline: 0; 
+	  margin:0 4px 0 0; 
+	  padding: .4em 1em; 
+	  text-decoration:none !important; 
+	  cursor:pointer; 
+	  position: relative; 
+	  text-align: center; 
+	  zoom: 1; 
+		height:30px;
+		margin-right:-5px;
+	}
+	
 	
 .prepend-1 { margin-left: 30px;}
 
 #pkg_types_ul li{
 	display: inline;
 	padding-right: 5px;
+}
+
+#packages{
+	width:	400px;
+}
+
+#package_template_field_set{
+	width: 420px;
+	border: 1px solid #999;
 }
 
 .roles_cell{ font-size: 75% !important;}
