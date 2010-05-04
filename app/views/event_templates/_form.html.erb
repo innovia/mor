@@ -27,7 +27,7 @@
   </span>
 </div>
 
-<div id="repeat_select">
+<div id="repeat_select" class="repeat_border">
  	Repeats: <%= select(:event_template, :repeat, 
 					   [['Does not repeat', 'Does not repeat'],
 					   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly'], 	
@@ -35,14 +35,14 @@
 					   {:selected => 'Does not repeat'}) %>
 </div>
 
-<div id="info_box" style="display: block;">Info: <br/></div>
+<div id="info_box"><br/></div>
 
 <div id="range">
-	<div id="interval_select">
+	<div id="interval_select" class="repeat_border">
 		<% @array = Array.new(30) {|i| 1+i} %>
 		Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
 		<br/><br/>
-		<div id="select_week_days"></div>
+		<div id="select_week_days" class="repeat_border"></div>
 
 		Range: 
 		<br/>

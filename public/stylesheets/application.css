@@ -1016,12 +1016,12 @@ tr.over {background: blue !important; font-weight: bold; color:#333;}
 td {border-bottom: 1px solid #ededed !important;}
 tbody tr td{ border-right: 0px !important;}
 
-#repeat_select { margin: 20px 0px 0px 154px;}
+#repeat_select { margin: 20px 0px 20px 154px;}
 .repeat {
 border-bottom:1px solid #333;
 }
 
-#repeat_indicator {
+#info_box {
 -moz-background-clip:border;
 -moz-background-inline-policy:continuous;
 -moz-background-origin:padding;
@@ -1031,7 +1031,13 @@ font-size:110%;
 padding:8px 6px;
 margin: 7px 0 0 159px;
 text-align:center;
-width:200px;
+display: inline;
+}
+
+.repeat_border {border-bottom:1px solid #E0F1E0;}
+
+#range {
+	margin-top: 20px;
 }
 
 #interval_select {margin:12px 0 0 154px;}

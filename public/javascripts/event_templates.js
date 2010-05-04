@@ -6,6 +6,7 @@ $(document).ready(function() {
 	date_and_time_pickers();
 	all_day_listner();
 	$('#range').hide();
+	$('#info_box').hide();
 	
 	function date_and_time_pickers(){
 			$('#start_date').datepicker({
@@ -15,6 +16,7 @@ $(document).ready(function() {
 					// clear all checkboxes
 					$('input:checkbox').attr('checked', false);
 					$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+					update_info_box();
 				}
 			});	
 			$('.timepicker').timePicker({ 
@@ -62,6 +64,7 @@ $(document).ready(function() {
 																											<br/><br/>'
 							);
 							$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+							$('input:checkbox').bind('click', function() { update_info_box(); });
 							update_info_box();
 						break;
 
@@ -79,6 +82,7 @@ $(document).ready(function() {
 
 						default: // Does not repeat
 								$('#select_week_days').html('');
+								$('#info_box').html('').hide();
 								$('#range').hide();
 								$('#event_template_interval').val('');
 						break;
@@ -149,30 +153,21 @@ $(document).ready(function() {
 	}
 	
 	
-	
-	// Read Page and update the info box
-	/* 
-	if interval > 1
-	    Every + interval + pluralize, until May 8, 2010 || after counts
-	else
-	    repeats_freq,  until May 8, 2010 || after counts
-	
-		var days_arr = $("input:checkbox[name='event_template[byday][]']:checked");
-
-			$.each(days_arr, function(index, value) { 
-			   																				selected_days += $(this).val();
-				 																				if ( index !== days_arr.length-1 ) {
-																									selected_days += ', ';
-																								}
-	
-	*/
-	
-	
 	function update_info_box() {
+			var repeat_freq = $('#event_template_repeat').val();
 			var r_interval = $('#event_template_interval').val();
 			var until = $('#event_template_until').val();
 			var after = $('#event_template_count').val();
 			var str = '';
+			var days_arr = $("input:checkbox[name='event_template[byday][]']:checked");
+			var selected_days = ' on ';
+
+			$.each(days_arr, function(index, value) { 
+					   																	  selected_days += $(this).val();
+						 																		if ( index !== days_arr.length-1 ) {
+																										selected_days += ', ';
+																								}
+			});
 			
 			if ( r_interval > 1) {
 				str = 'Every ' + r_interval + ' ' + $('#repeat_every_x').text();
@@ -180,9 +175,13 @@ $(document).ready(function() {
 				str = $('#event_template_repeat').val();
 			}
 			
+			if (repeat_freq == 'Weekly') {str += selected_days;}
+			if (repeat_freq == 'Monthly') {str += ', on the ' +  Date.parse($('#start_date').val()).toString('d') + ' of each month';};
+			if (repeat_freq == 'Yearly') {str += ' on ' +  Date.parse($('#start_date').val()).toString('MMMM d');};
+			if (repeat_freq == 'Yearly' && r_interval == 1) {str = 'Annually on ' +  Date.parse($('#start_date').val()).toString('MMMM d');};
 			if ( until != null ) {str += ', until ' + Date.parse(until).toString('dddd, MMMM d - yyyy'); }
 			if ( after != null ) {str += ', end after ' + after + ' classes / occurances';}
 			
-			$('#info_box').html(str);
+			$('#info_box').html(str).show();
 	}
 });
