@@ -35,15 +35,15 @@
 					   {:selected => 'Does not repeat'}) %>
 </div>
 
-<div id="repeat_indicator" style="display: none;"></div>
+<div id="info_box" style="display: block;">Info: <br/></div>
 
-<div id="interval_select" style="display: none;">
-	<% @array = Array.new(30) {|i| 1+i} %>
-	Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
-	<br/><br/>
+<div id="range">
+	<div id="interval_select">
+		<% @array = Array.new(30) {|i| 1+i} %>
+		Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
+		<br/><br/>
 		<div id="select_week_days"></div>
-	
-	<div id="range" style="display:none;">
+
 		Range: 
 		<br/>
 		<p>
@@ -59,12 +59,6 @@
 						<span id="after"></span>	
 					</p>
 		</span>
-
 		</p>
-	</div><!-- /range -->
-</div>
-
-<script type="text/javascript" charset="utf-8">
-	$('#event_template_monqi_class_id').combobox();
-	$('#event_template_instructor_id').combobox();
-</script>
+	</div>
+</div><!-- /range -->
