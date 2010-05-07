@@ -53,93 +53,7 @@ overflow: auto;
 }
 
 
-/* Buttons */
 
-.buttons a, .buttons button, a.button, button.button {
--moz-border-radius-bottomleft:11px;
--moz-border-radius-bottomright:11px;
--moz-border-radius-topleft:11px;
--moz-border-radius-topright:11px;
-background:#EAEAEA url(/images/white-grad.png) repeat-x scroll left top;
-border-color:#DEDEDE #BBBBBB #BFBFBF #DEDEDE;
-border-style:solid;
-border-width:1px;
-color:#464646;
-cursor:pointer;
-display:block;
-float:left;
-font-family:"Lucida Grande",Tahoma,Arial,sans-serif;
-font-size:100%;
-line-height:130%;
-margin:0 0.7em 0 0;
-padding:5px 10px 6px;
-text-decoration:none;
-}
-a.button, button.button {
-display:inline-block;
-float:none;
-}
-.buttons button, button.button {
-overflow:visible;
-padding:4px 10px 3px 7px;
-width:auto;
-}
-.buttons button[type], button.button[type] {
-line-height:17px;
-padding:5px 10px 5px 7px;
-width:auto;
-}
-.chrome .buttons button, .chrome button.button {
-padding:4px 10px 4px 7px;
-}
-* + html .buttons button[type], * + html button.button[type] {
-margin-bottom:1px;
-padding:4px 10px 3px 7px;
-}
-* html button.button {
-margin-bottom:1px;
-}
-.buttons button img, .buttons a img, a.button img, button.button img {
-margin:0 3px -3px 0 !important;
-}
-.buttons button:hover, .buttons a:hover, a.button:hover, button.button:hover {
-border:1px solid #999999;
-color:#000000;
-}
-button.active, .buttons a:active, a.button:active {
-background:#FFFFFF url(/images/white-grad-active.png) repeat-x scroll left top;
-border-color:#CCCCCC;
-}
-button.positive, a.positive {
-color:#63A142;
-}
-a.positive:hover, button.positive:hover {
-border:1px solid #A2C97D;
-color:#63A142;
-}
-a.positive:active {
-background:#94B717 none repeat scroll 0 0;
-border:1px solid #94B717;
-color:#FFFFFF;
-text-shadow:1px 1px 1px #607710;
-}
-a.negative, button.negative {
-color:#D12F19;
-}
-a.negative:hover, button.negative:hover {
-border:1px solid #E86B6D;
-color:#D12F19;
-}
-a.negative:active {
-background:#D12F19 none repeat scroll 0 0;
-border:1px solid #D12F19;
-color:#FFFFFF;
-text-shadow:1px 1px 1px #A93816;
-}
-.buttons a em, .buttons button em, a.button em {
-font-style:normal;
-font-weight:normal;
-}
 
 #monqi_title{
 	/*background: url(/images/mq_logo.png) no-repeat center;
@@ -951,17 +865,7 @@ dd .footer{
 	.monqi_data{
 	background: #EBF2FD
 	}
-	.mq-buttonset{
-	}
-	.mq-buttonset-single .mq-buttonset{
-		margin-right: -1px;
-	}
 	
-	.ui-state-hover {color: #1D5987 !important;}
-	button .mq-button{
-	overflow:visible;
-	width:auto;
-	}
 	
 	.auto_suggest img{
 		float:left;
@@ -974,20 +878,7 @@ dd .footer{
 	 height: 150px;
 	}
 	
-	.mq-button{
-		outline: 0; 
-	  margin:0 4px 0 0; 
-	  padding: .4em 1em; 
-	  text-decoration:none !important; 
-	  cursor:pointer; 
-	  position: relative; 
-	  text-align: center; 
-	  zoom: 1; 
-		height:30px;
-		margin-right:-5px;
-	}
-	
-	
+		
 .prepend-1 { margin-left: 30px;}
 
 #pkg_types_ul li{

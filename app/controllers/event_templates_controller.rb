@@ -13,7 +13,7 @@ class EventTemplatesController < ResourceController::Base
         @event_template = EventTemplate.new
     end
     
-    def create    
+    def create   
       @event_template = EventTemplate.new(params[:event_template])
       unless params[:start_at].blank? and params[:end_at].blank?
         # date and time fields are spilted on the form, so rejoin for proper sql storage

@@ -7,14 +7,16 @@ class EventTemplate < ActiveRecord::Base
   belongs_to  :monqi_class
   belongs_to  :instructor, :class_name => "Person" # this is for the instructor in each event
     
-  before_save :manually_serialize_byday
+ 
   
   validates_presence_of :level, :message => "must be selected for a class"
   validates_presence_of :instructor_id, :calendar_id, :monqi_class_id
   validates_date :start_date, :end_date
   #validate :date_cannot_be_in_the_past 
   #validate  :valid_class_time?
-  after_create :create_one_or_recurring_events
+  
+  #before_save :manually_serialize_byday
+  after_save :create_one_or_recurring_events
   
     
   # Getter Setter for start and end time
@@ -108,7 +110,7 @@ class EventTemplate < ActiveRecord::Base
     
     rule = 'FREQ='  + frequency   + ';' +
            'COUNT=' + end_after.to_s   + ';' +
-           'UNTIL=' + end_on_date.to_s.gsub("-", "") + ';' +
+           'UNTIL=' + end_on_date.to_s.gsub("/", "") + ';' +
            'INTERVAL=' + repeat_every.to_s + ';' +
            'BYDAY=' + selected_days  + ';' +
            'BYMONTHDAY=' + day_of_the_month + ';' +

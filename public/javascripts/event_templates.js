@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	$('#event_template_monqi_class_id').combobox();
 	$('#event_template_instructor_id').combobox();
 	
@@ -130,7 +131,7 @@ $(document).ready(function() {
 		
 	//dynamic updates
 	//interval
-		$('#event_template_interval').bind('change', function() {
+	$('#event_template_interval').bind('change', function() {
 			set_repeat_every_x();
 			pluralize($(this).val(), freq);
 			update_info_box();
@@ -151,7 +152,6 @@ $(document).ready(function() {
 			freq = $('#event_template_repeat').val().replace('ly', '').trim();
 		}
 	}
-	
 	
 	function update_info_box() {
 			var repeat_freq = $('#event_template_repeat').val();
@@ -184,4 +184,7 @@ $(document).ready(function() {
 			
 			$('#info_box').html(str).show();
 	}
+	
+
+	
 });

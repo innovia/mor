@@ -1,4 +1,9 @@
 $(document).ready(function() {
+		$('.delete_button').bind('click', function() {
+			$('#modal').load($(this).attr("data-dialog_action_path"));
+			show_dialog($(this).attr("data-dialog_title"));
+		});
+		
 		$("Form").bind("keypress", function(e) {
 		  if (e.keyCode == 34) return false;
 		});
@@ -187,7 +192,7 @@ function show_dialog(title){
 												position: "top", 
 											 	modal: true, 
 											 	width: 700,
-												buttons: { "get me out of here": function(){ $(this).dialog('close') } } 
+												buttons: { "Cancel": function(){ $(this).dialog('close') } } 
 										 });
 }
 

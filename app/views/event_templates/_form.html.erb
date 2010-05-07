@@ -1,18 +1,11 @@
 <%= javascript_include_tag "combobox", "date", :cache => true %>
 
-<p>Date: <input type="text" id="datepicker"></p>
-<script type="text/javascript">
-$(function() {
-	$("#datepicker").datepicker();
-});
-</script>
-
 <div>
 <%= f.hidden_field :calendar_id, :value  => "1" %>
  
- Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title", :prompt => 'Select a class') %>
+ Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title", :class => "ami") %>
 
- Level: <%= f.select(:level, { "Basic" => "Basics", "Open" => "Open"}, :prompt => 'Select a level') %>
+ Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %>
 
  Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'Select an instructor') %>
 </div>
@@ -36,7 +29,7 @@ $(function() {
 
 <div id="repeat_select" class="repeat_border">
  	Repeats: <%= select(:event_template, :repeat, 
-					   [['Does not repeat', 'Does not repeat'],
+					   [['Does not repeat', 'none'],
 					   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly'], 	
 					   ['Custom...', 'Custom']], 		
 					   {:selected => 'Does not repeat'}) %>

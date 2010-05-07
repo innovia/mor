@@ -15,9 +15,13 @@
 		<div class="action_icon"> 
 			<%= image_tag('icons/page_edit.png')%> 
 			<%=link_to 'edit', edit_object_url(et) %>
-			<%= link_to_function  image_tag('icons/delete_icon.png', :size => "24x24"), 
-														"Modalbox.show(\"#{event_templates_path}/delete_form/#{et.id}\", {title: 'Deleting a Class Template'});" %> delete
-					
+			<%= image_tag('icons/delete_icon.png', :size => "24x24", :class => "delete_button", 
+										"data-dialog_title" => "Deleting the #{et.monqi_class.title} template", 
+										"data-dialog_action_path" => "#{event_templates_path}/delete_form/#{et.id}") %> delete
+				
+
+
+			
 			<%- unless et.repeat == "none" -%>
 				<%= image_tag('icons/information.png') %>
 				<%= link_to_function "repeat details" do |page| 
@@ -37,3 +41,6 @@
 	<p><%= will_paginate @event_templates %></p><br/>
 	<%= button_to 'New Class Template', new_object_url %>
 </div>
+
+<div id="modal"></div>
+
