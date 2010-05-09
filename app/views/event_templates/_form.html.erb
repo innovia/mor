@@ -1,16 +1,5 @@
 <%= javascript_include_tag "combobox", "date", :cache => true %>
 
-<div>
-<%= f.hidden_field :calendar_id, :value  => "1" %>
- 
- Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title", :class => "ami") %>
-
- Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %>
-
- Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name", :prompt => 'Select an instructor') %>
-</div>
-<br/>
-
 <div id="start_end_set">
 	<span>
 		First class occurs on:
@@ -27,6 +16,14 @@
   </span>
 </div>
 
+<div>
+	Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %>
+	Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title") %>
+	Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name") %>
+</div>
+
+<%= f.hidden_field :calendar_id, :value  => "1" %>
+<br/>
 <div id="repeat_select" class="repeat_border">
  	Repeats: <%= select(:event_template, :repeat, 
 					   [['Does not repeat', 'none'],

@@ -3,13 +3,12 @@
 <%- else -%>
 
 <div class="body">
-	<h3> Showing All Recurring Classes For: 
-		<p> #<%=h @events.first.event_template_id %> 	
-			<%=h @events.first.event_template.monqi_class.title %>
+	<h3> <%=h @events.first.instructor.full_name + ' ' + @events.first.event_template.monqi_class.title %> Classes: 
+		<p> <%=hidden_field_tag(:template_id, @events.first.event_template_id) %> 	
 		</p>
 		<p>
-			Scheduled: <%=h @events.first.start_date.strftime("%a, %b %d") %>
-			=> <%=h  @events.last.start_date.strftime("%a, %b %d")  %>
+			<%=h @events.first.start_date.strftime("%A, %b #{@events.first.start_date.day.ordinalize}") %>
+			- <%=h  @events.last.start_date.strftime("%A, %b #{@events.last.start_date.day.ordinalize}") %>
 		</p>
 	</h3>
 <%- end -%>
@@ -19,31 +18,34 @@
 	<% div_for(event, :class => cycle('odd', 'even')) do %>
 		<P>
 			<%- if admin? -%>
-			<div class="id"> 
-				<%=h "#" + event.id.to_s %> <br/>
+			<div class="id right"> 
+				<%=h "#" + event.id.to_s %>
 				(sequence: <%=h event.sequence %>)
 			</div>
 			<%- end -%>
 			
+			<div class="calendar_date left">
+				<p class="cal_month"><%= event.start_date.strftime("%b") %></p>
+				<p class="cal_date"><%= event.start_date.strftime("%d") %></p> 
+			</div>
+			
 			<div style="display: inline;" <%= 'class="today"' if event.start_date.strftime("%a, %b %d") == Date.today.strftime("%a, %b %d") %>>
-				<%=h event.start_date.strftime("%a, %b %d") %>
 			</div>
 				<%=h event.start_date.strftime("%I:%M%p") + " - " + event.end_date.strftime("%I:%M%p") %>
 				
-				<div class="indent">
-					With
-					<%=h event.instructor.full_name %>
+				<div class="inline">
+					<br/>
+					<%=h event.event_template.monqi_class.title + ' ' + event.instructor.full_name %>
 				</div>
 				
 				<div class="action_icon" <%= "style='display: none;'" if ! admin? %>>			
 					<%= image_tag('icons/page_edit.png') %>
-					<%=link_to 'edit', edit_object_url(event) %>
+					<%= link_to 'edit', edit_object_url(event) %>
 			
-					
-					<%= link_to_function  image_tag('icons/delete_icon.png', :size => "24x24"), 
-																"Modalbox.show(\"#{events_path}/delete_form/#{event.id}\", {title: 'Deleting a recurring class'});"
-					 %>
-					delete
+					<%= image_tag('icons/delete_icon.png', :size => "24x24", :class => "delete_button", 
+												"data-dialog_title" => "Deleting the #{event.event_template.monqi_class.title} class", 
+												"data-dialog_action_path" => "#{events_path}/delete_form/#{event.id}") %> delete
+				
 				</div>
 				<div class="clear">
 					
@@ -60,5 +62,7 @@
 			</p>
 	<%- end -%>
 <%- end -%>
+
+<%= link_to "MonQi classes templates", event_templates_path %>
 <p><%= will_paginate %></p><br/>
 </div>

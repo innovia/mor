@@ -15,7 +15,7 @@ class EventTemplate < ActiveRecord::Base
   #validate :date_cannot_be_in_the_past 
   #validate  :valid_class_time?
   
-  #before_save :manually_serialize_byday
+  before_save :manually_serialize_byday
   after_save :create_one_or_recurring_events
   
     
@@ -110,7 +110,7 @@ class EventTemplate < ActiveRecord::Base
     
     rule = 'FREQ='  + frequency   + ';' +
            'COUNT=' + end_after.to_s   + ';' +
-           'UNTIL=' + end_on_date.to_s.gsub("/", "") + ';' +
+           'UNTIL=' + end_on_date.strftime("%Y%m%d;") +
            'INTERVAL=' + repeat_every.to_s + ';' +
            'BYDAY=' + selected_days  + ';' +
            'BYMONTHDAY=' + day_of_the_month + ';' +

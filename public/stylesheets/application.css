@@ -651,6 +651,7 @@ overflow: auto;
 	display: inline;
 	color: blue;
 	padding: 0px 10px;
+	font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 
 .event_template_listing{
@@ -671,9 +672,12 @@ overflow: auto;
 
 .action_icon{
 	font-size: 85%;
-	float: right;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-left: 48px;
+	margin-top: 10px;
+}
+
+.action_icon img{
+	padding-left: 39px;
 }
 
 .indent {
@@ -960,3 +964,25 @@ div.time-picker li.selected {
   background: #316AC5;
   color: #fff;
 }
+
+
+.calendar_date {
+	background:white url(/images/calendar_date_icon.png) no-repeat scroll center center;
+	height:48px;
+	width:46px;
+	text-align: center;
+	margin: 0 20px 0 20px;
+}
+
+div.cal_day {
+padding:0;
+font-size:x-small;
+}
+
+p.cal_month {
+	font-size:18px;
+	font-weight:bold;
+}
+
+.recurring_classes .delete_button { cursor: pointer;}
+
