@@ -17,8 +17,7 @@ class EventTemplate < ActiveRecord::Base
   
   before_save :manually_serialize_byday
   after_save :create_one_or_recurring_events
-  
-    
+   
   # Getter Setter for start and end time
   def start_time
     start_time.strftime("%I:%M %p")

@@ -13,7 +13,7 @@ class EventsController < ResourceController::Base
   end
 
   def new
-     @instructors = Instructor.find(:all)
+     get_instructors
   end
    
   def show
@@ -21,12 +21,13 @@ class EventsController < ResourceController::Base
   end
   
   def edit
-     @instructors = Instructor.find(:all)
+     get_monqi_classes_names
+     get_instructors
      @event = Event.find(params[:id])
   end
   
   def update
-    @instructors = Instructor.find(:all)
+    get_instructors
     @event = Event.find(params[:id])
     
     if params[:change_all_future]

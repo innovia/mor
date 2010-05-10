@@ -10,6 +10,11 @@ class PagesController < ApplicationController
     @news_flash = Page.find_or_create_by_title('news_flash').body
   end
   
+  
+  def ical
+    
+  end
+  
   def pt_request
     @pt_req = params
     Notifier.deliver_personal_training_online_request(@pt_req)

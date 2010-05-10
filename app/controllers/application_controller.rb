@@ -58,6 +58,10 @@ protected
       @instructors = Role.find_by_title("instructor").people
     end
     
+    def get_monqi_classes_names
+      @classes = MonqiClass.all(:select => "id, title")
+    end
+    
     def find_cart
       if ! current_user.nil? and !current_user.person.nil?
           # if person has no cart create it, else fetch it

@@ -9,7 +9,7 @@
 		  <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
 			to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
 		</span>
-		<%= hidden_field_tag("end_at",  Date.today.strftime("%m/%d/%Y"), {:id => "end_date"})  %>
+		<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
 		<span>
 			All day <%= f.check_box :allday, :id => "allday" %>
 		</span>

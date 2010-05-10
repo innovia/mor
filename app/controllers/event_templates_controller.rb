@@ -65,11 +65,7 @@ class EventTemplatesController < ResourceController::Base
   def get_event
     @event_template = EventTemplate.find(params[:id])
   end
-  
-  def get_monqi_classes_names
-    @classes = MonqiClass.all(:select => "id, title")
-  end
-    
+      
   def delete_personal_training_session
     @personal = EventTemplate.find(params[:id])
     @personal.destroy

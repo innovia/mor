@@ -2,7 +2,9 @@ $(document).ready(function() {
 
 	$('#event_template_monqi_class_id').combobox();
 	$('#event_template_instructor_id').combobox();
-	
+	$('#start_date').bind('blur', function() {
+		$('#end_at').val($(this).val());
+	});
 	// set the static doc
 	date_and_time_pickers();
 	all_day_listner();
@@ -14,6 +16,7 @@ $(document).ready(function() {
 				firstDay: 1,
 				onSelect: function(){
 					$('#start_clone').val($(this).val());
+					$('#end_at').val($(this).val());
 					// clear all checkboxes
 					$('input:checkbox').attr('checked', false);
 					$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
@@ -184,7 +187,5 @@ $(document).ready(function() {
 			
 			$('#info_box').html(str).show();
 	}
-	
-
 	
 });

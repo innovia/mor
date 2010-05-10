@@ -945,6 +945,7 @@ div.time-picker {
   background: #feeebd;
   border: 1px solid #8e846b;
   z-index: 99;
+	margin-top: 20px;
 	color: #383838;
 }
 div.time-picker-12hours {

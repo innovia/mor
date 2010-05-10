@@ -13,7 +13,8 @@ ActionController::Routing::Routes.draw do |map|
     page.news 'news', :action => "news"
     page.contact_us 'contact_us', :action => "contact_us"   
     page.thank_you 'thank_you', :action => "thank_you"
-    page.news_flash 'news_flash', :action => "news_flash"    
+    page.news_flash 'news_flash', :action => "news_flash" 
+    page.ical 'ical', :action => "ical"   
   end
   
 
