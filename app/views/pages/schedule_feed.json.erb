@@ -1,7 +1,7 @@
 [
   <% @events.each do |e| %>
 		{ "id": <%= e.id -%>,
- 	    "title": "<%= e.monqi_class.title %>",
+ 	    "title": "<%= e.event_template.level %> \n  <%= e.monqi_class.title %> \n  <%= e.instructor.full_name %>",
 			"start": "<%= e.start_date.iso8601 %>",
 			"end": "<%= e.end_date.iso8601 %>",
 			"allDay": false

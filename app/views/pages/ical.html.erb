@@ -2,6 +2,15 @@
 <%= javascript_include_tag 'fullcalendar', :cache => true %>
 
 <style type="text/css" media="screen">
+	.fc-event,
+	.fc-agenda .fc-event-time,
+	.fc-event a {
+	    background-color: #604E49; /* background color */
+	    border-color: black;     /* border color */
+	    color: #C1966E;              /* text color */
+	    }
+	.fc-event-title {color: white;}
+	
 	#top_content_page {
 		width: 880px !important;
 		margin-left: 19px !important;
@@ -34,7 +43,8 @@
 			firstHour: <%= @now %>,
 			minTime: 6,
 			maxTime: 22,
-			events: 'schedule_feed'
+			events: 'schedule_feed',
+			slotMinutes: 15
 			})
 		
 	});
