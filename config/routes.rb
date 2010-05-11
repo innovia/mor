@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     page.thank_you 'thank_you', :action => "thank_you"
     page.news_flash 'news_flash', :action => "news_flash" 
     page.ical 'ical', :action => "ical"   
+    page.schedule_feed 'schedule_feed', :action => "schedule_feed"
   end
   
 

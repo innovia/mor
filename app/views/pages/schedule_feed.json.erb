@@ -1,0 +1,11 @@
+[
+  <% @events.each do |e| %>
+		{ "id": <%= e.id -%>,
+ 	    "title": "<%= e.monqi_class.title %>",
+			"start": "<%= e.start_date.iso8601 %>",
+			"end": "<%= e.end_date.iso8601 %>",
+			"allDay": false
+		 }
+		<%= @events.last == e ? "" : ","  %>
+	<% end -%>
+]

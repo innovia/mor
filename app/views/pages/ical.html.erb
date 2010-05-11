@@ -29,25 +29,12 @@
 								right: 'month,agendaWeek,agendaDay'
 							},
 			defaultView: 'agendaWeek',
-			startParam: 'start',
-			endParam: 'end',
 			firstDay: 1,
 			height: 340,
 			firstHour: <%= @now %>,
 			minTime: 6,
 			maxTime: 22,
-			events: [
-							{ title: 'Long Event',
-							  start: "2010-05-10T08:15:00-04:00", 
-								end: "2010-05-10T09:15:00-04:00",
-								description: 'This is a cool event',
-								allDay: false
-							}
-			],
-			eventRender: function(event, element) {
-			        	element.append(event.description)
-			    }
-			
+			events: 'schedule_feed'
 			})
 		
 	});

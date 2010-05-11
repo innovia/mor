@@ -15,6 +15,11 @@ class PagesController < ApplicationController
     @now = Time.now.hour
   end
   
+  def schedule_feed
+    @events = Event.all(:include => [:monqi_class, :instructor])
+    render :file => "/pages/schedule_feed.json.erb"
+  end
+  
   def pt_request
     @pt_req = params
     Notifier.deliver_personal_training_online_request(@pt_req)
