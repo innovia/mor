@@ -9,10 +9,13 @@
 	    border-color: black;     /* border color */
 	    color: #C1966E;              /* text color */
 	    }
-	.fc-event-title {color: white;}
+	.fc-event-title {color: white; padding:3px;}
+	
+	.fc-event {height: 82px !important; border: 1px solid red; margin-left:3px;}
 	
 	#top_content_page {
 		width: 880px !important;
+		height: 520px !important;
 		margin-left: 19px !important;
 	}
 	
@@ -39,18 +42,18 @@
 							},
 			defaultView: 'agendaWeek',
 			firstDay: 1,
-			height: 340,
+			height: 480,
 			firstHour: <%= @now %>,
 			minTime: 6,
 			maxTime: 22,
 			events: 'schedule_feed',
-			slotMinutes: 15
+			slotMinutes: 15,
+			eventRender: function(event, element) {
+			        $('.fc-event-title').html(event.title + '<br />' + event.level + '<br />' + event.instructor);
+			    }
+			
 			})
 		
 	});
 </script>
-
-
-<div id="calendar">
-	
-</div>
+<div id="calendar"></div>

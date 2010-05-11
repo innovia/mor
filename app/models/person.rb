@@ -17,6 +17,10 @@ class Person < ActiveRecord::Base
     [first_name, middle_name, last_name].join(' ') 
   end
   
+  def last_initial
+    self.last_name = [first_name.capitalize, last_name[0].chr.capitalize].join(' ') 
+  end
+  
   # has_role? simply needs to return true or false whether a user has a role or not.  
   # It may be a good idea to have "admin" roles return true always
   def has_role?(role_in_question)
