@@ -2,16 +2,7 @@
  * jQuery.weekCalendar v1.2.3-pre
  * http://www.redredred.com.au/
  *
- * Requires:
- * - jquery.weekcalendar.css
- * - jquery 1.3.x
- * - jquery-ui 1.7.x (widget, drag, drop, resize)
- *
  * Copyright (c) 2009 Rob Monie
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- *   
  *   If you're after a monthly calendar plugin, check out http://arshaw.com/fullcalendar/
  */
 
@@ -26,9 +17,9 @@
          alwaysDisplayTimeMinutes: true,
          use24Hour : false,
          daysToShow : 7,
-         firstDayOfWeek : 0, // 0 = Sunday, 1 = Monday, 2 = Tuesday, ... , 6 = Saturday
+         firstDayOfWeek : 2, // 0 = Sunday, 1 = Monday, 2 = Tuesday, ... , 6 = Saturday
          useShortDayNames: false,
-         timeSeparator : " to ",
+         timeSeparator : " - ",
          startParam : "start",
          endParam : "end",
          businessHours : {start: 8, end: 18, limitDisplay : false},

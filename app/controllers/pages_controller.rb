@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   
   
   def ical
-    
+    @now = Time.now.hour
   end
   
   def pt_request

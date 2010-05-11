@@ -11,10 +11,12 @@
 <!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
 <%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "jquery.maskedinput.min", "pages" %>
 									
-
+<% unless @page.title == 'ical' %>
 <% if admin? %>
 	<%= render :partial => "shared/init_yui_editor" %>
 <% end -%>
+<% end %>
+
 </head>
 <body>
 	<div class="container" id="page_body">
@@ -55,8 +57,8 @@
 			<% unless @page.title == 'index' %>
 				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
 			<% end -%>
-			<% stripped_content_from_pages = ['rates', 'personal_training', 'staff', 'contact_us'] %>
-			<% unless stripped_content_from_pages.include?(@page.title)%>
+			<% strip_content_from_pages = ['rates', 'personal_training', 'staff', 'contact_us', 'ical'] %>
+			<% unless strip_content_from_pages.include?(@page.title)%>
 				<%= @page.body %>
 			<% end -%>
 			
@@ -72,11 +74,12 @@
 				<% end -%>
 			</div>
 		</div>
-			
+		
+		<% unless @page.title == 'ical' %>	
 		<% if admin? %>
 			<%= render :partial => "editor" %>	
 		<% end -%>
-	
+	<% end -%>
 	</div><!-- /container -->
 		<div class="apple_overlay" id="overlay">
 			<div class="contentWrap"></div> 

@@ -1,5 +1,5 @@
-<%= stylesheet_link_tag 'jquery.weekcalendar', 'ical', :cache => true %>
-<%= javascript_include_tag 'jquery.weekcalendar', :cache => true %>
+<%= stylesheet_link_tag 'fullcalendar', :cache => true %>
+<%= javascript_include_tag 'fullcalendar', :cache => true %>
 
 <style type="text/css" media="screen">
 	#top_content_page {
@@ -20,33 +20,40 @@
 	}
 </style>
 	<script type='text/javascript'>
-		//var eventData = <%#= Event.all(:select => "id, start_date AS start, end_date AS end, event_template_id AS title").to_json %>
-			var eventData = [{"title":"28","id":84,"end":"2010-05-03T19:15:00","start":"2010-05-03T18:15:00"},{"title":"28","id":85,"end":"2010-05-10 19:15:00","start":"2010-05-10 18:15:00"},{"title":"28","id":86,"end":"2010-05-17 19:15:00","start":"2010-05-17 18:15:00"},{"title":"28","id":87,"end":"2010-05-24 19:15:00","start":"2010-05-24 18:15:00"},{"title":"29","id":88,"end":"2010-05-03T 08:15:00","start":"2010-05-03T07:30:00"},{"title":"29","id":89,"end":"2010-05-10 08:15:00","start":"2010-05-10 07:30:00"},{"title":"29","id":90,"end":"2010-05-17 08:15:00","start":"2010-05-17 07:30:00"},{"title":"29","id":91,"end":"2010-05-24 08:15:00","start":"2010-05-24 07:30:00"},{"title":"29","id":92,"end":"2010-05-31 08:15:00","start":"2010-05-31 07:30:00"},{"title":"30","id":93,"end":"2010-05-03T 09:55:00","start":"2010-05-03T 09:00:00"},{"title":"30","id":94,"end":"2010-05-10 09:55:00","start":"2010-05-10 09:00:00"},{"title":"30","id":95,"end":"2010-05-17 09:55:00","start":"2010-05-17 09:00:00"},{"title":"30","id":96,"end":"2010-05-24 09:55:00","start":"2010-05-24 09:00:00"},{"title":"30","id":97,"end":"2010-05-31 09:55:00","start":"2010-05-31 09:00:00"},{"title":"31","id":98,"end":"2010-05-03T 10:45:00","start":"2010-05-03T 10:00:00"},{"title":"31","id":99,"end":"2010-05-10 10:45:00","start":"2010-05-10 10:00:00"},{"title":"31","id":100,"end":"2010-05-17 10:45:00","start":"2010-05-17 10:00:00"},{"title":"31","id":101,"end":"2010-05-24 10:45:00","start":"2010-05-24 10:00:00"},{"title":"31","id":102,"end":"2010-05-31 10:45:00","start":"2010-05-31 10:00:00"},{"title":"32","id":103,"end":"2010-05-03T 12:15:00","start":"2010-05-03T 11:00:00"},{"title":"32","id":104,"end":"2010-05-10 12:15:00","start":"2010-05-10 11:00:00"},{"title":"32","id":105,"end":"2010-05-17 12:15:00","start":"2010-05-17 11:00:00"},{"title":"32","id":106,"end":"2010-05-24 12:15:00","start":"2010-05-24 11:00:00"},{"title":"32","id":107,"end":"2010-05-31 12:15:00","start":"2010-05-31 11:00:00"},{"title":"35","id":117,"end":"2010-05-04 08:15:00","start":"2010-05-04 07:30:00"},{"title":"35","id":118,"end":"2010-05-11 08:15:00","start":"2010-05-11 07:30:00"},{"title":"35","id":119,"end":"2010-05-18 08:15:00","start":"2010-05-18 07:30:00"},{"title":"35","id":120,"end":"2010-05-25 08:15:00","start":"2010-05-25 07:30:00"},{"title":"36","id":121,"end":"2010-05-05 08:15:00","start":"2010-05-05 07:30:00"},{"title":"36","id":122,"end":"2010-05-12 08:15:00","start":"2010-05-12 07:30:00"},{"title":"36","id":123,"end":"2010-05-19 08:15:00","start":"2010-05-19 07:30:00"},{"title":"36","id":124,"end":"2010-05-26 08:15:00","start":"2010-05-26 07:30:00"},{"title":"37","id":125,"end":"2010-05-06 08:15:00","start":"2010-05-06 07:30:00"},{"title":"37","id":126,"end":"2010-05-13 08:15:00","start":"2010-05-13 07:30:00"},{"title":"37","id":127,"end":"2010-05-20 08:15:00","start":"2010-05-20 07:30:00"},{"title":"37","id":128,"end":"2010-05-27 08:15:00","start":"2010-05-27 07:30:00"},{"title":"38","id":129,"end":"2010-05-07 08:15:00","start":"2010-05-07 07:30:00"},{"title":"38","id":130,"end":"2010-05-14 08:15:00","start":"2010-05-14 07:30:00"},{"title":"38","id":131,"end":"2010-05-21 08:15:00","start":"2010-05-21 07:30:00"},{"title":"38","id":132,"end":"2010-05-28 08:15:00","start":"2010-05-28 07:30:00"},{"title":"39","id":133,"end":"2010-05-04 09:15:00","start":"2010-05-04 08:30:00"},{"title":"39","id":134,"end":"2010-05-11 09:15:00","start":"2010-05-11 08:30:00"},{"title":"39","id":135,"end":"2010-05-18 09:15:00","start":"2010-05-18 08:30:00"},{"title":"39","id":136,"end":"2010-05-25 09:15:00","start":"2010-05-25 08:30:00"},{"title":"40","id":137,"end":"2010-05-04 10:15:00","start":"2010-05-04 09:20:00"},{"title":"40","id":138,"end":"2010-05-11 10:15:00","start":"2010-05-11 09:20:00"},{"title":"40","id":139,"end":"2010-05-18 10:15:00","start":"2010-05-18 09:20:00"},{"title":"40","id":140,"end":"2010-05-25 10:15:00","start":"2010-05-25 09:20:00"},{"title":"41","id":141,"end":"2010-05-04 18:55:00","start":"2010-05-04 18:00:00"},{"title":"41","id":142,"end":"2010-05-11 18:55:00","start":"2010-05-11 18:00:00"},{"title":"41","id":143,"end":"2010-05-18 18:55:00","start":"2010-05-18 18:00:00"},{"title":"41","id":144,"end":"2010-05-25 18:55:00","start":"2010-05-25 18:00:00"},{"title":"42","id":145,"end":"2010-05-04 20:30:00","start":"2010-05-04 19:00:00"},{"title":"42","id":146,"end":"2010-05-11 20:30:00","start":"2010-05-11 19:00:00"},{"title":"42","id":147,"end":"2010-05-18 20:30:00","start":"2010-05-18 19:00:00"},{"title":"42","id":148,"end":"2010-05-25 20:30:00","start":"2010-05-25 19:00:00"}];
-
-
 	$(document).ready(function() {
 			$('#lower_corner_box').remove();
+			$('#calendar').fullCalendar({
+				header: {
+								left: 'prev,next today',
+								center: 'title',
+								right: 'month,agendaWeek,agendaDay'
+							},
+			defaultView: 'agendaWeek',
+			startParam: 'start',
+			endParam: 'end',
+			firstDay: 1,
+			height: 340,
+			firstHour: <%= @now %>,
+			minTime: 6,
+			maxTime: 22,
+			events: [
+							{ title: 'Long Event',
+							  start: "2010-05-10T08:15:00-04:00", 
+								end: "2010-05-10T09:15:00-04:00",
+								description: 'This is a cool event',
+								allDay: false
+							}
+			],
+			eventRender: function(event, element) {
+			        	element.append(event.description)
+			    }
 			
-			var $calendar = $('#calendar').weekCalendar({
-				startParam : "start_date",
-			  endParam : "end_date",
-				timeslotsPerHour: 12,
-				timeslotHeight: 10,
-				timeSeparator : " - ",
-				businessHours : {start: 6, end: 21, limitDisplay : true},
-				scrollToHourMillis : 0,
-				height: function($calendar){
-					return $(window).height() - $("h1").outerHeight(true);
-				},
-				eventRender : function(calEvent, $event) {
-					if(calEvent.end.getTime() < new Date().getTime()) {
-						$event.css("backgroundColor", "#aaa");
-						$event.find(".time").css({"backgroundColor": "#999", "border":"1px solid #888"});
-					}
-				},
-				data: eventData
-			});
-});
+			})
+		
+	});
 </script>
 
-<div id='calendar'></div>
+
+<div id="calendar">
+	
+</div>
