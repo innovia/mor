@@ -5,13 +5,16 @@
 	.fc-event,
 	.fc-agenda .fc-event-time,
 	.fc-event a {
-	    background-color: #604E49; /* background color */
+	    background: transparent url("/images/ical/body.png") repeat scroll 0 0 ; /* background color */
 	    border-color: black;     /* border color */
-	    color: #C1966E;              /* text color */
+	    color: #444 !important;              /* text color */
 	    }
 	.fc-event-title {color: white; padding:3px;}
+	.fc-event-vert span.fc-event-time {text-align: center; font-size: 17px;}
+	.fc-event {height: 82px !important; margin-left:3px;}
 	
-	.fc-event {height: 82px !important; border: 1px solid red; margin-left:3px;}
+	.class_level { font: 75% Verdana, sans-serif;}
+	.class_title {font-style: italic; font-weight: bold;}
 	
 	#top_content_page {
 		width: 880px !important;
@@ -49,7 +52,9 @@
 			events: 'schedule_feed',
 			slotMinutes: 15,
 			eventRender: function(event, element) {
-			        $('.fc-event-title').html(event.title + '<br />' + event.level + '<br />' + event.instructor);
+			        $('.fc-event-title').html('<span class="class_level">'+ event.level + '</span>' +
+																				'<span class="class_title">' + 	event.title + '</span>' +
+																				'<span class="instructor">' + event.instructor + '</span>');
 			    }
 			
 			})

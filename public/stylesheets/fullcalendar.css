@@ -241,7 +241,7 @@ table.fc-header {
 	border-style: solid; 
 	border-color: #36c;     /* default BORDER color (probably the same as background-color) */
 	background-color: #36c; /* default BACKGROUND color */
-	color: #fff;            /* default TEXT color */
+	color: #444 !important;            /* default TEXT color */
 	}
 	
 	/* Use the 'className' CalEvent property and the following
@@ -544,6 +544,7 @@ table.fc-header {
 	
 .fc-event-vert span.fc-event-title {
 	line-height: 13px;
+	color: #444;
 	}
 	
 .fc-event-vert span.fc-event-bg { /* makes the event lighter w/ a semi-transparent overlay  */
