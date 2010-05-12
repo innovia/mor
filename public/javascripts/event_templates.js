@@ -4,12 +4,45 @@ $(document).ready(function() {
 	$('#event_template_instructor_id').combobox();
 	$('#start_date').bind('blur', function() {
 		$('#end_at').val($(this).val());
+		update_next_days_drop_down();
 	});
 	// set the static doc
 	date_and_time_pickers();
 	all_day_listner();
 	$('#range').hide();
 	$('#info_box').hide();
+	update_next_days_drop_down();
+	
+		
+	function update_next_days_drop_down() {
+		var options = add_days_select();
+		$('.scheduled_day').html('<select name="next_days[]" class="first_class">' + options + '</select>');
+	};
+	
+	
+	function add_days_select() {
+			var first_class = Date.parse($('#start_date').val());
+			var number_of_next_days = 7 - Date.getDayNumberFromName(first_class.toString('ddd'));
+			var first_date_value = first_class.toString('MM/dd/yyyy');
+			var options = '<option value=' + first_date_value + '>' + first_class.toString('ddd') + ' ' + first_date_value + '</option>';
+
+			for (var i=0; i < number_of_next_days; i++) {
+				var day = first_class.add(1).day().toString('ddd');
+				var date_value = first_class.add(1).day().toString('MM/dd/yyyy');
+				options += '<option value=' + date_value + '>' + day + ' ' + date_value + '</option>';
+			};
+		$('.first_class').bind('change', function() {
+			$('#start_date').val($(this).val());
+			$('#end_at').val($(this).val());
+		});
+		$('.add_day').bind('click', function() {
+			$('.scheduled_day').append('<div>\
+																  <span class="extra_instructor"></span>\
+																  <select name="next_days[]">' + options + '</select></div>');
+			$('.extra_instructor').html('test');
+		});
+		return options;
+	};
 	
 	function date_and_time_pickers(){
 			$('#start_date').datepicker({
@@ -21,6 +54,7 @@ $(document).ready(function() {
 					$('input:checkbox').attr('checked', false);
 					$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
 					update_info_box();
+					update_next_days_drop_down();
 				}
 			});	
 			$('.timepicker').timePicker({ 

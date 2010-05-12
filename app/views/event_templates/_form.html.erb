@@ -1,61 +1,68 @@
 <%= javascript_include_tag "combobox", "date", :cache => true %>
+<h3> Class Scheduler</h4>
 
-<div id="start_end_set">
-	<span>
-		First class occurs on:
-		<%= text_field_tag("start_at", Date.today.strftime("%m/%d/%Y"), {:size => 8, :id => "start_date"}) %>
-		
-		<span id="time_pickers">
-		  <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
-			to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
-		</span>
-		<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
+<style type="text/css" media="screen">
+	#monqi_class_details {
+		width: 40%;
+		float: left;
+		border-right: 2px dashed #444;
+	}
+	
+	#schedule {
+		padding-left: 20px;
+		width: 55%;
+		float: left;
+	}
+	
+	.ui-widget {
+	font-size:13px !important;
+	}
+	
+	.ui-button .ui-button-text {
+	display:inline;
+	line-height:1.4;
+	}
+		.ui-button{
+			left: -27px !important;
+		}
+</style>
+
+<div id="monqi_class_details">
+	Class Details: <br />
+	<%= f.hidden_field :calendar_id, :value  => "1" %>
+	
+	
+	<div id="start_end_set">
 		<span>
+			First class begins:
+			<%= text_field_tag("start_at", Date.today.strftime("%m/%d/%Y"), {:size => 8, :id => "start_date"}) %>
 			All day <%= f.check_box :allday, :id => "allday" %>
-		</span>
-  </span>
-</div>
-
-<div>
-	Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %>
-	Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title") %>
-	Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name") %>
-</div>
-
-<%= f.hidden_field :calendar_id, :value  => "1" %>
-<br/>
-<div id="repeat_select" class="repeat_border">
- 	Repeats: <%= select(:event_template, :repeat, 
-					   [['Does not repeat', 'none'],
-					   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly'], 	
-					   ['Custom...', 'Custom']], 		
-					   {:selected => 'Does not repeat'}) %>
-</div>
-
-<div id="info_box"><br/></div>
-
-<div id="range">
-	<div id="interval_select" class="repeat_border">
-		<% @array = Array.new(30) {|i| 1+i} %>
-		Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
-		<br/><br/>
-		<div id="select_week_days" class="repeat_border"></div>
-
-		Range: 
-		<br/>
-		<p>
-		Starts: <%= text_field_tag(:start_clone, {}, {:disabled => "true", :size => 10}) %>
-		
-		<span id="end_repeat_block">
-				Ends: 
-					<%= radio_button_tag :end_repeat_radio, :on_date %> Until 
-						<span id="on_date"></span>
-				
-					<p id="repeat_end_after">
-						<%= radio_button_tag :end_repeat_radio, :after %> After
-						<span id="after"></span>	
-					</p>
-		</span>
-		</p>
+			<br /><br />
+			<span id="time_pickers">
+			  from <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
+				to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
+			</span>
+			<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
+			<span>
+			</span>
+	  </span>
 	</div>
-</div><!-- /range -->
+	<br />
+	<div>
+		Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %> <br /><br />
+		Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title") %>
+	</div>
+</div>
+
+<div id="schedule">
+	Schedule:
+	<br />
+	<span id="first_class"></span>
+	<br />
+	<span class="scheduled_day"></span>
+	<span class="sched_infobox"></span>
+	<span class="scheduled_instructor">
+		Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name") %>
+	</span>
+	<span class="add_sched"><%= image_tag('icons/add.png', :class => "add_day") %></span>
+</div>

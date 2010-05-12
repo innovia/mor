@@ -5,11 +5,10 @@
 <%= error_messages_for :event_template %>
 <% form_for(:event_template, :url => collection_url) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
-  <p>
-    <%= submit_tag "Create" %>
+
+  <p class="clear">
+    <%= submit_tag "Create" -%>
+		<%= button_to 'Cancel', collection_url %>
   </p>
 <% end %>
-
-<br/>
-<%= link_to '<< Back', collection_url %>
 </div>
