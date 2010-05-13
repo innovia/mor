@@ -6,13 +6,21 @@
 		width: 40%;
 		float: left;
 		border-right: 2px dashed #444;
+		height: 200px;
 	}
 	
-	#schedule {
+	 .schedule {
 		padding-left: 20px;
 		width: 55%;
-		float: left;
+		float: right;
 	}
+	
+	#sched_title {
+		float:left;
+		margin-left:20px;
+	}
+	
+	.add_sched {cursor: pointer;}
 	
 	.ui-widget {
 	font-size:13px !important;
@@ -54,15 +62,19 @@
 	</div>
 </div>
 
-<div id="schedule">
-	Schedule:
-	<br />
-	<span id="first_class"></span>
-	<br />
-	<span class="scheduled_day"></span>
-	<span class="sched_infobox"></span>
-	<span class="scheduled_instructor">
-		Instructor: <%= f.collection_select(:instructor_id, @instructors, "id", "full_name") %>
-	</span>
-	<span class="add_sched"><%= image_tag('icons/add.png', :class => "add_day") %></span>
+<div id="sched_title">
+	Schedule:<br /><br />
+	<span class="add_sched"><%= image_tag('icons/add.png', :class => "add_day") %> Schedule more instructors</span>
 </div>
+
+<div class="schedule">
+	<p>
+	<span class="scheduled_day"></span>
+	<span class="scheduled_instructor">
+		<% @options = options_from_collection_for_select(@instructors, 'id', 'last_initial') %>
+		Instructor: <%= select_tag("scheduled_instructor[]", @options, :class => "instructor") %>
+	</span>
+	</p>
+</div>
+
+<div id="added_day_instructor"></div>

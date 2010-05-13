@@ -1,50 +1,55 @@
 $(document).ready(function() {
 
 	$('#event_template_monqi_class_id').combobox();
-	$('#event_template_instructor_id').combobox();
+	$('.instructor').combobox();
 	$('#start_date').bind('blur', function() {
 		$('#end_at').val($(this).val());
 		update_next_days_drop_down();
 	});
+	
 	// set the static doc
-	date_and_time_pickers();
-	all_day_listner();
-	$('#range').hide();
-	$('#info_box').hide();
-	update_next_days_drop_down();
-	
+		date_and_time_pickers();
+		all_day_listner();
+		$('#range').hide();
+		$('#info_box').hide();
+		update_next_days_drop_down();
 		
-	function update_next_days_drop_down() {
-		var options = add_days_select();
-		$('.scheduled_day').html('<select name="next_days[]" class="first_class">' + options + '</select>');
-	};
+		
+		function update_next_days_drop_down() {
+			var options = add_days_select();
+			$('.scheduled_day').html('<select name="next_days[]" class="first_class">' + options + '</select>');
+		};
 	
-	
-	function add_days_select() {
+		function add_days_select() {
 			var first_class = Date.parse($('#start_date').val());
 			var number_of_next_days = 7 - Date.getDayNumberFromName(first_class.toString('ddd'));
 			var first_date_value = first_class.toString('MM/dd/yyyy');
-			var options = '<option value=' + first_date_value + '>' + first_class.toString('ddd') + ' ' + first_date_value + '</option>';
+			var options = '<option value=' + first_date_value + '>' 
+										+ first_class.toString('ddd') 
+										+ ' ' + first_date_value + '</option>';
 
 			for (var i=0; i < number_of_next_days; i++) {
 				var day = first_class.add(1).day().toString('ddd');
 				var date_value = first_class.add(1).day().toString('MM/dd/yyyy');
 				options += '<option value=' + date_value + '>' + day + ' ' + date_value + '</option>';
 			};
-		$('.first_class').bind('change', function() {
-			$('#start_date').val($(this).val());
-			$('#end_at').val($(this).val());
-		});
-		$('.add_day').bind('click', function() {
-			$('.scheduled_day').append('<div>\
-																  <span class="extra_instructor"></span>\
-																  <select name="next_days[]">' + options + '</select></div>');
-			$('.extra_instructor').html('test');
-		});
-		return options;
-	};
+			
+			$('.first_class').bind('change', function() {
+				$('#start_date').val($(this).val());
+				$('#end_at').val($(this).val());
+			});
+		
+			$('.add_sched').bind('click', function() {
+				if($('div.schedule').length < number_of_next_days) {
+					$('div.schedule').first().clone().appendTo('div#added_day_instructor');
+					$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove'>");
+				}
+			});
+			
+			return options;
+		};
 	
-	function date_and_time_pickers(){
+		function date_and_time_pickers(){
 			$('#start_date').datepicker({
 				firstDay: 1,
 				onSelect: function(){
@@ -69,12 +74,12 @@ $(document).ready(function() {
 
 	function all_day_listner() {
 		$('#allday').bind('click', function() {
-																						if ($('#allday').attr("checked") == true) {
-																								$('#time_pickers').hide();
-																						}else{
-																								$('#time_pickers').show();
-																						}
-		});
+			if ($('#allday').attr("checked") == true) {
+																									$('#time_pickers').hide();
+																								}else{
+																									$('#time_pickers').show();
+																								}
+			});
 
 	}
 	
