@@ -35,10 +35,11 @@
 		}
 </style>
 
+<div id="info_box"></div>
+
 <div id="monqi_class_details">
 	Class Details: <br />
 	<%= f.hidden_field :calendar_id, :value  => "1" %>
-	
 	
 	<div id="start_end_set">
 		<span>
@@ -50,9 +51,7 @@
 			  from <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
 				to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
 			</span>
-			<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
-			<span>
-			</span>
+				<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
 	  </span>
 	</div>
 	<br />
@@ -60,6 +59,31 @@
 		Level: <%= f.select(:level, { "Basics level" => "Basics", "Open level" => "Open level"}, :prompt => 'Select a level') %> <br /><br />
 		Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title") %>
 	</div>
+	
+	<div id="repeat_select" class="repeat_border">
+	 	Repeats: <%= select(:event_template, :repeat, 
+						   [['Does not repeat', 'none'],
+						   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly']], 		
+						   {:selected => 'Does not repeat'}) %>
+	</div>
+	
+	<div id="range">
+		<div id="interval_select" class="repeat_border">
+			<% @array = Array.new(30) {|i| 1+i} %>
+			Repeat every: <%= f.select(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
+			<br/><br/>
+		<div id="select_week_days" class="repeat_border"></div>
+
+		Range: <br />
+			<p>
+				Starts: <%= text_field_tag(:start_clone, {}, {:disabled => "true", :size => 10}) %>
+				<span id="end_repeat_block">
+					Ends: <%= radio_button_tag :end_repeat_radio, :on_date %> Until<span id="on_date"></span>
+				<p id="repeat_end_after"><%= radio_button_tag :end_repeat_radio, :after %> After <span id="after"></span></p>
+			</span>
+			</p>
+		</div>
+	</div><!-- /range -->
 </div>
 
 <div id="sched_title">

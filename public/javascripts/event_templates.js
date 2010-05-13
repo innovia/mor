@@ -42,12 +42,19 @@ $(document).ready(function() {
 			$('.add_sched').bind('click', function() {
 				if($('div.schedule').length < number_of_next_days) {
 					$('div.schedule').first().clone().appendTo('div#added_day_instructor');
-					$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove'>");
+					$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'>");
 				}
+					$('.remove_set').bind('click', function() {
+						$(this).closest('div.schedule').last().slideUp('slow', function() {
+							$(this).last().remove();
+						});
+					});
 			});
 			
+		
 			return options;
 		};
+	
 	
 		function date_and_time_pickers(){
 			$('#start_date').datepicker({
