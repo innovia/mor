@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	$('#event_template_monqi_class_id').combobox();
-	$('.instructor').combobox();
+	//$('.instructor').combobox();
 	$('#start_date').bind('blur', function() {
 		$('#end_at').val($(this).val());
 		update_next_days_drop_down();
@@ -34,6 +34,7 @@ $(document).ready(function() {
 				options += '<option value=' + date_value + '>' + day + ' ' + date_value + '</option>';
 			};
 			
+			
 			$('.first_class').bind('change', function() {
 				$('#start_date').val($(this).val());
 				$('#end_at').val($(this).val());
@@ -43,6 +44,7 @@ $(document).ready(function() {
 				if($('div.schedule').length < number_of_next_days) {
 					$('div.schedule').first().clone().appendTo('div#added_day_instructor');
 					$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'>");
+					$('.first_class').last().removeClass('first_class')
 				}
 					$('.remove_set').bind('click', function() {
 						$(this).closest('div.schedule').last().slideUp('slow', function() {
@@ -50,8 +52,6 @@ $(document).ready(function() {
 						});
 					});
 			});
-			
-		
 			return options;
 		};
 	

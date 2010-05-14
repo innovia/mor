@@ -1,5 +1,98 @@
+#body { height: 500px;}
 
-#custom_monthly{
-	margin-left: 20px
+label {display: inline;}
+
+.schedule {
+	padding: 10px 0 0 20px;
 }
 
+#class {
+	float:left;
+	padding: 10px 0 0 20px;
+}
+
+.remove_set{ cursor: pointer;}
+
+#sched_title { margin-left: 20px;}
+
+.add_sched {cursor: pointer;}
+
+.ui-widget {
+	font-size:13px !important;
+}
+
+.ui-button .ui-button-text {
+	display:inline;
+	line-height:1.4;
+}
+
+.ui-button{	left: -27px !important; }
+
+#buttons {
+	float:left; margin: 17px 0 0 20px; width:152px;
+}
+
+.border {border: 1px solid #999;}
+
+#repeat_select { margin: 20px 0px 20px 20px;}
+
+.repeat {
+border-bottom:1px solid #333;
+}
+
+#info_box {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:#B0D4B0 none repeat scroll 0 0;
+	border:1px solid #737B73;
+	font-size:110%;
+	padding:8px 6px;
+	margin: 7px 0 0 159px;
+	text-align:center;
+	display: inline;
+}
+
+.repeat_border {border-bottom:1px solid #E0F1E0;}
+
+#range {
+	margin: 10px 0 0 20px;
+}
+
+#interval_select {margin: 20px 0 0 15px;}
+
+#repeat_end_after{ margin-top:6px;
+									 padding-left:188px;
+}
+
+
+/* Time Picker */
+div.time-picker {
+	font: bold 0.8em  Segoe UI, Arial, sans-serif;
+  position: absolute;
+  height: 200px;
+  width:4em; /* needed for IE */
+  overflow: auto;
+  background: #feeebd;
+  border: 1px solid #8e846b;
+  z-index: 99;
+	margin-top: 20px;
+	color: #383838;
+}
+div.time-picker-12hours {
+  width:6em; /* needed for IE */
+}
+
+div.time-picker ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+div.time-picker li {
+  padding: 1px;
+  cursor: pointer;
+}
+div.time-picker li.selected {
+  background: #316AC5;
+  color: #fff;
+}
