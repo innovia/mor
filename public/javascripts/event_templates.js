@@ -2,141 +2,147 @@ $(document).ready(function() {
 
 	$('#event_template_monqi_class_id').combobox();
 	//$('.instructor').combobox();
+		
+	// set the static doc
+	$('#range').hide();
+	$('#info_box').hide();
+	date_and_time_pickers();
+	all_day_listner();	
+	update_next_days_drop_down();
+		
+	function update_next_days_drop_down() {
+		var options = add_days_select();
+		$('.scheduled_day').html('<select name="next_days[]" class="first_class" disabled="disabled">' + options + '</select>');
+	};
+	
+	function add_days_select() {
+		var selected_date = Date.parse($('#start_date').val());
+		var selected_date_value = selected_date.toString('MM/dd/yyyy');
+
+		var number_of_next_days = 7 - Date.getDayNumberFromName(selected_date.toString('ddd'));
+		
+		var options = '<option value=' + selected_date_value + '>' + selected_date.toString('ddd') + ' ' + selected_date_value + '</option>';
+			
+		for (var i=1; i < number_of_next_days; i++) {
+			var next_day_option = selected_date;
+			next_day_option.add(1).day();
+			var next_day_value = next_day_option.toString('MM/dd/yyyy');
+			options += '<option value=' + next_day_value + '>' + next_day_option.toString('ddd') + ' ' + next_day_value + '</option>';
+		};	
+		
+		return options;
+	};
+	
+	
+	
+	function date_and_time_pickers(){
+		$('#start_date').datepicker({
+																	firstDay: 1,
+																	onSelect: function(){
+																												$('#start_clone').val($(this).val());
+																												$('#end_at').val($(this).val());
+					
+																												// clear all checkboxes
+																												$('input:checkbox').attr('checked', false);
+																												$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+																												update_info_box();
+																												update_next_days_drop_down();
+																											}
+		});	
+			
+		$('.timepicker').timePicker({ 
+																	startTime: "06:00", 
+			  													endTime: new Date(0, 0, 0, 22, 00, 0), // Using Date object here.
+			  													show24Hours: false,
+			  													separator: ':',
+			  													step: 5
+		});
+			
+		$('#start_clone').val($('#start_date').val());		
+	}
+
+	function all_day_listner() {
+		$('#allday').bind('click', function() {
+																					 	if ($('#allday').attr("checked") == true) {
+																							$('#time_pickers').hide();
+																						}else{
+																							$('#time_pickers').show();
+																						}
+			});
+	}
+	
+	//	Binds
+	
 	$('#start_date').bind('blur', function() {
 		$('#end_at').val($(this).val());
 		update_next_days_drop_down();
 	});
 	
-	// set the static doc
-		date_and_time_pickers();
-		all_day_listner();
-		$('#range').hide();
-		$('#info_box').hide();
-		update_next_days_drop_down();
-		
-		
-		function update_next_days_drop_down() {
-			var options = add_days_select();
-			$('.scheduled_day').html('<select name="next_days[]" class="first_class">' + options + '</select>');
-		};
+	$('.add_sched').bind('click', function() {
+		// max additions of sched instructor day sets
+		if ($('div.schedule').length < $('.first_class option').size()) {
+			$('div.schedule').first().clone().appendTo('div#added_day_instructor');
+			$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'>");
+			$('.first_class').last().attr('disabled', false);
+			//auto select the next day $('.first_class').last().attr
+			var next_on_the_list = Date.parse($('#start_date').val()).add(1).day().toString('MM/dd/yyyy');
+			 $('.first_class option[value=next_on_the_list]').attr('selected', 'selected');
+			$('.first_class').last().removeClass('first_class');
+		} else {
+			alert("there are no more days left in the week to schedule");
+		}
+	});
 	
-		function add_days_select() {
-			var first_class = Date.parse($('#start_date').val());
-			var number_of_next_days = 7 - Date.getDayNumberFromName(first_class.toString('ddd'));
-			var first_date_value = first_class.toString('MM/dd/yyyy');
-			var options = '<option value=' + first_date_value + '>' 
-										+ first_class.toString('ddd') 
-										+ ' ' + first_date_value + '</option>';
-
-			for (var i=0; i < number_of_next_days; i++) {
-				var day = first_class.add(1).day().toString('ddd');
-				var date_value = first_class.add(1).day().toString('MM/dd/yyyy');
-				options += '<option value=' + date_value + '>' + day + ' ' + date_value + '</option>';
-			};
-			
-			
-			$('.first_class').bind('change', function() {
-				$('#start_date').val($(this).val());
-				$('#end_at').val($(this).val());
-			});
-		
-			$('.add_sched').bind('click', function() {
-				if($('div.schedule').length < number_of_next_days) {
-					$('div.schedule').first().clone().appendTo('div#added_day_instructor');
-					$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'>");
-					$('.first_class').last().removeClass('first_class')
-				}
-					$('.remove_set').bind('click', function() {
-						$(this).closest('div.schedule').last().slideUp('slow', function() {
-							$(this).last().remove();
-						});
-					});
-			});
-			return options;
-		};
+	$('.remove_set').bind('click', function() {
+		$(this).closest('div.schedule').last().slideUp('slow', function() {
+			$(this).last().remove();
+		});
+	});
 	
-	
-		function date_and_time_pickers(){
-			$('#start_date').datepicker({
-				firstDay: 1,
-				onSelect: function(){
-					$('#start_clone').val($(this).val());
-					$('#end_at').val($(this).val());
-					// clear all checkboxes
-					$('input:checkbox').attr('checked', false);
-					$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
-					update_info_box();
-					update_next_days_drop_down();
-				}
-			});	
-			$('.timepicker').timePicker({ 
-				startTime: "06:00", // Using string. Can take string or Date object.
-			  endTime: new Date(0, 0, 0, 22, 00, 0), // Using Date object here.
-			  show24Hours: false,
-			  separator: ':',
-			  step: 5
-			});
-			$('#start_clone').val($('#start_date').val());		
-	}
-
-	function all_day_listner() {
-		$('#allday').bind('click', function() {
-			if ($('#allday').attr("checked") == true) {
-																									$('#time_pickers').hide();
-																								}else{
-																									$('#time_pickers').show();
-																								}
-			});
-
-	}
-	
-	//	Binds
-	
-	//repeats
 	$('#event_template_repeat').bind('change', function() {
-					switch($(this).val()){
-						case "Daily":
-							on_change_of_repeats();
-							$('#select_week_days').html('');
-							update_info_box();
-						break;
+		switch($(this).val()){
+			case "Daily":
+				on_change_of_repeats();
+				$('#select_week_days').html('');
+				update_info_box();
+			break;
 
-						case "Weekly":
-							on_change_of_repeats();
-							$('#select_week_days').html('Repeat on: <br/>\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Tue" />Tue\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Wed" />Wed\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Thu" />Thu\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Fri" />Fri\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sat" />Sat\
-																											<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sun" />Sun\
-																											<br/><br/>'
-							);
-							$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
-							$('input:checkbox').bind('click', function() { update_info_box(); });
-							update_info_box();
-						break;
+			case "Weekly":
+				on_change_of_repeats();
+				$('#select_week_days').html('Repeat on: <br/>\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Tue" />Tue\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Wed" />Wed\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Thu" />Thu\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Fri" />Fri\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sat" />Sat\
+																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sun" />Sun\
+																			<br/><br/>'
+				);
+				$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+				$('input:checkbox').bind('click', function() { update_info_box(); });
+				update_info_box();
+		  break;
 
-						case "Monthly":
-							on_change_of_repeats();
-							$('#select_week_days').html('');
-							update_info_box();
-						break;
+			case "Monthly":
+				on_change_of_repeats();
+				$('#select_week_days').html('');
+				update_info_box();
+			break;
 
-						case "Yearly": 
-							on_change_of_repeats();
-							$('#select_week_days').html('');
-							update_info_box();
-						break;
+			case "Yearly": 
+				on_change_of_repeats();
+				$('#select_week_days').html('');
+				update_info_box();
+			break;
 
-						default: // Does not repeat
-								$('#select_week_days').html('');
-								$('#info_box').html('').hide();
-								$('#range').hide();
-								$('#event_template_interval').val('');
-						break;
-					} // end of switch
+			default: // Does not repeat
+				$('#select_week_days').html('');
+				$('#info_box').html('').hide();
+				$('#range').hide();
+				$('#event_template_interval').val('');
+			break;
+		} // end of switch
 	}); // end of change bind
 
 	function on_change_of_repeats(){
@@ -184,7 +190,7 @@ $(document).ready(function() {
 			set_repeat_every_x();
 			pluralize($(this).val(), freq);
 			update_info_box();
-		});
+	});
 	
 	// pluralize days, weeks, months, years
 	function pluralize(counter, item) {
@@ -233,5 +239,4 @@ $(document).ready(function() {
 			
 			$('#info_box').html(str).show();
 	}
-	
 });
