@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
   
-  map.resources :people, :member => { :enable => :put } do |people|
+  map.resources :people, :member => { :enable => :put, :remove_profile_pic => :get } do |people|
        people.resources :roles
   end
   

@@ -1,4 +1,15 @@
 <h2>Editing <%= @person.full_name.capitalize %>'s information</h2>
+<div id="profile_picture">
+	<% unless @person.photo_file_size.nil? %>
+		<div id="delete_profile_pic">						
+		<%= image_tag( "icons/large_error.png",  :size => "24x24", 
+														"data-person"  => @person.id,
+														:title => "delete picutre",
+														:class => "delete_icon" ) %>
+		</div>
+	<% end %>
+	<div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
+</div>
 
 <div class="prepend-1">
 <%= error_messages_for :person %>

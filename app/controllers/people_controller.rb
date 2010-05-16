@@ -9,6 +9,7 @@ class PeopleController < ResourceController::Base
   end
   
   def show
+    @instructor_role = Role.find_by_title('instructor')
     @person = Person.find(params[:id])  
     respond_to do |wants|
       wants.html {
@@ -63,6 +64,12 @@ class PeopleController < ResourceController::Base
   def vcard
     @person = Person.find(params[:id])
     render  :layout => false   
+  end
+
+  def remove_profile_pic
+    @person = Person.find(params[:id])
+    @person.update_attribute(:photo, nil)
+    render :nothing => true
   end
 
 private

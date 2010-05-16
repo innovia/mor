@@ -1,6 +1,5 @@
 <div class="body">
-<h3>#<%=h  @person.id.to_s + " " + @person.full_name.capitalize %></h3>	
-<div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
+<h3><%=h @person.full_name.capitalize %>
 <% if @person.roles.empty? %>
 	<div class="warning">
 		<%= @person.full_name %> does not have any roles and would not appear in the people list
@@ -11,6 +10,20 @@
 	<%= @person.roles.last == r ? ')' : ',' %>
 	<% end -%>
 <% end -%>
+</h3>	
+
+<div id="profile_picture">
+	<% unless @person.photo_file_size.nil? %>
+		<div id="delete_profile_pic">						
+		<%= image_tag( "icons/large_error.png",  :size => "24x24", 
+														"data-person"  => @person.id,
+														:title => "delete picutre",
+														:class => "delete_icon" ) %>
+		</div>
+	<% end %>
+	<div id="person_photo"><%= image_tag @person.photo.url(:small) %></div>
+</div>
+
 <p><%= link_to "Show on Staff public page", staff_path %></p>
 <div id="personal_info">
 
@@ -44,7 +57,10 @@
 	
 <div id="personal_info_part2">
 <p><strong>Email:</strong><%=mail_to(@person.email) %></p>
-<p><strong>Notes:</strong><%= @person.notes %></p>
+<strong><%= @person.roles.include?(@instructor_role) ? "Bio:" : "Notes:" %></strong><br />
+<p id="bio_notes">
+		<%= @person.notes %>
+</p>
 </div>
 
 </div>

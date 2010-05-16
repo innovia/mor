@@ -929,3 +929,21 @@ p.cal_month {
 .recurring_classes .delete_button { cursor: pointer;}
 
 .with_right_margin { margin-right: 20px;}
+
+#delete_profile_pic {
+	cursor: pointer;
+	position:relative;
+	left:137px;
+	top:12px;
+}
+
+#bio_notes{
+	width: 600px;
+	background: #D0EBF4;
+	border: 1px solid blue;
+	moz-border-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;	padding: 5px;
+	margin: 0 0 20px 30px;
+}

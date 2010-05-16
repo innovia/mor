@@ -4,6 +4,16 @@ $(document).ready(function() {
 			show_dialog($(this).attr("data-dialog_title"));
 		});
 		
+		
+		$('#delete_profile_pic').bind('click', function() {
+			jConfirm('Are you sure you want to remove this profile picture?', 'Remove Profile Picture', function(r) {  
+				if (r) {
+						$.get('/people/' + $('.delete_icon').attr("data-person") + '/remove_profile_pic');
+						$('#profile_picture').fadeOut(3000).delay(4000).fadeIn(3000).html('<img src="/images/no_avatar.gif" alt="No_avatar">');
+					}
+			});		});
+		
+		
 		$("Form").bind("keypress", function(e) {
 		  if (e.keyCode == 34) return false;
 		});
