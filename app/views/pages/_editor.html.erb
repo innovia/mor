@@ -56,7 +56,7 @@
 				</h2>
 				<% form_for(@page, :html => {:multipart => true}) do |f| -%>
 					<%= f.file_field :page_attachment, :size => '17' %>
-				  <br /><p><%= f.submit "attach"%></p>
+				  <br /><p><%= f.submit "Attach", :disable_with => 'Attaching...' %></p>
 				<% end -%>
 			</div>		
 	</div> <!-- /page editor box -->

@@ -2,6 +2,15 @@ $(document).ready(function() {
 	jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
 	$('#gallery').innerfade({ animationtype: 'fade', speed: 2000, timeout: 4000, type: 'random' });
 	
+	$('.remove_attachment').bind('click', function() {
+		jConfirm('Are you sure you want to remove this attachment?', 'Remove Page Attachment', function(r) {  
+			if (r) {
+					$.get('/pages/' + $('.remove_attachment').attr("data-page") + '/remove_attachment');
+					$('#attachment').slideUp();
+				}
+		});
+	});
+	
 	$('#thumbs_scrollable').scrollable({size: 1});
 	
 	$("#main").scrollable({ 

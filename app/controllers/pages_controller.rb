@@ -10,6 +10,11 @@ class PagesController < ApplicationController
     @news_flash = Page.find_or_create_by_title('news_flash').body
   end
   
+  def remove_attachment
+    @page = Page.find(params[:id])
+    @page.update_attribute(:page_attachment, nil)
+    render :nothing => true
+  end
   
   def ical
     @now = Time.now.hour
@@ -97,14 +102,7 @@ class PagesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
-  def destroy
-    @page = Page.find(params[:id])
-    @page.destroy
-    flash[:notice] = "Successfully destroyed page."
-    redirect_to pages_url
-  end
-  
+   
   private
   
   def get_all_packages

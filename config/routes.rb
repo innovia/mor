@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :pictures
-  map.resources :pages
+  map.resources :pages, :member => { :remove_attachment => :get }
     
   map.with_options :controller => 'pages' do |page|
     page.about_us  'about_us',  :action => "about_us"
