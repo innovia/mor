@@ -3,7 +3,7 @@
 		{ "id": <%= e.id -%>,
  	    "title": "<%= e.monqi_class.title %>",
 			"level": "<%=  e.event_template.level %>",
-			"instructor": "<%= e.instructor.last_initial %>",
+			"instructor": "<%= e.instructor.full_name %>",
 			"start": "<%= e.start_date.iso8601 %>",
 			"end": "<%= e.end_date.iso8601 %>",
 			"allDay": false

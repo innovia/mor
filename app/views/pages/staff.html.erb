@@ -5,7 +5,7 @@
 		<% end -%>
 	</h4>
 	<% @group_trainers.in_groups_of(15).each do |grp_chunk| %>
-		<ul class="left"> 
+		<ul class="group_trainers_list"> 
 			<% grp_chunk.each do |instructor| %>
 				<% unless instructor.nil? %>
 				<li><%= link_to instructor.full_name, "#", :rel => "instructor_#{instructor.id}", :class => "staff_links", "data-instructor"  => instructor.id %></li>
@@ -23,7 +23,7 @@
 			<% end -%>
 	</h4>
 <% @personal_trainers.in_groups_of(15).each do |grp_chunk| %>
-	<ul class="left"> 
+	<ul class="personal_instructors_list"> 
 		<% grp_chunk.each do |personal| %>
 			<% unless personal.nil? %>
 			<li><%= link_to personal.full_name, "#", :rel => "personal_#{personal.id}", :class => "staff_links", "data-instructor"  => personal.id %></li>

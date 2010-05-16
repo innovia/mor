@@ -18,7 +18,7 @@
 	
 	#top_content_page {
 		width: 880px !important;
-		height: 520px !important;
+		height: 920px !important;
 		margin-left: 19px !important;
 	}
 	
@@ -41,12 +41,11 @@
 				header: {
 								left: 'prev,next today',
 								center: 'title',
-								right: 'month,agendaWeek,agendaDay'
+								right: 'agendaWeek,agendaDay'
 							},
 			defaultView: 'agendaWeek',
 			firstDay: 1,
-			height: 480,
-			firstHour: <%= @now %>,
+			//firstHour: <%= @now %>,
 			minTime: 6,
 			maxTime: 22,
 			events: 'schedule_feed',

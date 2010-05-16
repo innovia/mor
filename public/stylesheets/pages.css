@@ -490,3 +490,6 @@ a:hover {color: red !important; font-weight: bold;}
 }
 
 #news_flash a {text-decoration: none !important; color: #F66818 !important; font-size: 85% !important}
+
+ul.group_trainers_list { float: left; margin-left:5px; padding-left:5px;}
+ul.personal_instructors_list{ float: left; margin-left:5px; padding-left:5px;}
