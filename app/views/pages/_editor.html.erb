@@ -40,16 +40,26 @@
 			  <p><%= f.submit "add_picture" %></p>
 				<%- end -%>	
 			</div>
-			
 		</div>
 	
 		<div id="page_editor_box">
-			<h2>Edit <%= @page.title %> page
-				<span class="h2bkg"> Edit the <%= @page.title.capitalize.humanize %> page</span> 
-			</h2>
-		<%= render :partial => "shared/update_page" %>
-		</div> <!-- /page editor box -->
-		
+				<div id="yui_editor">
+					<h2>Edit <%= @page.title %> page
+					<span class="h2bkg"> Edit the <%= @page.title.capitalize.humanize %> page</span> 
+				</h2>
+				<%= render :partial => "shared/update_page" %>
+			 </div>
+			
+			<div id="page_attachments">
+				<h2><%= @page.title %> Page Attachments
+					<span class="h2bkg"> <%= @page.title.capitalize.humanize %> Page Attachments</span> 
+				</h2>
+				<% form_for(@page, :html => {:multipart => true}) do |f| -%>
+					<%= f.file_field :page_attachment, :size => '17' %>
+				  <br /><p><%= f.submit "attach"%></p>
+				<% end -%>
+			</div>		
+	</div> <!-- /page editor box -->
 		
 	</div>
 	<%= render :partial => "shared/call_yui_editor" %>

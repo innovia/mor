@@ -63,6 +63,9 @@
 			<% end -%>
 			
 			<%= yield %>
+			<% unless @page.page_attachment_file_size.nil?  %>
+				Download: <%= link_to(@page.page_attachment_file_name, @page.page_attachment.url) %>
+			<% end -%>
 		</div>
 
 		<div id="address_bar" class="span-13">201 E67th St New York, NY 10065 - (212) 327-2170</div>
