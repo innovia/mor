@@ -28,7 +28,7 @@
 <div id="personal_info">
 
 <p>
-<% unless @birthday.blank? %>
+<% unless @person.dob.blank? %>
 	<strong>Birthday:</strong><%=h set_birthday_visibility(@person) %></p>
 <% end -%>
 <div id="address_info">
@@ -57,10 +57,12 @@
 	
 <div id="personal_info_part2">
 <p><strong>Email:</strong><%=mail_to(@person.email) %></p>
+<% unless @person.notes.empty? %>
 <strong><%= @person.roles.include?(@instructor_role) ? "Bio:" : "Notes:" %></strong><br />
-<p id="bio_notes">
-		<%= @person.notes %>
-</p>
+	<p id="bio_notes">
+			<%= @person.notes %>
+	</p>
+<% end %>
 </div>
 
 </div>
