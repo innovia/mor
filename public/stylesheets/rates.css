@@ -1,0 +1,19 @@
+ol,ul{list-style-type:none;overflow:hidden;padding:0;margin:0 0 0 40px;}
+td{padding:0px;}
+#main{height:315px !important;}
+.page{height:305px !important;}
+#main_navi_rates li{float:left;display:inline;}
+#main_navi_rates li a{background:transparent url('/images/rates_icons.png') no-repeat scroll 0 0;height:48px;padding:10px 20px;display:block;text-indent:-9999px;}
+#main_navi_rates li a#home_rates{background:url('/images/icons/home_small.png') no-repeat;width:15px;}
+#main_navi_rates li a#group{background-position:0px 0px;width:50px;}
+#main_navi_rates li a#gym{background-position:-112px 0px;width:40px;}
+#main_navi_rates li a#personal{background-position:-216px 0px;width:115px;}
+#main_navi_rates li a#unlimited{background-position:-389px 0px;width:120px;}
+#main_navi_rates li a#group:hover{background-position:0px -70px;width:50px;}
+#main_navi_rates li a#gym:hover{background-position:-112px -70px;width:40px;}
+#main_navi_rates li a#personal:hover{background-position:-216px -70px;width:115px;}
+#main_navi_rates li a#unlimited:hover{background-position:-389px -70px;width:120px;}
+#main_navi_rates li.active a#group{background-position:0px -164px;width:50px;}
+#main_navi_rates li.active a#gym{background-position:-112px -164px;width:40px;}
+#main_navi_rates li.active a#personal{background-position:-216px -164px;width:115px;}
+#main_navi_rates li.active a#unlimited{background-position:-389px -164px;width:120px;}
