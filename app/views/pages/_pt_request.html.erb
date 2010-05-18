@@ -37,7 +37,10 @@
 		<p><strong>do you prefer a male or female trainer</strong> (if known, list trainer’s name)<br/>
 		<%= text_field_tag(:trainer_preference) %>
 		<br/>
-		<strong>how many times a week:</strong><span class="req">*</span></strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> <br/><br/>
+		<strong>how many times a week:</strong><span class="req">*</span></strong> <%= text_field_tag(:times_a_week, {}, :size => "2", :maxlength => "2") %> 
+			<strong>preffered session time: <%= text_field_tag(:session_time, {}, :size => "10") %></strong>
+		<br/><br/>
+	
 	<strong>	preferred days:<span class="req">*</span></strong>
 		<%= check_box_tag('preferred_days[]','Mon',false, :validate => "required: true") -%> Mon
 	 	<%= check_box_tag('preferred_days[]','Tue',false) -%> Tue

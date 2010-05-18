@@ -47,6 +47,7 @@ Weight: <strong><%= @pt_req[:weight] %></strong>
 <strong>Trainer Preference: </strong><%= @pt_req[:trainer_preference] %><br/>
 <%= @pt_req[:gender] == "female" ? 'She' : 'He' %> Would like to come in <strong><%= @pt_req[:times_a_week] %> times a week</strong>. <br/>
 
+<strong>Preffer the session time: </strong><%= @pt_req[:session_time] %>
 <strong>Preferred days: </strong><%= @pt_req[:preferred_days].join(" ") %><br/>
 <strong>Session duration:</strong> <%= @pt_req[:session_duration] %><br/>
 <%= @pt_req[:gender] == "female" ? 'She' : 'He' %> wish to start on <%= @pt_req[:start_date] %><br/>
