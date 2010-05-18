@@ -15,11 +15,22 @@
 	
 	.class_level { font: 75% Verdana, sans-serif;}
 	.class_title {font-style: italic; font-weight: bold;}
+
 	
 	#top_content_page {
 		width: 880px !important;
 		height: 920px !important;
 		margin-left: 19px !important;
+	}
+	
+	.fc-event-vert span.fc-event-time {
+		font-size: 14px;
+		text-align: center;
+		padding: 3px;
+	}
+	
+	.fc-event-vert span.fc-event-title {
+		line-height:17px;
 	}
 	
 	.wc-cal-event .wc-time {
@@ -33,6 +44,12 @@
 	padding:10px 0 !important;
 	position:relative;
 	}
+	
+	span.monqi_title {
+		font-style: italic;
+		font-weight: bold;
+	}
+	
 </style>
 	<script type='text/javascript'>
 	$(document).ready(function() {
@@ -51,9 +68,15 @@
 			events: 'schedule_feed',
 			slotMinutes: 15,
 			eventRender: function(event, element) {
+<<<<<<< Updated upstream
 			        $('.fc-event-title').html('<span class="class_level">'+ event.level + '</span>' +
 																				'<span class="class_title">' + 	event.title + '</span>' +
 																				'<span class="instructor">' + event.instructor + '</span>');
+=======
+			        $('.fc-event-title').html('<span class=\'monqi_level\'>' + event.level + '</span>\
+																				 <span class=\'monqi_title\'>' + event.title + '</span>\
+																				 <span class=\'monqi_instructor\'>' + event.instructor + '</span>');
+>>>>>>> Stashed changes
 			    }
 			
 			})
@@ -61,3 +84,6 @@
 	});
 </script>
 <div id="calendar"></div>
+<div id="loading" style="display:none;">
+	<h1>loading... </h1>
+</div>
