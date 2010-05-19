@@ -1,8 +1,13 @@
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/assets/skins/sam/skin.css">
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/container/container-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/menu/menu-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/button/button-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/editor/editor-min.js"></script>
+<%= stylesheet_link_tag "yui/skins/sam/simpleeditor",
+												"yui/skins/sam/menu", 
+												"yui/skins/sam/button", 
+												"yui/fonts/fonts-min",
+ 												:cache => true %>
 
+<%= javascript_include_tag  "yui/yahoo-dom-event/yahoo-dom-event",
+ 														"yui/element/element-min",
+														"yui/container/container_core-min",
+														"yui/menu/menu-min",
+														"yui/button/button-min",
+														"yui/editor/editor-min",
+														:cache => true %>
