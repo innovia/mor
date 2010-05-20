@@ -2,6 +2,9 @@
 
 label {display: inline;}
 
+#popup_content.alert {
+	background-position:20px 4px;
+}
 .schedule {
 	padding: 10px 0 0 20px;
 }

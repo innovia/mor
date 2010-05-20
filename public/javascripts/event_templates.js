@@ -8,11 +8,11 @@ $(document).ready(function() {
 	$('#info_box').hide();
 	date_and_time_pickers();
 	all_day_listner();	
-	update_next_days_drop_down();
+	set_first_schedule_set();
 		
-	function update_next_days_drop_down() {
+	function set_first_schedule_set() {
 		var options = add_days_select();
-		$('.scheduled_day').html('<select name="next_days[]" class="first_class" disabled="disabled">' + options + '</select>');
+		$('.scheduled_day').html('<select name="next_days[]" class="schedule_date" disabled="disabled">' + options + '</select>');
 	};
 	
 	function add_days_select() {
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 		var number_of_next_days = 7 - Date.getDayNumberFromName(selected_date.toString('ddd'));
 		
-		var options = '<option value=' + selected_date_value + '>' + selected_date.toString('ddd') + ' ' + selected_date_value + '</option>';
+		var options = '<option selected="selected" value=' + selected_date_value + '>' + selected_date.toString('ddd') + ' ' + selected_date_value + '</option>';
 			
 		for (var i=1; i < number_of_next_days; i++) {
 			var next_day_option = selected_date;
@@ -32,8 +32,6 @@ $(document).ready(function() {
 		
 		return options;
 	};
-	
-	
 	
 	function date_and_time_pickers(){
 		$('#start_date').datepicker({
@@ -71,6 +69,100 @@ $(document).ready(function() {
 			});
 	}
 	
+	function set_schedule_set(options) {
+		$('div.schedule').last().find('select').first().append(options);
+	};
+	
+	function bind_mutli_sched_add_button(){
+		$('.add_sched').bind('click', function() {
+			
+													//store the options of the first select date as array
+													var total_days = $('div.schedule').first().find('select').first().children();
+													
+													// first grab all div schedules
+													var available_days = [];
+													
+												 	
+													$('div.schedule').each(function(index) { 
+													  $(this).first().find('select').first().children().each(function(index) {
+													      console.info($(this));
+													      if (! $(this).attr('selected') == 'selected'){
+													      available_days << $(this);
+													      console.info(available_days);
+													      }
+													  });
+													});
+											/*		
+													//each schedule grab the non selected and push to array
+													
+													// grab all selected days
+												
+													// remove selected days from total days
+													
+													
+													// when add is click, push options to the next select
+													//var left_days = [];
+													
+													//for (var i=0; i < days.length; i++) {
+													//	left_days << days[i] 
+													//}
+													
+													
+													//
+													// when the next one is click copy options Minus the selected days
+													
+												
+													if ($('div.schedule').size() < days.size()) {
+														//add a schedule div with select 
+														$('<div class=\'schedule\'><select name="next_days[]" class="schedule_date"></select></div>').appendTo('div#added_day_instructor');
+														
+														//and populate options
+														set_schedule_set(days);
+														
+														//
+														
+													// pop and push
+													
+													
+													//<span class="remove_button"><img src="/images/icons/delete.png" alt="Remove" class="remove_set"</span>
+														// clone the last schedule div and append into added_day_instructor div
+														//$('div.schedule').last().clone().appendTo('div#added_day_instructor');
+														
+														
+			
+													// check how many day instructor sets (div.schedule) 
+													//and if it's smaller then number of days in the first dropdown (until end of the week - sun)
+													
+																											
+														
+															//add the remove set button
+															$('.remove_button').last().html("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'");
+															
+															// get the first select(date) in the last schedule div
+															var last_schedule_select = $('div.schedule').last().find('select').first();
+															
+															// enable 
+															last_schedule_select.attr('disabled', false);	
+															
+															// take the last selected date on the previous schedule div and advance to the next day
+															
+															last_schedule_select.children().next().first().attr('selected', 'selected');
+														
+			} else {
+				jAlert("the last day on the list is: " ;// + last_schedule_select.children().last().text());
+			}
+				*/
+			bind_multi_sched_remove_button();
+		});
+	}
+
+function bind_multi_sched_remove_button(){
+		$('.remove_set').bind('click', function() {
+			$(this).closest('div.schedule').last().slideUp('fast', function() {
+				$(this).last().remove();
+			});
+		});
+}	
 	//	Binds
 	
 	$('#start_date').bind('blur', function() {
@@ -78,26 +170,24 @@ $(document).ready(function() {
 		update_next_days_drop_down();
 	});
 	
-	$('.add_sched').bind('click', function() {
-		// max additions of sched instructor day sets
-		if ($('div.schedule').length < $('.first_class option').size()) {
-			$('div.schedule').first().clone().appendTo('div#added_day_instructor');
-			$('span.scheduled_instructor').last().append("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'>");
-			$('.first_class').last().attr('disabled', false);
-			//auto select the next day $('.first_class').last().attr
-			var next_on_the_list = Date.parse($('#start_date').val()).add(1).day().toString('MM/dd/yyyy');
-			 $('.first_class option[value=next_on_the_list]').attr('selected', 'selected');
-			$('.first_class').last().removeClass('first_class');
-		} else {
-			alert("there are no more days left in the week to schedule");
-		}
-	});
 	
-	$('.remove_set').bind('click', function() {
-		$(this).closest('div.schedule').last().slideUp('slow', function() {
-			$(this).last().remove();
-		});
-	});
+	
+	
+	
+	function show_week_days(){
+			$('#multi_schedule').html('');
+			$('#select_week_days').html('<br /> Repeat on: <br/>\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Tue" />Tue\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Wed" />Wed\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Thu" />Thu\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Fri" />Fri\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sat" />Sat\
+																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sun" />Sun\
+																		<br/><br/>'
+			);
+			$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+	}
 	
 	$('#event_template_repeat').bind('change', function() {
 		switch($(this).val()){
@@ -109,17 +199,31 @@ $(document).ready(function() {
 
 			case "Weekly":
 				on_change_of_repeats();
-				$('#select_week_days').html('Repeat on: <br/>\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Tue" />Tue\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Wed" />Wed\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Thu" />Thu\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Fri" />Fri\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sat" />Sat\
-																			<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sun" />Sun\
-																			<br/><br/>'
-				);
-				$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+				$('#repeat_select').append('<select id="num_of_instructors">\
+																				<option value="1">for one instructor</option>\
+																				<option value="2">for multiple instructors</option>\
+																		</select>');
+				
+				$('#num_of_instructors').bind('change', function() {
+					if ( $(this).val() == "1" ) {
+						show_week_days();
+					} else {					
+					$('#select_week_days').html('');
+					$('#multi_schedule').html('<div id="sched_title">\
+																		 	<span class="add_sched">\
+																				<img src="/images/icons/add.png" class="add_day"/>\
+																				Schedule more instructors, same class different days\
+																			</span>\
+																		 </div><br /><div id="added_day_instructor"></div>'
+					);
+					
+					bind_mutli_sched_add_button();
+					$('.add_sched').click();
+					}
+					
+				});
+				
+				show_week_days();				
 				$('input:checkbox').bind('click', function() { update_info_box(); });
 				update_info_box();
 		  break;

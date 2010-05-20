@@ -42,22 +42,18 @@
 			<% @options = options_from_collection_for_select(@instructors, 'id', 'last_initial') %>
 			Instructor: <%= select_tag("scheduled_instructor[]", @options, :class => "instructor") %>
 		</span>
+		<span class="remove_button"></span>
 	</div><!-- /schedule -->
 	
 	<br />
-	<div id="sched_title">
-		<span class="add_sched"><%= image_tag('icons/add.png', :class => "add_day") %> Schedule more instructors, same class different days </span>
-	</div>
-
-	<div id="added_day_instructor"></div>
-
+	
 	<div id="repeat_select" class="repeat_border">
 	 	Repeats: <%= select(:event_template, :repeat, 
 						   [['Does not repeat', 'none'],
 						   ['Daily', 'Daily'], ['Weekly', 'Weekly'],[ 'Monthly', 'Monthly'], ['Yearly',  'Yearly']], 		
 						   {:selected => 'Does not repeat'}) %>
 	</div>
-	
+
 	<div id="info_box"></div>
 	
 	<div id="range">
@@ -76,6 +72,6 @@
 			<p id="repeat_end_after"><%= radio_button_tag :end_repeat_radio, :after %> After <span id="after"></span></p>
 		</div>
 	</div><!-- /range -->
-	
+	<div id="multi_schedule"></div>
 </div> <!--/ class details -->
 
