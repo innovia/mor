@@ -23,7 +23,7 @@ $(document).ready(function() {
 		
 		var options = '<option selected="selected" value=' + selected_date_value + '>' + selected_date.toString('ddd') + ' ' + selected_date_value + '</option>';
 			
-		for (var i=1; i < number_of_next_days; i++) {
+		for (var i=0; i < number_of_next_days; i++) {
 			var next_day_option = selected_date;
 			next_day_option.add(1).day();
 			var next_day_value = next_day_option.toString('MM/dd/yyyy');
@@ -69,95 +69,43 @@ $(document).ready(function() {
 			});
 	}
 	
-	
-	
 	function clone_master_select_options(){
 	 	var master_options = $('div.schedule').first().find('select.schedule_date').children().clone();
 		return master_options;
 	}													
-	
-	
-	
-	Array.prototype.remove = function(set){return this.filter(
-	    function(e,i,a){return set.indexOf(e)<0}
-	)};
-	
+		
 	function remove_selected_options_from_cloned_select(master_select_options){
 		var selected_options =  $('.schedule_date option:selected');
-		var new_options = master_select_options.remove(selected_options);	
-		console.info(new_options)
+		var new_options =  $.grep(master_select_options, function(elem){
+		    return !selected_options.filter('[value="'+elem.value+'"]').length;
+		});
 		return new_options;
 	}
-	
+		
 	function set_schedule_set(new_select_options) {
-		$('<div class="schedule"><span class="scheduled_day"><select name="next_days[]" class="schedule_date"></select></span></div>').appendTo('div#added_day_instructor');
+		$('<div class="schedule"><span class="scheduled_day"><select name="next_days[]" class="schedule_date"></select></span><span class="added_instructor"> Instructor: </span><span class="remove_button"><img src="/images/icons/delete.png" alt="Remove" class="remove_set"</span></div>').appendTo('div#added_day_instructor');
 		$('div.schedule').last().find('select.schedule_date').append(new_select_options);
+		$('span.added_instructor').last().html($('.scheduled_instructor').first().clone());
+		$('select.schedule_date').bind('click', function() {
+			//remove_selected_options_from_cloned_select($('div.schedule').first().find('select.schedule_date').children().clone())
+		});
+		
 	};
 	
 	
 	function bind_mutli_sched_add_button(){
 		$('.add_sched').bind('click', function() {
 																								var master_select_options = clone_master_select_options();
-																								
 																							  var new_select_options = remove_selected_options_from_cloned_select(master_select_options);
-												 												set_schedule_set(new_select_options);
-																								bind_multi_sched_remove_button();
+												 												if ($('div.schedule').size() < $('.schedule_date').first().children().size()) {
+																									set_schedule_set(new_select_options);
+																									bind_multi_sched_remove_button();
+																								} else {
+																										jAlert("the maximum schedule sets for the week, based on the starting day is: " + $('.schedule_date').first().children().size());
+																								}
 		});
 	}	
-													/* 
-													Every time you click on add schedule button
-													 
-													set 1
-													 		|-- 1 2 3 4 5 6 '1'		master select	
-													set 2
-														 	|-- 2 3 4 5 6 '2'	 clone master select, remove selected options on the page from this select, set the 1st option to selected
-													set 3 (added sequentially)
-															|-- 3 4 5 6 '3'  clone master select, remove selected options on the page from this select, set the 1st option to selected
-													set 4
-															|-- 4 5 6 '4' clone master select, remove selected options on the page from this select, set the 1st option to selected
-													set 3
-															one options is to store the removed set in memory and then pull it
-														  or
-															1 2 3 4 5 6
-															X X 3 X 5 6
-														 	clone master select, remove selected options on the page from this select, set the 1st option to selected
-													*/
 													
-													
-													
-													
-													
-													// check how many day instructor sets (div.schedule) 
-													//and if it's smaller then number of days in the first dropdown (until end of the week - sun)
-													
-													//if (total_days.size() < days.size()) {
-														//add a schedule div with select 
-														
-													//	$('<div class=\'schedule\'><select name="next_days[]" class="schedule_date"></select></div>').appendTo('div#added_day_instructor');
-														
-														//and populate options
-													//	set_schedule_set(available_days);
-														
-													/*											
-															//add the remove set button
-															$('.remove_button').last().html("<img src='/images/icons/delete.png' alt='Remove' class='remove_set'");
-															
-															// get the first select(date) in the last schedule div
-															var last_schedule_select = $('div.schedule').last().find('select').first();
-															
-															// enable 
-															last_schedule_select.attr('disabled', false);	
-															
-															// take the last selected date on the previous schedule div and advance to the next day
-															
-															last_schedule_select.children().next().first().attr('selected', 'selected');
-														
-			} else {
-				jAlert("the last day on the list is: " ;// + last_schedule_select.children().last().text());
-			}
-				*/
-		
-
 function bind_multi_sched_remove_button(){
 		$('.remove_set').bind('click', function() {
 			$(this).closest('div.schedule').last().slideUp('fast', function() {
@@ -172,11 +120,7 @@ function bind_multi_sched_remove_button(){
 		set_first_schedule_set();
 	});
 	
-	
-	
-	
-	
-	function show_week_days(){
+function show_week_days(){
 			$('#multi_schedule').html('');
 			$('#select_week_days').html('<br /> Repeat on: <br/>\
 																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
@@ -211,7 +155,7 @@ function bind_multi_sched_remove_button(){
 						show_week_days();
 					} else {					
 					$('#select_week_days').html('');
-					$('#multi_schedule').html('<div id="sched_title">\
+					$('#multi_schedule').html('<div id="sched_title"><br />\
 																		 	<span class="add_sched">\
 																				<img src="/images/icons/add.png" class="add_day"/>\
 																				Schedule more instructors, same class different days\

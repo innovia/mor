@@ -2,7 +2,6 @@
 <%= javascript_include_tag "combobox", "date", :cache => true %>
 
 <%= f.hidden_field :calendar_id, :value  => "1" %>
-<%= hidden_field_tag("end_at", Date.today.strftime("%m/%d/%Y"))  %>
 
 <h3> Class Scheduler</h4>
 
@@ -23,10 +22,10 @@
 	<div id="level">
 		Level: 
 			 <label>
-				<input type="radio" id="basics_level" name="level"  value="Basics" />Basics
+				<input type="radio" id="basics_level" name="event_template[level]"  value="Basics" />Basics
 			 </label>
 			 <label>
-				<input type="radio" id="open_level" name="level" value="Open level" />Open level
+				<input type="radio" id="open_level" name="event_template[level]" value="Open level" />Open level
 			 </label>
 			<br />
 			<br />

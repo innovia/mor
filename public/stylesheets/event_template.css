@@ -14,12 +14,14 @@ label {display: inline;}
 	padding: 10px 0 0 20px;
 }
 
-.remove_set{ cursor: pointer;}
+.remove_set{ cursor: pointer;margin-left:10px;vertical-align:middle;}
+
 
 #sched_title { margin-left: 20px;}
 
 .add_sched {cursor: pointer;}
 
+.add_sched img {vertical-align:text-top;}
 .ui-widget {
 	font-size:13px !important;
 }
@@ -99,3 +101,4 @@ div.time-picker li.selected {
   background: #316AC5;
   color: #fff;
 }
+

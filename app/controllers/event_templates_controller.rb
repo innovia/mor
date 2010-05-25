@@ -15,21 +15,26 @@ class EventTemplatesController < ResourceController::Base
     
     def create   
       @event_template = EventTemplate.new(params[:event_template])
-
+      #debugger
       # date and time fields are spilted on the form, so rejoin for proper sql storage      
-      unless params[:start_at].blank? and params[:end_at].blank?
-        @event_template.start_date =  params[:start_at] + " " + params[:start_time]
-        @event_template.end_date = params[:end_at] + " " + params[:end_time]
-      end
-
-      if @event_template.save!
-        flash[:notice] = 'the class was successfully scheduled.'
-        redirect_to event_template_events_path(@event_template)
-      else
-        get_calendars
-        get_instructors
-        get_monqi_classes_names
-        render :action => "new" 
+      params[:next_days].each_with_index do |schedule_date, i|
+         @event_template.start_date =  schedule_date + " " + params[:start_time]
+         @event_template.end_date = schedule_date + " " + params[:end_time]
+         @event_template.instructor_id = params[:scheduled_instructor][i]
+         debugger
+          #flash[:notice] = ""
+          @event_template.save
+          #flash[:notice] += schedule_date + ' was schedule ' 
+         #   if params[:next_days].last == i 
+        #      flash[:notice] += 'the last class was successfully scheduled.'
+        #      redirect_to event_template_events_path()
+        #    end  
+        # else
+        #   get_calendars
+        #   get_instructors
+        #   get_monqi_classes_names
+         #  render :action => "new" 
+         #end
       end
     end
         
