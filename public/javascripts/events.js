@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('#event_template_monqi_class_id').combobox();
+	$('#event_monqi_class_id').combobox();
 	//$('.instructor').combobox();
 		
 	// set the static doc
@@ -92,7 +92,6 @@ $(document).ready(function() {
 		
 	};
 	
-	
 	function bind_mutli_sched_add_button(){
 		$('.add_sched').bind('click', function() {
 																								var master_select_options = clone_master_select_options();
@@ -106,13 +105,13 @@ $(document).ready(function() {
 		});
 	}	
 													
-function bind_multi_sched_remove_button(){
+	function bind_multi_sched_remove_button(){
 		$('.remove_set').bind('click', function() {
 			$(this).closest('div.schedule').last().slideUp('fast', function() {
 				$(this).last().remove();
 			});
 		});
-}	
+	}	
 	//	Binds
 	
 	$('#start_date').bind('blur', function() {
@@ -120,22 +119,22 @@ function bind_multi_sched_remove_button(){
 		set_first_schedule_set();
 	});
 	
-function show_week_days(){
+	function show_week_days(){
 			$('#multi_schedule').html('');
 			$('#select_week_days').html('<br /> Repeat on: <br/>\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Mon" />Mon\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Tue" />Tue\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Wed" />Wed\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Thu" />Thu\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Fri" />Fri\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sat" />Sat\
-																		<input id="event_template_byday_" name="event_template[byday][]" type="checkbox" value="Sun" />Sun\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Mon" />Mon\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Tue" />Tue\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Wed" />Wed\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Thu" />Thu\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Fri" />Fri\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Sat" />Sat\
+																		<input id="event_byday_" name="event[byday][]" type="checkbox" value="Sun" />Sun\
 																		<br/><br/>'
 			);
 			$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
-	}
+    }
 	
-	$('#event_template_repeat').bind('change', function() {
+	$('#repeat').bind('change', function() {
 		switch($(this).val()){
 			case "Daily":
 				on_change_of_repeats();
@@ -187,10 +186,11 @@ function show_week_days(){
 			break;
 
 			default: // Does not repeat
+				$('#after').html('<input type="hidden" size="2" name="event[count]" id="count" value="1" />');
 				$('#select_week_days').html('');
 				$('#info_box').html('').hide();
 				$('#range').hide();
-				$('#event_template_interval').val('');
+				$('#interval').val('');
 			break;
 		} // end of switch
 	}); // end of change bind
@@ -198,7 +198,7 @@ function show_week_days(){
 	function on_change_of_repeats(){
 		$('#range').show();
 		set_repeat_every_x();
-		pluralize($('#event_template_interval').val(), freq);
+		pluralize($('#interval').val(), freq);
 	};
 	
 	// Radio Group Binds
@@ -206,9 +206,9 @@ function show_week_days(){
 	
 	$('#end_repeat_radio_on_date').bind('click', function() {
 		$('#after').html('');
-		$('#on_date').html('<input type="text" size="10" name="event_template[until]" id="event_template_until" class="date_picker">');
+		$('#on_date').html('<input type="text" size="10" name="event[until]" id="until" class="date_picker">');
 		
-		$('#event_template_until').datepicker({
+		$('#until').datepicker({
 				firstDay: 1,
 		    beforeShow: function(input, inst)
 		    {
@@ -219,15 +219,15 @@ function show_week_days(){
 			}
 		});
 		// Add 30 days to until field automatically
-		$('#event_template_until').focus();
-	  $('#event_template_until').val(Date.parse($('#start_date').val()).add(1).month().toString('MM/dd/yyyy'));
+		$('#until').focus();
+	  $('#until').val(Date.parse($('#start_date').val()).add(1).month().toString('MM/dd/yyyy'));
 		update_info_box();
 	});
 	
 	$('#end_repeat_radio_after').bind('click', function() {
 		$('#on_date').html('');
-		$('#after').html('<input type="text" size="2" name="event_template[count]" id="event_template_count" value="1"> Occurrences');
-		$('#event_template_count').bind('keyup', function() {
+		$('#after').html('<input type="text" size="2" name="event[count]" id="count" value="1"> Occurrences');
+		$('#count').bind('keyup', function() {
 			update_info_box();							
 		});
 		update_info_box();
@@ -236,7 +236,7 @@ function show_week_days(){
 		
 	//dynamic updates
 	//interval
-	$('#event_template_interval').bind('change', function() {
+	$('#interval').bind('change', function() {
 			set_repeat_every_x();
 			pluralize($(this).val(), freq);
 			update_info_box();
@@ -251,20 +251,20 @@ function show_week_days(){
 	}
 	
 	function set_repeat_every_x(){
-		if ($('#event_template_repeat').val() == 'Daily') {
+		if ($('#repeat').val() == 'Daily') {
 			freq = 'day';
 		} else {
-			freq = $('#event_template_repeat').val().replace('ly', '').trim();
+			freq = $('#repeat').val().replace('ly', '').trim();
 		}
 	}
 	
 	function update_info_box() {
-			var repeat_freq = $('#event_template_repeat').val();
-			var r_interval = $('#event_template_interval').val();
-			var until = $('#event_template_until').val();
-			var after = $('#event_template_count').val();
+			var repeat_freq = $('#repeat').val();
+			var r_interval = $('#interval').val();
+			var until = $('#until').val();
+			var after = $('#count').val();
 			var str = '';
-			var days_arr = $("input:checkbox[name='event_template[byday][]']:checked");
+			var days_arr = $("input:checkbox[name='event[byday][]']:checked");
 			var selected_days = ' on ';
 
 			$.each(days_arr, function(index, value) { 
@@ -277,7 +277,7 @@ function show_week_days(){
 			if ( r_interval > 1) {
 				str = 'Every ' + r_interval + ' ' + $('#repeat_every_x').text();
 			} else {
-				str = $('#event_template_repeat').val();
+				str = $('#repeat').val();
 			}
 			
 			if (repeat_freq == 'Weekly') {str += selected_days;}
