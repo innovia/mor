@@ -7,10 +7,7 @@ class Event < ActiveRecord::Base
   
   has_and_belongs_to_many :packages
   has_and_belongs_to_many :attendees, :class_name => "Person"
-  
-  before_save :manually_serialize_byday
-  before_save :create_one_or_recurring_events
-   
+     
   # Getter Setter for start and end time
   def start_time
     start_time.strftime("%I:%M %p")
