@@ -14,17 +14,13 @@
 			from <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
 			to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
 		</span>
-			All day <%= f.check_box :allday, :id => "allday" %>
+			All day <%= check_box_tag :allday, :id => "allday" %>
 	</div><br />
 
 	<div id="level">
 		Level: 
-			 <label>
-				<input type="radio" id="basics_level" name="event[level]"  value="Basics" />Basics
-			 </label>
-			 <label>
-				<input type="radio" id="open_level" name="event[level]" value="Open level" />Open level
-			 </label>
+				<input type="radio" id="basics_level" name="event[level]" value="Basics" CHECKED>Basics
+				<input type="radio" id="open_level" name="event[level]" value="Open level">Open level
 			<br />
 			<br />
 	</div>
@@ -45,12 +41,12 @@
 	<br />
 	
 	<div id="repeat_select" class="repeat_border">
-	 	Repeats: <%= select_tag(:repeat, "<option selected='selected' value='none'>Does not repeat</option>
-																			<option value='Daily'>Daily</option>
-																			<option value='Weekly'>Weekly</option>
-																			<option value='Monthly'>Monthly</option>
-																			<option value='Yearly'>Yearly</option>
-																			") %>
+	 	Repeats: <%= select_tag(:freq, "<option selected='selected' value='none'>Does not repeat</option>
+																		<option value='Daily'>Daily</option>
+																		<option value='Weekly'>Weekly</option>
+																		<option value='Monthly'>Monthly</option>
+																		<option value='Yearly'>Yearly</option>
+							") %>
 	</div>
 
 	<div id="info_box"></div>
@@ -73,4 +69,3 @@
 	</div><!-- /range -->
 	<div id="multi_schedule"></div>
 </div> <!--/ class details -->
-

@@ -1,9 +1,8 @@
 class Event < ActiveRecord::Base
-  require 'vpim/rrule'
   belongs_to :monqi_class, :class_name => "MonqiClass", :foreign_key => "monqi_class_id"
   belongs_to :instructor, :class_name => "Person" # this is for the instructor in each event
   belongs_to :instructor, :class_name => "Person", :foreign_key => "sub_instructor_id"
-  belongs_to  :calendar
+  belongs_to :calendar
   
   has_and_belongs_to_many :packages
   has_and_belongs_to_many :attendees, :class_name => "Person"
