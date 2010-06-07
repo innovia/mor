@@ -14,6 +14,7 @@ class EventsController < ResourceController::Base
   end
 
    def create  
+    msg = 'Scheduled successfuly for: <br />'
     params[:next_days].each_with_index do |schedule_date, i|            
       #debugger
       start_date =  Time.parse(schedule_date + " " + params[:start_time])  
@@ -25,14 +26,15 @@ class EventsController < ResourceController::Base
         end_on_date = Time.parse(params[:until]).strftime("%Y%m%d")
       end
       
-      if params[:freq] == 'none'
+      if params[:freq] == 'Does not repeat'
         params[:freq] = 'daily'
         params[:count] = '1'
       end
       
-      # BYMONTHDAY, BYMONTH
-      rule = "freq=#{params[:freq]};count=#{params[:count]};until=#{end_on_date};interval=#{params[:interval]};byday=#{params[:byday]};"
       
+      # BYMONTHDAY, BYMONTH
+      
+      rule = "freq=#{params[:freq]};count=#{params[:count]};until=#{end_on_date};interval=#{params[:interval]};byday=#{params[:byday]};"
     
       # start_date and end_date must be the same date but with a end_date has a differnt time
       rrule_start = Vpim::Rrule.new(start_date, rule) #Create a repeting events for the start date/time
@@ -47,15 +49,18 @@ class EventsController < ResourceController::Base
       	end #end of rrule_end loop
       	@event.rrule = rule
       	@event.cancelled = 0
-      	@event.all_day = 0
+      	@event.allday = 0
       	@event.instructor_id = params[:scheduled_instructor][i]              
         @event.sequence = sequence
       	@event.start_date = start_date_r
-      	@event.save
+      	
+      	if @event.save
+      	  msg += "<p>#{@event.instructor.full_name} - #{@event.start_date.strftime("%a %m/%d/%y")}</p>"
+      	end
       end #end of rrule_start loop
     end #end of schedhule_date loop
     
-    flash[:notice] = "Classes successfully scheduled"
+    flash[:notice] = msg
     redirect_to :action => "index" 
    end
      
@@ -93,8 +98,7 @@ class EventsController < ResourceController::Base
       end
     end
   end
-  
-  
+    
   def cancel
     @event = Event.find(params[:id])
     @event.update_attribute('cancelled', '1')
@@ -132,12 +136,6 @@ class EventsController < ResourceController::Base
     @event = Event.find(params[:id])
   end
  
- 
-protected
-  def generate_rule(selected_frequency, end_after,selected_days, day_of_the_month, by_month,end_on_date="", repeat_every="")
-    #debugger
-     
-   end
 end
 
 

@@ -1,52 +1,57 @@
 <%= stylesheet_link_tag 'events', :cache => true %>
-<%= javascript_include_tag "combobox", "date", "events", :cache => true %>
+<%= javascript_include_tag "combobox", "date", "events", "jquery.validate", :cache => true %>
 
-<%= f.hidden_field :calendar_id, :value  => "1" %>
+<span style="display:none;"><%= f.hidden_field :calendar_id, :value  => "1" %></span>
 
 <div id="monqi_class_details">
 	
 	<div id="start_end_set">
 		<span>
-			First class begins:
-			<%= text_field_tag("start_at", Date.today.strftime("%m/%d/%Y"), {:size => 8, :id => "start_date"}) %>
+			<label>First class begins:</label>
+			<%= text_field_tag("start_at", Date.today.strftime("%a %m/%d/%Y"), {:size => 12, :id => "start_date"}) %>
 		</span>
 		<span id="time_pickers">
-			from <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
-			to <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
+			<label>from</label> <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
+			<label>to</label> <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
 		</span>
-			All day <%= check_box_tag :allday, :id => "allday" %>
+			<label>All day</label> <%= check_box_tag :allday, :id => "allday" %>
 	</div><br />
 
 	<div id="level">
-		Level: 
-				<input type="radio" id="basics_level" name="event[level]" value="Basics" CHECKED>Basics
-				<input type="radio" id="open_level" name="event[level]" value="Open level">Open level
-			<br />
-			<br />
+		<label for="event[level]">What's the class level?</label>
+		<input type="radio" id="basics_level" name="event[level]" value="Basics"> Basics
+		<input type="radio" id="open_level" name="event[level]" value="Open level"> Open level
+	</div>
+		<br />	<br />
+	<div>
+		<%= f.label :max_attendees, "Maximum Attendees" %>
+		<%= f.text_field :max_attendees, {:size => 2, :maxlength  => 2, :minlength => 1 }%>
 	</div>
 	
 	<div id="class">
-			Class: <%= f.collection_select(:monqi_class_id, @classes, "id", "title") %>
+		<%= f.label :monqi_class_id, "Monqi Class: " %>
+		<%= f.collection_select(:monqi_class_id, @classes, "id", "title", :prompt => "Select a class") %>
 	</div>
 	
 	<div class="schedule">
 		<span class="scheduled_day"></span>
 		<span class="scheduled_instructor">
 			<% @options = options_from_collection_for_select(@instructors, 'id', 'last_initial') %>
-			Instructor: <%= select_tag("scheduled_instructor[]", @options, :class => "instructor") %>
+		<label for="scheduled_instructor[]"> Instructor: </label>
+		<%= select_tag("scheduled_instructor[]", @options, {:class => "instructor", :prompt => "Select an instructor"}) %>
 		</span>
 		<span class="remove_button"></span>
 	</div><!-- /schedule -->
-	
+
 	<br />
 	
 	<div id="repeat_select" class="repeat_border">
-	 	Repeats: <%= select_tag(:freq, "<option selected='selected' value='none'>Does not repeat</option>
+	 	<label>Repeats:</label> <%= select_tag(:freq, "<option selected='selected' value='Does not repeat'>Does not repeat</option>
 																		<option value='Daily'>Daily</option>
 																		<option value='Weekly'>Weekly</option>
 																		<option value='Monthly'>Monthly</option>
 																		<option value='Yearly'>Yearly</option>
-							") %>
+															") %>
 	</div>
 
 	<div id="info_box"></div>
@@ -54,17 +59,28 @@
 	<div id="range">
 		<div id="interval_select" class="repeat_border">
 			<% @array = Array.new(30) {|i| 1+i} %>
-			Repeat every: <%= select_tag(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
+			<label>Repeat every:</label> <%= select_tag(:interval, options_for_select(@array, :selected => 1), {}) %> <span id="repeat_every_x"></span>
 			<br/><br/>
 		</div>
 		
 		<div id="select_week_days"></div>
 
 		<div id="range_end_repeat">
-			Range: <br />
-			Starts: <%= text_field_tag(:start_clone, {}, {:disabled => "true", :size => 10}) %>
-			<span id="end_repeat_block"> Ends: <%= radio_button_tag :end_repeat_radio, :on_date %> Until<span id="on_date"></span>
-			<p id="repeat_end_after"><%= radio_button_tag :end_repeat_radio, :after %> After <span id="after"></span></p>
+			<label>Range:</label> <br />
+			<label>Starts:</label> <%= text_field_tag(:start_clone, {}, {:disabled => "true", :size => 12, :class => "no_pointer"}) %>
+			
+			<span id="end_repeat_block"> 
+			<label>Ends:</label> <span>
+							<label for="on_date">Until</label>
+							<%= radio_button_tag :end_repeat_radio, :on_date %> 
+							<span id="on_date"></span>
+						
+							<label for="after">After</label> 
+							<%= radio_button_tag :end_repeat_radio, :after %> 
+							<span id="after"></span>
+						</span>
+			</span>
+			
 		</div>
 	</div><!-- /range -->
 	<div id="multi_schedule"></div>

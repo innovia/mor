@@ -1,7 +1,0 @@
-<h5>You are about to delete a series of classes in a single opreation.</h5>
-<h4 class="warning">this template and recurring classes will be lost forever</h4>
-<div id='unlock_form'  class="notification">
-	Are you sure you want to delete the <br/> <%= @event_template.monqi_class.title %> class template and all it's scheduled classes?
-	
-		<%= button_to "Delete #{@event_template.monqi_class.title} class template",object_url(@event_template) ,:method => "delete"  -%>
-</div>

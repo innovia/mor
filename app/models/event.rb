@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :monqi_class, :class_name => "MonqiClass", :foreign_key => "monqi_class_id"
   belongs_to :instructor, :class_name => "Person" # this is for the instructor in each event
-  belongs_to :instructor, :class_name => "Person", :foreign_key => "sub_instructor_id"
+  belongs_to :sub_instructor, :class_name => "Person", :foreign_key => "sub_instructor_id"
   belongs_to :calendar
   
   has_and_belongs_to_many :packages

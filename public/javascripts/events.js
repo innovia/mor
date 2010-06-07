@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	validate_now();
+
 	$('#event_monqi_class_id').combobox();
 	//$('.instructor').combobox();
 		
@@ -12,6 +15,7 @@ $(document).ready(function() {
 	function set_first_schedule_set() {
 		var options = add_days_select();
 		$('.scheduled_day').html('<select name="next_days[]" class="schedule_date">' + options + '</select>');
+		$('.schedule_date').first().hide();
 	};
 	
 	function add_days_select() {
@@ -28,17 +32,17 @@ $(document).ready(function() {
 			var next_day_value = next_day_option.toString('MM/dd/yyyy');
 			options += '<option value=' + next_day_value + '>' + next_day_option.toString('ddd') + ' ' + next_day_value + '</option>';
 		};	
-		
 		return options;
 	};
 	
 	function date_and_time_pickers(){
 		$('#start_date').datepicker({
 																	firstDay: 1,
+																	dateFormat: 'D mm/dd/yyyy',
 																	onSelect: function(){
 																		$('#start_clone').val($(this).val());					
 																		$('input:checkbox').attr('checked', false);
-																		$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
+																		$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr({checked: true, disabled: true});
 																		update_info_box();
 																		set_first_schedule_set();
 																	}
@@ -103,7 +107,7 @@ $(document).ready(function() {
 					set_schedule_set(new_select_options);
 					bind_multi_sched_remove_button();
 				} else {
-					jAlert("the maximum schedule sets for the week, based on the starting day is: " + 			$('.schedule_date').first().children().size());
+					jAlert("<h3 class='max_days'>No more days left to schedule, you have scheduled " + $('.schedule_date').first().children().size() + " days</h3>");
 				}
 		});
 	}	
@@ -118,7 +122,6 @@ $(document).ready(function() {
 	//	Binds
 	
 	$('#start_date').bind('blur', function() {
-		$('#end_at').val($(this).val());
 		set_first_schedule_set();
 	});
 	
@@ -135,7 +138,8 @@ $(document).ready(function() {
 																		<br/><br/>'
 			);
 			$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("checked", true);
-    }
+			$("input:checkbox[value*='" + Date.parse($('#start_date').val()).toString('ddd') +"']").attr("disabled", true);
+  }
 	
 	$('#freq').bind('change', function() {
 		switch($(this).val()){
@@ -200,6 +204,7 @@ $(document).ready(function() {
 
 	function on_change_of_repeats(){
 		$('#range').show();
+		validate_now();
 		set_repeat_every_x();
 		pluralize($('#interval').val(), freq);
 	};
@@ -209,10 +214,11 @@ $(document).ready(function() {
 	
 	$('#end_repeat_radio_on_date').bind('click', function() {
 		$('#after').html('');
-		$('#on_date').html('<input type="text" size="10" name="until" id="until" class="date_picker">');
+		$('#on_date').html('<input type="text" size="12" name="until" id="until" class="date_picker">');
 		
 		$('#until').datepicker({
 				firstDay: 1,
+				dateFormat: 'D mm/dd/yy',
 		    beforeShow: function(input, inst)
 		    {
 		        inst.dpDiv.css({marginTop: -input.offsetHeight + 'px', marginLeft: input.offsetWidth + 'px'});
@@ -221,9 +227,8 @@ $(document).ready(function() {
 				update_info_box();
 			}
 		});
-		// Add 30 days to until field automatically
-		$('#until').focus();
-	  $('#until').val(Date.parse($('#start_date').val()).add(1).month().toString('MM/dd/yyyy'));
+		// Add days till the end of the month  to until field automatically
+	  $('#until').val(Date.parse($('#start_date').val()).moveToLastDayOfMonth().toString('ddd MM/dd/yyyy'));
 		update_info_box();
 	});
 	
@@ -292,4 +297,29 @@ $(document).ready(function() {
 			
 			$('#info_box').html(str).show();
 	}
+
+
+	function validate_now(){
+		$('form').validate({
+			rules: {
+				"event[level]": "required",
+				 end_repeat_radio: "required",
+				"event[max_attendees]": {required: true, number: true, min: 2}
+			}	,
+				 messages: {
+					"event[level]": "Choose a class level",
+					"end_repeat_radio": "Please set the end of the series",
+					"event[max_attendees]": {
+						required: "Please specify the maximum number of attendees",
+						number: "This has to be a number",
+						min: jQuery.format("The minimum number of attendees has to be equal or greater then {0}")
+					} 
+				}
+			,
+				 errorPlacement: function(error, element) { 
+				      error.appendTo(element.parent());
+			  }
+		});
+	}
+
 });
