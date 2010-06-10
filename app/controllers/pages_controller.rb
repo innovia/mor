@@ -1,12 +1,8 @@
 class PagesController < ApplicationController
   before_filter :preload_page
   before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]
-  
-  #caches_page :index, :classes, :rates, :about_us, :schedule, :personal_training, :specials, :staff, :news, :contact_us
-  
+    
   def index
-    @page = Page.find_or_create_by_title(action_name)
-    @picture = Picture.new 
     @news_flash = Page.find_or_create_by_title('news_flash').body
   end
   
@@ -14,10 +10,6 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     @page.update_attribute(:page_attachment, nil)
     render :nothing => true
-  end
-  
-  def ical
-    @now = Time.now.hour
   end
   
   def schedule_feed
@@ -30,7 +22,6 @@ class PagesController < ApplicationController
     Notifier.deliver_personal_training_online_request(@pt_req)
     redirect_to :thank_you
   end
-  
   
   def classes
     @yoga = MonqiClass.category('Yoga')
@@ -51,21 +42,11 @@ class PagesController < ApplicationController
     @instructor_role = Role.title_contains('instructor')
     @pt_role = Role.title_contains('personal')
   end
-  
-  def preload_page
-    @page = Page.find_or_create_by_title(action_name)
-    @picture = Picture.new 
-  end
     
   def show
     @page = Page.find(params[:id])
   end
-  
-  def new
-    @page = Page.new
-    @picture = Picture.new 
-  end
-  
+   
   def create
       if  params[:page][:title] == "contact_us"
       @contact = params
@@ -103,7 +84,11 @@ class PagesController < ApplicationController
     end
   end
    
-  private
+private 
+  def preload_page
+    @page = Page.find_or_create_by_title(action_name)
+    @picture = Picture.new 
+  end
   
   def get_all_packages
     PackageTemplate.all

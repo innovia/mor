@@ -13,10 +13,9 @@ class EventsController < ResourceController::Base
     @event = Event.new
   end
 
-   def create  
-    msg = 'Scheduled successfuly for: <br />'
+   def create 
+    msg = "The class #{MonqiClass.find(params[:event][:monqi_class_id]).title} (#{params[:start_time]} - #{params[:end_time]}) has been scheduled for: <br />"
     params[:next_days].each_with_index do |schedule_date, i|            
-      #debugger
       start_date =  Time.parse(schedule_date + " " + params[:start_time])  
       end_date = Time.parse(schedule_date + " " + params[:end_time])
       
@@ -35,10 +34,12 @@ class EventsController < ResourceController::Base
       # BYMONTHDAY, BYMONTH
       
       rule = "freq=#{params[:freq]};count=#{params[:count]};until=#{end_on_date};interval=#{params[:interval]};byday=#{params[:byday]};"
-    
+
       # start_date and end_date must be the same date but with a end_date has a differnt time
       rrule_start = Vpim::Rrule.new(start_date, rule) #Create a repeting events for the start date/time
       rrule_end = Vpim::Rrule.new(end_date, rule)     #Create a repeting events for the end date/time
+      
+      msg += "<p>#{Person.find(params[:scheduled_instructor][i]).full_name} - on #{start_date.strftime('%A').pluralize} "
       
       rrule_start.each_with_index do |start_date_r, sequence| 
         @event = Event.new(params[:event])
@@ -55,7 +56,8 @@ class EventsController < ResourceController::Base
       	@event.start_date = start_date_r
       	
       	if @event.save
-      	  msg += "<p>#{@event.instructor.full_name} - #{@event.start_date.strftime("%a %m/%d/%y")}</p>"
+      	  msg += "#{@event.start_date.strftime("%m/%d")}"
+      	  rrule_start.count == sequence + 1 ? msg +='</p>' :  msg +=', '
       	end
       end #end of rrule_start loop
     end #end of schedhule_date loop

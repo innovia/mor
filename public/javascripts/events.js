@@ -144,12 +144,14 @@ $(document).ready(function() {
 	$('#freq').bind('change', function() {
 		switch($(this).val()){
 			case "Daily":
+				$('.end_repeat').attr("disabled", false);
 				on_change_of_repeats();
 				$('#select_week_days').html('');
 				update_info_box();
 			break;
 
 			case "Weekly":
+				$('.end_repeat').attr("disabled", false);
 				on_change_of_repeats();
 				$('#repeat_select').append('<select id="num_of_instructors">\
 																				<option value="1">for one instructor</option>\
@@ -181,12 +183,14 @@ $(document).ready(function() {
 		  break;
 
 			case "Monthly":
+				$('.end_repeat').attr("disabled", false);
 				on_change_of_repeats();
 				$('#select_week_days').html('');
 				update_info_box();
 			break;
 
 			case "Yearly": 
+				$('.end_repeat').attr("disabled", false);
 				on_change_of_repeats();
 				$('#select_week_days').html('');
 				update_info_box();
@@ -195,6 +199,7 @@ $(document).ready(function() {
 			default: // Does not repeat
 				$('#select_week_days').html('');
 				$('#info_box').html('').hide();
+				$('.end_repeat').attr("disabled", true);
 				$('#range').hide();
 				$('#count').val('');
 				$('#interval option:selected').val('');
@@ -298,15 +303,17 @@ $(document).ready(function() {
 			$('#info_box').html(str).show();
 	}
 
-
 	function validate_now(){
 		$('form').validate({
 			rules: {
+				ignore: ":disabled",
+				"event[monqi_class_id]": "required",
 				"event[level]": "required",
-				 end_repeat_radio: "required",
-				"event[max_attendees]": {required: true, number: true, min: 2}
+				"event[max_attendees]": {required: true, number: true, min: 2},
+				 end_repeat_radio: "required"
 			}	,
 				 messages: {
+					"event[monqi_class_id]": "Type or choose a class",
 					"event[level]": "Choose a class level",
 					"end_repeat_radio": "Please set the end of the series",
 					"event[max_attendees]": {

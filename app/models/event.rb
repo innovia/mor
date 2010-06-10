@@ -6,7 +6,9 @@ class Event < ActiveRecord::Base
   
   has_and_belongs_to_many :packages
   has_and_belongs_to_many :attendees, :class_name => "Person"
-     
+  
+  validates_presence_of :monqi_class_id
+  
   # Getter Setter for start and end time
   def start_time
     start_time.strftime("%I:%M %p")

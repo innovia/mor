@@ -25,7 +25,7 @@
 		<br />	<br />
 	<div>
 		<%= f.label :max_attendees, "Maximum Attendees" %>
-		<%= f.text_field :max_attendees, {:size => 2, :maxlength  => 2, :minlength => 1 }%>
+		<%= f.text_field :max_attendees, {:size => 2, :maxlength  => 2, :minlength => 1, :autocomplete => "off" }%>
 	</div>
 	
 	<div id="class">
@@ -72,11 +72,11 @@
 			<span id="end_repeat_block"> 
 			<label>Ends:</label> <span>
 							<label for="on_date">Until</label>
-							<%= radio_button_tag :end_repeat_radio, :on_date %> 
+							<%= radio_button_tag :end_repeat_radio, :on_date, {}, :class => "end_repeat", :disabled => true %> 
 							<span id="on_date"></span>
 						
 							<label for="after">After</label> 
-							<%= radio_button_tag :end_repeat_radio, :after %> 
+							<%= radio_button_tag :end_repeat_radio, :after, {}, :class => "end_repeat", :disabled => true  %> 
 							<span id="after"></span>
 						</span>
 			</span>
