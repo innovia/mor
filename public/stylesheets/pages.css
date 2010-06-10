@@ -324,24 +324,6 @@ body {
 	/* left */
 	a.left					{ background-position: 0 -32px; margin-left: 0px; } 
 
-
-	/* up and down */
-	a.up, a.down		{ 
-		background:url(/images/scrollable/vert_large.png) no-repeat; 
-		float: none;
-		margin: 10px 50px;
-	}
-
-		/* up */
-		a.up:hover  		{ background-position:-30px 0; }
-		a.up:active  		{ background-position:-60px 0; }
-
-		/* down */
-		a.down 					{ background-position: 0 -30px; }
-		a.down:hover  	{ background-position:-30px -30px; }
-		a.down:active  	{ background-position:-60px -30px; } 
-
-
 		/* disabled navigational button */
 		a.disabled { visibility:hidden !important;	}
 
