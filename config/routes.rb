@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :stats
   map.statc 'statc', :controller => 'stats', :action => "show"
   
-  map.home '/home', :controller => "calendars" 
+  map.home '/home', :controller => "events" 
   map.cal '/cal', :controller => "event_templates", :action  => "cal_view"
   map.captcha "captcha", :controller => "users", :action => "captcha"
   map.login "login", :controller => "user_sessions", :action => "new"

@@ -17,14 +17,12 @@
 		<li><%= link_to "Classes", monqi_classes_path %></li> 
 		<% if manager? %>
 			<li><%= link_to "Package Maker", package_templates_path %></li> 
-			<li><%= link_to "Calendars", manage_calendars_path %></li> 
 			<li><%= link_to "Class Scheduler", new_event_path %></li> 
 		<% end %>
-		<li><%= link_to "Recurring Classes", events_path %></li>
 
 		<%if member? %>
 			<li><%= link_to "Get Packages", person_packages_path(current_user.person) %></li>
-			<%- end -%>
+		<%- end -%>
 	
 		<% if staff? %>
 			<li><%= link_to "Products", products_path %></li>

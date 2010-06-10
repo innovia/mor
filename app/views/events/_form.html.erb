@@ -25,7 +25,7 @@
 		<br />	<br />
 	<div>
 		<%= f.label :max_attendees, "Maximum Attendees" %>
-		<%= f.text_field :max_attendees, {:size => 2, :maxlength  => 2, :minlength => 1, :autocomplete => "off" }%>
+		<%= text_field_tag "event[max_attendees]", @settings.max_attendees,  {:size => 2, :maxlength  => 2, :minlength => 1, :autocomplete => "off" } %>
 	</div>
 	
 	<div id="class">

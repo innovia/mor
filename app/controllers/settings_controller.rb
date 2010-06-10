@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
  before_filter  :find_settings
- #before_filter  :login_required
- #require_role ["Admin", "Manager"]
+ before_filter :require_admin, :only => [:edit, :update]
+ 
  
   def edit
     @calendars = Calendar.all

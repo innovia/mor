@@ -1,8 +1,5 @@
  	<div>
-	<h4>Default Calendar</h4>
-  <div class="indent_setting">
-		<%= collection_select("settings", "default_calendar_id", @calendars, "id", "name") %>
-	</div>
+	<h4><%= link_to "Manage Calendars (name & color)", manage_calendars_path %></h4>
  </div>
 
 	<div>
@@ -15,6 +12,11 @@
 		</div>
 	</div>
 	
+	<div>
+		<h4>Default maximum attendees per class <span><%= f.text_field :max_attendees, {:size => 2, :maxlength => 2} %> </span>
+		</h4>	
+	</div>
+
 	
 	<div>
 		<h4> Group Calendar </h4>

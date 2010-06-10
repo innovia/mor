@@ -63,7 +63,11 @@
 			
 			<% unless @page.page_attachment_file_size.nil?  %>
 			<div id="attachment">
-				Download : <%= link_to(@page.page_attachment_file_name, @page.page_attachment.url) %>
+				<% @download_link = "Download" %>
+				<% if @page.title == 'schedule' %>
+					 <%- @download_link += " our schedule" -%>
+				<% end %>
+				 	<%= @download_link %>: <%= link_to(@page.page_attachment_file_name, @page.page_attachment.url) %>
 				<% if admin? %>
 						<%= image_tag( "icons/large_error.png",  :size => "24x24", 
 																			"data-page" => @page.id,
