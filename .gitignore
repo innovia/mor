@@ -4,7 +4,7 @@ system/*
 photos/*
 public/system/photos/*
 public/photos/*
-public/page_attachments/*
+public/page_attachments/**/*
 
 deploy.rb
 .DS_Store
