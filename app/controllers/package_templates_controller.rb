@@ -29,8 +29,9 @@ class PackageTemplatesController < ResourceController::Base
     def create
      @package_template = PackageTemplate.new(params[:package_template])
      @pkg_type = PackageType.find(params[:package_template][:package_type_id]).name
-     @pkg_type
-     @package_template.calendar = Calendar.name_contains("group").first
+     ptype = @pkg_type.include? "Personal" 
+     ptype ? cal = Calendar.name_contains("Personal").first : cal = Calendar.name_contains("group").first
+     @package_template.calendar = cal
      @package_template.build_product({  :title => @package_template.calendar.name,
                                         :description => @package_template.description,
                                         :price => @package_template.cost
