@@ -81,8 +81,8 @@ class EventsController < ResourceController::Base
     @event = Event.find(params[:id])
     
     if params[:change_all_future]
-     @current_event_template = @event.event_template
-     @all_events = @current_event_template.events
+     @current_event = @event
+     @all_events = @current_event
      
      @all_events.each do |update_event|
        if update_event.sequence >= @event.sequence 
@@ -119,7 +119,7 @@ class EventsController < ResourceController::Base
   
   def reinstate
     @event = Event.find(params[:id])
-    @calendar = @event.event_template.calendar
+    @calendar = @event.calendar
     @event.update_attribute('cancelled', '0')
     get_calendars
     get_instructors

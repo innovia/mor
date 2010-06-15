@@ -1,11 +1,11 @@
 <%# if the instructor for the current event is !== original instructor show sub with original striked through  %>
-		<% if  event.instructor ==  event.event_template.instructor %>	
+		<% if  event.instructor ==  event.instructor %>	
 			<div id="original_instructor_for_class_<%= event.id %>" class="original_instructor">
-				 	with <%= event.event_template.instructor.full_name  %>
+				 	with <%= event.instructor.full_name  %>
 			</div>
 		<% else %>
 			<div id="original_instructor_for_class_<%= event.id %>" class="original_instructor_subbed">
-				 with <%= event.event_template.instructor.full_name  %>
+				 with <%= event.instructor.full_name  %>
 			</div>
 			<div id="sub_instructor_for_class_<%= event.id %>"  class="sub_instructor">
 				 sub <%= event.instructor.full_name %>

@@ -1,78 +1,90 @@
 $(document).ready(function() {
-		$('.delete_button').bind('click', function() {
-			$('#modal').load($(this).attr("data-dialog_action_path"));
-			show_dialog($(this).attr("data-dialog_title"));
-		});
-		
-		
-		$('#delete_profile_pic').bind('click', function() {
-			jConfirm('Are you sure you want to remove this profile picture?', 'Remove Profile Picture', function(r) {  
-				if (r) {
-						$.get('/people/' + $('.delete_icon').attr("data-person") + '/remove_profile_pic');
-						$('#profile_picture').fadeOut(3000).delay(4000).fadeIn(3000).html('<img src="/images/no_avatar.gif" alt="No_avatar">');
-					}
-			});		});
-		
-		
-		$("Form").bind("keypress", function(e) {
-		  if (e.keyCode == 34) return false;
-		});
-
-
-		$("#person_birthday_visibility").bind('change', function(event) {
-			switch($(this).val()){
-				case "Show only month & day in my profile.":
-				$('#person_dob_1i').hide();
-			 	break;
-				case "Don't show my birthday in my profile.":
-					$('#person_dob_1i').hide();
-					$('#person_dob_2i').hide();
-					$('#person_dob_3i').hide();
-				break;
-				default:
-					$('#person_dob_1i').show();
-					$('#person_dob_2i').show();
-					$('#person_dob_3i').show();
+	//Binds on load 
+	$('.delete_button').bind('click', function() {
+		$('#modal').load($(this).attr("data-dialog_action_path"));
+		show_dialog($(this).attr("data-dialog_title"));
+	});
+			
+	$('#delete_profile_pic').bind('click', function() {
+		jConfirm('Are you sure you want to remove this profile picture?', 'Remove Profile Picture', function(r) {  
+			if (r) {
+				$.get('/people/' + $('.delete_icon').attr("data-person") + '/remove_profile_pic');
+				$('#profile_picture').fadeOut(3000).delay(4000).fadeIn(3000).html('<img src="/images/no_avatar.gif" alt="No_avatar">');
 			}
 		});
-		
-		$('table').tablesorter({ sortList: [[2,0]] }); 
-		
-		$("table.stripes tr:even").addClass('alt');
-		
-		$('table.stripes tr').mouseover(function() {
-			$(this).addClass('over');}).mouseout(function() {
-				$(this).removeClass('over');
-		});
-		
-		theTable = $('table.stripes')
-		$("#filter").keyup(function() {
-		    $.uiTableFilter( theTable, this.value, "Last" );
-		  })
-		
-		
-		style_buttons(); // Style buttons
-				
-		date_navigation(); sub_instructor(); cancel_class_listner(); 
-		reinstate_class_listner(); members_auto_complete(); 
-		
-				
-		// store scripts
-		add_to_cart();
-		new_package_selector();
-		$('.pkg_type_selector').bind('click', function() {
-		 												 	pkg_type = $(this).attr("data-pkg_type");
-															$.ajax({
-															  url: '/package_templates',
-															  type: 'GET',
-															  dataType: 'script',
-															  data: 'pkg_type=' + pkg_type
-															});
-		});
-		
-});
+	});
+			
+	$("form").bind("keypress", function(e) {
+ 		if (e.keyCode == 34) return false;
+	});
 
+	$('table').tablesorter({ sortList: [[2,0]] }); 	
+	$("table.stripes tr:even").addClass('alt');	
+	$('table.stripes tr').mouseover(function() { $(this).addClass('over');}).mouseout(function() { $(this).removeClass('over');});
+		
+	$("#filter").keyup(function() {
+		$.uiTableFilter( $('table.stripes'), this.value, "Last" );
+	})
+	
+	// Functions	
+	birthday_visbility_bind();
+	style_buttons(); // Style buttons
+	new_package_selector();			
+	package_type_bind();
+	//date_navigation(); sub_instructor(); cancel_class_listner(); reinstate_class_listner(); members_auto_complete();	add_to_cart();
+
+}); // end of Document Ready
+
+// Application Js File
 jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
+
+	// Generic functions
+
+function show_dialog(title){
+	$('#modal').dialog({
+		show: 'drop', 
+		hide: 'drop',
+		title: title,
+		position: "top", 
+	 	modal: true, 
+	 	width: 700,
+		buttons: { "Cancel": function(){ $(this).dialog('close') } } 
+	});
+}
+
+function ajax_form_submission(){
+	$('form').submit(function() {
+		$.post($(this).attr("action"), $(this).serialize(), null, "script");
+		return false;
+	});	
+}
+ 
+ // End of generic functions 
+
+function birthday_visbility_bind(){
+	$("#person_birthday_visibility").bind('change', function(event) {
+		switch($(this).val()){
+			case "Show only month & day in my profile.":
+				$('#person_dob_1i').hide();
+		 	break;
+			case "Don't show my birthday in my profile.":
+				$('#person_dob_1i').hide();
+				$('#person_dob_2i').hide();
+				$('#person_dob_3i').hide();
+			break;
+			default:
+				$('#person_dob_1i').show();
+				$('#person_dob_2i').show();
+				$('#person_dob_3i').show();
+			}
+	});
+}
+
+function package_type_bind(){
+	$('.pkg_type_selector').bind('click', function() {
+		fetch_packages($(this).attr("data-pkg_type"));
+	});
+}
 
 // Package templates
 function clear_sessions(){
@@ -80,49 +92,50 @@ function clear_sessions(){
 	$('#package_template_expires_in').val(default_pkg_exp);
 }
 
-
 function new_package_selector(){
-$('#package_template_package_type_id').bind('change', function(event) {
-	var pkg_type = $('#package_template_package_type_id :selected').text();
-	switch(pkg_type) {
-		case "Group Classes": 
-			$('#package_template_calendar_id').val(1);
-			clear_sessions();
-		break;
-		
-		case "Gym Use":
-			$('#package_template_calendar_id').val(1);		
-			clear_sessions();			
-		break;
-		
-		case  "Unlimited Classes and Gym Use":
-			$('#package_template_calendar_id').val(1);
-			$('#package_template_sessions').val('30');
-			$('#package_template_expires_in').val('1');
-		break;
-			
-		case "Personal Training":
-			$('#package_template_calendar_id').val(2);		
-			clear_sessions();
-		break;
-		
-		default:
-			$('#package_template_calendar_id').val('');		
-			clear_sessions();
-		break;
-	
-	}
-});
-
+	$('#package_template_package_type_id').bind('change', function(event) {
+		var pkg_type = $('#package_template_package_type_id :selected').text();
+		switch(pkg_type) {
+			case "Group Classes": 
+				$('#package_template_calendar_id').val(1);
+				clear_sessions();
+			break;
+			case "Gym Use":
+				$('#package_template_calendar_id').val(1);		
+				clear_sessions();			
+			break;
+			case  "Unlimited Classes and Gym Use":
+				$('#package_template_calendar_id').val(1);
+				$('#package_template_sessions').val('30');
+				$('#package_template_expires_in').val('1');
+			break;
+			case "Personal Training":
+				$('#package_template_calendar_id').val(2);		
+				clear_sessions();
+			break;
+			default:
+				$('#package_template_calendar_id').val('');		
+				clear_sessions();
+			break;
+		}
+	});
 }
 
-
 // Packages
+function fetch_packages(pkg_type){
+	$.ajax({
+		url: '/package_templates/fetch_packages',
+	  type: 'GET',
+	  dataType: 'script',
+	  data: 'pkg_type=' + pkg_type
+	});
+}
+
 function populate_packages(){
-		$('#package_calendar_id').change(function() {
-				$('#package_template_form').effect("slide", "slow");
-				$('#package_package_template_id').load( "/package_templates/by_calendar", {calendar_id: $('#package_calendar_id').val() });
-		});
+	$('#package_calendar_id').change(function() {
+		$('#package_template_form').effect("slide", "slow");
+		$('#package_package_template_id').load( "/package_templates/by_calendar", {calendar_id: $('#package_calendar_id').val() });
+	});
 }
 
 function show_default_package_and_override(){
@@ -133,19 +146,13 @@ function show_default_package_and_override(){
 }
 
 function style_buttons(){
-		$("input:submit").addClass("mq-button ui-state-default ui-corner-all");
-		$("input:submit").hover(function(){ $(this).addClass("ui-state-hover");},
-														function(){ $(this).removeClass("ui-state-hover");});
-														
-		$("button, .a2button").addClass("mq-button ui-state-default ui-corner-all");
-		$("button, .a2button").hover(function(){ $(this).addClass("ui-state-hover");},
-														function(){ $(this).removeClass("ui-state-hover");});
-														
+	$("input:submit").addClass("mq-button ui-state-default ui-corner-all");
+	$("input:submit").hover(function(){ $(this).addClass("ui-state-hover");},function(){ $(this).removeClass("ui-state-hover");});													
+	$("button, .a2button").addClass("mq-button ui-state-default ui-corner-all");
+	$("button, .a2button").hover(function(){ $(this).addClass("ui-state-hover");},function(){ $(this).removeClass("ui-state-hover");});
 }
 
 
-
-// Working Calendar Scripts
 
 // Date Selection - home page
 function date_navigation(){	
@@ -192,20 +199,6 @@ function load_calendar_events(){
 	$('#calendar_collection').load('/calendars/' + $('#calendar_id').val() + '?selected_day=' + $('#nav_date_field').val());	
 }
 
-
-
-function show_dialog(title){
-	$('#modal').dialog({
-												show: 'drop', 
-												hide: 'drop',
-												title: title,
-												position: "top", 
-											 	modal: true, 
-											 	width: 700,
-												buttons: { "Cancel": function(){ $(this).dialog('close') } } 
-										 });
-}
-
 function cancel_class_listner(){
 	$('#cancel_link').live('click', function() {
 		show_dialog('Class Cancellation');
@@ -247,13 +240,6 @@ function pkg_on_the_fly(){
 	});
 }
 
-function ajax_form_submission(){
-			$('form').submit(function() {
-																		$.post($(this).attr("action"), $(this).serialize(), null, "script");
-																		return false;
-																	 });	
-}
-
 function members_auto_complete(){
 	var template = "<div class='right'>{name}</div> \n"+ 
 								 "<div class='auto_suggest'><img src='{pic}'/></div> \n"+ 
@@ -277,8 +263,6 @@ function sub_instructor(){
 	});
 }
 
-
-// Store Scripts
 function add_to_cart(){
 	$('#add2cart').bind('click', function() {
 		var el = $(this);

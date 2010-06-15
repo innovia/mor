@@ -1,0 +1,4 @@
+$('.content tr').fadeOut('slow');
+$('#title').html('<%= escape_javascript(@pkg_type) %>');
+$('.content').html('<%= escape_javascript(render :partial => "package_templates_table", :locals => {:package_templates => @package_templates}) %>');
+$('.content tr').show().effect("highlight", {}, 2000);

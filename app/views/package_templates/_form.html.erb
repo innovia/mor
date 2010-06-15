@@ -1,7 +1,5 @@
 Package Type:
 <%= f.select(:package_type_id, @pkg_types.collect {|p| [ p.name, p.id ] }, :prompt => 'select a package type') %>
-
-<%= f.hidden_field :calendar_id %>
 <div id="package_template_form">
 	<p>
 	 	Description:

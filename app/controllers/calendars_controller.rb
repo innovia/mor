@@ -98,7 +98,7 @@ class CalendarsController < ResourceController::Base
 
    def get_cancellation_window(event)
      @event = event
-      cal_id = @event.event_template.calendar_id
+      cal_id = @event.calendar_id
       if cal_id == 2
         @cancellation_window = @settings.personal_training_calendar_disable_attendant_removal_window
       else

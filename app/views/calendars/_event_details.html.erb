@@ -4,11 +4,11 @@
 
 <!-- Class details-->
 <div id="class_details" <% if event.cancelled? %> "class='cancelled'" <%- end -%>>
-	<% @cal_color =  event.event_template.calendar.color %>
+	<% @cal_color =  event.calendar.color %>
 	<div id="calendar_color" style="background-color: <%= @cal_color %>;"></div>
-	<div id="cal_name" style="color: <%= @cal_color %>;"><%= event.event_template.calendar.name %></div>	
+	<div id="cal_name" style="color: <%= @cal_color %>;"><%= event.calendar.name %></div>	
 	<div id="class_time"><%= event.start_date.strftime("%I:%M%p") %> - <%= event.end_date.strftime("%I:%M%p") %> 
-											 <%= event.event_template.monqi_class.title %> 
+											 <%= event.monqi_class.title %> 
 	</div>	
 	
 	<div id="instructor_sub_cancel"><%= render :partial => 'instructor_sub_cancel', :locals => {:event => event} %></div>

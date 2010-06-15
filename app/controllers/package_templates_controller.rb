@@ -3,12 +3,14 @@ class PackageTemplatesController < ResourceController::Base
    before_filter :require_manager
        
     def index
+      @package_types = PackageType.all
+    end
+    
+    def fetch_packages
+      @pkg_type = params[:pkg_type]
+      @package_templates =  PackageType.name_is(@pkg_type).first.package_templates
       respond_to do |wants|
-        wants.html { @package_templates =  PackageType.name_contains('group').first.package_templates}
-        wants.js { 
-            @pkg_type = params[:pkg_type]
-            @package_templates =  PackageType.name_is(@pkg_type).first.package_templates
-           }
+        wants.js {  }
       end
     end
     
@@ -23,10 +25,12 @@ class PackageTemplatesController < ResourceController::Base
       @pkg_types = PackageType.all
       @package_template = PackageTemplate.new
     end
-    
-    
+       
     def create
      @package_template = PackageTemplate.new(params[:package_template])
+     @pkg_type = PackageType.find(params[:package_template][:package_type_id]).name
+     @pkg_type
+     @package_template.calendar = Calendar.name_contains("group").first
      @package_template.build_product({  :title => @package_template.calendar.name,
                                         :description => @package_template.description,
                                         :price => @package_template.cost
