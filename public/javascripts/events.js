@@ -38,7 +38,7 @@ $(document).ready(function() {
 	function date_and_time_pickers(){
 		$('#start_date').datepicker({
 																	firstDay: 1,
-																	dateFormat: 'D mm/dd/yyyy',
+																	dateFormat: 'D mm/dd/yy',
 																	onSelect: function(){
 																		$('#start_clone').val($(this).val());					
 																		$('input:checkbox').attr('checked', false);
@@ -119,7 +119,7 @@ $(document).ready(function() {
 			});
 		});
 	}	
-	//	Binds
+	
 	
 	$('#start_date').bind('blur', function() {
 		set_first_schedule_set();
@@ -327,6 +327,17 @@ $(document).ready(function() {
 				      error.appendTo(element.parent());
 			  }
 		});
+	}
+
+	function review_submit(){
+		$('#msg').html('<h3>Is this schedule correct?</h3><br />' +
+			'The ' + $('#event_monqi_class_id option:selected').text() + ' class repeats ' + $('#freq option:selected').val() + '<br />' 
+			+ '<strong> Every </strong>'
+		);
+		$('#msg').dialog({
+		    title: "Multi Schedule Summary",
+		    width: 450
+		})
 	}
 
 });
