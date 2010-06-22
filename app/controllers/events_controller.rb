@@ -14,11 +14,12 @@ class EventsController < ResourceController::Base
   end
 
    def create 
-    msg = "The class #{MonqiClass.find(params[:event][:monqi_class_id]).title} (#{params[:start_time]} - #{params[:end_time]}) has been scheduled for: <br />"
+    check_for_existing_classes
+    msg = "<p>The class #{MonqiClass.find(params[:event][:monqi_class_id]).title}) has been scheduled for: </p><br />"
     params[:next_days].each_with_index do |schedule_date, i|            
-      start_date =  Time.parse(schedule_date + " " + params[:start_time])  
-      end_date = Time.parse(schedule_date + " " + params[:end_time])
-      
+      start_date =  Time.parse(schedule_date + " " + params[:start_time][i])  
+      end_date = Time.parse(schedule_date + " " + params[:end_time][i])
+           
       if params[:until].nil? 
         end_on_date = ''
       else 
@@ -29,17 +30,15 @@ class EventsController < ResourceController::Base
         params[:freq] = 'daily'
         params[:count] = '1'
       end
-      
-      
-      # BYMONTHDAY, BYMONTH
-      
+   
+      # BYMONTHDAY, BYMONTH      
       rule = "freq=#{params[:freq]};count=#{params[:count]};until=#{end_on_date};interval=#{params[:interval]};byday=#{params[:byday]};"
 
       # start_date and end_date must be the same date but with a end_date has a differnt time
       rrule_start = Vpim::Rrule.new(start_date, rule) #Create a repeting events for the start date/time
       rrule_end = Vpim::Rrule.new(end_date, rule)     #Create a repeting events for the end date/time
       
-      msg += "<p>#{Person.find(params[:scheduled_instructor][i]).full_name} - on #{start_date.strftime('%A').pluralize} "
+      msg += "<p>#{Person.find(params[:scheduled_instructor][i]).full_name} - #{start_date.strftime('%A').pluralize} #{params[:start_time][i]} - #{params[:end_time][i]} on: "
       
       rrule_start.each_with_index do |start_date_r, sequence| 
         @event = Event.new(params[:event])
@@ -64,7 +63,7 @@ class EventsController < ResourceController::Base
     
     flash[:notice] = msg
     redirect_to :action => "index" 
-   end
+  end
      
   def show
     @event = Event.find(params[:id])
@@ -138,6 +137,28 @@ class EventsController < ResourceController::Base
     @event = Event.find(params[:id])
   end
  
+protected
+  def check_for_existing_classes
+    event_exist = "there is already a class on "
+    error_count = 1
+    params[:next_days].each_with_index do |schedule_date, i|            
+      start_date =  Time.parse(schedule_date + " " + params[:start_time][i])          
+      if Event.start_date_is(start_date)
+        error_count ++
+        debugger
+        event_exist += "#{schedule_date} #{params[:start_time][i]} " 
+      end 
+    end
+    
+    if error_count > 1
+      get_calendars
+      get_instructors
+      get_monqi_classes_names
+      flash[:error] = event_exist
+      render :action => "new"
+    end
+  end
+
 end
 
 
