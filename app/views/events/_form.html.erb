@@ -10,9 +10,9 @@
 			<label>First class begins:</label>
 			<%= text_field_tag("start_at", Date.today.strftime("%a %m/%d/%Y"), {:size => 12, :id => "start_date"}) %>
 		</span>
-		<span id="time_pickers">
-			<label>from</label> <%= text_field_tag("start_time", "8:00AM", {:size => 6, :class => "timepicker"}) %>
-			<label>to</label> <%= text_field_tag("end_time", "8:30AM", {:size => 6, :class => "timepicker"}) %>
+		<span id="time_pickers" class="time_pickers_set">
+			<label>from</label> <%= text_field_tag("start_time[]", "8:00AM", {:size => 6, :class => "timepicker"}) %>
+			<label>to</label> <%= text_field_tag("end_time[]", "8:30AM", {:size => 6, :class => "timepicker"}) %>
 		</span>
 			<label>All day</label> <%= check_box_tag :allday, :id => "allday" %>
 	</div><br />

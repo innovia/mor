@@ -8,7 +8,8 @@ $(document).ready(function() {
 	// set the static doc
 	$('#range').hide();
 	$('#info_box').hide();
-	date_and_time_pickers();
+	date_pickers();
+	time_pickers();
 	all_day_listner();	
 	set_first_schedule_set();
 		
@@ -35,7 +36,17 @@ $(document).ready(function() {
 		return options;
 	};
 	
-	function date_and_time_pickers(){
+	function time_pickers(){
+		$('.timepicker').timePicker({ 
+																	startTime: "06:00", 
+			  													endTime: new Date(0, 0, 0, 22, 00, 0), // Using Date object here.
+			  													show24Hours: false,
+			  													separator: ':',
+			  													step: 5
+		});
+	}
+	
+	function date_pickers(){
 		$('#start_date').datepicker({
 																	firstDay: 1,
 																	dateFormat: 'D mm/dd/yy',
@@ -46,16 +57,7 @@ $(document).ready(function() {
 																		update_info_box();
 																		set_first_schedule_set();
 																	}
-		});	
-			
-		$('.timepicker').timePicker({ 
-																	startTime: "06:00", 
-			  													endTime: new Date(0, 0, 0, 22, 00, 0), // Using Date object here.
-			  													show24Hours: false,
-			  													separator: ':',
-			  													step: 5
-		});
-			
+		});		
 		$('#start_clone').val($('#start_date').val());		
 	}
 
@@ -90,14 +92,21 @@ $(document).ready(function() {
 			   <span class="added_instructor"> Instructor: </span>\
 			   <span class="remove_button"><img src="/images/icons/delete.png" alt="Remove" class="remove_set"</span>\
 			 </div>').appendTo('div#added_day_instructor');
-		
 		$('div.schedule').last().find('select.schedule_date').append(new_select_options);
 		$('span.added_instructor').last().html($('.scheduled_instructor').first().clone());
-		$('select.schedule_date').bind('click', function() {
+		add_start_end_time_to_schedule_set();
+		//$('select.schedule_date').bind('click', function() {
 			//remove_selected_options_from_cloned_select($('div.schedule').first().find('select.schedule_date').children().clone())
-		});
+	//	});
 		
 	};
+	
+	function add_start_end_time_to_schedule_set(){
+		if ($('span.scheduled_instructor').size() > 1 ) {
+			$('span.scheduled_instructor').last().prepend($('.time_pickers_set').first().clone());
+			time_pickers();
+		}
+	}
 	
 	function bind_mutli_sched_add_button(){
 		$('.add_sched').bind('click', function() {
