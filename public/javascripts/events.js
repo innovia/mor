@@ -1,5 +1,22 @@
 $(document).ready(function() {
 	
+	$("form").submit(function () { 
+		$.ajax({
+		  url: "/events/check_for_existing_events",
+		  type: "GET",
+		  dataType: "script",
+		  data: $("form").serialize(),
+			success: function(data){
+				if (data == "ok") {
+					return true;
+				} else {
+					data;
+					return false;
+				}
+			}
+		});
+	}); 
+	
 	validate_now();
 
 	$('#event_monqi_class_id').combobox();

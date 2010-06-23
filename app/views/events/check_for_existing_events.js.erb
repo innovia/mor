@@ -1,0 +1,5 @@
+<% if @submit %>
+	"ok"
+<% else %>
+	jAlert('<%= escape_javascript(@msg) %>', "Existing classes");
+<% end %>

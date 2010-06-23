@@ -13,8 +13,28 @@ class EventsController < ResourceController::Base
     @event = Event.new
   end
 
-   def create 
-    check_for_existing_classes
+  def check_for_existing_events
+     @error_count = 0
+     @event_exist = ""
+     params[:next_days].each_with_index do |schedule_date, i|            
+       start_date =  Time.parse(schedule_date + " " + params[:start_time][i])          
+         if Event.exists?(:start_date => start_date)
+           @event_exist += "<p>#{schedule_date} #{params[:start_time][i]}</p>" 
+           @error_count += 1
+         end
+     end
+          
+     case @error_count 
+      when 1
+         @msg  = "There's already a class which starts on: #{@event_exist} <p>Please change the time slots for this class</p>"
+      when 1..30
+        @msg  = "The following classes time slots has already been taken for: <br /> #{@event_exist} <p>Please change the time slots for these classes</p>"
+      else
+       @submit = true
+     end 
+  end
+  
+  def create 
     msg = "<p>The class #{MonqiClass.find(params[:event][:monqi_class_id]).title}) has been scheduled for: </p><br />"
     params[:next_days].each_with_index do |schedule_date, i|            
       start_date =  Time.parse(schedule_date + " " + params[:start_time][i])  
@@ -137,28 +157,6 @@ class EventsController < ResourceController::Base
     @event = Event.find(params[:id])
   end
  
-protected
-  def check_for_existing_classes
-    event_exist = "there is already a class on "
-    error_count = 1
-    params[:next_days].each_with_index do |schedule_date, i|            
-      start_date =  Time.parse(schedule_date + " " + params[:start_time][i])          
-      if Event.start_date_is(start_date)
-        error_count ++
-        debugger
-        event_exist += "#{schedule_date} #{params[:start_time][i]} " 
-      end 
-    end
-    
-    if error_count > 1
-      get_calendars
-      get_instructors
-      get_monqi_classes_names
-      flash[:error] = event_exist
-      render :action => "new"
-    end
-  end
-
 end
 
 
