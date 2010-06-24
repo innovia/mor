@@ -35,7 +35,7 @@ class EventsController < ResourceController::Base
   end
   
   def create 
-    msg = "<p>The class #{MonqiClass.find(params[:event][:monqi_class_id]).title}) has been scheduled for: </p><br />"
+      msg = "<p>The class #{MonqiClass.find(params[:event][:monqi_class_id]).title}) has been scheduled for: </p><br />"
     params[:next_days].each_with_index do |schedule_date, i|            
       start_date =  Time.parse(schedule_date + " " + params[:start_time][i])  
       end_date = Time.parse(schedule_date + " " + params[:end_time][i])

@@ -1,20 +1,24 @@
 $(document).ready(function() {
 	
+	var flag = false;
 	$("form").submit(function () { 
+		if (flag) {return true;} 
 		$.ajax({
 		  url: "/events/check_for_existing_events",
 		  type: "GET",
 		  dataType: "script",
 		  data: $("form").serialize(),
 			success: function(data){
-				if (data == "ok") {
-					return true;
+				var result = $.trim(data);
+				if (result == "ok") {
+					flag = true;
+					$("form").submit();
 				} else {
 					data;
-					return false;
 				}
 			}
 		});
+		return false;
 	}); 
 	
 	validate_now();
