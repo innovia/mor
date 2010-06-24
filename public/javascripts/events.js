@@ -333,6 +333,37 @@ $(document).ready(function() {
 			$('#info_box').html(str).show();
 	}
 
+	function validateScheduleDate(value, element) {
+	    // grab all selected dates
+			var scheduleDates = $('.schedule_date option:selected');
+			console.info(scheduleDates);
+			var isValid = true;
+			console.info(isValid);
+			$(scheduleDates).each(function() {
+			console.info('this: '+ $(this));
+				  var currentElement = $(this);
+				for (var i=0; i < scheduleDates.length; i++) {
+			       		if (currentElement == scheduleDates[i]) {
+										isValid = false;
+			                                                        console.info('invalid');
+										return false;
+									}
+				       	};
+			});
+	}
+	
+	$.validator.addMethod("scheduleDate", function(value, element) {
+	    return this.optional(element) || validateScheduleDate(value, element);
+	}, "schedule Date(s) is required, and must be in order");
+
+	
+	$.validator.addClassRules({
+	    schedule_date: {
+	        required: true,
+	        scheduleDate: true
+	    }
+	});
+	
 	function validate_now(){
 		$('form').validate({
 			rules: {
