@@ -183,7 +183,7 @@ $(document).ready(function() {
 			case "Weekly":
 				$('.end_repeat').attr("disabled", false);
 				on_change_of_repeats();
-				$('#repeat_select').append('<select id="num_of_instructors">\
+				$('#repeat_select').append('<select id="num_of_instructors" name="num_of_instructors">\
 																				<option value="1">for one instructor</option>\
 																				<option value="2">for multiple instructors</option>\
 																		</select>');
@@ -336,25 +336,28 @@ $(document).ready(function() {
 	function validateScheduleDate(value, element) {
 	    // grab all selected dates
 			var scheduleDates = $('.schedule_date option:selected');
-			console.info(scheduleDates);
-			var isValid = true;
-			console.info(isValid);
-			$(scheduleDates).each(function() {
-			console.info('this: '+ $(this));
-				  var currentElement = $(this);
-				for (var i=0; i < scheduleDates.length; i++) {
-			       		if (currentElement == scheduleDates[i]) {
-										isValid = false;
-			                                                        console.info('invalid');
-										return false;
-									}
-				       	};
+			var errorCount = 0;
+			$(scheduleDates).each(function(i, current) {                    
+			  $(scheduleDates).each(function(j, checked) {
+			                // exclude the current checked member 
+			                if (i != j) {
+			                  //console.info('current ' + $(current).val());   
+			                  //console.info('checked ' + $(checked).val()); 
+			                  if ($(current).val() === $(checked).val()) { //console.log($(checked).val() + 'is selected more then once');
+			errorCount++;
+			}   
+			                }
+			              }); // end of j loop
+			               console.log('1 iteration');
+
 			});
+			console.warn('errors');
+			if (errorCount == 0) {console.info('no errors'); return true;} else {return false}
 	}
 	
 	$.validator.addMethod("scheduleDate", function(value, element) {
 	    return this.optional(element) || validateScheduleDate(value, element);
-	}, "schedule Date(s) is required, and must be in order");
+	}, "Schedule conflict: you have selected duplicate dates");
 
 	
 	$.validator.addClassRules({
@@ -372,7 +375,7 @@ $(document).ready(function() {
 				"event[level]": "required",
 				"event[max_attendees]": {required: true, number: true, min: 2},
 				 end_repeat_radio: "required"
-			}	,
+			},
 				 messages: {
 					"event[monqi_class_id]": "Type or choose a class",
 					"event[level]": "Choose a class level",
@@ -382,11 +385,15 @@ $(document).ready(function() {
 						number: "This has to be a number",
 						min: jQuery.format("The minimum number of attendees has to be equal or greater then {0}")
 					} 
-				}
-			,
-				 errorPlacement: function(error, element) { 
-				      error.appendTo(element.parent());
-			  }
+				},
+				errorPlacement: function(error, element) { 
+					if (element.attr("name") == "next_days[]") { 
+						$('#dup_date_errors').fadeIn('fast');
+						error.appendTo($("#dup_date_errors"));
+					} else {
+				    error.appendTo(element.parent());
+			  	}
+			 	}
 		});
 	}
 
