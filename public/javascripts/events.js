@@ -115,11 +115,7 @@ $(document).ready(function() {
 			 </div>').appendTo('div#added_day_instructor');
 		$('div.schedule').last().find('select.schedule_date').append(new_select_options);
 		$('span.added_instructor').last().html($('.scheduled_instructor').first().clone());
-		add_start_end_time_to_schedule_set();
-		//$('select.schedule_date').bind('click', function() {
-			//remove_selected_options_from_cloned_select($('div.schedule').first().find('select.schedule_date').children().clone())
-	//	});
-		
+		add_start_end_time_to_schedule_set();	
 	};
 	
 	function add_start_end_time_to_schedule_set(){
@@ -127,6 +123,50 @@ $(document).ready(function() {
 			$('span.scheduled_instructor').last().prepend($('.time_pickers_set').first().clone());
 			time_pickers();
 		}
+	}
+	
+	function review_before_submit(){
+		var days = [];
+		$('.schedule_date option:selected').each(function(i, sdate) {
+		   days.push($(sdate).text());
+		});
+		
+		var start_times = [];
+		$('#start_time_ ').each(function(i, t){
+		    start_times.push($(t).val());
+		});
+		
+		var end_times = [];
+		$('#end_time_ ').each(function(i, t){
+		    end_times.push($(t).val());
+		});
+		
+		var instructors = [];
+		$('.instructor :selected').each(function(i, ins){
+    	instructors.push($(ins).text());
+		});
+		
+		$('#msg').html($('#event_monqi_class_id :selected').text() + "<br />");
+		
+		for (var i=0; i < days.length; i++) {
+			$('#msg').append('<p>' + instructors[i] + ' on: ' + days[i] + ' ' + start_times[i] + '-' + end_times[i] + '</p>');
+		}
+		
+		$('#msg').dialog({
+				title: 'Please review before submit',
+				resizable: false,
+				width: 440,
+				height: 200,
+				modal: true,
+				buttons: {
+						'Submit': function() {
+							$(this).dialog('close');
+						},
+						Cancel: function() {
+							$(this).dialog('close');
+						}
+					}
+		});
 	}
 	
 	function bind_mutli_sched_add_button(){
@@ -196,7 +236,8 @@ $(document).ready(function() {
 					$('#multi_schedule').html('<div id="sched_title"><br />\
 																		   <span class="add_sched">\
 																			   <img src="/images/icons/add.png" class="add_day"/>\
-																				 Schedule more instructors, same class different days\
+																				 Schedule more instructors, same class different days <br />\
+																				Classes will repeat as above\
 																			 </span>\
 																		 </div><br /><div id="added_day_instructor"></div>'
 					);
@@ -348,10 +389,10 @@ $(document).ready(function() {
 			}   
 			                }
 			              }); // end of j loop
-			               console.log('1 iteration');
+			              // console.log('1 iteration');
 
 			});
-			console.warn('errors');
+			//console.warn('errors');
 			if (errorCount == 0) {console.info('no errors'); return true;} else {return false}
 	}
 	
