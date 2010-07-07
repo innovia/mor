@@ -9,12 +9,12 @@ class PackagesController < ResourceController::Base
   end
     
     
-   def new
+  def new
      @calendars = Calendar.find(:all, :order => "name ASC")
      @created_by = current_user.person.id
    end
    
-   def create
+  def create
      @person = Person.find(params[:person_id])
      if params[:package_type_id] == "2"
         # if package type is unlimited 
@@ -62,12 +62,12 @@ class PackagesController < ResourceController::Base
     
    end
    
-   def edit
+  def edit
       @package = Package.find(params[:id])
       @calendars = Calendar.find(:all, :order => "name ASC")
    end
    
-   def show 
+  def show 
      @package = Package.find(params[:id])
      @created_by = @package.created_by
      @sold_by = Person.find(@created_by)

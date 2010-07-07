@@ -1,0 +1,14 @@
+<% unless @events.nil? or @events.empty? %>
+	<tr>
+		<th><%= @events.first.start_date.strftime('%a %B %d, %Y') %></th>
+		<th>classes</th>
+		<th>Instructor</th>
+	</tr>
+	<%- @events.each do |event| %>
+		<% content_tag_for(:tr, event) do %>
+	     <td><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
+			 <td><%= event.monqi_class.title %></td>
+			 <td><%= event.instructor.full_name %></td>
+	 <% end %>
+	<% end %>	
+<% end %>

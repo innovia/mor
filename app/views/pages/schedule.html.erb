@@ -1,0 +1,10 @@
+<%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", 'schedule' %>
+<span id="current_date"><%= Date.today.strftime('%A, %B %d %Y') %></span><span><%= text_field_tag :datepicker %></span>
+
+<table id="classes_table" border="0" cellspacing="5" cellpadding="5">
+
+</table>
+
+<script type="text/javascript" charset="utf-8">
+	fetch_classes($('#current_date').text());
+</script>

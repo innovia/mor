@@ -9,9 +9,6 @@ class PackageTemplatesController < ResourceController::Base
     def fetch_packages
       @pkg_type = params[:pkg_type]
       @package_templates =  PackageType.name_is(@pkg_type).first.package_templates
-      respond_to do |wants|
-        wants.js {  }
-      end
     end
     
     def sort

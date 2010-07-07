@@ -60,7 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.store '/store', :controller => "store"
   map.resources :orders, :products, :packages, :calendars, :monqi_classes, :phone_numbers, :people
   map.resources :event_templates, :has_many  => :events, :collection => {:quick_add => :post}
-  map.resources :events,  :has_many =>  :members, :collection => {:check_for_existing_events => :get}
+  map.resources :events,  :has_many =>  :members, :collection => {:check_for_existing_events => :get, :fetch_classes => :get}
  
   # Nested Routes
   map.resources :package_templates, :collection => { :sort => :post, :fetch_packages => :get }

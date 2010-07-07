@@ -34,6 +34,11 @@ class EventsController < ResourceController::Base
      end 
   end
   
+  def fetch_classes
+    @date = Date.parse(params[:current_date])
+    @events =  Event.start_date_greater_than(@date).start_date_less_than(@date + 1)
+  end
+  
   def create 
       msg = "<p>The class #{MonqiClass.find(params[:event][:monqi_class_id]).title}) has been scheduled for: </p><br />"
     params[:next_days].each_with_index do |schedule_date, i|            
