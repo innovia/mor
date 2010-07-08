@@ -3,9 +3,7 @@
 				_create: function() {
 					var self = this;
 					var select = this.element.hide();
-					var input = $("<input>")
-						.insertAfter(select)
-						.autocomplete({
+					var input = $("<input>").insertAfter(select).autocomplete({
 							source: function(request, response) {
 								var matcher = new RegExp(request.term, "i");
 								response(select.children("option").map(function() {
@@ -27,6 +25,7 @@
 								}
 								$(this).focus();
 								select.val(ui.item.id);
+								select.keyup(); // trigger validation
 								self._trigger("selected", null, {
 									item: select.find("[value='" + ui.item.id + "']")
 								});
@@ -35,9 +34,7 @@
 							minLength: 0
 						})
 						.addClass("ui-widget ui-widget-content ui-corner-left");
-					$("<button>&nbsp;</button>")
-					.insertAfter(input)
-					.button({
+					$("<button>&nbsp;</button>").insertAfter(input).button({
 						icons: {
 							primary: "ui-icon-triangle-1-s"
 						},
