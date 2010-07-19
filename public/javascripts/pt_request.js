@@ -50,6 +50,11 @@ $(function(){
 			textSubmit: 'Send request'
 		},{
        //validation settings
+			submitHandler: function(form) { 
+			       $(form).find(":submit").attr("disabled", true).attr("value", 
+			"Submitting..."); 
+			       form.submit(); 
+			},
 			onkeyup: false,
 			errorLabelContainer: "#error_box",
 			wrapper: "li",
