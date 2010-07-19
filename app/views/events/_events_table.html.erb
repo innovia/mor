@@ -1,14 +1,19 @@
+<% @days.each do |day| %>
 <% unless @events.nil? or @events.empty? %>
 	<tr>
-		<th><%= @events.first.start_date.strftime('%a %B %d, %Y') %></th>
-		<th>classes</th>
-		<th>Instructor</th>
+		<th>
+			<span class="headerText"><%= @events.first.start_date.strftime('%a') %></span>
+			<span class="smallText"> <%= @events.first.start_date.strftime(' %B %d, %Y') %></span></th>
+		<th class="smallHeader" align="center">CLASSES</th>
+		<th class="smallHeader">INSTRUCTOR</th>
 	</tr>
 	<%- @events.each do |event| %>
-		<% content_tag_for(:tr, event) do %>
-	     <td><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
-			 <td><%= event.monqi_class.title %></td>
-			 <td><%= event.instructor.full_name %></td>
+		<%# for every day %>
+		<% content_tag_for(:tr, event, :class => cycle("even", "odd")) do %>
+	     <td width="20%"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
+			 <td><%= link_to event.monqi_class.title, '#', :class => 'class_desc' %></td>
+			 <td><%= link_to event.instructor.full_name, '#', :class => 'instructor_info' %></td>
 	 <% end %>
 	<% end %>	
 <% end %>
+<% end -%> <%# end of day %>

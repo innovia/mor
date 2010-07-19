@@ -34,14 +34,14 @@ class Notifier < ActionMailer::Base
     @pt_req = params
      from        "#{params[:email]}"
      subject     "Personal Training Online Request from #{params[:first_name]} #{params[:last_name]}"
-     recipients  "info@monqifitness.com, ami.mahloof@gmail.com"
+     recipients  "info@monqifitness.com"
      sent_on     Time.now
  end
    
  def contact_us_form(params)
    @mailer = params
    from "#{params[:email]}"
-   recipients  "info@monqifitness.com, ami.mahloof@gmail.com"
+   recipients  "info@monqifitness.com"
    subject     "Web contact us form ::: #{params[:subject]}"
    reply_to    "#{params[:email]}"
    sent_on     Time.now

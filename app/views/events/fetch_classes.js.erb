@@ -1,1 +1,2 @@
+$('#current_date').html('<%= @date.strftime('%A, %B %d %Y') %>');
 $('#classes_table').html('<%= escape_javascript(render :partial => "events_table") %>');

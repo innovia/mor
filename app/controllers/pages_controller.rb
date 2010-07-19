@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
     
   def schedule
-    render :layout => false
+   # render :layout => false
   end
   
   def pt_request
