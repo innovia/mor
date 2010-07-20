@@ -16,10 +16,7 @@ class PagesController < ApplicationController
     @events = Event.all(:include => [:monqi_class, :instructor])
     render :file => "/pages/schedule_feed.json.erb"
   end
-    
-  def schedule
-   # render :layout => false
-  end
+
   
   def pt_request
     @pt_req = params
