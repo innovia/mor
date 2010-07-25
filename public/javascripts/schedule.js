@@ -5,6 +5,11 @@ $(document).ready(function() {
 			buttonImageOnly: true
 		});
 		
+		$('#daily_view').bind('click', function(event) {
+			var cur = $('#current_date').text();
+			fetch_classes(Date.parse(cur));
+		});
+		
 		$('#prev_day').bind('click', function(event) {
 			var cur = $('#current_date').text();
 			fetch_classes(Date.parse(cur).add(-1).day());
@@ -15,30 +20,25 @@ $(document).ready(function() {
 			fetch_classes(Date.parse(cur).add(1).day());
 		});
 		
+		$('#weekly_view').bind('click', function(event) {
+			var cur = $('#current_date').text();
+			fetch_classes(Date.parse('t'), 'weekly');
+		});
+		
 		$('#prev_week').bind('click', function(event) {
 			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(-1).week());
+			fetch_classes(Date.parse(cur).add(-1).week(), 'weekly');
 		});
 		
 		$('#next_week').bind('click', function(event) {
 			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(1).week());
+			fetch_classes(Date.parse(cur).add(1).week(), 'weekly');
 		});
-		
-		
+				
 		$('#today_view').bind('click', function(event) {
 			fetch_classes(Date.parse('t'));
 		});
-		
-		$('#weekly_view').bind('click', function(event) {
-			fetch_classes(Date.parse('t'), 'weekly');
-		});
-		
-			$('#daily_view').bind('click', function(event) {
-				var cur = $('#current_date').text();
-				fetch_classes(Date.parse(cur));
-			});
-		
+				
 });
 
 	
