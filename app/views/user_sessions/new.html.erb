@@ -16,7 +16,7 @@
 				</span>	
 					<div id="login_accessories">
 					<% unless current_user %>
-					  <%= link_to "Register for an account", new_account_path %> |
+					  <%#= link_to "Register for an account", new_account_path %> 
 						<%= link_to "Forgot Password?", forgot_password_path %>
 					<%- else -%>
 					  <%= link_to "My Account", account_path %> |

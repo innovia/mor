@@ -1,4 +1,8 @@
 <%= javascript_include_tag 'schedule', 'date' %>
+
+<%- if admin? -%>
+	<%= link_to "Set new schedule", new_event_path %>
+<% end -%>
 <span id="current_date"><%= Date.today.strftime('%A, %B %d %Y') %></span><span>&nbsp<%= text_field_tag :datepicker,{}, :size => "8	" %></span>
 
 <div id="navigator">
