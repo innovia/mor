@@ -163,6 +163,7 @@ $(document).ready(function() {
 
 
 // New Event (MonqiClass) Functions
+
 function review_before_submit(){
 	var days = [];
 	$('.schedule_date option:selected').each(function(i, sdate) {
@@ -185,7 +186,7 @@ function review_before_submit(){
 	});
 	
 	var level = $('#level input:radio:checked').val();
-	$('#msg').html($('#event_monqi_class_id :selected').text() + " " + level + " level <p> Repeats " + $('#info_box').text() + "</p>");
+	$('#msg').html("The class <b>" + $('#event_monqi_class_id :selected').text() + " " + level + "</b> will repeat " + "<b>" + $('#freq :selected').text() + "</b><br /> Between " + $('#start_date').val() + " and " + $('#until').val() + "</p> <p> For the following instructors and start dates: </p><hr />");
 	
 	for (var i=0; i < days.length; i++) {
 		$('#msg').append('<p>' + instructors[i] + ' on: ' + days[i] + ' ' + start_times[i] + '-' + end_times[i] + '</p>');
