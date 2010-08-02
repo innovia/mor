@@ -1,14 +1,14 @@
 <% @days.each do |day| %>
-<% unless @events.nil? or @events.empty? %>
+<% unless day.nil? or day.empty? %>
 	<tr>
 		<th>
-			<span class="headerText"><%= @events.first.start_date.strftime('%a') %></span>
-			<span class="smallText"> <%= @events.first.start_date.strftime(' %B %d, %Y') %></span></th>
+			<span class="headerText"><%= day.first.start_date.strftime('%a') %></span>
+			<span class="smallText"> <%= day.first.start_date.strftime(' %B %d, %Y') %></span>
+		</th>
 		<th class="smallHeader" align="center">CLASSES</th>
 		<th class="smallHeader">INSTRUCTOR</th>
 	</tr>
-	<%- @events.each do |event| %>
-		<%# for every day %>
+	<%- day.each do |event| %>
 		<% content_tag_for(:tr, event, :class => cycle("even", "odd")) do %>
 	     <td width="20%"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
 			 <td><%= link_to event.monqi_class.title, '#', :class => 'class_desc' %></td>
