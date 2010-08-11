@@ -4,9 +4,9 @@ require 'forgery'
 
 # Sham - Generating Attribute Values
 Sham.define do
-  login                          { InternetForgery.user_name }
-  email                          { InternetForgery.email_address }
-  pwd = BasicForgery.password
+  login                          { Forgery::Internet.user_name }
+  email                          { Forgery::Internet.email_address }
+  pwd = Forgery::Basic.password
   password                       { pwd }
   password_confirmation          { pwd }
 end
@@ -22,6 +22,16 @@ Settings.blueprint do
   products_pages                                                    { 5  }
   day_start_time                                                 { "09:00" }
   day_end_time                                                   { "21:00" }
+end
+
+Event.blueprint do
+  start_date      {"2010-08-02 07:30:00"}
+  end_date        {"2010-08-02 08:15:00"}
+  monqi_class_id  {1}
+  level           {"open"}
+  instructor_id   {1}
+  calendar_id     {1}
+  max_attendees   {3}
 end
 
 Role.blueprint  do
@@ -48,18 +58,18 @@ User.blueprint(:bobby) do
 end
 
 Person.blueprint do
-  first_name  { NameForgery.first_name }
-  last_name   { NameForgery.last_name }
+  first_name  { Forgery::Name.first_name }
+  last_name   { Forgery::Name.last_name }
 end
 
 Calendar.blueprint do
   name  { "group" }
-  color {  BasicForgery.hex_color }
+  color {  Forgery::Basic.hex_color }
 end
 
 MonqiClass.blueprint do
-  title { MonqiClassForgery.title }
-  description {LoremIpsumForgery.paragraph }
+  title { Forgery::MonqiClass.title }
+  description {Forgery::LoremIpsum.paragraph }
 end
 
 PackageType.blueprint do

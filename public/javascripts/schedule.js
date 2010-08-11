@@ -5,34 +5,28 @@ $(document).ready(function() {
 			buttonImageOnly: true
 		});
 		
-		$('#daily_view').bind('click', function(event) {
-			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur));
+		$('#prev_day').bind('click', function(event) {
+			fetch_classes(Date.parse($('#current_date').text()).add(-1).day());
 		});
 		
-		$('#prev_day').bind('click', function(event) {
-			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(-1).day());
+		$('#daily_view').bind('click', function(event) {
+			fetch_classes(Date.parse($('#current_date').text()));
 		});
 		
 		$('#next_day').bind('click', function(event) {
-			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(1).day());
+			fetch_classes(Date.parse($('#current_date').text()).add(1).day());
 		});
 		
 		$('#weekly_view').bind('click', function(event) {
-			var cur = $('#current_date').text();
 			fetch_classes(Date.parse('t'), 'weekly');
 		});
 		
 		$('#prev_week').bind('click', function(event) {
-			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(-1).week(), 'weekly');
+			fetch_classes(Date.parse($('#current_date').text()).add(-1).week(), 'weekly');
 		});
 		
 		$('#next_week').bind('click', function(event) {
-			var cur = $('#current_date').text();
-			fetch_classes(Date.parse(cur).add(1).week(), 'weekly');
+			fetch_classes(Date.parse($('#current_date').text()).add(1).week(), 'weekly');
 		});
 				
 		$('#today_view').bind('click', function(event) {

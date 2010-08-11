@@ -26,9 +26,9 @@ config.gem "rspec-rails", :lib => false, :version => ">= 1.2.7.1"
 config.gem "webrat",      :lib => false, :version => ">=0.4.3"
 config.gem "cucumber",    :lib => false, :veriosn => ">=0.3.0"
 
-config.after_initialize do
-  ActiveMerchant::Billing::Base.mode = :test
+#config.after_initialize do
+  #ActiveMerchant::Billing::Base.mode = :test
   
-  OrderTransaction.gateway =
-    ActiveMerchant::Billing::BogusGateway.new
-end
+  #OrderTransaction.gateway =
+  #  ActiveMerchant::Billing::BogusGateway.new
+#end

@@ -1,0 +1,2 @@
+default: -r features/support -r features/step_definitions -r features/plain --tags ~@js features
+steam: -r features/support -r features/step_definitions -r features/steam --tags @js features

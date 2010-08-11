@@ -8,6 +8,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     
+    when /the schedule page/ then schedule_beta_path
     when /home page/ then home_path
     when /account page/ then account_path
     when /the login page/ then login_path

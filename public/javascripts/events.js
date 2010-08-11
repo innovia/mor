@@ -185,7 +185,7 @@ function review_before_submit(){
 	});
 	
 	var level = $('#level input:radio:checked').val();
-	$('#msg').html($('#event_monqi_class_id :selected').text() + " " + level + " level <p> Repeats " + $('#info_box').text() + "</p>");
+	$('#msg').html($('#event_monqi_class_id :selected').text() + " " + level + " level <p class='review_split_bar'> Repeats " + $('#freq').val() + " - between " + $('#start_date').val() + " and " + $('#until').val() + "</p>");
 	
 	for (var i=0; i < days.length; i++) {
 		$('#msg').append('<p>' + instructors[i] + ' on: ' + days[i] + ' ' + start_times[i] + '-' + end_times[i] + '</p>');
@@ -201,7 +201,7 @@ function review_before_submit(){
 					'Submit': function() {
 						$(this).dialog('close');
 						submit_flag = true;
-						form.submit();
+						$('form').submit();
 					},
 					Cancel: function() {
 						$(this).dialog('close');

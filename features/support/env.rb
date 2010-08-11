@@ -1,26 +1,41 @@
 # Sets up the Rails environment for Cucumber
 ENV["RAILS_ENV"] ||= "cucumber"
-require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
-require 'cucumber/rails/world'
+root = File.expand_path('../../..', __FILE__)
+ENV['CLASSPATH'] = Dir["#{root}/vendor/htmlunit-2.6/*.jar"].join(':')
 
-# Comment out the next line if you don't want Cucumber Unicode support
-require 'cucumber/formatter/unicode'
+require "#{root}/config/environment"
+require 'steam'
+require 'test/unit'
+
+require File.join(RAILS_ROOT, 'spec', 'blueprints')
+#require 'email_spec/cucumber'
+
+Steam.config[:html_unit][:java_path] = "#{root}/vendor/htmlunit-2.6"
+
+
+browser = Steam::Browser.create
+World do
+  Steam::Session::Rails.new(browser)
+end
+
+at_exit { browser.close }
+
+Before do
+  ActiveRecord::Base.send(:subclasses).each do |model|
+    model.connection.execute("DELETE FROM #{model.table_name}")
+  end
+end
 
 # Comment out the next line if you don't want transactions to
 # open/roll back around each scenario
-Cucumber::Rails.use_transactional_fixtures
+#Cucumber::Rails.use_transactional_fixtures
 
 # Comment out the next line if you want Rails' own error handling
 # (e.g. rescue_action_in_public / rescue_responses / rescue_from)
-Cucumber::Rails.bypass_rescue
+#Cucumber::Rails.bypass_rescue
 
-require 'webrat'
 
-Webrat.configure do |config|
-  config.mode = :rails
-end
+#Webrat.configure do |config|
+#  config.mode = :rails
+#end
 
-require 'cucumber/rails/rspec'
-require 'webrat/core/matchers'
-require File.join(RAILS_ROOT, 'spec', 'blueprints')
-require 'email_spec/cucumber'
