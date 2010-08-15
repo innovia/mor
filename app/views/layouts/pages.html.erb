@@ -1,99 +1,103 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<title>MonQi Fitness NYC 212-327-2170</title>
-<%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
-<%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
-<%= stylesheet_link_tag "blueprint/print", :media => "print" %>
-<%= stylesheet_link_tag "themes/sunny/jquery-ui-1.8.custom", 'jquery.alerts', 'pages' %>					
-
-<!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
-<%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "jquery.maskedinput.min", "pages" %>
-									
-<% if admin? %>
-	<%= render :partial => "shared/init_yui_editor" %>
-<% end -%>
-</head>
-<body>
-	<div class="container" id="page_body">
-		<div id="menu_bar_and_logo" class="span-24 last">
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>MonQi Fitness NYC 212-327-2170</title>
+		<%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %><%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
+		<%= stylesheet_link_tag "blueprint/print", :media => "print" %><%= stylesheet_link_tag "themes/sunny/jquery-ui-1.8.custom", 'jquery.alerts', 'pages' %>
+		<!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+		<%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "jquery.maskedinput.min", "pages" %>
+		<% if admin? %>
+			<%= render :partial => "shared/init_yui_editor" %>
+		<% end -%>
+		
+		<% if @page.title == 'schedule_beta' %>
+			<%= javascript_include_tag 'schedule', 'date' %>
+			<%= stylesheet_link_tag 'schedule' %>
+		<% end %>
+	</head>
+	<body>
+		<div class="container" id="page_body">
+			<div id="menu_bar_and_logo" class="span-24 last">
 				<div id="menu_bar" class="span-24">
 					<%= link_to "Home", pages_path, :id => "home", :class => "span-10" %>
 					<ul id="menu" class="<%= @page.title %> span-18">
-						<li id="about_us"><%= link_to "About us", about_us_path %></li>
-						<li id="classes"><%= link_to "Classes", classes_path %></li>
-						<li id="personal_training"><%= link_to "Personal training", personal_training_path %></li>
-						<li id="schedule"><%= link_to "Schedule", schedule_path %></li>
-						<li	id="rates"><%= link_to "Rates",  rates_path %></li>
-						<li id="specials"><%= link_to "Specials", specials_path %></li>
-						<li id="staff"><%= link_to "Staff", staff_path %></li>
-						<li id="news"><%= link_to "News", news_path %></li>
-						<li id="contact_us"><%= link_to "Contact us", contact_us_path %></li>
-					</ul>
-					<% if admin? %> 
-						<ul id="admin_nav" class="span-17">
-							<li id="edit_icon"><%= link_to "Edit Page", "#", :id => "edit_page"  %></li>
-							<li id="back_end"><%= link_to "Back End Pages", home_path %></li>
-						</ul>
-					<% end -%>
-					<% if @page.title == 'index' %>
-							<div id="news_flash">
-								<% if admin? %>
-									<%= link_to image_tag("icons/application_form_edit.png") + "Edit News", news_flash_path %>
-								<% end -%>
-								<%= @news_flash %>
-							</div>
-					<% end -%>
+						<li id="about_us">
+							<%= link_to "About us", about_us_path %>
+						</li>
+						<li id="classes">
+							<%= link_to "Classes", classes_path %>
+						</li>
+						<li id="personal_training">
+							<%= link_to "Personal training", personal_training_path %>
+						</li>
+						<li id="schedule">
+							<%= link_to "Schedule", schedule_path %>
+						</li>
+						<li id="rates">
+							<%= link_to "Rates",  rates_path %>
+						</li>
+						<li id="specials">
+							<%= link_to "Specials", specials_path %>
+						</li>
+						<li id="staff">
+							<%= link_to "Staff", staff_path %>
+						</li>
+						<li id="news">
+							<%= link_to "News", news_path %>
+						</li>
+						<li id="contact_us">
+							<%= link_to "Contact us", contact_us_path %>
+						</li>
+					</ul><% if admin? %>
+					<ul id="admin_nav" class="span-17">
+						<li id="edit_icon">
+							<%= link_to "Edit Page", "#", :id => "edit_page"  %>
+						</li>
+						<li id="back_end">
+							<%= link_to "Back End Pages", home_path %>
+						</li>
+					</ul><% end -%><% if @page.title == 'index' %>
+					<div id="news_flash">
+						<% if admin? %><%= link_to image_tag("icons/application_form_edit.png") + "Edit News", news_flash_path %><% end -%><%= @news_flash %>
+					</div><% end -%>
 				</div>
-			</div> <!-- /menu_bar_and_logo -->
-
-			
-			
-		<div id="top_content_page" class="clear span-16 last">
-			<% unless @page.title == 'index' %>
-				<h2><%= @page.title.humanize %><span class="h2bkg"><%= @page.title.humanize %></span></h2>
+			</div><!-- /menu_bar_and_logo -->
+			<div id="top_content_page" class="clear span-16 last">
+				<% unless @page.title == 'index' %>
+				<h1>
+					<h2>
+					<%= @page.title.humanize %>
+					<span class="h2bkg"><%= @page.title.humanize %></span>
+					</h2>
+				</h1>
 			<% end -%>
+			
 			<% strip_content_from_pages = ['rates', 'personal_training', 'staff', 'contact_us'] %>
 			<% unless strip_content_from_pages.include?(@page.title)%>
 				<%= @page.body %>
 			<% end -%>
-			
 			<%= yield %>
 			
 			<% unless @page.page_attachment_file_size.nil?  %>
-			<div id="attachment">
-				<% @download_link = "Download" %>
-				<% if @page.title == 'schedule' %>
-					 <%- @download_link += " our schedule" -%>
-				<% end %>
-				 	<%= @download_link %>: <%= link_to(@page.page_attachment_file_name, @page.page_attachment.url) %>
-				<% if admin? %>
-						<%= image_tag( "icons/large_error.png",  :size => "24x24", 
-																			"data-page" => @page.id,
-																			:title => "remove attachment",
-																			:class => "remove_attachment" ) %>
-				<% end %></div>
-			<% end -%>
-		</div>
-
-		<div id="address_bar" class="span-13">201 E67th St New York, NY 10065 - (212) 327-2170</div>
-		
-		<div id="lower_corner_box">
-			<div id="gallery">
-				<% @page.pictures.each_with_index do |pic, index| %>
-						<%= image_tag(pic.photo.url(:box)) %>
-				<% end -%>
+				<div id="attachment">
+					<% @download_link = "Download" %><% if @page.title == 'schedule' %><%- @download_link += " our schedule" -%><% end %><%= @download_link %>: <%= link_to(@page.page_attachment_file_name, @page.page_attachment.url) %> <% if admin? %> <%= image_tag( "icons/large_error.png",  :size => "24x24", 
+																								"data-page" => @page.id,
+																								:title => "remove attachment",
+																								:class => "remove_attachment" ) %> <% end %>
+				</div><% end -%>
 			</div>
-		</div>
-		
-		<% if admin? %>
-			<%= render :partial => "editor" %>	
-		<% end -%>
-	</div><!-- /container -->
+			<div id="address_bar" class="span-13">
+				201 E67th St New York, NY 10065 - (212) 327-2170
+			</div>
+			<div id="lower_corner_box">
+				<div id="gallery">
+					<% @page.pictures.each_with_index do |pic, index| %><%= image_tag(pic.photo.url(:box)) %><% end -%>
+				</div>
+			</div><% if admin? %><%= render :partial => "editor" %><% end -%>
+		</div><!-- /container -->
 		<div class="apple_overlay" id="overlay">
-			<div class="contentWrap"></div> 
+			<div class="contentWrap"></div>
 		</div>
-</body>
+	</body>
 </html>
-

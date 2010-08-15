@@ -33,9 +33,9 @@ $(document).ready(function() {
 			fetch_classes(Date.parse('t'));
 		});
 				
+		fetch_classes($('#current_date').text());
 });
 
-	
 function fetch_classes(current_date, period){
 	$.ajax({
 		url: '/events/fetch_classes',
