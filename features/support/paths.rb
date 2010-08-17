@@ -8,21 +8,21 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /home page/ then '/'
-    when /account page/ then account_path
-    when /the login page/ then login_path
-    when /the signup form/ then new_account_path
-    when /the stats page/ then stats_path
-    when /classes page/ then monqi_classes_path
-    when /new class page/ then new_monqi_class_path
-    when /new package template page/ then  new_package_template_path
-    when /the package maker page/ then package_templates_path
-    when /the calendars page/ then calendars_path
-    when /the schedule page/ then schedule_beta_path
-    
+        when /home page/ then home_path
+        when /the signup form/ then new_account_path
+        when /classes page/ then monqi_classes_path
+        when /new class page/ then new_monqi_class_path
+        when /the package maker page/ then package_templates_path
+       
     else
-      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      begin
+        page_name =~ /the (.*) page/
+        path_components = $1.split(/\s+/)
+        self.send(path_components.push('path').join('_').to_sym)
+      rescue Object => e
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+          "Now, go and add a mapping in #{__FILE__}"
+      end
     end
   end
 end

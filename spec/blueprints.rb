@@ -1,7 +1,7 @@
 require 'machinist/active_record'
 require 'sham'
 require 'forgery'
-
+require 'chronic'
 # Sham - Generating Attribute Values
 Sham.define do
   login                          { Forgery::Internet.user_name }
@@ -68,7 +68,7 @@ Calendar.blueprint do
 end
 
 MonqiClass.blueprint do
-  title { Forgery::MonqiClass.title }
+  title { Forgery::Name.title }
   description {Forgery::LoremIpsum.paragraph }
 end
 

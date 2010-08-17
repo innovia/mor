@@ -1,3 +1,35 @@
+#schedule_page {
+	position:relative;
+	overflow:hidden;
+	width: 625px;
+	height:240px;
+}
+
+#schedule_page .days {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+}
+
+/*
+	a single item. must be floated in horizontal scrolling.
+	typically, this element is the one that *you* will style
+	the most.
+*/
+#schedule_page .days .day {
+	width: 620px;
+	float:left;
+}
+
+
+#view_title { position: relative;}
+
+#days_selector {text-align:center;}
+
+#days_selector li{
+	display: inline;
+}
+
 	#navigator {
 		text-align: center;		
 	}

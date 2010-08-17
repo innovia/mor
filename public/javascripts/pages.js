@@ -68,20 +68,7 @@ $('.staff_links').bind('click', function(event) {
 
 
 
-/*
-input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
--moz-box-shadow:0 0 8px rgba(82, 168, 236, 0.5);
-border-color:rgba(82, 168, 236, 0.75) !important;
-outline:medium none;
-}
-input.with-box:focus, input[class*="search"]:focus, input[id*="search"]:focus {
--moz-box-shadow:none;
-border-color:inherit !important;
-}
-input[type="text"], fieldset.common-form input[type="password"], fieldset.common-form textarea {
--moz-border-radius:3px 3px 3px 3px;
-}
-*/
+
 
 }); // doc ready
 

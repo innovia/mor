@@ -25,6 +25,8 @@ config.gem "rspec",       :lib => false, :version => ">= 1.2.7"
 config.gem "rspec-rails", :lib => false, :version => ">= 1.2.7.1" 
 config.gem "webrat",      :lib => false, :version => ">=0.4.3"
 config.gem "cucumber",    :lib => false, :veriosn => ">=0.3.0"
+config.gem "chronic"
+#require File.join(RAILS_ROOT, 'spec', 'blueprints')
 
 #config.after_initialize do
   #ActiveMerchant::Billing::Base.mode = :test
