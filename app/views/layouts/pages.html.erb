@@ -3,8 +3,10 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<title>MonQi Fitness NYC 212-327-2170</title>
-		<%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %><%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
-		<%= stylesheet_link_tag "blueprint/print", :media => "print" %><%= stylesheet_link_tag "themes/sunny/jquery-ui-1.8.custom", 'jquery.alerts', 'pages' %>
+		<%= stylesheet_link_tag "blueprint/src/reset", :media => "screen, projection" %>
+		<%= stylesheet_link_tag "blueprint/screen", :media => "screen, projection" %>
+		<%= stylesheet_link_tag "blueprint/print", :media => "print" %>
+		<%= stylesheet_link_tag "themes/sunny/jquery-ui-1.8.custom", 'jquery.alerts', 'pages' %>
 		<!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
 		<%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "jquery.maskedinput.min", "pages" %>
 		<% if admin? %>
@@ -50,13 +52,15 @@
 							<%= link_to "Contact us", contact_us_path %>
 						</li>
 					</ul><% if admin? %>
-					<ul id="admin_nav" class="span-17">
+					<ul id="admin_nav" class="span-23">
 						<li id="edit_icon">
 							<%= link_to "Edit Page", "#", :id => "edit_page"  %>
 						</li>
 						<li id="back_end">
 							<%= link_to "Back End Pages", home_path %>
 						</li>
+						<li id="schedule_beta"><%= link_to "schedule beta", schedule_beta_path %></li>
+						<li id="logout"> <%= link_to "logout", logout_path %></li>
 					</ul><% end -%><% if @page.title == 'index' %>
 					<div id="news_flash">
 						<% if admin? %><%= link_to image_tag("icons/application_form_edit.png") + "Edit News", news_flash_path %><% end -%><%= @news_flash %>

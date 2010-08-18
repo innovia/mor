@@ -1,6 +1,6 @@
 class EventsController < ResourceController::Base
   require 'vpim/rrule'
-  before_filter :require_user, :require_staff
+  before_filter :require_user, :require_staff,  :except => :fetch_classes
   
   def index
     @events = Event.paginate(:per_page => @settings.per_page , :page => params[:page])
@@ -45,10 +45,7 @@ class EventsController < ResourceController::Base
        @days << events
        @date = @date + 1
    end   
-    
-  # if @days.empty?
-  #    @date  = @date + period
-  # end 
+ 
   end
   
   def create 

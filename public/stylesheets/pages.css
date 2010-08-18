@@ -14,7 +14,7 @@ body {
 #admin_nav {
 						position: absolute;
 						top: 0;
-						left: 183px;
+						background: transparent url('/images/Backgrounds/70_black.png') repeat-x;
 }
 
 #admin_nav li { float: left;}
@@ -25,8 +25,11 @@ body {
 				 					text-indent: -9999px; 
 				 					overflow: hidden;  
 								}
-#admin_nav li#edit_icon {background: transparent url('/images/edit.png') no-repeat; }
-#admin_nav li#back_end {background: transparent url('/images/back_end.png') no-repeat; margin-left: 30px;}
+#admin_nav li#edit_icon {background: transparent url('/images/edit.png') no-repeat; margin-left:315px;}
+#admin_nav li#back_end {background: transparent url('/images/back_end.png') no-repeat; margin-left: 35px;}
+#admin_nav li#schedule_beta {background: url("/images/schedule_beta.png") no-repeat scroll 0 4px transparent; width: 140px; margin-left: 40px;}
+#admin_nav li#logout {background: transparent url('/images/logout.png') no-repeat;}
+
 
 
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}

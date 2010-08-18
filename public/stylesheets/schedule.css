@@ -1,3 +1,5 @@
+#set_new_schedule {display:inline; margin-left: 202px;}
+
 #schedule_page {
 	position:relative;
 	overflow:hidden;
@@ -5,21 +7,21 @@
 	height:240px;
 }
 
-#schedule_page .days {
+
+#schedule_page .items {
 	/* this cannot be too large */
 	width:20000em;
 	position:absolute;
 }
 
-/*
-	a single item. must be floated in horizontal scrolling.
-	typically, this element is the one that *you* will style
-	the most.
-*/
-#schedule_page .days .day {
-	width: 620px;
+
+.items table {
 	float:left;
+	width: 620px;	
 }
+
+
+
 
 
 #view_title { position: relative;}

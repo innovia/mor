@@ -63,12 +63,9 @@ function set_view_title(){
 
 function set_scrollable(){
 	$("#schedule_page").scrollable({ 
-	  //vertical: true, 
 	  size: 1, 
-	  //clickable: false,
+	  clickable: false,
 		//keyboard: false,
-		//prev: 'a.prev_page',
-		//next: 'a.next_page'
 	}).navigator("#days_selector");
 	
 }

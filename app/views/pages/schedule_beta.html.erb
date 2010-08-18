@@ -2,7 +2,7 @@
 <span>&nbsp;<label for="datepicker"></label><%= text_field_tag :datepicker,{}, :size => "8" %></span>
 
 <%- if admin? -%>
-	<%= link_to "Set new schedule", new_event_path %>
+	<h3 id="set_new_schedule"><%= link_to "Set new schedule", new_event_path %></h3>
 <% end -%>
 
 <div id="navigator">
