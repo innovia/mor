@@ -1,6 +1,10 @@
 <span id="current_date"><%= Date.today.strftime('%A, %B %d %Y') %></span>
 <span>&nbsp;<label for="datepicker"></label><%= text_field_tag :datepicker,{}, :size => "8" %></span>
 
+<%- if admin? -%>
+	<%= link_to "Set new schedule", new_event_path %>
+<% end -%>
+
 <div id="navigator">
 	<span id="day_nav">
 		<a href="#" class="nav_left nav_arrows" id="prev_day"> &lt;&lt; </a> 
