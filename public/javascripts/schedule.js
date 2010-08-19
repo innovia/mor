@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	$(":date").dateinput();
+	
 	var selected_date;
 		$("#datepicker").datepicker({
 			showOn: 'button',
@@ -39,18 +41,21 @@ $(document).ready(function() {
 		});
 		
 		$('#prev_week').bind('click', function(event) {
-			fetch_classes(Date.parse($('#current_date').text()).add(-1).week(), 'weekly');
+				selected_date = Date.parse($('#current_date').text()).add(-1).week();
+				set_date_header(selected_date);
+				$('#view_title').html('Weekly classes');
+				fetch_classes(selected_date, 'weekly');
 		});
 		
 		$('#next_week').bind('click', function(event) {
-			fetch_classes(Date.parse($('#current_date').text()).add(1).week(), 'weekly');
+				selected_date = Date.parse($('#current_date').text()).add(1).week();
+				set_date_header(selected_date);
+				$('#view_title').html('Weekly classes');
+				fetch_classes(selected_date, 'weekly');
 		});
-				
-	
-				
+							
 		fetch_classes($('#current_date').text());
-		$('#view_title').html('Today\'s classes');
-		
+		$('#view_title').html('Today\'s classes');		
 });
 
 function set_date_header(fmtDate){

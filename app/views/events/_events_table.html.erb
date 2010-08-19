@@ -1,5 +1,3 @@
-<!-- "previous page" action -->
-<a class="prev browse left"></a>
 <% unless @days.nil? or @days.empty? %>
 	<% if @days.size > 1 %>
 	<ul id="days_selector">
@@ -31,9 +29,9 @@
 					</tr>
 						<%- day.each do |event| %>
 							<% content_tag_for(:tr, event, :class => cycle("even", "odd")) do %>
-				     		<td width="20%"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
-						 		<td><%= link_to event.monqi_class.title, '#', :class => 'class_desc' %></td>
-						 		<td><%= link_to event.instructor.full_name, '#', :class => 'instructor_info' %></td>
+				     		<td width="25%"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td>
+						 		<td width="50%"><%= link_to event.monqi_class.title, '#', :class => 'class_desc' %></td>
+						 		<td width="25%"><%= link_to event.instructor.full_name, '#', :class => 'instructor_info' %></td>
 				 			<% end %> <%# end of tr event %>
 						<% end %>	<%# end of day %>
 				</table>
@@ -42,8 +40,6 @@
    </div>
 </div>
 
-<!-- "next page" action -->
-<a class="next browse right"></a>
 <% end -%>
 <script>
 // execute your scripts when the DOM is ready. this is mostly a good habit

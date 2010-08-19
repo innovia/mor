@@ -1,22 +1,21 @@
 <span id="current_date"><%= Date.today.strftime('%A, %B %d %Y') %></span>
-<span>&nbsp;<label for="datepicker"></label><%= text_field_tag :datepicker,{}, :size => "8" %></span>
+<span>
+	<input type="date" />
+</span>
 
 <%- if admin? -%>
 	<h3 id="set_new_schedule"><%= link_to "Set new schedule", new_event_path %></h3>
 <% end -%>
 
-<div id="navigator">
-	<span id="day_nav">
-		<a href="#" class="nav_left nav_arrows" id="prev_day"> &lt;&lt; </a> 
-		<a href="#" id="daily_view">Day</a> 
-		<a href="#" class="nav_right nav_arrows" id="next_day"> &gt;&gt; </a>
-	</span>
-		<a href="#" id="today_view">Today</a>
-	<span id="week_nav">
-		<a href="#" class="nav_left nav_arrows" id="prev_week"> &lt;&lt; </a> 
-		<a href="#" id="weekly_view">Week</a> 
-		<a href="#" class="nav_right nav_arrows" id="next_week"> &gt;&gt; </a>
-	</span>
-	<h1><h2><span id="view_title" class="h2bkg"></span></h2></h1>
-</div>
+<ul id="sched_nav">
+		<li id="prev_day"><a href="#">prev_day</a></li> 
+		<li id="daily_view"><a href="#">day</a></li> 
+		<li id="next_day"><a href="#"> next_day</a></li>
+		<li id="today_view"><a href="#">today</a></li>
+		<li id="prev_week"><a href="#">prev_week</a></li> 
+		<li id="weekly_view"><a href="#">week</a></li> 
+		<li id="next_week"><a href="#">next_week</a></li>
+</ul>
+
+<h2><span id="view_title" class="h2bkg"></span></h2>
 <div id="classes_table"></div>
