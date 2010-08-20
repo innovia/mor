@@ -44,7 +44,9 @@ $(document).ready(function() {
 				selected_date = Date.parse($('#current_date').text()).add(-1).week();
 				set_date_header(selected_date);
 				$('#view_title').html('Weekly classes');
-				fetch_classes(selected_date, 'weekly');
+				fetch_classes(selected_date.moveToDayOfWeek(1, -1), 'weekly');
+				//Date.getDayNumberFromName(selected_date.toString('dddd'))
+				lastSelectedTab = offset_day_number(4);
 		});
 		
 		$('#next_week').bind('click', function(event) {
@@ -58,6 +60,16 @@ $(document).ready(function() {
 		$('#view_title').html('Today\'s classes');		
 });
 
+function offset_day_number(passed_day){
+	if (passed_day < 6 ) { 
+		passed_day -= 1;
+		}else {
+		passed_day = 0;
+	}
+	return passed_day;
+}
+
+
 function set_date_header(fmtDate){
 	$('#current_date').html(fmtDate.toString('dddd, MMMM d yyyy'));
 }
@@ -67,11 +79,11 @@ function set_view_title(){
 }
 
 function set_scrollable(){
-	$("#schedule_page").scrollable({ 
+	api = $("#schedule_page").scrollable({ 
 	  size: 1, 
 	  clickable: false,
 		//keyboard: false,
-	}).navigator("#days_selector");
+	}).navigator({navi: "#days_selector", api: true});
 	
 }
 
@@ -80,6 +92,11 @@ function fetch_classes(current_date, period){
 		url: '/events/fetch_classes',
 	  type: 'GET',
 	  dataType: 'script',
-	  data: 'current_date=' + current_date + '&period=' + period 
+	  data: 'current_date=' + current_date + '&period=' + period ,
+	  complete: function() {
+	    if (period > 1) {api.seekTo(lastSelectedTab)}
+	  },
 	});
 }
+
+
