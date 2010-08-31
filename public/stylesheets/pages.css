@@ -33,11 +33,11 @@ body {
 
 
 #menu_bar {background: transparent url('/images/Backgrounds/menu_bar.png') repeat-x top center !important; 	margin-top: 53px;}
-#home { text-indent: -9999px; margin-top: -46px; margin-left: 10px; height: 162px; background: transparent url('/images/Backgrounds/logo.png') no-repeat}
-#home:hover {background-position: 0 -194px;}
+#home { text-indent: -9999px; width: 408px; margin-top: 10px; margin-right: 0px; height: 95px; background: transparent url('/images/Backgrounds/logo.png') -4px -3px no-repeat}
+#home:hover {background-position: -4px -93px;}
 
 
-#menu { margin-top: -118px; margin-left: 219px; padding: 0;}
+#menu { margin-top: -107px; margin-left: 219px; padding: 0;}
 #menu li { float: left;}
 #menu li a {
 						cursor: pointer;
@@ -421,7 +421,7 @@ a:hover {color: red !important; font-weight: bold;}
 
 #news_flash {
 	padding: 8px;
-	font-size:131%;
+	font-size:125%;
 	height:100px;
 	margin-left:405px;
 	position:relative;
