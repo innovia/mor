@@ -10,7 +10,9 @@
 		<!--[if lt IE 8 ]><link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
 		<%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.custom.min", "jquery.alerts", "jquery.tools.min", "jquery.innerfade", "jquery.maskedinput.min", "pages" %>
 		<% if admin? %>
-			<%= render :partial => "shared/init_yui_editor" %>
+			<% unless @page.title == 'schedule_beta' %>
+				<%= render :partial => "shared/init_yui_editor" %>
+			<% end -%>
 		<% end -%>
 		
 		<% if @page.title == 'schedule_beta' %>
@@ -68,7 +70,7 @@
 				</div>
 			</div><!-- /menu_bar_and_logo -->
 			<div id="top_content_page" class="clear span-16 last">
-				<% unless @page.title == 'index' %>
+				<% unless @page.title == 'index' or @page.title == 'schedule_beta' %>
 				<h1>
 					<h2>
 					<%= @page.title.humanize %>
@@ -98,10 +100,17 @@
 				<div id="gallery">
 					<% @page.pictures.each_with_index do |pic, index| %><%= image_tag(pic.photo.url(:box)) %><% end -%>
 				</div>
-			</div><% if admin? %><%= render :partial => "editor" %><% end -%>
+			</div>
+			<% if admin? %>
+				<% unless @page.title == 'schedule_beta' %>
+					<%= render :partial => "editor" %>
+				<% end -%>
+		 <% end -%>
 		</div><!-- /container -->
+		<% unless @page.title == 'schedule_beta' %>
 		<div class="apple_overlay" id="overlay">
 			<div class="contentWrap"></div>
 		</div>
+		<% end -%>
 	</body>
 </html>

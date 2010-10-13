@@ -1,6 +1,5 @@
-#set_new_schedule {display:inline; float:right;}
+#set_new_schedule {position:absolute;top: 8px;right:255px;}
 #set_new_schedule a {text-decoration: none;}
-
 #schedule_page {
 	position:relative;
 	overflow:hidden;
@@ -28,17 +27,10 @@
 	width:240px;
 }
 
-#sched_nav li { float: left;}
-#sched_nav li a {
-						cursor: pointer;
-						display:block;
-						text-indent: 9999px;
-						height: 18px;
-						overflow: hidden;  
-						background-image: url('/images/schedule_navigation.png');					
-}
 
-	/* BUTTONS */
+
+
+	/* BUTTONS 
 #sched_nav li#prev_day a { background-position: 0 0; width: 18px;}
 #sched_nav li#daily_view a { background-position: -18px 0; width: 45px;}
 #sched_nav li#next_day a { background-position: -67px 0; width: 18px;}
@@ -47,7 +39,7 @@
 #sched_nav li#weekly_view a { background-position: -164px 0; width: 51px;}
 #sched_nav li#next_week a { background-position: -215px 0; width: 15px;}
 
-	/* Hover */
+	/* Hover 
 #sched_nav li#prev_day a:hover { background-position: 0 19px; width: 18px;}
 #sched_nav li#daily_view a:hover { background-position: -18px 19px; width: 45px;}
 #sched_nav li#next_day a:hover { background-position: -67px 19px; width: 18px;}
@@ -56,7 +48,7 @@
 #sched_nav li#weekly_view a:hover { background-position: -164px 19px; width: 51px;}
 #sched_nav li#next_week a:hover { background-position: -215px 19px; width: 15px;}
 
-
+*/
 
 #days_selector {float:left; margin-left: 139px;}
 #days_selector li{ display: inline;}
@@ -88,11 +80,30 @@
 	line-height:normal;}
 	
 	#current_date  {
-	color: orange;
+	color: #b2b2b2;
 	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
-	font-size:16px;
+	font-size:75px;
+	margin-bottom:25px;
+	margin-top:15px;
 	}
 	
+	#mini_cal {
+		left:-272px;
+		position:relative;
+		top:-196px;
+	}
+	
+	#calroot {
+	left: 142px;
+	top: 10px;
+	}
+	
+	#current_full_date  {
+	color: #b2b2b2;
+	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
+	font-size:16px;
+	width:145px;
+	}
 	a { color: #333 !important; font-size: 100% !important; text-decoration: underline !important; display:block; float:left;}
 	a:hover {color: brown !important; font-weight: normal !important;}
 
@@ -101,11 +112,13 @@
 
 /* the input field */
 .date {
+	display: none;
 	border:1px solid #ccc;
-	font-size:18px;
+	font-size:16px;
 	padding:4px;
 	text-align:center;
-	width:159px;		
+	width:159px;	
+	height:14px;	
 	-moz-box-shadow:0 0 10px #eee inset;
 }
 
@@ -263,3 +276,12 @@ a.caldisabled {
 	background-color:#333;
 	color:#fff !important;
 }
+
+#schedule_view { 
+	left:488px;
+	position:relative;
+	top:-54px;
+}
+
+#schedule_view li a { margin-right: 5px; color: #776441 !important; text-decoration: none !important; font-weight:bold; float: none !important;}
+#date_navi {}

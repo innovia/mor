@@ -1,21 +1,20 @@
-<span id="current_date"><%= Date.today.strftime('%A, %B %d %Y') %></span>
-<span>
+<div id="current_date"><%= Date.today.strftime('%d') %></div>
+<div id="current_full_date"><%= Date.today.strftime('%A, %B %d %Y') %></div>
+<div id="mini_cal">
 	<input type="date" />
-</span>
+</div>
 
 <%- if admin? -%>
 	<h3 id="set_new_schedule"><%= link_to "Set new schedule", new_event_path %></h3>
 <% end -%>
 
-<ul id="sched_nav">
-		<li id="prev_day"><a href="#">prev_day</a></li> 
-		<li id="daily_view"><a href="#">day</a></li> 
-		<li id="next_day"><a href="#"> next_day</a></li>
-		<li id="today_view"><a href="#">today</a></li>
-		<li id="prev_week"><a href="#">prev_week</a></li> 
-		<li id="weekly_view"><a href="#">week</a></li> 
-		<li id="next_week"><a href="#">next_week</a></li>
-</ul>
+<ul id="schedule_view">
+	<li id="daily_view"><a href="#">Daily view</a></li>  
+	<li id="weekly_view"><a href="#">Weekly view</a></li> 
+	<li id="today_view"><a href="#">Today</a></li>
+</ul> 
+
+<ul id="date_navi"></ul>
 
 <h2><span id="view_title" class="h2bkg"></span></h2>
 <div id="classes_table"></div>

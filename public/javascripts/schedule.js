@@ -1,5 +1,14 @@
 $(document).ready(function() {
-	$(":date").dateinput();
+	$(":date").dateinput({
+		format: '',
+		
+		onHide: function(){
+			return false;
+		},
+		change: function(e, date){
+			$('#current_date').html(this.getValue("dd<span></span>"));
+		}
+	}).data("dateinput").setValue(0).show();
 	
 	var selected_date;
 		$("#datepicker").datepicker({
@@ -15,10 +24,7 @@ $(document).ready(function() {
 			fetch_classes(selected_date);
 		});
 		
-		$('#daily_view').bind('click', function(event) {
-			set_view_title();
-			fetch_classes(Date.parse($('#current_date').text()));
-		});
+		
 		
 		$('#next_day').bind('click', function(event) {
 			selected_date = Date.parse($('#current_date').text()).add(1).day();
@@ -35,8 +41,17 @@ $(document).ready(function() {
 		});
 			
 		
+		$('#daily_view').bind('click', function(event) {
+			set_view_title();
+			$('#date_navi').html('<li id="prev_day"><a href="#">prev_day</a></li>' +
+													 '<li id="next_day"><a href="#"> next_day</a></li>');
+			fetch_classes(Date.parse($('#current_date').text()));
+		});
+		
 		$('#weekly_view').bind('click', function(event) {
 			$('#view_title').html('Weekly classes');
+			$('#date_navi').html('<li id="prev_week"><a href="#">prev_week</a></li>' + 
+													 '<li id="next_week"><a href="#">next_week</a></li>');
 			fetch_classes(Date.parse('t'), 'weekly');
 		});
 		
