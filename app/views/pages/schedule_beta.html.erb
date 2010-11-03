@@ -1,4 +1,3 @@
-<div id="current_date"><%= Date.today.strftime('%d') %></div>
 <div id="current_full_date"><%= Date.today.strftime('%A, %B %d %Y') %></div>
 <div id="mini_cal">
 	<input type="date" />
@@ -9,12 +8,12 @@
 <% end -%>
 
 <ul id="schedule_view">
-	<li id="daily_view"><a href="#">Daily view</a></li>  
-	<li id="weekly_view"><a href="#">Weekly view</a></li> 
-	<li id="today_view"><a href="#">Today</a></li>
+	<li id="previous"><a href="#">Previous</a></li>
+	<li id="daily_view"><a href="#">Day</a></li>  
+	<li id="weekly_view"><a href="#">Week</a></li> 
+	<li id="next"><a href="#">Next</a></li>
 </ul> 
 
-<ul id="date_navi"></ul>
 
 <h2><span id="view_title" class="h2bkg"></span></h2>
 <div id="classes_table"></div>

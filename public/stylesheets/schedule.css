@@ -1,4 +1,4 @@
-#set_new_schedule {position:absolute;top: 8px;right:255px;}
+#set_new_schedule {position:absolute;top: -40px;right:255px;}
 #set_new_schedule a {text-decoration: none;}
 #schedule_page {
 	position:relative;
@@ -94,15 +94,14 @@
 	}
 	
 	#calroot {
-	left: 142px;
-	top: 10px;
+	left: 20px !important;
+	top: 87px !important;
 	}
 	
 	#current_full_date  {
 	color: #b2b2b2;
 	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
 	font-size:16px;
-	width:145px;
 	}
 	a { color: #333 !important; font-size: 100% !important; text-decoration: underline !important; display:block; float:left;}
 	a:hover {color: brown !important; font-weight: normal !important;}
@@ -277,11 +276,15 @@ a.caldisabled {
 	color:#fff !important;
 }
 
-#schedule_view { 
-	left:488px;
-	position:relative;
-	top:-54px;
-}
+#schedule_view li { float: left; }
 
-#schedule_view li a { margin-right: 5px; color: #776441 !important; text-decoration: none !important; font-weight:bold; float: none !important;}
-#date_navi {}
+#schedule_view li a { 
+	margin-right: 5px; 
+	color: #776441 !important; 
+	text-decoration: none !important;
+	font-weight:bold; 
+	float: none !important;}
+
+#previous a { background-image: url(/images/Backgrounds/date_navigation_arrow_left.png); width: 10px; text-indent: -9999px;}
+
+#next a { background-image: url(/images/Backgrounds/date_navigation_arrow_right.png); width: 12px; text-indent: -9999px;}
