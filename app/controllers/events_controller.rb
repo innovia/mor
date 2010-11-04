@@ -35,17 +35,9 @@ class EventsController < ResourceController::Base
   end
   
   def fetch_classes
-    @date = Date.parse(params[:current_date])
-    params[:period] == 'weekly' ? period = 7 :  period = 1
-    # need an array of days, for each day get events
-   
-    @days = []
-    for day in 1..period do
-       events =  Event.start_date_greater_than(@date).start_date_less_than(@date + 1)
-       @days << events
-       @date = @date + 1
-   end   
- 
+    @date = Date.today#Date.parse(params[:current_date])
+    @days =  Event.start_date_greater_than(@date.beginning_of_week).start_date_less_than(@date.end_of_week + 1).ascend_by_start_date
+    @day_classes = @days.group_by { |t| t.start_date.beginning_of_day }
   end
   
   def create 

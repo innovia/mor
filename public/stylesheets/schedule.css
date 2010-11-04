@@ -1,54 +1,5 @@
 #set_new_schedule {position:absolute;top: -40px;right:255px;}
 #set_new_schedule a {text-decoration: none;}
-#schedule_page {
-	position:relative;
-	overflow:hidden;
-	width: 620px;
-	height:240px;
-	clear: both;
-}
-
-#schedule_page .items {
-	width:20000em;
-	position:absolute;
-}
-
-.items table {
-	float:left;
-	width: 620px;	
-}
-
-#view_title { position: relative; margin-left:212px;}
-
-
-#sched_nav {
-	margin-left:115px;
-	margin-top:7px;
-	width:240px;
-}
-
-
-
-
-	/* BUTTONS 
-#sched_nav li#prev_day a { background-position: 0 0; width: 18px;}
-#sched_nav li#daily_view a { background-position: -18px 0; width: 45px;}
-#sched_nav li#next_day a { background-position: -67px 0; width: 18px;}
-#sched_nav li#today_view a { background-position: -86px 0; width: 55px; }
-#sched_nav li#prev_week a { background-position: -147px 0; width: 18px;}
-#sched_nav li#weekly_view a { background-position: -164px 0; width: 51px;}
-#sched_nav li#next_week a { background-position: -215px 0; width: 15px;}
-
-	/* Hover 
-#sched_nav li#prev_day a:hover { background-position: 0 19px; width: 18px;}
-#sched_nav li#daily_view a:hover { background-position: -18px 19px; width: 45px;}
-#sched_nav li#next_day a:hover { background-position: -67px 19px; width: 18px;}
-#sched_nav li#today_view a:hover { background-position: -86px 19px; width: 55px; }
-#sched_nav li#prev_week a:hover { background-position: -147px 19px; width: 18px;}
-#sched_nav li#weekly_view a:hover { background-position: -164px 19px; width: 51px;}
-#sched_nav li#next_week a:hover { background-position: -215px 19px; width: 15px;}
-
-*/
 
 #days_selector {float:left; margin-left: 139px;}
 #days_selector li{ display: inline;}
@@ -63,10 +14,10 @@
 	 #classes_table { border-collapse: collapse;}
 	 tr.even td{background-color:#fafafa;}
 	 tr.odd td{background-color:#f2f2f2;}
-	 tr td {border-bottom: 1px solid #CCCCCC;}
 	.headerText{
 		color:#B2C78F;
-		font-size:18px;
+		font-size:14px;
+		text-align: center !important;
 		line-height:normal;
 	}
 	.smallHeader{
@@ -80,25 +31,6 @@
 	line-height:normal;}
 	
 	#current_date  {
-	color: #b2b2b2;
-	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
-	font-size:75px;
-	margin-bottom:25px;
-	margin-top:15px;
-	}
-	
-	#mini_cal {
-		left:-272px;
-		position:relative;
-		top:-196px;
-	}
-	
-	#calroot {
-	left: 20px !important;
-	top: 87px !important;
-	}
-	
-	#current_full_date  {
 	color: #b2b2b2;
 	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
 	font-size:16px;
@@ -121,169 +53,14 @@
 	-moz-box-shadow:0 0 10px #eee inset;
 }
 
-/* calendar root element */
-#calroot {
-	/* place on top of other elements. set a higher value if nessessary */
-	z-index:10;
-	
-	margin-top:-1px;
-	width:198px;
-	padding:2px;
-	background-color:#fff;
-	font-size:11px;
-	border:1px solid #ccc;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	-moz-box-shadow: 0 0 15px #666;
-	-webkit-box-shadow: 0 0 15px #666;	
+th, td, caption {
+padding:0px !important;
 }
-
-/* head. contains title, prev/next month controls and possible month/year selectors */
-.caltrigger {
--moz-border-radius:3px 3px 3px 3px;
-background:url("/images/calicon.jpg") no-repeat scroll 0 0 transparent;
-display:block;
-float:left;
-height:32px;
-margin-top:-8px;
-width:30px;
-}
-
-.active .caltrigger {
-background-position:0 -32px;
-}
-
-.active input {
-color:#333333;
-text-shadow:none;
-}
-
-#calhead {	
-	padding:2px 0;
-	height:22px;
-} 
-
-#caltitle {
-	font-size:14px;
-	color:#0150D1;	
-	float:left;
-	text-align:center;
-	width:155px;
-	line-height:20px;
-	text-shadow:0 1px 0 #ddd;
-}
-
-#calnext, #calprev {
-	display:block;
-	width:20px;
-	height:20px;
-	background:transparent url(prev.gif) no-repeat scroll center center;
-	float:left;
-	cursor:pointer;
-}
-
-#calnext {
-	background-image:url(next.gif);
-	float:right;
-}
-
-#calprev.caldisabled, #calnext.caldisabled {
-	visibility:hidden;	
-}
-
-/* year/month selector */
-#caltitle select {
-	font-size:10px;	
-}
-
-/* names of the days */
-#caldays {
-	height:14px;
-	border-bottom:1px solid #ddd;
-}
-
-#caldays span {
-	display:block;
-	float:left;
-	width:28px;
-	text-align:center;
-}
-
-/* container for weeks */
-#calweeks {
-	background-color:#fff;
-	margin-top:4px;
-}
-
-/* single week */
-.calweek {
-	clear:left;
-	height:22px;
-}
-
-/* single day */
-.calweek a {
-	display:block;
-	float:left;
-	width:27px;
-	height:20px;
-	text-decoration:none;
-	font-size:11px;
-	margin-left:1px;
-	text-align:center;
-	line-height:20px;
-	color:#666;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px; 		
-} 
-
-/* different states */
-.calweek a:hover, .calfocus {
-	background-color:#ddd;
-}
-
-/* sunday */
-a.calsun {
-	color:red;		
-}
-
-/* offmonth day */
-a.caloff {
-	color:#ccc;		
-}
-
-a.caloff:hover {
-	background-color:rgb(245, 245, 250);		
-}
-
-
-/* unselecteble day */
-a.caldisabled {
-	background-color:#efefef !important;
-	color:#ccc	!important;
-	cursor:default;
-}
-
-/* current day */
-#calcurrent {
-	background-color:#498CE2;
-	color:#fff;
-}
-
-/* today */
-#caltoday {
-	background-color:#333;
-	color:#fff !important;
-}
-
-#schedule_view li { float: left; }
-
-#schedule_view li a { 
-	margin-right: 5px; 
-	color: #776441 !important; 
-	text-decoration: none !important;
-	font-weight:bold; 
-	float: none !important;}
+.table_day { border: 1px solid red; width:110px; float: left;}
+.table_day a {text-decoration: none !important;}
+.displayTime {color:#333333; font-size:10px; font-weight:bold; border-top: 1px solid #999; padding-top:5px !important; padding-left:5px !important;}
+.displayClass {font-family: Verdana; font-weight: bold; color:#666666; font-size:10px; padding-left:5px !important;}
+.displayInstructor {color:#666666; font-size:12px;font-family: Verdana; font-weight: bold; padding-left:5px !important;}
 
 #previous a { background-image: url(/images/Backgrounds/date_navigation_arrow_left.png); width: 10px; text-indent: -9999px;}
 
