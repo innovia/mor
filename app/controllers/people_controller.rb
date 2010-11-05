@@ -1,23 +1,25 @@
 class PeopleController < ResourceController::Base
   before_filter :require_user, :require_staff, :except => 'show'
   
-  def index 
-     @role = Role.find(params[:role_id])
-     @people = @role.people.ascend_by_last_name 
-   rescue ActiveRecord::RecordNotFound
-     @people = Person.order("last_name ASC")
+  def index
+    respond_to do |wants|
+      wants.html { 
+        @role = Role.find(params[:role_id])
+        @people = @role.people.ascend_by_last_name 
+        @people = Person.order("last_name ASC")
+      }
+      wants.js {
+        @instructors = Role.find_by_title('instructor').people.ascend_by_last_name
+      }
+    end
   end
   
   def show
     @instructor_role = Role.find_by_title('instructor')
     @person = Person.find(params[:id])  
     respond_to do |wants|
-      wants.html {
-      }
-      wants.js {
-         render  :layout => false
-      }
-      
+      wants.html {}
+      wants.js { render  :layout => false }
     end
   end
   

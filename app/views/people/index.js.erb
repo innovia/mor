@@ -1,0 +1,8 @@
+<h3>
+	Sub with:
+		<span class="scheduled_instructor">
+			<% @options = options_from_collection_for_select(@instructors, 'id', 'last_initial') %>
+			<%= select_tag("scheduled_instructor[]", @options, {:class => "instructor", :prompt => "Select an instructor"}) %>
+		</span>
+		<button id="subConfirm">Save Changes &rarr;</button>
+</h3>

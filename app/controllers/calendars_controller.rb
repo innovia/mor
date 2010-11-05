@@ -85,7 +85,6 @@ class CalendarsController < ResourceController::Base
      @instructor = Instructor.find(params[:instructor_id])
      @event.instructor = @instructor
      @event.save
-     get_instructors
    end
 
    def self_sign_up

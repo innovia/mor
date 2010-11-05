@@ -65,3 +65,23 @@ padding:0px !important;
 #previous a { background-image: url(/images/Backgrounds/date_navigation_arrow_left.png); width: 10px; text-indent: -9999px;}
 
 #next a { background-image: url(/images/Backgrounds/date_navigation_arrow_right.png); width: 12px; text-indent: -9999px;}
+
+#sub_instructor_form {
+ margin-top: 60px;
+	padding: 15px;
+}
+
+input, textarea, select {
+-moz-border-radius-bottomright:7px;
+-moz-border-radius-topleft:7px;
+-moz-box-sizing:border-box;
+background-color:#F4F4F4;
+background-image:url(/images/button_repeat.png);
+background-position:0 -1200px;
+background-repeat:repeat-x;
+border:1px solid #CCCCCC;
+color:#333333;
+font-size:12px;
+margin:0 0 0.3em;
+padding:3px 0 3px 3px;
+}

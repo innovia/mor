@@ -26,21 +26,37 @@ function bind_instructors_preview() {
 		if (monqi_api.isOpened()){monqi_api.close();}
 
 		var monqi_instructor = $(this).attr("data-instructor");
+		var current_event = $(this).attr("data-event");
 		$.get("/people/" + monqi_instructor, function(data){
 			$('#overlay').html('<a href="#" id="sub" class="person_preview_links"><img src="/images/sub_instructor.png" alt="Sub Instructor"> Sub Instructor </a><br />' + data);
 			var instructor_links = $('.person_preview_links').detach();
 			instructor_links.appendTo('#admin_links');
 			monqi_api.load();
-		 	bind_sub_function();
+		 	bind_sub_function(current_event);
 			}, 'script'
 		);
 	}); 	
 }
 
-function bind_sub_function() {
-	$('#sub').bind('click', function(event) {
+
+function bind_sub_function(event_id) {
+	$('#sub').one('click', function(event) {
+	$('#admin_links').after('<div style="display:none" id="sub_instructor_form"></div>');
 	$('.bio').slideUp('slow', function() {
-	    alert('Animation complete.');
+		$.get('/people/', function(data){
+		 $('#sub_instructor_form').html(data).fadeIn('5000');
+		 $('#subConfirm').bind('click', function(event) {
+			$.post('/events/sub',{
+			 param1: "value1", param2: "value2"},
+			 function(){
+			    //stuff to do *after* page is loaded;
+			});
+			
+
+			
+		});
+		});
+		
 	  });
 	});
 }
