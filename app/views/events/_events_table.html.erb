@@ -4,8 +4,12 @@
 <%- classes.each do |event| %>
 		<tr><td class="displayTime"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td></tr>
 		<tr><td class="displayClass"><%= event.level%></td></tr>
-		<tr><td class="displayClass"><%= link_to event.monqi_class.title, '#', :class => 'class_desc' %></td></tr>
-		<tr><td class="displayInstructor"><%= link_to event.instructor.last_initial, '#', :class => 'instructor_info' %></td></tr>
+		<tr>
+			<td class="displayClass">
+				<%= link_to event.monqi_class.title, '#', :class => 'class_desc', :rel => "class_#{event.monqi_class.id}", "data-class_desc"  =>    event.monqi_class.description, "data-class_title" => event.monqi_class.title %>
+			</td>
+		</tr>
+		<tr><td class="displayInstructor"><%= link_to event.instructor.last_initial, '#', :class => 'instructor_info', :rel => "instructor_#{event.instructor.id}", "data-instructor"  => event.instructor.id %></td></tr>
 <% end %>	<%# end of event %>
 </table>
 <% end -%> <%# end of days.each %>

@@ -1,12 +1,12 @@
 <style type="text/css" media="screen">
 	.bio {
 		border:1px solid white;
-		height:250px;
+		height:205px;
 		overflow:auto;
 		padding: 20px 10px 0px 10px;
 		position: relative;
 		width: 370px;
-		font-size: 16px;
+		font-size: 13px;
 		line-height: 1.5em;
 	}
 	.image_bio {
@@ -17,7 +17,9 @@
 	<div class="close"></div>
 		<h3 align="left" class="left"><%= @person.full_name%></h3>
 			<% if admin? %>
-			<%= link_to image_tag("icons/user_edit.png") + "Edit Person", edit_person_path(@person), :class => "right" %>
+			<div id="admin_links" class="right">
+			<%= link_to image_tag("edit_person.png") + "Edit Person", edit_person_path(@person), :class => "person_preview_links" %>
+			</div>
 			<% end -%>
 				<div class="bio" align="left">
 				<%= image_tag(@person.photo.url(:thumb), :class => 'image_bio')%>
