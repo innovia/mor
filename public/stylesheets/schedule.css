@@ -1,4 +1,5 @@
-#top_content_page {width: 773px !important; margin-left:120px !important;}
+#top_content_page {width: 773px !important; height: 600px !important; margin-left:120px !important;}
+#lower_corner_box {display: none;}
 #set_new_schedule {position:absolute;top: -40px;right:255px;}
 #set_new_schedule a {text-decoration: none;}
 
@@ -57,12 +58,11 @@
 th, td, caption {
 padding:0px !important;
 }
-.table_day { border: 1px solid red; width:110px; float: left;}
+.table_day { border-collapse:collapse; border: 1px solid #d29a66; width:110px; float: left;}
 .table_day a {text-decoration: none !important;}
 .displayTime {color:#333333; font-size:10px; font-weight:bold; border-top: 1px solid #999; padding-top:5px !important; padding-left:5px !important;}
 .displayClass {font-family: Verdana; font-weight: bold; color:#666666; font-size:10px; padding-left:5px !important;}
 .displayInstructor {color:#666666; font-size:12px;font-family: Verdana; font-weight: bold; padding-left:5px !important;}
-
 #previous a { background-image: url(/images/Backgrounds/date_navigation_arrow_left.png); width: 10px; text-indent: -9999px;}
 
 #next a { background-image: url(/images/Backgrounds/date_navigation_arrow_right.png); width: 12px; text-indent: -9999px;}
@@ -86,3 +86,11 @@ font-size:12px;
 margin:0 0 0.3em;
 padding:3px 0 3px 3px;
 }
+
+.instructor_info:hover {font-weight: bold !important;}
+.class_desc:hover {font-weight: bold !important;}
+.prev_instructor {color: red !important; text-decoration: line-through !important;}
+.sub_instructor {color: green !important;}
+.sub_instructor:hover {font-weight: bold !important;}
+
+.cancelled_event {background:url("/images/Backgrounds/cancelled.png") no-repeat scroll 0 0 transparent;}

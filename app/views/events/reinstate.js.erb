@@ -1,2 +1,2 @@
-$('#modal').dialog('close');
-$('#event_<%= @event.id %>').html("<%= escape_javascript(render :partial => '/shared_partials/event', :locals => {:event => @event}) %>");
+monqi_api.close();
+fetch_classes($('#current_date').text());

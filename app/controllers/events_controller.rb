@@ -102,9 +102,7 @@ class EventsController < ResourceController::Base
   end
   
   def update
-    get_instructors
-    @event = Event.find(params[:id])
-    
+    @event = Event.find(params[:id])   
     if params[:change_all_future]
      @current_event = @event
      @all_events = @current_event
@@ -115,12 +113,9 @@ class EventsController < ResourceController::Base
        end
      end
       flash[:notice] = "updated all future classes ..."
-      #render :action => 'edit'
-      #redirect_to :back
     else
         if @event.update_attributes(params[:event])
         flash[:notice] = 'the class was successfully updated.'
-       # render :action => 'show'
        redirect_to session[:last_ref_page]
       end
     end
@@ -128,39 +123,27 @@ class EventsController < ResourceController::Base
     
   def cancel
     @event = Event.find(params[:id])
-    @event.update_attribute('cancelled', '1')
-    get_calendars
-    get_instructors
-    
-    respond_to  do |format|
-      format.html { redirect_to home_path }
-      format.js { render :layout => false }
-    end 
+    @event.update_attribute('cancelled', 't')
+    render :layout => false 
   end
-  
-  def cancel_class  
-    modalbox_prep
-  end
-  
+   
   def reinstate
     @event = Event.find(params[:id])
-    @calendar = @event.calendar
-    @event.update_attribute('cancelled', '0')
-    get_calendars
-    get_instructors
-
-    respond_to  do |format|
-        format.html { redirect_to home_path }
-        format.js { render :layout => false }
-    end
+    @event.update_attribute('cancelled', 'f')
+    render :layout => false 
   end
   
-  def reinstate_class
-    modalbox_prep
+  def sub_form
+      @instructors = Role.find_by_title('instructor').people.ascend_by_last_name
+      render :layout => false
   end
 
-  def substitue_form
-    @event = Event.find(params[:id])
+  def sub
+    @event = Event.find(params[:event_id])
+    @event.sub_instructor_id = params[:sub_instructor]
+    @event.save
+    
+    #TODO sub for this event or for all
   end
  
 end

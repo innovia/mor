@@ -1,16 +1,27 @@
 <% @day_classes.each do |day, classes| %>
-<table class="mainFont table_day" border="0" cellspacing="5" cellpadding="5">
+<table class="mainFont table_day" border="0"  cellspacing="5" cellpadding="5">
 	<tr><th class="headerText"><%= day.strftime('%a') %></th></tr>
 <%- classes.each do |event| %>
+		<tbody <% if event.cancelled %> class="cancelled_event" <% end %> >
 		<tr><td class="displayTime"><%= event.start_date.strftime('%I:%M') %> - <%=h event.end_date.strftime('%I:%M %p') %></td></tr>
-		<tr><td class="displayClass"><%= event.level%></td></tr>
+		<tr><td class="displayClass"><%= event.level %></td></tr>
 		<tr>
 			<td class="displayClass">
-				<%= link_to event.monqi_class.title, '#', :class => 'class_desc', :rel => "class_#{event.monqi_class.id}", "data-class_desc" => event.monqi_class.description, "data-class_title" => event.monqi_class.title, "data-event" => event.id %>
+				<%= link_to event.monqi_class.title, '#', :id => "class_#{event.monqi_class.id}", :class => 'class_desc', :rel => "class_#{event.monqi_class.id}", "data-class_desc" => event.monqi_class.description, "data-class_title" => event.monqi_class.title, "data-cancelled"  => event.cancelled,  "data-event" => event.id %>
 			</td>
 		</tr>
-		<tr><td class="displayInstructor"><%= link_to event.instructor.last_initial, '#', :class => 'instructor_info', :rel => "instructor_#{event.instructor.id}", "data-instructor"  => event.instructor.id, "data-event" => event.id %></td></tr>
+		<tr>
+		<td class="displayInstructor">
+			<% if event.sub_instructor.nil? # if there's no sub instructor %>
+			<%= link_to event.instructor.last_initial, '#', :id => "instructor_#{event.instructor.id}",  :class => 'instructor_info', :rel => "instructor_#{event.instructor.id}", "data-instructor"  => event.instructor.id, "data-event" => event.id %>
+			<% else %>
+				<%= link_to event.sub_instructor.last_initial, '#', :id => "instructor_#{event.sub_instructor.id}",  :class => 'sub_instructor instructor_info', :rel => "instructor_#{event.sub_instructor.id}", "data-instructor"  => event.sub_instructor.id, "data-event" => event.id %>
+				<span	class="prev_instructor"><br /><%= event.instructor.last_initial%></span>
+			<% end %>
+		</td>
+	 </tr>
 <% end %>	<%# end of event %>
+</tbody>
 </table>
 <% end -%> <%# end of days.each %>
 

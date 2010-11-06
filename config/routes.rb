@@ -26,7 +26,6 @@ ActionController::Routing::Routes.draw do |map|
   map.statc 'statc', :controller => 'stats', :action => "show"
   
   map.home '/home', :controller => "events" 
-  map.cal '/cal', :controller => "event_templates", :action  => "cal_view"
   map.captcha "captcha", :controller => "users", :action => "captcha"
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
@@ -53,15 +52,13 @@ ActionController::Routing::Routes.draw do |map|
                            
   
   map.settings '/settings' ,  :controller => "settings" , :action => "edit"   
-  map.exceptions '/logged_exceptions/:action/:id', :controller => 'logged_exceptions', :action => 'index', :id => nil 
   
   map.monqi_member_signup '/monqi_member_signup', :controller => 'users', :action => 'existing_member_signup'
   
   # Store Routes
   map.store '/store', :controller => "store"
   map.resources :orders, :products, :packages, :calendars, :monqi_classes, :phone_numbers, :people
-  map.resources :event_templates, :has_many  => :events, :collection => {:quick_add => :post}
-  map.resources :events,  :has_many =>  :members, :collection => {:check_for_existing_events => :get, :fetch_classes => :get}
+  map.resources :events,  :has_many =>  :members, :collection => {:sub => :post, :sub_form => :get, :check_for_existing_events => :get, :fetch_classes => :get}
  
   # Nested Routes
   map.resources :package_templates, :collection => { :sort => :post, :fetch_packages => :get }

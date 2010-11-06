@@ -26,6 +26,11 @@ class Event < ActiveRecord::Base
     self.end_time = Time.parse(end_time_field_input)
   end 
   
+  def sub_instructor
+    unless self.sub_instructor_id.nil?
+      Person.find(sub_instructor_id)
+    end
+  end
 
 # iCal Validations
   def date_cannot_be_in_the_past
