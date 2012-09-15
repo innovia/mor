@@ -1,80 +1,58 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :pictures
-  map.resources :pages, :member => { :remove_attachment => :get }
-    
-  map.with_options :controller => 'pages' do |page|
-    page.about_us  'about_us',  :action => "about_us"
-    page.classes 'classes', :action => "classes"
-    page.personal_training 'personal_training', :action => "personal_training"
-    page.schedule 'schedule', :action => "schedule"
-    page.rates 'rates', :action => "rates"
-    page.specials 'specials', :action => "specials"
-    page.staff 'staff', :action => "staff"
-    page.news 'news', :action => "news"
-    page.contact_us 'contact_us', :action => "contact_us"   
-    page.thank_you 'thank_you', :action => "thank_you"
-    page.news_flash 'news_flash', :action => "news_flash" 
-    page.schedule_feed 'schedule_feed', :action => "schedule_feed"
-    page.schedule_beta 'schedule_beta', :action => "schedule_beta"
-  end
-  
+Mor::Application.routes.draw do
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
-  map.root :controller => "pages", :action => "index" 
-  map.resource :user_session
-  
-  map.resources :stats
-  map.statc 'statc', :controller => 'stats', :action => "show"
-  
-  map.home '/home', :controller => "events" 
-  map.captcha "captcha", :controller => "users", :action => "captcha"
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
-  map.activate '/activate/:id', :controller => 'activations', :action => 'create'
-  map.forgot_password  '/forgot_password', :controller => 'password_resets', :action => 'new'
-  map.resources :password_resets
-  map.resource :account, :controller => "users"
-  map.resources :users
-  
-  map.resources :people, :member => { :enable => :put, :remove_profile_pic => :get } do |people|
-       people.resources :roles
-  end
-  
-  map.resources :roles, :member => { :enable => :put } do |role|
-      role.resources :people
-  end
-  
-  map.manage_calendars "manage_calendars", :controller => "calendars", :action => "manage"   
-  map.auto_complete "auto_complete", :controller => "calendars", :action => "auto_complete"
-  map.date_navigation "/calendars/date_navigation/:id", :controller => "calendars", :action => "date_navigation"  
-  map.resources :calendars
-  
-                           
-  
-  map.settings '/settings' ,  :controller => "settings" , :action => "edit"   
-  
-  map.monqi_member_signup '/monqi_member_signup', :controller => 'users', :action => 'existing_member_signup'
-  
-  # Store Routes
-  map.store '/store', :controller => "store"
-  map.resources :orders, :products, :packages, :calendars, :monqi_classes, :phone_numbers, :people
-  map.resources :events,  :has_many =>  :members, :collection => {:sub => :post, :sub_form => :get, :check_for_existing_events => :get, :fetch_classes => :get}
- 
-  # Nested Routes
-  map.resources :package_templates, :collection => { :sort => :post, :fetch_packages => :get }
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  map.resources :pages,  :has_many  => :pictures
-  map.resources :people, :has_many  => :phone_numbers
-  map.resources :people, :has_one  => :address
-  map.resources :people, :has_many => :packages
-  map.resources :people, :has_many  => :events  
-  
-  map.resources :calendars, :has_many  =>  :package_templates
- 
-  map.resources :package_templates, :has_many =>  :packages, :collection => { :by_calendar => :post } 
-  
-  # Default Routes
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'  
-  map.people_address '/:controller/:id/address/:action'
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => 'welcome#index'
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id))(.:format)'
 end

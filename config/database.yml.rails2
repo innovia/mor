@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  database: mor_development
+  port: 5432
+  username: postgres
+  password: 3e75t6P
+
+test: &TEST
+  adapter: postgresql
+  port: 5432
+  database: mor_test
+  username: postgres
+  password: 3e75t6P
+
+cucumber:
+  <<: *TEST
