@@ -1,6 +1,7 @@
-		<%= f.error_messages %>
-    <% 
-		unless @page.nil?
+	<% @picture.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+   <% end %>
+    <% unless @page.nil?
     	@page_value = @page.id
 		else
 			@page_value = params[:page_id]

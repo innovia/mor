@@ -1,0 +1,96 @@
+#top_content_page {width: 773px !important; height: 600px !important; margin-left:120px !important;}
+#lower_corner_box {display: none;}
+#set_new_schedule {position:absolute;top: -40px;right:255px;}
+#set_new_schedule a {text-decoration: none;}
+
+#days_selector {float:left; margin-left: 139px;}
+#days_selector li{ display: inline;}
+#days_selector li a { margin-left: 5px;}
+	
+	 .mainFont {
+		color: #333333;
+		font-family: Tahoma, Arial;
+		font-size: 13px;
+		font: normal;
+	}
+	 #classes_table { border-collapse: collapse;}
+	 tr.even td{background-color:#fafafa;}
+	 tr.odd td{background-color:#f2f2f2;}
+	.headerText{
+		color:#B2C78F;
+		font-size:14px;
+		text-align: center !important;
+		line-height:normal;
+	}
+	.smallHeader{
+		color:#000000;
+		font-size:10px;
+		line-height:normal;
+	}
+	.smallText {color:#776441;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	line-height:normal;}
+	
+	#current_date  {
+	color: #b2b2b2;
+	font-family:Trebuchet MS,Helvetica,Arial,Sans-Serif;
+	font-size:16px;
+	}
+	a { color: #333 !important; font-size: 100% !important; text-decoration: underline !important; display:block; float:left;}
+	a:hover {color: brown !important; font-weight: normal !important;}
+
+/* Date Input CSS */
+/* For the details, see: http://flowplayer.org/tools/dateinput/index.html#skinning */
+
+/* the input field */
+.date {
+	display: none;
+	border:1px solid #ccc;
+	font-size:16px;
+	padding:4px;
+	text-align:center;
+	width:159px;	
+	height:14px;	
+	-moz-box-shadow:0 0 10px #eee inset;
+}
+
+th, td, caption {
+padding:0px !important;
+}
+.table_day { border-collapse:collapse; border: 1px solid #d29a66; width:110px; float: left;}
+.table_day a {text-decoration: none !important;}
+.displayTime {color:#333333; font-size:10px; font-weight:bold; border-top: 1px solid #999; padding-top:5px !important; padding-left:5px !important;}
+.displayClass {font-family: Verdana; font-weight: bold; color:#666666; font-size:10px; padding-left:5px !important;}
+.displayInstructor {color:#666666; font-size:12px;font-family: Verdana; font-weight: bold; padding-left:5px !important;}
+#previous a { background-image: url(/assets/images/Backgrounds/date_navigation_arrow_left.png); width: 10px; text-indent: -9999px;}
+
+#next a { background-image: url(/assets/images/Backgrounds/date_navigation_arrow_right.png); width: 12px; text-indent: -9999px;}
+
+#sub_instructor_form {
+ margin-top: 60px;
+	padding: 15px;
+}
+
+input, textarea, select {
+-moz-border-radius-bottomright:7px;
+-moz-border-radius-topleft:7px;
+-moz-box-sizing:border-box;
+background-color:#F4F4F4;
+background-image:url(/assets/images/button_repeat.png);
+background-position:0 -1200px;
+background-repeat:repeat-x;
+border:1px solid #CCCCCC;
+color:#333333;
+font-size:12px;
+margin:0 0 0.3em;
+padding:3px 0 3px 3px;
+}
+
+.instructor_info:hover {font-weight: bold !important;}
+.class_desc:hover {font-weight: bold !important;}
+.prev_instructor {color: red !important; text-decoration: line-through !important;}
+.sub_instructor {color: green !important;}
+.sub_instructor:hover {font-weight: bold !important;}
+
+.cancelled_event {background:url("/assets/images/Backgrounds/cancelled.png") no-repeat scroll 0 0 transparent;}

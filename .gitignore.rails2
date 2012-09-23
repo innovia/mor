@@ -56,7 +56,7 @@ railties/pkg
 railties/test/500.html
 railties/test/fixtures/tmp
 railties/test/initializer/root/log
-railties/doc/guides/html/images
+railties/doc/guides/html/assets/images
 railties/doc/guides/html/stylesheets
 benches
 railties/guides/output

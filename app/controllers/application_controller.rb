@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     
   before_filter :find_cart, :load_settings
   
-  filter_parameter_logging :credit_card, :password, :password_confirmation, :old_password, :email
+#  filter_parameter_logging :credit_card, :password, :password_confirmation, :old_password, :email
   
   helper_method :admin?, :manager?, :staff?, :member?, :today, :current_user_session, :current_user, :all_roles
   

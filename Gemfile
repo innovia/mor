@@ -1,12 +1,20 @@
 source 'https://rubygems.org'
+source 'http://gems.github.com'
 
 gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem "validates_timeliness", "~> 3.0.14"
+#gem "test-unit", "1.2.3"
 gem 'pg'
-
+gem "meta_search"
+gem "authlogic"
+gem 'will_paginate'
+gem "vpim"
+#gem "giraffesoft-resource_controller", :require => "resource_controller"
+gem "paperclip"
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.

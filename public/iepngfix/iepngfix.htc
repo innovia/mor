@@ -13,7 +13,7 @@ IEPNGFix.data = IEPNGFix.data || {};
 
 // CONFIG: blankImg is the path to blank.gif, *relative to the HTML document*.
 // Try either:
-// * An absolute path like:  '/images/blank.gif'
+// * An absolute path like:  '/assets/images/blank.gif'
 // * A path relative to this HTC file like:  thisFolder + 'blank.gif'
 var thisFolder = document.URL.replace(/(\\|\/)[^\\\/]*$/, '/');
 IEPNGFix.blankImg = thisFolder + 'blank.gif';

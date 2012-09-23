@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   has_many :cart_items
   belongs_to :package_template, :dependent  => :destroy
   
-  has_attached_file :photo, :styles => { :small => "150x150>", :thumb => "100x100>"}, :default_url => "/images/package.png"
+  has_attached_file :photo, :styles => { :small => "150x150>", :thumb => "100x100>"}, :default_url => "/assets/images/package.png"
     
   validates_presence_of :title, :description
   validates_numericality_of :price

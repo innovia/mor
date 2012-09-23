@@ -11,7 +11,7 @@
 
 
 // This must be a path to a blank image, relative to the HTML document(s).
-// In production use I suggest '/images/blank.gif' or similar. That's all!
+// In production use I suggest '/assets/images/blank.gif' or similar. That's all!
 if (typeof blankImg == 'undefined') var blankImg = 'captcha/imgs/blank.gif';
 
 

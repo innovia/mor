@@ -1,4 +1,6 @@
-class AddressesController < ApplicationController
+class AddressesController <  ActionController::Base
+  protect_from_forgery
+
   before_filter :require_user, :find_person, :require_staff
   
   def show
